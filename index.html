@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ヒルサイドオート株式会社 | 横浜の自動車販売・車検・整備</title>
+  <meta name="description" content="1949年創業、横浜で75年以上の実績。新車・中古車販売、車検、整備、板金塗装、保険まで。英語対応可能。">
+  <meta name="title-ja" content="ヒルサイドオート株式会社 | 横浜の自動車販売・車検・整備">
+  <meta name="title-en" content="Hillside Auto Corporation | Car Sales, Shaken & Repairs in Yokohama">
+  <meta name="desc-ja" content="1949年創業、横浜で75年以上の実績。新車・中古車販売、車検、整備、板金塗装、保険まで。英語対応可能。">
+  <meta name="desc-en" content="Established 1949. Over 75 years in Yokohama. All-brand new & used car sales, Shaken, repairs, body work, insurance. Full English support.">
+  <meta property="og:title" content="ヒルサイドオート株式会社 | Hillside Auto Corporation">
+  <meta property="og:description" content="1949年創業、横浜で75年以上の実績。新車・中古車販売、車検、整備、板金塗装、保険まで。英語対応可能。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.hillside-auto.com/">
+  <meta property="og:image" content="https://www.hillside-auto.com/images/og-image.jpg">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:locale:alternate" content="en_US">
+  <link rel="canonical" href="https://www.hillside-auto.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"AutoRepair","name":"ヒルサイドオート株式会社","alternateName":"Hillside Auto Corporation","url":"https://www.hillside-auto.com","telephone":"+81-45-641-3307","email":"info@hillside-auto.com","address":{"@type":"PostalAddress","streetAddress":"麦田町1-40","addressLocality":"横浜市中区","addressRegion":"神奈川県","postalCode":"231-0849","addressCountry":"JP"},"openingHours":"Mo-Sa 09:00-18:00","availableLanguage":["Japanese","English"]}
+  </script>
+  <style>
+    /* ============================================
+       HILLSIDE AUTO B — Complete inline styles
+       NOT A HOTEL inspired — radical layout
+       ============================================ */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e8e8e8;
+      --gray-400: #aaa;
+      --gray-600: #666;
+      --gray-800: #222;
+      --font-en: 'Inter', system-ui, sans-serif;
+      --font-jp: 'Noto Sans JP', sans-serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-serif-jp: 'Noto Serif JP', serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: var(--font-en);
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.8;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width:100%; height:auto; display:block; }
+    a { color:inherit; text-decoration:none; }
+    ul { list-style:none; }
+    button { cursor:pointer; font:inherit; border:none; background:none; color:inherit; }
+
+    /* --- Bilingual --- */
+    [data-lang-ja], [data-lang-en] { display: none !important; }
+    body.lang-ja [data-lang-ja] { display: block !important; }
+    body.lang-en [data-lang-en] { display: block !important; }
+    body.lang-ja span[data-lang-ja], body.lang-ja a[data-lang-ja],
+    body.lang-en span[data-lang-en], body.lang-en a[data-lang-en] { display: inline !important; }
+    body.lang-ja h1[data-lang-ja], body.lang-ja h2[data-lang-ja], body.lang-ja h3[data-lang-ja],
+    body.lang-en h1[data-lang-en], body.lang-en h2[data-lang-en], body.lang-en h3[data-lang-en] { display: block !important; }
+    body.lang-ja p[data-lang-ja], body.lang-en p[data-lang-en] { display: block !important; }
+    body.lang-ja div[data-lang-ja], body.lang-en div[data-lang-en] { display: block !important; }
+    body.lang-ja li[data-lang-ja], body.lang-en li[data-lang-en] { display: list-item !important; }
+    body.lang-ja label[data-lang-ja], body.lang-en label[data-lang-en] { display: block !important; }
+    body.lang-ja option[data-lang-ja], body.lang-en option[data-lang-en] { display: block !important; }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed; top:0; left:0; width:100%; z-index:100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 32px;
+      transition: background 0.4s ease;
+    }
+    .nav--scrolled { background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--gray-200); }
+    .nav__logo {
+      font-family: var(--font-en); font-size: 18px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--white);
+      transition: color 0.4s ease;
+    }
+    .nav--scrolled .nav__logo { color: var(--black); }
+    .nav__links { display:none; gap: 40px; }
+    .nav__links a {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.7);
+      transition: color 0.4s ease, opacity 0.3s ease;
+    }
+    .nav__links a:hover { opacity: 0.5; }
+    .nav--scrolled .nav__links a { color: var(--gray-600); }
+    .nav__right { display: flex; align-items: center; gap: 16px; }
+    .nav__lang {
+      font-size: 10px; letter-spacing: 0.1em; display: flex; gap: 4px;
+    }
+    .nav__lang button {
+      padding: 2px 6px; font-weight: 500; color: rgba(255,255,255,0.4);
+      transition: color 0.4s ease;
+    }
+    .nav__lang button.active { color: var(--white); }
+    .nav--scrolled .nav__lang button { color: var(--gray-400); }
+    .nav--scrolled .nav__lang button.active { color: var(--black); }
+    .nav__menu { display: flex; flex-direction: column; gap: 6px; width: 22px; cursor: pointer; }
+    .nav__menu span { height: 1px; background: var(--white); transition: all 0.4s var(--ease); }
+    .nav--scrolled .nav__menu span { background: var(--black); }
+    .nav__menu.active span:first-child { transform: rotate(45deg) translate(2.5px, 2.5px); }
+    .nav__menu.active span:last-child { transform: rotate(-45deg) translate(2.5px, -2.5px); }
+
+    /* Mobile overlay */
+    .nav-overlay {
+      position: fixed; inset:0; background: var(--black); z-index: 99;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      transform: translateY(-100%); transition: transform 0.6s var(--ease);
+    }
+    .nav-overlay.active { transform: translateY(0); }
+    .nav-overlay a {
+      font-family: var(--font-serif); font-size: 36px; font-weight: 300;
+      color: var(--white); padding: 16px 0;
+      transition: opacity 0.3s ease;
+    }
+    .nav-overlay a:hover { opacity: 0.5; }
+    .nav-overlay__contact {
+      margin-top: 48px; display: flex; gap: 16px;
+    }
+    .nav-overlay__contact a {
+      font-family: var(--font-en); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.3); padding: 12px 28px;
+    }
+
+    /* ===== HERO — full-screen cinematic ===== */
+    .hero {
+      position: relative; height: 100vh; overflow: hidden;
+      display: flex; align-items: flex-end;
+    }
+    .hero__img {
+      position: absolute; inset: 0;
+      background: url('images/IMG_7044.JPG') center/cover no-repeat;
+      filter: brightness(0.4);
+    }
+    .hero__body {
+      position: relative; z-index: 2;
+      padding: 0 40px 80px; color: var(--white); max-width: 680px;
+    }
+    .hero__sub {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.35em;
+      text-transform: uppercase; opacity: 0.5; margin-bottom: 24px;
+    }
+    .hero__h1 {
+      font-family: var(--font-serif); font-size: 42px; font-weight: 300;
+      line-height: 1.15; letter-spacing: 0.01em;
+    }
+    body.lang-ja .hero__h1 {
+      font-family: var(--font-serif-jp); font-size: 32px; letter-spacing: 0.06em;
+    }
+    .hero__arrow {
+      position: absolute; bottom: 32px; right: 40px; z-index: 2;
+      opacity: 0.4; animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* ===== INTRO — large statement text ===== */
+    .intro {
+      padding: 120px 40px; text-align: center;
+    }
+    .intro__text {
+      font-family: var(--font-serif); font-size: 22px; font-weight: 300;
+      line-height: 2; color: var(--gray-600); max-width: 700px; margin: 0 auto;
+    }
+    body.lang-ja .intro__text {
+      font-family: var(--font-jp); font-size: 16px; letter-spacing: 0.05em;
+    }
+
+    /* ===== EXPERTISE — numbered text list ===== */
+    .expertise {
+      padding: 0 40px 120px;
+      max-width: 900px; margin: 0 auto;
+    }
+    .expertise__head {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gray-400);
+      margin-bottom: 48px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .expertise__item {
+      display: flex; align-items: baseline; gap: 32px;
+      padding: 24px 0; border-bottom: 1px solid var(--gray-200);
+      transition: opacity 0.3s ease; cursor: default;
+    }
+    .expertise__item:hover { opacity: 0.6; }
+    .expertise__num {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+      color: var(--gray-400); flex-shrink: 0; width: 32px;
+    }
+    .expertise__name {
+      font-family: var(--font-serif); font-size: 22px; font-weight: 400;
+      flex: 1;
+    }
+    body.lang-ja .expertise__name {
+      font-family: var(--font-jp); font-size: 16px; font-weight: 500;
+    }
+    .expertise__cta {
+      margin-top: 48px; text-align: center;
+    }
+    .expertise__cta a {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; background: var(--black); color: var(--white);
+      padding: 14px 36px; transition: background 0.4s ease;
+    }
+    .expertise__cta a:hover { background: var(--gray-800); }
+    .expertise__cta svg { transition: transform 0.4s var(--ease); }
+    .expertise__cta a:hover svg { transform: rotate(45deg); }
+
+    /* ===== VISUAL — full-bleed images ===== */
+    .visual {
+      display: grid; grid-template-columns: 1fr; gap: 4px;
+    }
+    .visual__img {
+      width: 100%; height: 60vh; object-fit: cover;
+      filter: grayscale(100%); transition: filter 0.8s ease;
+    }
+    .visual__img:hover { filter: grayscale(0%); }
+
+    /* ===== FEATURE — asymmetric text+image ===== */
+    .feature {
+      display: grid; grid-template-columns: 1fr;
+      min-height: 80vh;
+    }
+    .feature__img {
+      height: 50vh; overflow: hidden;
+    }
+    .feature__img img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: grayscale(100%); transition: filter 0.8s ease;
+    }
+    .feature:hover .feature__img img { filter: grayscale(0%); }
+    .feature__body {
+      padding: 64px 40px; display: flex; flex-direction: column;
+      justify-content: center;
+    }
+    .feature__label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gray-400); margin-bottom: 20px;
+    }
+    .feature__h2 {
+      font-family: var(--font-serif); font-size: 28px; font-weight: 300;
+      line-height: 1.3; margin-bottom: 24px;
+    }
+    body.lang-ja .feature__h2 {
+      font-family: var(--font-serif-jp); font-size: 22px; letter-spacing: 0.04em;
+    }
+    .feature__p {
+      color: var(--gray-600); line-height: 2; margin-bottom: 32px; font-size: 14px;
+    }
+    .feature__link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .feature__link svg { transition: transform 0.4s var(--ease); }
+    .feature__link:hover svg { transform: rotate(45deg); }
+
+    /* ===== DARK REVIEWS ===== */
+    .reviews {
+      background: var(--black); color: var(--white);
+      padding: 120px 40px;
+    }
+    .reviews__head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 64px; flex-wrap: wrap; gap: 16px;
+    }
+    .reviews__label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gray-400);
+    }
+    .reviews__rating {
+      font-size: 14px; color: rgba(255,255,255,0.5);
+    }
+    .reviews__rating strong { color: var(--white); font-weight: 500; }
+    .reviews__grid {
+      display: grid; grid-template-columns: 1fr; gap: 0;
+    }
+    .reviews__item {
+      padding: 32px 0; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .reviews__text {
+      font-family: var(--font-serif); font-size: 18px; font-weight: 300;
+      line-height: 1.9; color: rgba(255,255,255,0.65); margin-bottom: 16px;
+    }
+    body.lang-ja .reviews__text {
+      font-family: var(--font-jp); font-size: 14px;
+    }
+    .reviews__author {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.25);
+    }
+
+    /* ===== FAQ — minimal accordion ===== */
+    .faq {
+      padding: 120px 40px; max-width: 800px; margin: 0 auto;
+    }
+    .faq__head {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gray-400);
+      margin-bottom: 48px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .faq__item { border-bottom: 1px solid var(--gray-200); }
+    .faq__q {
+      width: 100%; display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 0; font-size: 15px; font-weight: 400; text-align: left;
+      gap: 16px; transition: opacity 0.3s ease;
+    }
+    .faq__q:hover { opacity: 0.5; }
+    .faq__icon {
+      font-size: 18px; font-weight: 300; color: var(--gray-400);
+      transition: transform 0.4s var(--ease); flex-shrink: 0;
+    }
+    .faq__item.active .faq__icon { transform: rotate(45deg); }
+    .faq__a {
+      max-height: 0; overflow: hidden; transition: max-height 0.5s var(--ease);
+    }
+    .faq__a-inner {
+      padding: 0 0 24px; color: var(--gray-600); font-size: 14px; line-height: 2;
+    }
+
+    /* ===== LOCATION ===== */
+    .location {
+      display: grid; grid-template-columns: 1fr;
+    }
+    .location__map {
+      height: 50vh;
+    }
+    .location__map iframe {
+      width: 100%; height: 100%; border: 0;
+      filter: grayscale(100%) contrast(1.1);
+    }
+    .location__info {
+      padding: 64px 40px;
+    }
+    .location__label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gray-400); margin-bottom: 32px;
+    }
+    .location__line {
+      font-size: 14px; color: var(--gray-600); margin-bottom: 12px; line-height: 1.8;
+    }
+    .location__line a {
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    .location__line a:hover { border-bottom-color: var(--black); }
+
+    /* ===== CTA — big text on black ===== */
+    .cta {
+      background: var(--black); color: var(--white);
+      padding: 120px 40px; text-align: center;
+    }
+    .cta__label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gray-600); margin-bottom: 32px;
+    }
+    .cta__h2 {
+      font-family: var(--font-serif); font-size: 36px; font-weight: 300;
+      margin-bottom: 48px; line-height: 1.3;
+    }
+    body.lang-ja .cta__h2 {
+      font-family: var(--font-serif-jp); font-size: 24px;
+    }
+    .cta__btns {
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+    }
+    .cta__btns a {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 14px 32px;
+      border: 1px solid rgba(255,255,255,0.3); color: var(--white);
+      transition: all 0.4s ease;
+    }
+    .cta__btns a:hover { background: var(--white); color: var(--black); }
+    .cta__btns a.filled {
+      background: var(--white); color: var(--black); border-color: var(--white);
+    }
+    .cta__btns a.filled:hover { background: transparent; color: var(--white); }
+
+    /* ===== FOOTER ===== */
+    .ft {
+      background: var(--black); color: var(--white);
+      padding: 80px 40px 32px;
+    }
+    .ft__top {
+      display: flex; flex-direction: column; gap: 48px;
+      padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .ft__logo {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.3em;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .ft__desc { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 2; }
+    .ft__links {
+      display: flex; flex-wrap: wrap; gap: 32px;
+    }
+    .ft__links a {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      transition: color 0.3s ease;
+    }
+    .ft__links a:hover { color: var(--white); }
+    .ft__social { display: flex; gap: 20px; }
+    .ft__social a {
+      color: rgba(255,255,255,0.3); transition: color 0.3s ease;
+    }
+    .ft__social a:hover { color: var(--white); }
+    .ft__copy {
+      padding-top: 32px; font-size: 10px; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.15);
+    }
+
+    /* ===== SCROLL TOP ===== */
+    .scroll-top {
+      position: fixed; bottom: 80px; right: 24px;
+      width: 40px; height: 40px; background: var(--black); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: all 0.4s ease; z-index: 90;
+    }
+    .scroll-top.visible { opacity: 1; visibility: visible; }
+
+    /* ===== MOBILE CTA BAR ===== */
+    .mob-bar {
+      position: fixed; bottom: 0; left: 0; width: 100%;
+      display: flex; z-index: 95;
+    }
+    .mob-bar a {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 14px; font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--white); text-decoration: none;
+    }
+    .mob-bar a:first-child { background: var(--black); }
+    .mob-bar a:last-child { background: var(--gray-800); border-left: 1px solid rgba(255,255,255,0.1); }
+
+    /* ===== FADE IN ===== */
+    .fi { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fi.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 768px) {
+      .hero__h1 { font-size: 56px; }
+      body.lang-ja .hero__h1 { font-size: 40px; }
+      .intro { padding: 160px 80px; }
+      .intro__text { font-size: 28px; }
+      body.lang-ja .intro__text { font-size: 18px; }
+      .expertise { padding: 0 80px 160px; }
+      .expertise__name { font-size: 28px; }
+      body.lang-ja .expertise__name { font-size: 18px; }
+      .visual { grid-template-columns: 1fr 1fr; }
+      .visual__img { height: 70vh; }
+      .feature { grid-template-columns: 55% 45%; min-height: 90vh; }
+      .feature--reverse { direction: rtl; }
+      .feature--reverse > * { direction: ltr; }
+      .feature__img { height: 100%; }
+      .feature__body { padding: 80px 64px; }
+      .feature__h2 { font-size: 36px; }
+      body.lang-ja .feature__h2 { font-size: 26px; }
+      .reviews { padding: 160px 80px; }
+      .reviews__grid { grid-template-columns: 1fr 1fr; gap: 0 64px; }
+      .reviews__text { font-size: 20px; }
+      .faq { padding: 160px 80px; }
+      .location { grid-template-columns: 1fr 1fr; }
+      .location__map { height: auto; min-height: 500px; }
+      .cta { padding: 160px 80px; }
+      .cta__h2 { font-size: 48px; }
+      body.lang-ja .cta__h2 { font-size: 30px; }
+      .ft__top { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+      .mob-bar { display: none; }
+      .ft__copy { padding-bottom: 0; }
+    }
+
+    @media (min-width: 1024px) {
+      .nav__links { display: flex; }
+      .nav__menu { display: none; }
+      .hero__body { padding: 0 8% 100px; }
+      .hero__h1 { font-size: 72px; }
+      body.lang-ja .hero__h1 { font-size: 48px; }
+      .intro__text { font-size: 32px; }
+      .expertise__item { padding: 32px 0; }
+      .expertise__name { font-size: 32px; }
+      body.lang-ja .expertise__name { font-size: 20px; }
+    }
+  </style>
+</head>
+<body class="lang-ja">
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">Hillside Auto</a>
+    <div class="nav__links">
+      <a href="services.html">Services</a>
+      <a href="for-foreigners.html">English</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav__right">
+      <div class="nav__lang">
+        <button data-lang-btn="ja" class="active">JP</button>
+        <button data-lang-btn="en">EN</button>
+      </div>
+      <div class="nav__menu" id="menuBtn">
+        <span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="nav-overlay" id="navOverlay">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="for-foreigners.html">English</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-overlay__contact">
+      <a href="tel:045-641-3307">045-641-3307</a>
+      <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener">LINE</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__img"></div>
+      <div class="hero__body">
+        <p class="hero__sub">Yokohama, Mugitacho</p>
+        <h1 class="hero__h1" data-lang-ja>1949年、この交差点から。</h1>
+        <h1 class="hero__h1" data-lang-en>Since 1949,<br>from this corner.</h1>
+      </div>
+      <div class="hero__arrow">
+        <svg width="16" height="48" viewBox="0 0 16 48" fill="none" stroke="#fff" stroke-width="1"><line x1="8" y1="0" x2="8" y2="44"/><polyline points="2,38 8,46 14,38"/></svg>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="intro fi">
+      <p class="intro__text" data-lang-ja>
+        新車・中古車販売から車検・整備・板金・保険まで、<br>
+        ワンストップで対応。全メーカー取扱い。英語対応可能。
+      </p>
+      <p class="intro__text" data-lang-en>
+        New &amp; used cars, Shaken, repairs, insurance —<br>
+        all brands, all in English. Your one-stop auto partner.
+      </p>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section class="expertise fi">
+      <div class="expertise__head">Services</div>
+      <a href="services.html" class="expertise__item">
+        <span class="expertise__num">01</span>
+        <span class="expertise__name" data-lang-ja>新車・中古車販売</span>
+        <span class="expertise__name" data-lang-en>New &amp; Used Car Sales</span>
+      </a>
+      <a href="services.html" class="expertise__item">
+        <span class="expertise__num">02</span>
+        <span class="expertise__name" data-lang-ja>車検</span>
+        <span class="expertise__name" data-lang-en>Shaken</span>
+      </a>
+      <a href="services.html" class="expertise__item">
+        <span class="expertise__num">03</span>
+        <span class="expertise__name" data-lang-ja>整備・メンテナンス</span>
+        <span class="expertise__name" data-lang-en>Maintenance</span>
+      </a>
+      <a href="services.html" class="expertise__item">
+        <span class="expertise__num">04</span>
+        <span class="expertise__name" data-lang-ja>板金塗装・事故修理</span>
+        <span class="expertise__name" data-lang-en>Body Work &amp; Repairs</span>
+      </a>
+      <a href="services.html" class="expertise__item">
+        <span class="expertise__num">05</span>
+        <span class="expertise__name" data-lang-ja>登録・名義変更</span>
+        <span class="expertise__name" data-lang-en>Registration</span>
+      </a>
+      <a href="services.html" class="expertise__item">
+        <span class="expertise__num">06</span>
+        <span class="expertise__name" data-lang-ja>保険</span>
+        <span class="expertise__name" data-lang-en>Insurance</span>
+      </a>
+      <div class="expertise__cta">
+        <a href="services.html">
+          <span data-lang-ja>View all</span><span data-lang-en>View all</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="6" x2="10" y2="6"/><polyline points="6,2 10,6 6,10"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- VISUAL — two images side by side -->
+    <section class="visual fi">
+      <img class="visual__img" src="images/IMG_7044.JPG" alt="Storefront" loading="lazy">
+      <img class="visual__img" src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=900&q=80" alt="Car" loading="lazy">
+    </section>
+
+    <!-- FEATURE 1: English Support -->
+    <section class="feature fi">
+      <div class="feature__img">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80" alt="English Support" loading="lazy">
+      </div>
+      <div class="feature__body">
+        <p class="feature__label">English Support</p>
+        <h2 class="feature__h2" data-lang-ja>完全英語対応</h2>
+        <h2 class="feature__h2" data-lang-en>Full English Support</h2>
+        <p class="feature__p" data-lang-ja>横浜エリアで数少ない、全サービスを英語でご提供できる自動車会社です。購入相談から車検の説明、書類手続き、アフターケアまで、言葉の壁を感じることなくご利用いただけます。</p>
+        <p class="feature__p" data-lang-en>One of the few auto service companies in Yokohama offering full English support. From car purchases to Shaken, paperwork, and after-care — no language barrier, ever.</p>
+        <a href="for-foreigners.html" class="feature__link">
+          <span data-lang-ja>Learn more</span><span data-lang-en>Learn more</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="6" x2="10" y2="6"/><polyline points="6,2 10,6 6,10"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- FEATURE 2: All Brands (reversed) -->
+    <section class="feature feature--reverse fi">
+      <div class="feature__img">
+        <img src="images/u3129944469_____--raw_--v_7_17d1ca12-e6d1-48ee-81d8-00cfc90bebd7_2.png" alt="All Brands" loading="lazy">
+      </div>
+      <div class="feature__body">
+        <p class="feature__label">All Brands</p>
+        <h2 class="feature__h2" data-lang-ja>国産車も輸入車も、<br>全メーカー対応</h2>
+        <h2 class="feature__h2" data-lang-en>Every Brand,<br>Domestic &amp; Imported</h2>
+        <p class="feature__p" data-lang-ja>トヨタ・ホンダ・日産などの国産車から、ボルボ・BMW・メルセデスなどの輸入車まで全車種に対応。スズキ副代理店としての認定に加え、複数メーカーの正規販売代理店・協力工場としての実績があります。</p>
+        <p class="feature__p" data-lang-en>From Toyota, Honda, and Nissan to Volvo, BMW, and Mercedes — we service and sell all brands. As authorized sales agents for multiple manufacturers, we find the right vehicle for you.</p>
+        <a href="services.html" class="feature__link">
+          <span data-lang-ja>Learn more</span><span data-lang-en>Learn more</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="6" x2="10" y2="6"/><polyline points="6,2 10,6 6,10"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews fi">
+      <div class="reviews__head">
+        <span class="reviews__label">Reviews</span>
+        <span class="reviews__rating"><strong>4.8</strong> / 5.0 — Google</span>
+      </div>
+      <div class="reviews__grid">
+        <div class="reviews__item">
+          <p class="reviews__text" data-lang-en>"The service was excellent and they helped us navigate buying a car in Japan entirely in English."</p>
+          <p class="reviews__text" data-lang-ja>「日本での車の購入を英語で全面的にサポートしてもらいました。サービスが素晴らしく、強くお勧めします。」</p>
+          <span class="reviews__author" data-lang-en>Foreign Resident</span>
+          <span class="reviews__author" data-lang-ja>外国人のお客様</span>
+        </div>
+        <div class="reviews__item">
+          <p class="reviews__text" data-lang-ja>「昔から良心的で安心して任せられるお店です。整備の腕も確かです。」</p>
+          <p class="reviews__text" data-lang-en>"Always honest and reliable. Their mechanics are truly skilled."</p>
+          <span class="reviews__author" data-lang-ja>地元のお客様</span>
+          <span class="reviews__author" data-lang-en>Local Customer</span>
+        </div>
+        <div class="reviews__item">
+          <p class="reviews__text" data-lang-ja>「次もここで買いたいと思える接客でした。」</p>
+          <p class="reviews__text" data-lang-en>"The kind of service that makes you want to come back."</p>
+          <span class="reviews__author" data-lang-ja>お客様</span>
+          <span class="reviews__author" data-lang-en>Customer</span>
+        </div>
+        <div class="reviews__item">
+          <p class="reviews__text" data-lang-en>"Quick turnaround and fair pricing. Would definitely use again."</p>
+          <p class="reviews__text" data-lang-ja>「対応が早く、料金も適正で、また利用したいです。」</p>
+          <span class="reviews__author" data-lang-en>Foreign Resident</span>
+          <span class="reviews__author" data-lang-ja>外国人のお客様</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq fi">
+      <div class="faq__head">FAQ</div>
+      <div class="faq__item">
+        <button class="faq__q"><span><span data-lang-ja>車検の費用はどのくらいですか？</span><span data-lang-en>How much does Shaken cost?</span></span><span class="faq__icon">+</span></button>
+        <div class="faq__a"><div class="faq__a-inner">
+          <p data-lang-ja>軽自動車で約45,000円〜、普通車で約60,000円〜が目安です。お車の車種・年式・状態によって変わりますので、まずは無料のお見積もりをご利用ください。</p>
+          <p data-lang-en>Light vehicles start from around ¥45,000, standard vehicles from around ¥60,000. Contact us for a free estimate.</p>
+        </div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q"><span><span data-lang-ja>英語で対応してもらえますか？</span><span data-lang-en>Do you offer services in English?</span></span><span class="faq__icon">+</span></button>
+        <div class="faq__a"><div class="faq__a-inner">
+          <p data-lang-ja>はい、全てのサービスを英語でご提供可能です。</p>
+          <p data-lang-en>Yes! Full English support for all services.</p>
+        </div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q"><span><span data-lang-ja>スズキ以外の車も購入できますか？</span><span data-lang-en>Can I buy cars other than Suzuki?</span></span><span class="faq__icon">+</span></button>
+        <div class="faq__a"><div class="faq__a-inner">
+          <p data-lang-ja>はい、全メーカー対応です。国産車から輸入車まで、新車・中古車ともにお取り扱い可能です。</p>
+          <p data-lang-en>Absolutely. We handle all brands — both new and used vehicles.</p>
+        </div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q"><span><span data-lang-ja>車検（Shaken）とは何ですか？</span><span data-lang-en>What is Shaken?</span></span><span class="faq__icon">+</span></button>
+        <div class="faq__a"><div class="faq__a-inner">
+          <p data-lang-en>Japan's mandatory vehicle inspection required every 2 years. We handle the entire process.</p>
+          <p data-lang-ja>日本の法定車両検査で、新車は3年後、以降は2年ごとに受ける義務があります。全てお任せいただけます。</p>
+        </div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q"><span><span data-lang-ja>予約なしで来店できますか？</span><span data-lang-en>Can I visit without an appointment?</span></span><span class="faq__icon">+</span></button>
+        <div class="faq__a"><div class="faq__a-inner">
+          <p data-lang-ja>はい、大歓迎です。車検や整備は事前にご連絡いただけるとスムーズです。</p>
+          <p data-lang-en>Yes, walk-ins are welcome! For Shaken or repairs, we recommend contacting us in advance.</p>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="location fi">
+      <div class="location__map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3254.5!2d139.6505!3d35.437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z44OS44Or44K144Kk44OJ44Kq44O844OI!5e0!3m2!1sja!2sjp!4v1700000000000" allowfullscreen="" loading="lazy" title="Location"></iframe>
+      </div>
+      <div class="location__info">
+        <p class="location__label">Access</p>
+        <p class="location__line">
+          <span data-lang-ja>〒231-0849 神奈川県横浜市中区麦田町1-40</span>
+          <span data-lang-en>1-40 Mugitacho, Naka-ku, Yokohama 231-0849</span>
+        </p>
+        <p class="location__line"><a href="tel:045-641-3307">045-641-3307</a></p>
+        <p class="location__line"><a href="mailto:info@hillside-auto.com">info@hillside-auto.com</a></p>
+        <p class="location__line">
+          <span data-lang-ja>営業時間: 9:00〜18:00</span>
+          <span data-lang-en>9:00 AM – 6:00 PM</span>
+        </p>
+        <p class="location__line">
+          <span data-lang-ja>JR石川町駅より徒歩約10分</span>
+          <span data-lang-en>10 min walk from JR Ishikawacho Station</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta fi">
+      <p class="cta__label">Contact</p>
+      <h2 class="cta__h2" data-lang-ja>お気軽にご相談ください。</h2>
+      <h2 class="cta__h2" data-lang-en>Get in Touch.</h2>
+      <div class="cta__btns">
+        <a href="tel:045-641-3307">045-641-3307</a>
+        <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener">LINE</a>
+        <a href="contact.html" class="filled">
+          <span data-lang-ja>Contact</span><span data-lang-en>Contact</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="ft">
+    <div class="ft__top">
+      <div>
+        <div class="ft__logo">Hillside Auto</div>
+        <p class="ft__desc" data-lang-ja>ヒルサイドオート株式会社<br>1949年創業</p>
+        <p class="ft__desc" data-lang-en>Hillside Auto Corporation<br>Since 1949</p>
+      </div>
+      <div class="ft__links">
+        <a href="services.html">Services</a>
+        <a href="for-foreigners.html">English</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="ft__social">
+        <a href="https://www.instagram.com/hillside_auto_inc/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
+        <a href="https://www.facebook.com/hillsideautoinc/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener" aria-label="LINE"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+      </div>
+    </div>
+    <p class="ft__copy">&copy; 2026 Hillside Auto Corporation</p>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Top">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="12" x2="7" y2="2"/><polyline points="2,6 7,1 12,6"/></svg>
+  </button>
+
+  <div class="mob-bar">
+    <a href="tel:045-641-3307">045-641-3307</a>
+    <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener">LINE</a>
+  </div>
+
+  <script src="js/lang-toggle.js"></script>
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const overlay = document.getElementById('navOverlay');
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+    });
+    overlay.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menuBtn.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Scroll top
+    const scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollBtn.classList.toggle('visible', window.scrollY > 500);
+    });
+    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq__q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const body = item.querySelector('.faq__a');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq__item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.faq__a').style.maxHeight = null;
+        });
+        if (!isActive) {
+          item.classList.add('active');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Fade in
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+  </script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does Shaken cost?","acceptedAnswer":{"@type":"Answer","text":"Light vehicles start from around ¥45,000, standard vehicles from around ¥60,000."}},{"@type":"Question","name":"Do you offer services in English?","acceptedAnswer":{"@type":"Answer","text":"Yes, full English support for all services."}},{"@type":"Question","name":"Can I buy cars other than Suzuki?","acceptedAnswer":{"@type":"Answer","text":"Yes, we handle all brands."}},{"@type":"Question","name":"What is Shaken?","acceptedAnswer":{"@type":"Answer","text":"Japan's mandatory vehicle inspection every 2 years."}},{"@type":"Question","name":"Can I visit without an appointment?","acceptedAnswer":{"@type":"Answer","text":"Yes, walk-ins are welcome."}}]}
+  </script>
+</body>
+</html>

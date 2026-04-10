@@ -1,0 +1,249 @@
+/* ============================================
+   Hillside Auto — B Version Responsive
+   NOT A HOTEL-inspired
+   ============================================ */
+
+/* --- Tablet (769px+) --- */
+@media (min-width: 769px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+
+  .hero__title { font-size: 3.5rem; }
+  body.lang-ja .hero__title { font-size: 2.8rem; }
+
+  .statement__text { font-size: 1.3rem; }
+  body.lang-ja .statement__text { font-size: 1.05rem; }
+
+  /* Pillars: 2 columns */
+  .pillars {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pillar {
+    border-right: 1px solid var(--gray-200);
+  }
+
+  .pillar:nth-child(2n) {
+    border-right: none;
+  }
+
+  /* Services: 2-col gallery */
+  .services-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .service-item--featured {
+    grid-column: span 2;
+  }
+
+  .service-item--featured .service-item__image {
+    aspect-ratio: 21 / 9;
+  }
+
+  /* Feature: side by side */
+  .feature {
+    flex-direction: row;
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+
+  .feature__image {
+    width: 55%;
+    flex-shrink: 0;
+  }
+
+  .feature__image img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .feature__content {
+    width: 45%;
+  }
+
+  .feature--reverse {
+    flex-direction: row-reverse;
+  }
+
+  /* Reviews: 2 cols */
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 var(--space-2xl);
+  }
+
+  .review-card {
+    border-top: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* Access */
+  .access__layout {
+    flex-direction: row;
+    gap: var(--space-2xl);
+  }
+
+  .access__map {
+    flex: 1;
+    height: auto;
+    min-height: 350px;
+  }
+
+  .access__info {
+    flex: 1;
+  }
+
+  /* Grids */
+  .grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .grid--3 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Contact layout */
+  .contact-layout {
+    flex-direction: row;
+    gap: var(--space-2xl);
+  }
+
+  /* Legacy */
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+  .bento-card--wide { grid-column: span 2; }
+  .split-section { flex-direction: row; }
+  .split-section--reverse { flex-direction: row-reverse; }
+  .split-section__image { width: 50%; min-height: 450px; }
+  .split-section__content { width: 50%; padding: var(--space-3xl); display: flex; flex-direction: column; justify-content: center; }
+  .trust-bar__grid { grid-template-columns: repeat(4, 1fr); }
+  .footer__grid { grid-template-columns: repeat(2, 1fr); }
+  .cert-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar { grid-template-columns: repeat(4, 1fr); }
+
+  .for-foreigners-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+}
+
+/* --- Desktop (1025px+) --- */
+@media (min-width: 1025px) {
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.2rem; }
+
+  .container {
+    padding: 0 var(--space-2xl);
+  }
+
+  /* Header */
+  .header__hamburger {
+    display: none;
+  }
+
+  .header__nav {
+    display: flex;
+  }
+
+  /* Hero */
+  .hero__title {
+    font-size: 5rem;
+  }
+
+  body.lang-ja .hero__title {
+    font-size: 3.5rem;
+  }
+
+  .hero__content {
+    padding: 0 8% 12vh;
+  }
+
+  .statement__text {
+    font-size: 1.5rem;
+  }
+
+  body.lang-ja .statement__text {
+    font-size: 1.15rem;
+  }
+
+  /* Pillars: 4 columns */
+  .pillars {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Services: 3-col gallery */
+  .services-gallery {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .service-item--featured {
+    grid-column: span 3;
+  }
+
+  .service-item--featured .service-item__image {
+    aspect-ratio: 21 / 9;
+  }
+
+  /* Feature images larger */
+  .feature__image {
+    width: 55%;
+  }
+
+  /* CTA */
+  .section--cta h2 {
+    font-size: 2.2rem;
+  }
+
+  body.lang-ja .section--cta h2 {
+    font-size: 1.6rem;
+  }
+
+  /* Hide mobile CTA bar */
+  .mobile-cta-bar {
+    display: none;
+  }
+
+  /* Footer bottom */
+  .footer__bottom {
+    padding-bottom: var(--space-xl);
+  }
+
+  /* Footer layout */
+  .footer__top {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .footer__brand {
+    max-width: 350px;
+  }
+
+  .footer__links-group {
+    gap: var(--space-2xl);
+  }
+
+  /* Section spacing */
+  .section {
+    padding: var(--space-4xl) 0;
+  }
+
+  .section--statement {
+    padding: var(--space-4xl) 0;
+  }
+
+  .section--pillars {
+    padding: 0 0 var(--space-3xl);
+  }
+
+  /* Full image */
+  .full-image img {
+    height: 80vh;
+  }
+
+  /* Grids */
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+  /* Legacy */
+  .bento-grid { grid-template-columns: repeat(3, 1fr); }
+  .bento-card--tall { grid-row: span 2; min-height: 460px; }
+  .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
+  .photo-break { height: 80vh; }
+}
