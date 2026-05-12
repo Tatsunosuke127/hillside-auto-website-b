@@ -256,6 +256,23 @@
     body.lang-ja .pricing__head h2 {
       font-family: var(--font-serif-jp); font-size: 22px;
     }
+    /* Pricing list (restored) */
+    .pricing__list { border-top: 1px solid var(--gray-200); margin-bottom: 56px; }
+    .pricing__row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 22px 0; border-bottom: 1px solid var(--gray-200);
+      gap: 16px;
+    }
+    .pricing__name { font-size: 14px; font-weight: 500; }
+    .pricing__detail { font-size: 11px; color: var(--gray-600); letter-spacing: 0.04em; margin-top: 4px; }
+    .pricing__price {
+      font-family: var(--font-serif); font-size: 22px; font-weight: 400;
+      color: var(--black); letter-spacing: 0.01em; white-space: nowrap;
+    }
+    .pricing__price small {
+      font-size: 11px; opacity: 0.6; margin-left: 2px;
+      font-family: var(--font-en); font-weight: 400;
+    }
     /* Emphasized statement card */
     .pricing__statement {
       position: relative;
@@ -922,9 +939,66 @@
       <div class="pricing__inner">
         <div class="pricing__head">
           <span class="section__label">Pricing</span>
-          <h2 data-lang-ja>料金について</h2>
-          <h2 data-lang-en>Our Pricing Policy</h2>
+          <h2 data-lang-ja>料金の目安</h2>
+          <h2 data-lang-en>Pricing Guide</h2>
         </div>
+        <div class="pricing__list">
+          <div class="pricing__row">
+            <div>
+              <div class="pricing__name" data-lang-ja>車検（軽自動車）</div>
+              <div class="pricing__name" data-lang-en>Shaken (Light Vehicle)</div>
+              <div class="pricing__detail" data-lang-ja>法定費用・整備費込み</div>
+              <div class="pricing__detail" data-lang-en>Includes statutory fees & basic service</div>
+            </div>
+            <div class="pricing__price">¥60,000<small> 〜</small></div>
+          </div>
+          <div class="pricing__row">
+            <div>
+              <div class="pricing__name" data-lang-ja>車検（普通車）</div>
+              <div class="pricing__name" data-lang-en>Shaken (Standard Vehicle)</div>
+              <div class="pricing__detail" data-lang-ja>法定費用・整備費込み</div>
+              <div class="pricing__detail" data-lang-en>Includes statutory fees & basic service</div>
+            </div>
+            <div class="pricing__price">¥80,000<small> 〜</small></div>
+          </div>
+          <div class="pricing__row">
+            <div>
+              <div class="pricing__name" data-lang-ja>オイル交換</div>
+              <div class="pricing__name" data-lang-en>Engine Oil Change</div>
+              <div class="pricing__detail" data-lang-ja>純正・推奨グレードのオイル使用</div>
+              <div class="pricing__detail" data-lang-en>OEM / recommended grade</div>
+            </div>
+            <div class="pricing__price">¥5,000<small> 〜</small></div>
+          </div>
+          <div class="pricing__row">
+            <div>
+              <div class="pricing__name" data-lang-ja>タイヤ交換（4本）</div>
+              <div class="pricing__name" data-lang-en>Tire Replacement (4 wheels)</div>
+              <div class="pricing__detail" data-lang-ja>工賃のみ（タイヤ代別）</div>
+              <div class="pricing__detail" data-lang-en>Labor only (tires sold separately)</div>
+            </div>
+            <div class="pricing__price">¥10,000<small> 〜</small></div>
+          </div>
+          <div class="pricing__row">
+            <div>
+              <div class="pricing__name" data-lang-ja>バッテリー交換</div>
+              <div class="pricing__name" data-lang-en>Battery Replacement</div>
+              <div class="pricing__detail" data-lang-ja>軽自動車サイズ〜</div>
+              <div class="pricing__detail" data-lang-en>From light vehicle size</div>
+            </div>
+            <div class="pricing__price">¥15,000<small> 〜</small></div>
+          </div>
+          <div class="pricing__row">
+            <div>
+              <div class="pricing__name" data-lang-ja>板金・キズ修理</div>
+              <div class="pricing__name" data-lang-en>Body Work & Scratch Repair</div>
+              <div class="pricing__detail" data-lang-ja>軽微なキズ・小範囲</div>
+              <div class="pricing__detail" data-lang-en>Minor scratches / small area</div>
+            </div>
+            <div class="pricing__price">¥15,000<small> 〜</small></div>
+          </div>
+        </div>
+
         <div class="pricing__statement">
           <p class="pricing__statement-mark" data-lang-ja>価格はすべて目安です。<br>不透明な費用は、一切ありません。</p>
           <p class="pricing__statement-mark" data-lang-en>All prices are estimates.<br>No hidden fees, ever.</p>
