@@ -341,6 +341,59 @@
       body.lang-ja .modal__title { font-size: 26px; }
     }
 
+    /* Inquiry CTA — for prices not listed */
+    .pricing__inquiry {
+      display: flex; flex-direction: column; align-items: flex-start;
+      gap: 20px;
+      padding: 28px 24px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      margin-bottom: 32px;
+    }
+    .pricing__inquiry-text {
+      font-size: 14px; line-height: 1.8;
+      color: var(--gray-800); margin: 0;
+    }
+    .pricing__inquiry-text strong {
+      color: var(--black); font-weight: 600;
+    }
+    .pricing__inquiry-btn {
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 14px 28px;
+      background: var(--black); color: var(--white);
+      font-family: var(--font-en); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      border: 1px solid var(--black);
+      transition: color 0.4s var(--ease);
+    }
+    .pricing__inquiry-btn::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-101%);
+      transition: transform 0.5s var(--ease); z-index: 0;
+    }
+    .pricing__inquiry-btn > * { position: relative; z-index: 1; }
+    .pricing__inquiry-btn:hover { color: var(--black); }
+    .pricing__inquiry-btn:hover::before { transform: translateX(0); }
+    .pricing__inquiry-btn__line {
+      width: 22px; height: 1px; background: currentColor; position: relative;
+      transition: width 0.4s var(--ease);
+    }
+    .pricing__inquiry-btn__line::after {
+      content: ''; position: absolute; right: -1px; top: -3px;
+      width: 7px; height: 7px;
+      border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+      transform: rotate(45deg);
+    }
+    .pricing__inquiry-btn:hover .pricing__inquiry-btn__line { width: 34px; }
+    @media (min-width: 640px) {
+      .pricing__inquiry {
+        flex-direction: row; align-items: center; justify-content: space-between;
+        padding: 28px 32px; gap: 32px;
+      }
+      .pricing__inquiry-btn { flex-shrink: 0; }
+    }
+
     /* Emphasized statement card */
     .pricing__statement {
       position: relative;
@@ -1048,6 +1101,16 @@
             <div class="pricing__price" data-lang-ja><small style="font-size:13px;font-family:var(--font-jp);">要見積もり</small></div>
             <div class="pricing__price" data-lang-en><small style="font-size:13px;font-family:var(--font-en);">Quote</small></div>
           </div>
+        </div>
+
+        <!-- Inquiry CTA — for unlisted services -->
+        <div class="pricing__inquiry">
+          <p class="pricing__inquiry-text" data-lang-ja><strong>上記にない修理・整備の料金もお気軽にお問い合わせください。</strong><br>お車の状態に合わせて、無料でお見積もりをお出しします。</p>
+          <p class="pricing__inquiry-text" data-lang-en><strong>Curious about a service not listed here?</strong><br>Get in touch — we provide free, tailored estimates based on your vehicle.</p>
+          <a href="contact.html" class="pricing__inquiry-btn">
+            <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact Us</span>
+            <span class="pricing__inquiry-btn__line"></span>
+          </a>
         </div>
 
         <div class="pricing__statement">
