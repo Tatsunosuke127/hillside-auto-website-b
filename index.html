@@ -273,6 +273,103 @@
       font-size: 11px; opacity: 0.6; margin-left: 2px;
       font-family: var(--font-en); font-weight: 400;
     }
+    /* "詳細を見る" link inside a pricing row */
+    .pricing__row--clickable { cursor: pointer; transition: background 0.2s ease; }
+    .pricing__row--clickable:hover { background: rgba(0,0,0,0.02); }
+    .pricing__see {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-en); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--black); white-space: nowrap;
+    }
+    .pricing__see::after {
+      content: ''; width: 14px; height: 1px; background: currentColor;
+      position: relative;
+    }
+    .pricing__see-wrap {
+      position: relative; padding-right: 10px;
+    }
+    .pricing__see-wrap::after {
+      content: ''; position: absolute; right: 0; top: 50%;
+      width: 7px; height: 7px;
+      border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    /* ===== MODAL ===== */
+    .modal {
+      position: fixed; inset: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal.active { opacity: 1; visibility: visible; }
+    .modal__backdrop {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+    }
+    .modal__panel {
+      position: relative;
+      background: var(--white);
+      max-width: 720px; width: 100%;
+      max-height: 88vh; overflow-y: auto;
+      padding: 32px 24px;
+      transform: translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .modal.active .modal__panel { transform: translateY(0); }
+    .modal__close {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; line-height: 1; color: var(--gray-600);
+      transition: color 0.2s ease;
+    }
+    .modal__close:hover { color: var(--black); }
+    .modal__label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gray-600);
+    }
+    .modal__title {
+      font-family: var(--font-serif); font-size: 26px; font-weight: 400;
+      margin: 8px 0 24px; line-height: 1.3;
+    }
+    body.lang-ja .modal__title {
+      font-family: var(--font-serif-jp); font-size: 22px;
+    }
+    .modal__section { margin-bottom: 32px; }
+    .modal__section:last-child { margin-bottom: 0; }
+    .modal__section-title {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+      margin-bottom: 12px; padding-bottom: 8px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .modal__row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 10px 0; gap: 12px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .modal__row:last-child { border-bottom: none; }
+    .modal__row-name { color: var(--gray-800); font-weight: 500; }
+    .modal__row-price {
+      font-family: var(--font-serif); font-size: 16px; font-weight: 400;
+      color: var(--black); white-space: nowrap;
+    }
+    .modal__note {
+      margin-top: 20px; padding: 14px 16px;
+      background: var(--gray-100);
+      font-size: 12px; color: var(--gray-700); line-height: 1.8;
+    }
+    body.modal-open { overflow: hidden; }
+    @media (min-width: 640px) {
+      .modal__panel { padding: 48px 56px; }
+      .modal__title { font-size: 30px; }
+      body.lang-ja .modal__title { font-size: 26px; }
+    }
+
     /* Emphasized statement card */
     .pricing__statement {
       position: relative;
@@ -950,7 +1047,7 @@
               <div class="pricing__detail" data-lang-ja>法定費用・整備費込み</div>
               <div class="pricing__detail" data-lang-en>Includes statutory fees & basic service</div>
             </div>
-            <div class="pricing__price">¥60,000<small> 〜</small></div>
+            <div class="pricing__price">¥65,000<small> 〜</small></div>
           </div>
           <div class="pricing__row">
             <div>
@@ -959,43 +1056,53 @@
               <div class="pricing__detail" data-lang-ja>法定費用・整備費込み</div>
               <div class="pricing__detail" data-lang-en>Includes statutory fees & basic service</div>
             </div>
-            <div class="pricing__price">¥80,000<small> 〜</small></div>
+            <div class="pricing__price">¥85,000<small> 〜</small></div>
           </div>
           <div class="pricing__row">
             <div>
-              <div class="pricing__name" data-lang-ja>オイル交換</div>
-              <div class="pricing__name" data-lang-en>Engine Oil Change</div>
+              <div class="pricing__name" data-lang-ja>オイル交換（軽自動車）</div>
+              <div class="pricing__name" data-lang-en>Oil Change (Light Vehicle)</div>
               <div class="pricing__detail" data-lang-ja>純正・推奨グレードのオイル使用</div>
-              <div class="pricing__detail" data-lang-en>OEM / recommended grade</div>
+              <div class="pricing__detail" data-lang-en>OEM / recommended grade oil</div>
             </div>
             <div class="pricing__price">¥5,000<small> 〜</small></div>
           </div>
           <div class="pricing__row">
             <div>
-              <div class="pricing__name" data-lang-ja>タイヤ交換（4本）</div>
-              <div class="pricing__name" data-lang-en>Tire Replacement (4 wheels)</div>
-              <div class="pricing__detail" data-lang-ja>工賃のみ（タイヤ代別）</div>
-              <div class="pricing__detail" data-lang-en>Labor only (tires sold separately)</div>
+              <div class="pricing__name" data-lang-ja>オイル交換（普通車）</div>
+              <div class="pricing__name" data-lang-en>Oil Change (Standard Vehicle)</div>
+              <div class="pricing__detail" data-lang-ja>純正・推奨グレードのオイル使用</div>
+              <div class="pricing__detail" data-lang-en>OEM / recommended grade oil</div>
             </div>
-            <div class="pricing__price">¥10,000<small> 〜</small></div>
+            <div class="pricing__price">¥8,000<small> 〜</small></div>
           </div>
-          <div class="pricing__row">
+          <div class="pricing__row pricing__row--clickable" data-modal="tires">
+            <div>
+              <div class="pricing__name" data-lang-ja>タイヤ交換</div>
+              <div class="pricing__name" data-lang-en>Tire Replacement</div>
+              <div class="pricing__detail" data-lang-ja>サイズ・本数による（タイヤ販売・持込どちらも対応）</div>
+              <div class="pricing__detail" data-lang-en>Varies by size and quantity (we sell or fit yours)</div>
+            </div>
+            <div class="pricing__see-wrap"><span class="pricing__see" data-lang-ja>詳細を見る</span><span class="pricing__see" data-lang-en>View Details</span></div>
+          </div>
+          <div class="pricing__row pricing__row--clickable" data-modal="battery">
             <div>
               <div class="pricing__name" data-lang-ja>バッテリー交換</div>
               <div class="pricing__name" data-lang-en>Battery Replacement</div>
-              <div class="pricing__detail" data-lang-ja>軽自動車サイズ〜</div>
-              <div class="pricing__detail" data-lang-en>From light vehicle size</div>
+              <div class="pricing__detail" data-lang-ja>車種・型番による</div>
+              <div class="pricing__detail" data-lang-en>Varies by vehicle type and battery model</div>
             </div>
-            <div class="pricing__price">¥15,000<small> 〜</small></div>
+            <div class="pricing__see-wrap"><span class="pricing__see" data-lang-ja>詳細を見る</span><span class="pricing__see" data-lang-en>View Details</span></div>
           </div>
           <div class="pricing__row">
             <div>
               <div class="pricing__name" data-lang-ja>板金・キズ修理</div>
               <div class="pricing__name" data-lang-en>Body Work & Scratch Repair</div>
-              <div class="pricing__detail" data-lang-ja>軽微なキズ・小範囲</div>
-              <div class="pricing__detail" data-lang-en>Minor scratches / small area</div>
+              <div class="pricing__detail" data-lang-ja>現車状態によります（例：フロントバンパーペイント ¥25,000）</div>
+              <div class="pricing__detail" data-lang-en>Depends on vehicle condition (e.g. front bumper paint ¥25,000)</div>
             </div>
-            <div class="pricing__price">¥15,000<small> 〜</small></div>
+            <div class="pricing__price" data-lang-ja><small style="font-size:13px;font-family:var(--font-jp);">要見積もり</small></div>
+            <div class="pricing__price" data-lang-en><small style="font-size:13px;font-family:var(--font-en);">Quote</small></div>
           </div>
         </div>
 
@@ -1300,6 +1407,98 @@
     <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact us</span>
   </a>
 
+  <!-- MODAL: Tires -->
+  <div class="modal" id="modalTires" role="dialog" aria-modal="true" aria-labelledby="modalTiresTitle">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+      <button class="modal__close" aria-label="Close" data-close-modal>×</button>
+      <p class="modal__label">Pricing Detail</p>
+      <h3 class="modal__title" id="modalTiresTitle" data-lang-ja>タイヤ交換 料金</h3>
+      <h3 class="modal__title" id="modalTiresTitleEn" data-lang-en>Tire Replacement</h3>
+
+      <!-- Section 1: Tire price (sale) -->
+      <div class="modal__section">
+        <h4 class="modal__section-title" data-lang-ja>タイヤ本体価格（販売）</h4>
+        <h4 class="modal__section-title" data-lang-en>Tire Prices (when buying from us)</h4>
+        <div class="modal__row"><span class="modal__row-name">145/R12/6PR</span><span class="modal__row-price">¥7,700</span></div>
+        <div class="modal__row"><span class="modal__row-name">145/80R12</span><span class="modal__row-price">¥7,700</span></div>
+        <div class="modal__row"><span class="modal__row-name">145/80R13</span><span class="modal__row-price">¥9,350</span></div>
+        <div class="modal__row"><span class="modal__row-name">155/65R13</span><span class="modal__row-price">¥10,450</span></div>
+        <div class="modal__row"><span class="modal__row-name">155/65R14</span><span class="modal__row-price">¥11,770</span></div>
+        <p class="modal__note" data-lang-ja>※ 1本あたりの価格（税込）。他のサイズはお気軽にお問い合わせください。</p>
+        <p class="modal__note" data-lang-en>* Per tire (tax included). For other sizes, please inquire.</p>
+      </div>
+
+      <!-- Section 2: Labor (when buying tires) -->
+      <div class="modal__section">
+        <h4 class="modal__section-title" data-lang-ja>交換工賃（タイヤをこちらでご購入の場合・1本あたり）</h4>
+        <h4 class="modal__section-title" data-lang-en>Labor (when buying tires from us, per tire)</h4>
+        <div class="modal__row"><span class="modal__row-name" data-lang-ja>軽〜15インチ</span><span class="modal__row-name" data-lang-en>Light vehicle – 15"</span><span class="modal__row-price">¥2,200</span></div>
+        <div class="modal__row"><span class="modal__row-name">16〜17"</span><span class="modal__row-price">¥2,750</span></div>
+        <div class="modal__row"><span class="modal__row-name">18"</span><span class="modal__row-price">¥4,950</span></div>
+        <div class="modal__row"><span class="modal__row-name">19"</span><span class="modal__row-price">¥6,050</span></div>
+        <div class="modal__row"><span class="modal__row-name">20"</span><span class="modal__row-price">¥7,150</span></div>
+      </div>
+
+      <!-- Section 3: Labor (when bringing your own tires) -->
+      <div class="modal__section">
+        <h4 class="modal__section-title" data-lang-ja>交換工賃（タイヤ持込の場合・1本あたり）</h4>
+        <h4 class="modal__section-title" data-lang-en>Labor (when bringing your own tires, per tire)</h4>
+        <div class="modal__row"><span class="modal__row-name" data-lang-ja>軽〜15インチ</span><span class="modal__row-name" data-lang-en>Light vehicle – 15"</span><span class="modal__row-price">¥4,400</span></div>
+        <div class="modal__row"><span class="modal__row-name">16〜17"</span><span class="modal__row-price">¥5,500</span></div>
+        <div class="modal__row"><span class="modal__row-name">18"</span><span class="modal__row-price">¥6,600</span></div>
+        <div class="modal__row"><span class="modal__row-name">19"</span><span class="modal__row-price">¥8,800</span></div>
+        <p class="modal__note" data-lang-ja>※ 廃タイヤ処分費 1本 ¥825（税込）。</p>
+        <p class="modal__note" data-lang-en>* Tire disposal fee: ¥825 per tire (tax included).</p>
+      </div>
+
+      <!-- Section 4: Seasonal change (with wheels) -->
+      <div class="modal__section">
+        <h4 class="modal__section-title" data-lang-ja>タイヤ付替え工賃（ホイル付・1台あたり）</h4>
+        <h4 class="modal__section-title" data-lang-en>Seasonal Change (with wheels, per car)</h4>
+        <div class="modal__row"><span class="modal__row-name" data-lang-ja>軽〜16インチ</span><span class="modal__row-name" data-lang-en>Light vehicle – 16"</span><span class="modal__row-price">¥4,400</span></div>
+        <div class="modal__row"><span class="modal__row-name">17〜18"</span><span class="modal__row-price">¥6,600</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Battery -->
+  <div class="modal" id="modalBattery" role="dialog" aria-modal="true" aria-labelledby="modalBatteryTitle">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+      <button class="modal__close" aria-label="Close" data-close-modal>×</button>
+      <p class="modal__label">Pricing Detail</p>
+      <h3 class="modal__title" id="modalBatteryTitle" data-lang-ja>バッテリー交換 料金</h3>
+      <h3 class="modal__title" id="modalBatteryTitleEn" data-lang-en>Battery Replacement</h3>
+
+      <div class="modal__section">
+        <h4 class="modal__section-title" data-lang-ja>バッテリー本体価格（型番別・税込）</h4>
+        <h4 class="modal__section-title" data-lang-en>Battery Prices (by model, tax included)</h4>
+        <div class="modal__row"><span class="modal__row-name">40B19L/R</span><span class="modal__row-price">¥11,000</span></div>
+        <div class="modal__row"><span class="modal__row-name">K42L/R</span><span class="modal__row-price">¥13,200</span></div>
+        <div class="modal__row"><span class="modal__row-name">M42L/R</span><span class="modal__row-price">¥21,780</span></div>
+        <div class="modal__row"><span class="modal__row-name">M55L/R</span><span class="modal__row-price">¥20,900</span></div>
+        <div class="modal__row"><span class="modal__row-name">55B24L/R</span><span class="modal__row-price">¥21,780</span></div>
+        <div class="modal__row"><span class="modal__row-name">80D23L/R</span><span class="modal__row-price">¥28,600</span></div>
+        <div class="modal__row"><span class="modal__row-name">80D26L/R</span><span class="modal__row-price">¥38,280</span></div>
+        <div class="modal__row"><span class="modal__row-name">95D31L/R</span><span class="modal__row-price">¥39,600</span></div>
+        <div class="modal__row"><span class="modal__row-name">S95 (130D26)</span><span class="modal__row-price">¥39,600</span></div>
+        <div class="modal__row"><span class="modal__row-name">HV-S34B20R/L</span><span class="modal__row-price">¥28,600</span></div>
+        <div class="modal__row"><span class="modal__row-name">LN1</span><span class="modal__row-price">¥31,900</span></div>
+      </div>
+
+      <div class="modal__section">
+        <p class="modal__note" data-lang-ja>※ 充電制御車対応バッテリーは <strong>+¥2,200（税込）</strong>。<br>※ 交換工賃 1本あたり <strong>¥1,100（税込）</strong>。</p>
+        <p class="modal__note" data-lang-en>* For charge-controlled batteries, add <strong>+¥2,200 (tax incl.)</strong>.<br>* Replacement labor: <strong>¥1,100 per battery (tax incl.)</strong>.</p>
+      </div>
+
+      <div class="modal__section">
+        <p class="modal__note" data-lang-ja>※ 上記以外の型番もお取扱い可能です。お気軽にお問い合わせください。</p>
+        <p class="modal__note" data-lang-en>* Other battery models are also available. Please contact us for details.</p>
+      </div>
+    </div>
+  </div>
+
   <script src="js/lang-toggle.js"></script>
   <script>
     // Nav scroll
@@ -1360,10 +1559,39 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+    // Modal open/close
+    function openModal(id) {
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal(m) {
+      m.classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    document.querySelectorAll('[data-modal]').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const key = trigger.getAttribute('data-modal');
+        const map = { tires: 'modalTires', battery: 'modalBattery' };
+        if (map[key]) openModal(map[key]);
+      });
+    });
+    document.querySelectorAll('.modal').forEach(m => {
+      m.querySelectorAll('[data-close-modal]').forEach(btn => {
+        btn.addEventListener('click', () => closeModal(m));
+      });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.active').forEach(closeModal);
+      }
+    });
   </script>
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does Shaken cost?","acceptedAnswer":{"@type":"Answer","text":"Light vehicles start from around ¥45,000, standard vehicles from around ¥60,000."}},{"@type":"Question","name":"Do you offer services in English?","acceptedAnswer":{"@type":"Answer","text":"Yes, full English support for all services."}},{"@type":"Question","name":"Can I buy cars other than Suzuki?","acceptedAnswer":{"@type":"Answer","text":"Yes, we handle all brands."}},{"@type":"Question","name":"What is Shaken?","acceptedAnswer":{"@type":"Answer","text":"Japan's mandatory vehicle inspection every 2 years."}},{"@type":"Question","name":"Can I visit without an appointment?","acceptedAnswer":{"@type":"Answer","text":"Yes, walk-ins are welcome."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does Shaken cost?","acceptedAnswer":{"@type":"Answer","text":"Light vehicles start from around ¥65,000, standard vehicles from around ¥85,000. We provide a quote in advance."}},{"@type":"Question","name":"Do you offer services in English?","acceptedAnswer":{"@type":"Answer","text":"Yes, full English support for all services."}},{"@type":"Question","name":"Can you source the specific car I want?","acceptedAnswer":{"@type":"Answer","text":"Yes. Through our nationwide auction network, we search for a vehicle that matches your preferred make, model year, and budget — both domestic and imported."}},{"@type":"Question","name":"Do you provide a loaner car?","acceptedAnswer":{"@type":"Answer","text":"Yes, we provide a free loaner car during Shaken and repair periods. Availability is limited, so we recommend booking early."}},{"@type":"Question","name":"Can I visit without an appointment?","acceptedAnswer":{"@type":"Answer","text":"Yes, walk-ins are welcome."}}]}
   </script>
 </body>
 </html>
