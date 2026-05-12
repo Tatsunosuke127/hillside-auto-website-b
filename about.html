@@ -24,6 +24,49 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <style>
+    /* History timeline (moved from homepage) */
+    .about-history {
+      background: #000; color: #fff;
+      padding: 80px 24px;
+    }
+    @media (min-width: 768px) { .about-history { padding: 140px 80px; } }
+    .about-history__inner { max-width: 900px; margin: 0 auto; }
+    .about-history__head { margin-bottom: 48px; }
+    .about-history__label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #aaa;
+    }
+    .about-history__head h2 {
+      font-family: 'Noto Serif JP', serif; font-size: 28px; font-weight: 300;
+      margin-top: 12px; line-height: 1.3; color: #fff;
+    }
+    @media (min-width: 768px) { .about-history__head h2 { font-size: 44px; } }
+    .about-history__items {
+      position: relative; padding-left: 32px;
+    }
+    .about-history__items::before {
+      content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px;
+      width: 1px; background: rgba(255,255,255,0.15);
+    }
+    .about-history__item {
+      position: relative; padding: 16px 0 32px;
+    }
+    .about-history__item::before {
+      content: ''; position: absolute; left: -32px; top: 22px;
+      width: 9px; height: 9px; background: #fff;
+      border-radius: 50%;
+    }
+    .about-history__year {
+      font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400;
+      color: #fff; margin-bottom: 6px; letter-spacing: 0.01em;
+    }
+    .about-history__text {
+      font-size: 14px; color: rgba(255,255,255,0.55);
+      line-height: 1.9;
+    }
+  </style>
 </head>
 <body class="lang-ja">
 
@@ -103,6 +146,41 @@
             Hillside Auto is your one-stop automotive partner &mdash; fast, convenient, and tailored to your needs. We provide full English support across all services, making us a trusted choice for international residents in Yokohama.<br><br>
             Every repair and service is discussed with you in advance &mdash; we only proceed with your full understanding and approval. We can also use rebuilt or used parts to reduce costs when requested.
           </p>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- HISTORY TIMELINE -->
+    <section class="about-history fade-in">
+      <div class="about-history__inner">
+        <div class="about-history__head">
+          <span class="about-history__label">Our Story</span>
+          <h2 data-lang-ja>76年、同じ場所で。</h2>
+          <h2 data-lang-en>76 Years, Same Corner.</h2>
+        </div>
+        <div class="about-history__items">
+          <div class="about-history__item">
+            <div class="about-history__year">1949</div>
+            <p class="about-history__text" data-lang-ja>ヒルサイド創業。戦後の横浜・麦田町から、地域の車の困りごとに応えてきました。</p>
+            <p class="about-history__text" data-lang-en>Hillside is founded in Yokohama Mugitacho — born to serve the community automotive needs in the post-war era.</p>
+          </div>
+          <div class="about-history__item">
+            <div class="about-history__year">1962</div>
+            <p class="about-history__text" data-lang-ja>ヒルサイド自動車工業株式会社として法人登記。</p>
+            <p class="about-history__text" data-lang-en>Incorporated as Hillside Automobile Industry Co., Ltd.</p>
+          </div>
+          <div class="about-history__item">
+            <div class="about-history__year">1987</div>
+            <p class="about-history__text" data-lang-ja>ヒルサイドオート株式会社に社名変更。整備から販売まで、サービスを拡充。</p>
+            <p class="about-history__text" data-lang-en>Renamed Hillside Auto Corporation. Service offerings expand from maintenance to full sales.</p>
+          </div>
+          <div class="about-history__item">
+            <div class="about-history__year" data-lang-ja>現在</div>
+            <div class="about-history__year" data-lang-en>Today</div>
+            <p class="about-history__text" data-lang-ja>創業から76年。3世代にわたって、横浜の車生活を支え続けています。神奈川県警察本部、横浜市、中区役所の指定工場としても認定。</p>
+            <p class="about-history__text" data-lang-en>76 years on, across three generations. Designated repair shop for Kanagawa Police, Yokohama City, and Naka Ward Office.</p>
+          </div>
         </div>
       </div>
     </section>

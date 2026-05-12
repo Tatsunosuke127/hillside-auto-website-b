@@ -242,7 +242,7 @@
       color: var(--black); font-size: 14px; letter-spacing: 2px;
     }
 
-    /* ===== PRICING — Evidence: HubSpot — pricing transparency +28% lead quality ===== */
+    /* ===== PRICING / PROMISE — Emphasized transparency statement ===== */
     .pricing {
       padding: 100px 40px;
       background: var(--gray-100);
@@ -256,76 +256,45 @@
     body.lang-ja .pricing__head h2 {
       font-family: var(--font-serif-jp); font-size: 22px;
     }
-    .pricing__list {
-      border-top: 1px solid var(--gray-200);
+    /* Emphasized statement card */
+    .pricing__statement {
+      position: relative;
+      padding: 48px 32px 40px;
+      background: var(--white);
+      border-left: 4px solid var(--black);
+      margin-bottom: 32px;
     }
-    .pricing__row {
-      display: flex; justify-content: space-between; align-items: baseline;
-      padding: 20px 0; border-bottom: 1px solid var(--gray-200);
-      gap: 16px;
+    .pricing__statement-mark {
+      font-family: var(--font-serif); font-size: 28px; font-weight: 500;
+      color: var(--black); line-height: 1.4; margin: 0 0 20px;
+      letter-spacing: 0.02em;
     }
-    .pricing__name {
-      font-size: 14px; font-weight: 500;
+    body.lang-ja .pricing__statement-mark {
+      font-family: var(--font-serif-jp); font-size: 24px; letter-spacing: 0.04em;
     }
-    .pricing__detail {
-      font-size: 11px; color: var(--gray-600);
-      letter-spacing: 0.05em; margin-top: 2px;
+    .pricing__statement-body {
+      font-size: 14px; color: var(--gray-700); line-height: 2;
+      margin: 0;
     }
-    .pricing__price {
-      font-family: var(--font-serif); font-size: 22px; font-weight: 400;
-      color: var(--black); letter-spacing: 0.01em;
-      white-space: nowrap;
+    /* 3 promises */
+    .pricing__promises {
+      display: grid; grid-template-columns: 1fr; gap: 24px;
     }
-    .pricing__price small {
-      font-size: 11px; opacity: 0.6; margin-left: 2px;
-      font-family: var(--font-en); font-weight: 400;
-    }
-    .pricing__note {
-      margin-top: 32px; padding: 20px;
+    .pricing__promise {
+      padding: 24px 28px;
       background: var(--white); border: 1px solid var(--gray-200);
-      font-size: 12px; color: var(--gray-600); line-height: 1.8;
     }
-    .pricing__note strong { color: var(--black); font-weight: 500; }
-
-    /* ===== HISTORY TIMELINE — Stanford: founder story +20% intent ===== */
-    .history {
-      padding: 120px 40px;
-      background: var(--black); color: var(--white);
+    .pricing__promise-num {
+      font-family: var(--font-serif); font-size: 12px;
+      color: var(--gray-600); letter-spacing: 0.1em;
+      display: block; margin-bottom: 8px;
     }
-    .history__inner { max-width: 900px; margin: 0 auto; }
-    .history__head {
-      margin-bottom: 64px;
+    .pricing__promise h3 {
+      font-size: 14px; font-weight: 600; margin: 0 0 6px;
+      letter-spacing: 0.02em;
     }
-    .history__head .section__label { color: var(--gray-400); }
-    .history__head h2 {
-      font-family: var(--font-serif); font-size: 32px; font-weight: 300;
-      margin-top: 12px; line-height: 1.3;
-    }
-    body.lang-ja .history__head h2 {
-      font-family: var(--font-serif-jp); font-size: 26px;
-    }
-    .history__items {
-      position: relative; padding-left: 32px;
-    }
-    .history__items::before {
-      content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px;
-      width: 1px; background: rgba(255,255,255,0.15);
-    }
-    .history__item {
-      position: relative; padding: 16px 0 32px;
-    }
-    .history__item::before {
-      content: ''; position: absolute; left: -32px; top: 22px;
-      width: 9px; height: 9px; background: var(--white);
-      border-radius: 50%;
-    }
-    .history__year {
-      font-family: var(--font-serif); font-size: 22px; font-weight: 400;
-      color: var(--white); margin-bottom: 6px; letter-spacing: 0.01em;
-    }
-    .history__text {
-      font-size: 14px; color: rgba(255,255,255,0.55);
-      line-height: 1.9;
+    .pricing__promise p {
+      font-size: 12px; color: var(--gray-600); line-height: 1.8; margin: 0;
     }
 
     /* ===== HOW IT WORKS — Hick's Law: clear steps +50% decision speed ===== */
@@ -783,6 +752,10 @@
       .pricing { padding: 140px 80px; }
       .pricing__head h2 { font-size: 40px; }
       body.lang-ja .pricing__head h2 { font-size: 30px; }
+      .pricing__statement { padding: 64px 56px 56px; border-left-width: 6px; }
+      .pricing__statement-mark { font-size: 36px; }
+      body.lang-ja .pricing__statement-mark { font-size: 30px; }
+      .pricing__promises { grid-template-columns: repeat(3, 1fr); gap: 20px; }
       .history { padding: 160px 80px; }
       .history__head h2 { font-size: 48px; }
       body.lang-ja .history__head h2 { font-size: 36px; }
@@ -949,71 +922,40 @@
       <div class="pricing__inner">
         <div class="pricing__head">
           <span class="section__label">Pricing</span>
-          <h2 data-lang-ja>料金の目安</h2>
-          <h2 data-lang-en>Pricing Guide</h2>
+          <h2 data-lang-ja>料金について</h2>
+          <h2 data-lang-en>Our Pricing Policy</h2>
         </div>
-        <div class="pricing__list">
-          <div class="pricing__row">
-            <div>
-              <div class="pricing__name" data-lang-ja>車検（軽自動車）</div>
-              <div class="pricing__name" data-lang-en>Shaken (Light Vehicle)</div>
-              <div class="pricing__detail" data-lang-ja>法定費用・整備費込み</div>
-              <div class="pricing__detail" data-lang-en>Includes statutory fees &amp; basic service</div>
-            </div>
-            <div class="pricing__price">¥60,000<small> 〜</small></div>
+        <div class="pricing__statement">
+          <p class="pricing__statement-mark" data-lang-ja>価格はすべて目安です。<br>不透明な費用は、一切ありません。</p>
+          <p class="pricing__statement-mark" data-lang-en>All prices are estimates.<br>No hidden fees, ever.</p>
+          <p class="pricing__statement-body" data-lang-ja>お車の状態・年式・必要な作業によって料金は変動します。だからこそ、私たちは事前にお見積もりをお出しし、ご納得いただいてから作業を開始します。追加費用が発生する場合は、必ず事前にご説明します。</p>
+          <p class="pricing__statement-body" data-lang-en>Pricing varies based on your vehicle condition, year, and required work. That is exactly why we always provide a detailed estimate first — and begin work only after your approval. If any additional costs come up, we explain them before proceeding.</p>
+        </div>
+
+        <div class="pricing__promises">
+          <div class="pricing__promise">
+            <span class="pricing__promise-num">01</span>
+            <h3 data-lang-ja>無料お見積もり</h3>
+            <h3 data-lang-en>Free Estimate</h3>
+            <p data-lang-ja>作業前に内容と費用を明確に。お見積もりは無料です。</p>
+            <p data-lang-en>Clear scope and cost — provided free, before any work begins.</p>
           </div>
-          <div class="pricing__row">
-            <div>
-              <div class="pricing__name" data-lang-ja>車検（普通車）</div>
-              <div class="pricing__name" data-lang-en>Shaken (Standard Vehicle)</div>
-              <div class="pricing__detail" data-lang-ja>法定費用・整備費込み</div>
-              <div class="pricing__detail" data-lang-en>Includes statutory fees &amp; basic service</div>
-            </div>
-            <div class="pricing__price">¥80,000<small> 〜</small></div>
+          <div class="pricing__promise">
+            <span class="pricing__promise-num">02</span>
+            <h3 data-lang-ja>ご納得後に作業</h3>
+            <h3 data-lang-en>Approved by You First</h3>
+            <p data-lang-ja>内容にご納得いただいてから作業開始。勝手に進めません。</p>
+            <p data-lang-en>We only begin once you approve. Nothing happens without your sign-off.</p>
           </div>
-          <div class="pricing__row">
-            <div>
-              <div class="pricing__name" data-lang-ja>オイル交換</div>
-              <div class="pricing__name" data-lang-en>Engine Oil Change</div>
-              <div class="pricing__detail" data-lang-ja>純正・推奨グレードのオイル使用</div>
-              <div class="pricing__detail" data-lang-en>OEM / recommended grade</div>
-            </div>
-            <div class="pricing__price">¥5,000<small> 〜</small></div>
-          </div>
-          <div class="pricing__row">
-            <div>
-              <div class="pricing__name" data-lang-ja>タイヤ交換（4本）</div>
-              <div class="pricing__name" data-lang-en>Tire Replacement (4 wheels)</div>
-              <div class="pricing__detail" data-lang-ja>工賃のみ（タイヤ代別）</div>
-              <div class="pricing__detail" data-lang-en>Labor only (tires sold separately)</div>
-            </div>
-            <div class="pricing__price">¥10,000<small> 〜</small></div>
-          </div>
-          <div class="pricing__row">
-            <div>
-              <div class="pricing__name" data-lang-ja>バッテリー交換</div>
-              <div class="pricing__name" data-lang-en>Battery Replacement</div>
-              <div class="pricing__detail" data-lang-ja>軽自動車サイズ〜</div>
-              <div class="pricing__detail" data-lang-en>From light vehicle size</div>
-            </div>
-            <div class="pricing__price">¥15,000<small> 〜</small></div>
-          </div>
-          <div class="pricing__row">
-            <div>
-              <div class="pricing__name" data-lang-ja>板金・キズ修理</div>
-              <div class="pricing__name" data-lang-en>Body Work &amp; Scratch Repair</div>
-              <div class="pricing__detail" data-lang-ja>軽微なキズ・小範囲</div>
-              <div class="pricing__detail" data-lang-en>Minor scratches / small area</div>
-            </div>
-            <div class="pricing__price">¥15,000<small> 〜</small></div>
+          <div class="pricing__promise">
+            <span class="pricing__promise-num">03</span>
+            <h3 data-lang-ja>追加費用は事前説明</h3>
+            <h3 data-lang-en>No Surprise Charges</h3>
+            <p data-lang-ja>万一の追加作業も、必ず事前にご相談・ご説明します。</p>
+            <p data-lang-en>If additional work is needed, we always discuss and explain it first.</p>
           </div>
         </div>
-        <div class="pricing__note">
-          <p data-lang-ja><strong>価格はすべて目安です。</strong> お車の状態・年式・必要な作業によって変動します。事前にお見積もりをお出しし、ご納得いただいてから作業を開始します。追加費用が発生する場合は必ず事前にご説明します。</p>
-          <p data-lang-en><strong>All prices are estimates.</strong> Final cost varies based on vehicle condition, year, and required work. We provide a detailed quote in advance and begin only after your approval. Any additional costs are always explained beforehand.</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
     <!-- VISUAL — two images side by side -->
     <section class="visual fi">
@@ -1095,40 +1037,6 @@
             <p data-lang-en>We walk you through what was done at handover. Reach out anytime after.</p>
           </li>
         </ol>
-      </div>
-    </section>
-
-    <!-- HISTORY — Our Story -->
-    <section class="history fi">
-      <div class="history__inner">
-        <div class="history__head">
-          <span class="section__label">Our Story</span>
-          <h2 data-lang-ja>76年、同じ場所で。</h2>
-          <h2 data-lang-en>76 Years, Same Corner.</h2>
-        </div>
-        <div class="history__items">
-          <div class="history__item">
-            <div class="history__year">1949</div>
-            <p class="history__text" data-lang-ja>ヒルサイド創業。戦後の横浜・麦田町から、地域の車の困りごとに応えてきました。</p>
-            <p class="history__text" data-lang-en>Hillside is founded in Yokohama's Mugitacho — born to serve the community's automotive needs in the post-war era.</p>
-          </div>
-          <div class="history__item">
-            <div class="history__year">1962</div>
-            <p class="history__text" data-lang-ja>ヒルサイド自動車工業株式会社として法人登記。</p>
-            <p class="history__text" data-lang-en>Incorporated as Hillside Automobile Industry Co., Ltd.</p>
-          </div>
-          <div class="history__item">
-            <div class="history__year">1987</div>
-            <p class="history__text" data-lang-ja>ヒルサイドオート株式会社に社名変更。整備から販売まで、サービスを拡充。</p>
-            <p class="history__text" data-lang-en>Renamed Hillside Auto Corporation. Service offerings expand from maintenance to full sales.</p>
-          </div>
-          <div class="history__item">
-            <div class="history__year" data-lang-ja>現在</div>
-            <div class="history__year" data-lang-en>Today</div>
-            <p class="history__text" data-lang-ja>創業から76年。3世代にわたって、横浜の車生活を支え続けています。神奈川県警察本部、横浜市、中区役所の指定工場としても認定。</p>
-            <p class="history__text" data-lang-en>76 years on, across three generations. Designated repair shop for Kanagawa Police, Yokohama City, and Naka Ward Office.</p>
-          </div>
-        </div>
       </div>
     </section>
 
