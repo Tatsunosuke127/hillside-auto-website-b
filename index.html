@@ -213,35 +213,6 @@
       50% { transform: translateY(10px); }
     }
 
-    /* ===== TRUST STRIP — Evidence: 76% read reviews before deciding (BrightLocal) ===== */
-    .trust-strip {
-      border-bottom: 1px solid var(--gray-200);
-      padding: 40px 24px;
-    }
-    .trust-strip__grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px 16px;
-      max-width: 1100px; margin: 0 auto;
-    }
-    .trust-strip__item {
-      display: flex; flex-direction: column; align-items: center; text-align: center;
-      gap: 6px;
-    }
-    .trust-strip__num {
-      font-family: var(--font-serif); font-size: 40px; font-weight: 400;
-      line-height: 1; color: var(--black);
-      letter-spacing: -0.02em;
-    }
-    .trust-strip__num small {
-      font-size: 16px; opacity: 0.5; margin-left: 4px;
-    }
-    .trust-strip__label {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gray-600);
-    }
-    .trust-strip__stars {
-      color: var(--black); font-size: 14px; letter-spacing: 2px;
-    }
-
     /* ===== PRICING / PROMISE — Emphasized transparency statement ===== */
     .pricing {
       padding: 100px 40px;
@@ -860,9 +831,8 @@
       .mob-bar { display: none; }
       .stick-cta { display: inline-flex; }
       .ft__copy { padding-bottom: 0; }
-      .trust-strip { padding: 56px 40px; }
-      .trust-strip__grid { grid-template-columns: repeat(4, 1fr); gap: 32px; }
-      .trust-strip__num { font-size: 56px; }
+
+
       .pricing { padding: 140px 80px; }
       .pricing__head h2 { font-size: 40px; }
       body.lang-ja .pricing__head h2 { font-size: 30px; }
@@ -949,32 +919,6 @@
       </div>
       <div class="hero__arrow">
         <svg width="16" height="48" viewBox="0 0 16 48" fill="none" stroke="#fff" stroke-width="1"><line x1="8" y1="0" x2="8" y2="44"/><polyline points="2,38 8,46 14,38"/></svg>
-      </div>
-    </section>
-
-    <!-- TRUST STRIP -->
-    <section class="trust-strip fi">
-      <div class="trust-strip__grid">
-        <div class="trust-strip__item">
-          <div class="trust-strip__num">76<small>YR</small></div>
-          <div class="trust-strip__label" data-lang-ja>創業1949年</div>
-          <div class="trust-strip__label" data-lang-en>Since 1949</div>
-        </div>
-        <div class="trust-strip__item">
-          <div class="trust-strip__num">4.8</div>
-          <div class="trust-strip__stars">★★★★★</div>
-          <div class="trust-strip__label">Google Reviews</div>
-        </div>
-        <div class="trust-strip__item">
-          <div class="trust-strip__num">100<small>%</small></div>
-          <div class="trust-strip__label" data-lang-ja>英語対応可</div>
-          <div class="trust-strip__label" data-lang-en>English OK</div>
-        </div>
-        <div class="trust-strip__item">
-          <div class="trust-strip__num">5</div>
-          <div class="trust-strip__label" data-lang-ja>正規販売代理店</div>
-          <div class="trust-strip__label" data-lang-en>Official Partners</div>
-        </div>
       </div>
     </section>
 
