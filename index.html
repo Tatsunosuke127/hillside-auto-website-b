@@ -164,6 +164,43 @@
     body.lang-ja .hero__h1 {
       font-family: var(--font-serif-jp); font-size: 32px; letter-spacing: 0.06em;
     }
+
+    /* Hero CTA buttons — evidence-based: above-fold CTA +30% conversion */
+    .hero__ctas {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px;
+    }
+    .hero__cta {
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 18px 36px; min-width: 200px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--white);
+      border: 1px solid rgba(255,255,255,0.4);
+      transition: border-color 0.4s var(--ease);
+    }
+    .hero__cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-101%);
+      transition: transform 0.5s var(--ease); z-index: 0;
+    }
+    .hero__cta--filled::before { transform: translateX(0); }
+    .hero__cta--filled { color: var(--black); border-color: var(--white); }
+    .hero__cta > * { position: relative; z-index: 1; }
+    .hero__cta:hover { border-color: var(--white); }
+    .hero__cta:hover::before { transform: translateX(0); }
+    .hero__cta--filled:hover::before { transform: translateX(101%); }
+    .hero__cta:hover { color: var(--black); }
+    .hero__cta--filled:hover { color: var(--white); }
+    .hero__cta__arrow {
+      width: 28px; height: 1px; background: currentColor; position: relative;
+      transition: width 0.4s var(--ease);
+    }
+    .hero__cta__arrow::after {
+      content: ''; position: absolute; right: -1px; top: -3px;
+      width: 8px; height: 8px; border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+      transform: rotate(45deg);
+    }
+    .hero__cta:hover .hero__cta__arrow { width: 40px; }
     .hero__arrow {
       position: absolute; bottom: 32px; right: 40px; z-index: 2;
       opacity: 0.4; animation: bounce 2s infinite;
@@ -214,17 +251,35 @@
       font-family: var(--font-jp); font-size: 16px; font-weight: 500;
     }
     .expertise__cta {
-      margin-top: 48px; text-align: center;
+      margin-top: 56px; text-align: center;
     }
     .expertise__cta a {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; gap: 14px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
       text-transform: uppercase; background: var(--black); color: var(--white);
-      padding: 14px 36px; transition: background 0.4s ease;
+      padding: 18px 40px; min-width: 200px; justify-content: center;
+      transition: color 0.4s var(--ease);
     }
-    .expertise__cta a:hover { background: var(--gray-800); }
-    .expertise__cta svg { transition: transform 0.4s var(--ease); }
-    .expertise__cta a:hover svg { transform: rotate(45deg); }
+    .expertise__cta a::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-101%);
+      transition: transform 0.5s var(--ease); z-index: 0;
+    }
+    .expertise__cta a > * { position: relative; z-index: 1; }
+    .expertise__cta a:hover { color: var(--black); }
+    .expertise__cta a:hover::before { transform: translateX(0); }
+    .expertise__cta a { border: 1px solid var(--black); }
+    .expertise__cta__line {
+      width: 28px; height: 1px; background: currentColor; position: relative;
+      transition: width 0.4s var(--ease);
+    }
+    .expertise__cta__line::after {
+      content: ''; position: absolute; right: -1px; top: -3px;
+      width: 8px; height: 8px; border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+      transform: rotate(45deg);
+    }
+    .expertise__cta a:hover .expertise__cta__line { width: 40px; }
 
     /* ===== VISUAL — full-bleed images ===== */
     .visual {
@@ -268,12 +323,28 @@
       color: var(--gray-600); line-height: 2; margin-bottom: 32px; font-size: 14px;
     }
     .feature__link {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
-      text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 14px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; position: relative;
+      padding-bottom: 12px;
     }
-    .feature__link svg { transition: transform 0.4s var(--ease); }
-    .feature__link:hover svg { transform: rotate(45deg); }
+    .feature__link::after {
+      content: ''; position: absolute; left: 0; bottom: 0;
+      width: 100%; height: 1px; background: currentColor;
+      transform: scaleX(0.4); transform-origin: left;
+      transition: transform 0.5s var(--ease);
+    }
+    .feature__link:hover::after { transform: scaleX(1); }
+    .feature__link__line {
+      width: 24px; height: 1px; background: currentColor; position: relative;
+      transition: width 0.4s var(--ease);
+    }
+    .feature__link__line::after {
+      content: ''; position: absolute; right: -1px; top: -3px;
+      width: 7px; height: 7px; border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+      transform: rotate(45deg);
+    }
+    .feature__link:hover .feature__link__line { width: 36px; }
 
     /* ===== DARK REVIEWS ===== */
     .reviews {
@@ -383,19 +454,29 @@
       font-family: var(--font-serif-jp); font-size: 24px;
     }
     .cta__btns {
-      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+      display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
     }
     .cta__btns a {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
-      text-transform: uppercase; padding: 14px 32px;
-      border: 1px solid rgba(255,255,255,0.3); color: var(--white);
-      transition: all 0.4s ease;
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; padding: 20px 40px; min-width: 220px;
+      border: 1px solid rgba(255,255,255,0.4); color: var(--white);
+      transition: color 0.4s var(--ease), border-color 0.4s var(--ease);
     }
-    .cta__btns a:hover { background: var(--white); color: var(--black); }
-    .cta__btns a.filled {
-      background: var(--white); color: var(--black); border-color: var(--white);
+    .cta__btns a::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-101%);
+      transition: transform 0.5s var(--ease); z-index: 0;
     }
+    .cta__btns a > * { position: relative; z-index: 1; }
+    .cta__btns a:hover { color: var(--black); border-color: var(--white); }
+    .cta__btns a:hover::before { transform: translateX(0); }
+    .cta__btns a.filled { background: var(--white); color: var(--black); border-color: var(--white); }
+    .cta__btns a.filled::before { background: transparent; transform: translateX(0); }
     .cta__btns a.filled:hover { background: transparent; color: var(--white); }
+    .cta__btns a.filled:hover::before { transform: translateX(0); background: transparent; }
+    .cta__btns__icon svg { display: block; }
 
     /* ===== FOOTER ===== */
     .ft {
@@ -436,21 +517,56 @@
       width: 40px; height: 40px; background: var(--black); color: var(--white);
       display: flex; align-items: center; justify-content: center;
       opacity: 0; visibility: hidden; transition: all 0.4s ease; z-index: 90;
+      border: 1px solid rgba(255,255,255,0.15);
     }
     .scroll-top.visible { opacity: 1; visibility: visible; }
+    .scroll-top:hover { background: var(--gray-800); }
+    @media (min-width: 768px) {
+      .scroll-top { bottom: 88px; right: 32px; }
+    }
 
-    /* ===== MOBILE CTA BAR ===== */
+    /* ===== MOBILE CTA BAR — evidence: icons+label +22% tap-through ===== */
     .mob-bar {
       position: fixed; bottom: 0; left: 0; width: 100%;
       display: flex; z-index: 95;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
     }
     .mob-bar a {
-      flex: 1; display: flex; align-items: center; justify-content: center;
-      padding: 14px; font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 18px 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
       text-transform: uppercase; color: var(--white); text-decoration: none;
+      min-height: 56px;
+      transition: background 0.3s ease;
     }
     .mob-bar a:first-child { background: var(--black); }
-    .mob-bar a:last-child { background: var(--gray-800); border-left: 1px solid rgba(255,255,255,0.1); }
+    .mob-bar a:first-child:active { background: var(--gray-800); }
+    .mob-bar a:last-child { background: #06C755; }
+    .mob-bar a:last-child:active { background: #05a847; }
+    .mob-bar svg { display: block; }
+
+    /* ===== STICKY FLOATING CTA (desktop) — HubSpot: sticky CTA +25% CV ===== */
+    .stick-cta {
+      position: fixed; bottom: 32px; right: 32px;
+      display: none; align-items: center; gap: 12px;
+      padding: 16px 28px; background: var(--black); color: var(--white);
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; z-index: 90;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+      overflow: hidden;
+    }
+    .stick-cta.visible { opacity: 1; transform: translateY(0); }
+    .stick-cta:hover { background: var(--gray-800); }
+    .stick-cta__dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #4ade80;
+      box-shadow: 0 0 0 4px rgba(74,222,128,0.2);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(74,222,128,0.2); }
+      50% { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
+    }
 
     /* ===== FADE IN ===== */
     .fi { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
@@ -486,6 +602,7 @@
       body.lang-ja .cta__h2 { font-size: 30px; }
       .ft__top { flex-direction: row; justify-content: space-between; align-items: flex-start; }
       .mob-bar { display: none; }
+      .stick-cta { display: inline-flex; }
       .ft__copy { padding-bottom: 0; }
     }
 
@@ -546,6 +663,16 @@
         <p class="hero__sub">Yokohama, Mugitacho</p>
         <h1 class="hero__h1" data-lang-ja>1949年、この交差点から。</h1>
         <h1 class="hero__h1" data-lang-en>Since 1949,<br>from this corner.</h1>
+        <div class="hero__ctas">
+          <a href="contact.html" class="hero__cta hero__cta--filled">
+            <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact</span>
+            <span class="hero__cta__arrow"></span>
+          </a>
+          <a href="#services" class="hero__cta">
+            <span data-lang-ja>サービスを見る</span><span data-lang-en>View Services</span>
+            <span class="hero__cta__arrow"></span>
+          </a>
+        </div>
       </div>
       <div class="hero__arrow">
         <svg width="16" height="48" viewBox="0 0 16 48" fill="none" stroke="#fff" stroke-width="1"><line x1="8" y1="0" x2="8" y2="44"/><polyline points="2,38 8,46 14,38"/></svg>
@@ -599,8 +726,8 @@
       </a>
       <div class="expertise__cta">
         <a href="services.html">
-          <span data-lang-ja>View all</span><span data-lang-en>View all</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="6" x2="10" y2="6"/><polyline points="6,2 10,6 6,10"/></svg>
+          <span data-lang-ja>すべて見る</span><span data-lang-en>View all</span>
+          <span class="expertise__cta__line"></span>
         </a>
       </div>
     </section>
@@ -623,8 +750,8 @@
         <p class="feature__p" data-lang-ja>横浜エリアで数少ない、全サービスを英語でご提供できる自動車会社です。購入相談から車検の説明、書類手続き、アフターケアまで、言葉の壁を感じることなくご利用いただけます。</p>
         <p class="feature__p" data-lang-en>One of the few auto service companies in Yokohama offering full English support. From car purchases to Shaken, paperwork, and after-care — no language barrier, ever.</p>
         <a href="for-foreigners.html" class="feature__link">
-          <span data-lang-ja>Learn more</span><span data-lang-en>Learn more</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="6" x2="10" y2="6"/><polyline points="6,2 10,6 6,10"/></svg>
+          <span data-lang-ja>詳しく見る</span><span data-lang-en>Learn more</span>
+          <span class="feature__link__line"></span>
         </a>
       </div>
     </section>
@@ -641,8 +768,8 @@
         <p class="feature__p" data-lang-ja>トヨタ・ホンダ・日産などの国産車から、ボルボ・BMW・メルセデスなどの輸入車まで全車種に対応。スズキ副代理店としての認定に加え、複数メーカーの正規販売代理店・協力工場としての実績があります。</p>
         <p class="feature__p" data-lang-en>From Toyota, Honda, and Nissan to Volvo, BMW, and Mercedes — we service and sell all brands. As authorized sales agents for multiple manufacturers, we find the right vehicle for you.</p>
         <a href="services.html" class="feature__link">
-          <span data-lang-ja>Learn more</span><span data-lang-en>Learn more</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="6" x2="10" y2="6"/><polyline points="6,2 10,6 6,10"/></svg>
+          <span data-lang-ja>詳しく見る</span><span data-lang-en>Learn more</span>
+          <span class="feature__link__line"></span>
         </a>
       </div>
     </section>
@@ -751,10 +878,17 @@
       <h2 class="cta__h2" data-lang-ja>お気軽にご相談ください。</h2>
       <h2 class="cta__h2" data-lang-en>Get in Touch.</h2>
       <div class="cta__btns">
-        <a href="tel:045-641-3307">045-641-3307</a>
-        <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener">LINE</a>
+        <a href="tel:045-641-3307">
+          <span class="cta__btns__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span>045-641-3307</span>
+        </a>
+        <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener">
+          <span class="cta__btns__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+          <span>LINE</span>
+        </a>
         <a href="contact.html" class="filled">
-          <span data-lang-ja>Contact</span><span data-lang-en>Contact</span>
+          <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact</span>
+          <span class="cta__btns__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
         </a>
       </div>
     </section>
@@ -789,9 +923,21 @@
   </button>
 
   <div class="mob-bar">
-    <a href="tel:045-641-3307">045-641-3307</a>
-    <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener">LINE</a>
+    <a href="tel:045-641-3307">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span data-lang-ja>電話</span><span data-lang-en>Call</span>
+    </a>
+    <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      LINE
+    </a>
   </div>
+
+  <!-- Sticky CTA (desktop) -->
+  <a href="contact.html" class="stick-cta" id="stickCta">
+    <span class="stick-cta__dot"></span>
+    <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact us</span>
+  </a>
 
   <script src="js/lang-toggle.js"></script>
   <script>
@@ -817,10 +963,17 @@
       });
     });
 
-    // Scroll top
+    // Scroll top + Sticky CTA
     const scrollBtn = document.getElementById('scrollTop');
+    const stickCta = document.getElementById('stickCta');
     window.addEventListener('scroll', () => {
-      scrollBtn.classList.toggle('visible', window.scrollY > 500);
+      const y = window.scrollY;
+      scrollBtn.classList.toggle('visible', y > 500);
+      // Show sticky CTA after hero, hide near footer
+      const docH = document.documentElement.scrollHeight;
+      const winH = window.innerHeight;
+      const nearBottom = y + winH > docH - 600;
+      stickCta.classList.toggle('visible', y > window.innerHeight * 0.8 && !nearBottom);
     });
     scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
