@@ -472,18 +472,6 @@
       font-size: 13px; color: var(--gray-600); line-height: 1.9;
     }
 
-    /* ===== INTRO — large statement text ===== */
-    .intro {
-      padding: 120px 40px; text-align: center;
-    }
-    .intro__text {
-      font-family: var(--font-serif); font-size: 22px; font-weight: 300;
-      line-height: 2; color: var(--gray-600); max-width: 700px; margin: 0 auto;
-    }
-    body.lang-ja .intro__text {
-      font-family: var(--font-jp); font-size: 16px; letter-spacing: 0.05em;
-    }
-
     /* ===== EXPERTISE — numbered text list ===== */
     .expertise {
       padding: 0 40px 120px;
@@ -856,9 +844,8 @@
     @media (min-width: 768px) {
       .hero__h1 { font-size: 56px; }
       body.lang-ja .hero__h1 { font-size: 40px; }
-      .intro { padding: 160px 80px; }
-      .intro__text { font-size: 28px; }
-      body.lang-ja .intro__text { font-size: 18px; }
+
+      body.lang-ja
       .expertise { padding: 0 80px 160px; }
       .expertise__name { font-size: 28px; }
       body.lang-ja .expertise__name { font-size: 18px; }
@@ -908,7 +895,6 @@
       .hero__body { padding: 0 8% 100px; }
       .hero__h1 { font-size: 72px; }
       body.lang-ja .hero__h1 { font-size: 48px; }
-      .intro__text { font-size: 32px; }
       .expertise__item { padding: 32px 0; }
       .expertise__name { font-size: 32px; }
       body.lang-ja .expertise__name { font-size: 20px; }
@@ -975,21 +961,9 @@
       </div>
     </section>
 
-    <!-- INTRO -->
-    <section class="intro fi">
-      <p class="intro__text" data-lang-ja>
-        新車・中古車販売から車検・整備・板金・保険まで、<br>
-        ワンストップで対応。全メーカー取扱い。英語対応可能。
-      </p>
-      <p class="intro__text" data-lang-en>
-        New &amp; used cars, Shaken, repairs, insurance —<br>
-        all brands, all in English. Your one-stop auto partner.
-      </p>
-    </section>
-
     <!-- EXPERTISE -->
     <section class="expertise fi">
-      <div class="expertise__head">Services</div>
+      <div class="expertise__head">What We Offer</div>
       <a href="services.html" class="expertise__item">
         <span class="expertise__num">01</span>
         <span class="expertise__name" data-lang-ja>新車・中古車販売</span>
@@ -1022,7 +996,7 @@
       </a>
       <div class="expertise__cta">
         <a href="services.html">
-          <span data-lang-ja>すべて見る</span><span data-lang-en>View all</span>
+          <span data-lang-ja>すべて見る</span><span data-lang-en>All in English. View All</span>
           <span class="expertise__cta__line"></span>
         </a>
       </div>
