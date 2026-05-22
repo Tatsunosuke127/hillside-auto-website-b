@@ -478,10 +478,17 @@
       max-width: 900px; margin: 0 auto;
     }
     .expertise__head {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
-      text-transform: uppercase; color: var(--gray-400);
-      margin-bottom: 48px; padding-bottom: 16px;
+      font-family: var(--font-serif); font-size: 32px; font-weight: 400;
+      letter-spacing: 0.02em; color: var(--black);
+      margin-bottom: 48px; padding-bottom: 24px;
       border-bottom: 1px solid var(--gray-200);
+      line-height: 1.2;
+    }
+    @media (min-width: 768px) {
+      .expertise__head { font-size: 48px; padding-bottom: 32px; margin-bottom: 64px; }
+    }
+    @media (min-width: 1024px) {
+      .expertise__head { font-size: 64px; }
     }
     .expertise__item {
       display: flex; align-items: baseline; gap: 32px;
@@ -1152,8 +1159,8 @@
         <p class="feature__label">All Brands</p>
         <h2 class="feature__h2" data-lang-ja>国産車も輸入車も、<br>全メーカー対応</h2>
         <h2 class="feature__h2" data-lang-en>Every Brand,<br>Domestic &amp; Imported</h2>
-        <p class="feature__p" data-lang-ja>トヨタ・ホンダ・日産などの国産車から、ボルボ・BMW・メルセデスなどの輸入車まで全車種に対応。スズキ副代理店としての認定に加え、複数メーカーの正規販売代理店・協力工場としての実績があります。</p>
-        <p class="feature__p" data-lang-en>From Toyota, Honda, and Nissan to Volvo, BMW, and Mercedes — we service and sell all brands. As authorized sales agents for multiple manufacturers, we find the right vehicle for you.</p>
+        <p class="feature__p" data-lang-ja>国産車も輸入車も、全メーカー対応。複数メーカーの正規販売代理店として、最適な一台をご提案します。</p>
+        <p class="feature__p" data-lang-en>Every brand, domestic and imported. As an authorized sales agent for multiple manufacturers, we help you find the right car.</p>
         <a href="services.html" class="feature__link">
           <span data-lang-ja>詳しく見る</span><span data-lang-en>Learn more</span>
           <span class="feature__link__line"></span>
