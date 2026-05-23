@@ -474,21 +474,21 @@
 
     /* ===== EXPERTISE — numbered text list ===== */
     .expertise {
-      padding: 0 40px 120px;
+      padding: 80px 40px 120px;
       max-width: 900px; margin: 0 auto;
     }
     .expertise__head {
       font-family: var(--font-serif); font-size: 32px; font-weight: 400;
       letter-spacing: 0.02em; color: var(--black);
-      margin-bottom: 48px; padding-bottom: 24px;
-      border-bottom: 1px solid var(--gray-200);
+      margin-bottom: 24px; padding-bottom: 0;
+      border-bottom: none;
       line-height: 1.2;
     }
     @media (min-width: 768px) {
-      .expertise__head { font-size: 48px; padding-bottom: 32px; margin-bottom: 64px; }
+      .expertise__head { font-size: 48px; margin-bottom: 32px; }
     }
     @media (min-width: 1024px) {
-      .expertise__head { font-size: 64px; }
+      .expertise__head { font-size: 64px; margin-bottom: 40px; }
     }
     .expertise__item {
       display: flex; align-items: baseline; gap: 32px;
@@ -851,9 +851,7 @@
     @media (min-width: 768px) {
       .hero__h1 { font-size: 56px; }
       body.lang-ja .hero__h1 { font-size: 40px; }
-
-      body.lang-ja
-      .expertise { padding: 0 80px 160px; }
+      .expertise { padding: 120px 80px 160px; }
       .expertise__name { font-size: 28px; }
       body.lang-ja .expertise__name { font-size: 18px; }
       .visual { grid-template-columns: 1fr 1fr; }
