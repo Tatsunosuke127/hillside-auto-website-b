@@ -912,14 +912,14 @@ body.lang-ja .section--cta h2 {
   border-left: 1px solid rgba(255,255,255,0.1);
 }
 
-/* --- Fade-in --- */
-.fade-in {
+/* --- Fade-in (JS-gated: content stays visible without JS) --- */
+.js .fade-in {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.fade-in.visible {
+.js .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }

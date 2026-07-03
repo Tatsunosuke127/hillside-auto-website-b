@@ -6,15 +6,8 @@
 (function () {
   'use strict';
 
-  // --- Nav scroll state ---
+  // --- Nav scroll state handled in unified scroll handler below ---
   var nav = document.getElementById('nav');
-  if (nav) {
-    var onNavScroll = function () {
-      nav.classList.toggle('nav--scrolled', window.scrollY > 50);
-    };
-    window.addEventListener('scroll', onNavScroll, { passive: true });
-    onNavScroll();
-  }
 
   // --- Mobile overlay ---
   var menuBtn = document.getElementById('menuBtn');
@@ -47,23 +40,26 @@
     } catch (e) { /* keep default */ }
   }
 
-  // --- Scroll top + sticky CTA visibility ---
+  // --- Unified scroll handler (single rAF-throttled passive listener) ---
   var scrollBtn = document.getElementById('scrollTop');
   var stickCta = document.getElementById('stickCta');
-  if (scrollBtn || stickCta) {
-    var onScroll = function () {
-      var y = window.scrollY;
-      if (scrollBtn) scrollBtn.classList.toggle('visible', y > 500);
-      if (stickCta) {
-        var docH = document.documentElement.scrollHeight;
-        var winH = window.innerHeight;
-        var nearBottom = y + winH > docH - 600;
-        stickCta.classList.toggle('visible', y > winH * 0.5 && !nearBottom);
-      }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
+  var scrollTick = false;
+  var onScrollFrame = function () {
+    var y = window.scrollY;
+    if (nav) nav.classList.toggle('nav--scrolled', y > 50);
+    if (scrollBtn) scrollBtn.classList.toggle('visible', y > 500);
+    if (stickCta) {
+      var docH = document.documentElement.scrollHeight;
+      var winH = window.innerHeight;
+      var nearBottom = y + winH > docH - 600;
+      stickCta.classList.toggle('visible', y > winH * 0.5 && !nearBottom);
+    }
+    scrollTick = false;
+  };
+  window.addEventListener('scroll', function () {
+    if (!scrollTick) { scrollTick = true; requestAnimationFrame(onScrollFrame); }
+  }, { passive: true });
+  onScrollFrame();
   if (scrollBtn) {
     scrollBtn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });

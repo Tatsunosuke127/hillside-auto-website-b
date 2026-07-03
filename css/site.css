@@ -272,9 +272,9 @@ body.lang-ja .page-hero h1 {
   .nav__menu { display: none; }
 }
 
-/* ===== FADE IN (unified) ===== */
-.fi { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
-.fi.visible { opacity: 1; transform: translateY(0); }
+/* ===== FADE IN (unified, JS-gated) ===== */
+.js .fi { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.js .fi.visible { opacity: 1; transform: translateY(0); }
 
 /* ===== Sharp images (kill legacy rounding/shadows on subpage photos) ===== */
 .section img { border-radius: 0 !important; box-shadow: none !important; }

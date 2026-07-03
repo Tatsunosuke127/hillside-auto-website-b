@@ -25,6 +25,8 @@
   <link rel="preload" as="image" href="images/storefront-hero-900.webp" media="(max-width: 767px)">
   <link rel="preload" as="image" href="images/storefront-hero-1920.webp" media="(min-width: 768px)">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#000000">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">
@@ -244,11 +246,12 @@
     .hero__cta:hover .hero__cta__arrow { width: 40px; }
     .hero__arrow {
       position: absolute; bottom: 32px; right: 40px; z-index: 2;
-      opacity: 0.4; animation: bounce 2s infinite;
+      opacity: 0.4;
     }
-    @keyframes bounce {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
+    .hero-in .hero__arrow { animation: arrowPulse 3s ease-in-out 2.6s infinite; }
+    @keyframes arrowPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.12; }
     }
 
     /* ===== PRICING / PROMISE — Emphasized transparency statement ===== */
@@ -539,12 +542,16 @@
     .expertise__item {
       display: flex; align-items: baseline; gap: 32px;
       padding: 24px 0; border-bottom: 1px solid var(--gray-200);
-      transition: opacity 0.3s ease; cursor: default;
+      transition: transform 0.4s var(--ease);
     }
-    .expertise__item:hover { opacity: 0.6; }
+    @media (hover: hover) {
+      .expertise__item:hover { transform: translateX(8px); }
+      .expertise__item:hover .expertise__num { color: var(--black); }
+    }
     .expertise__num {
       font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
       color: var(--gray-400); flex-shrink: 0; width: 32px;
+      transition: color 0.4s ease;
     }
     .expertise__name {
       font-family: var(--font-serif); font-size: 22px; font-weight: 400;
@@ -951,9 +958,9 @@
       animation: none;
     }
 
-    /* ===== FADE IN ===== */
-    .fi { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .fi.visible { opacity: 1; transform: translateY(0); }
+    /* ===== FADE IN (JS-gated: content stays visible without JS) ===== */
+    .js .fi { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .js .fi.visible { opacity: 1; transform: translateY(0); }
 
     /* ===== STAGGER REVEAL (classes applied by JS only) ===== */
     .st { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
@@ -1637,11 +1644,8 @@
 
   <script src="js/lang-toggle.js"></script>
   <script>
-    // Nav scroll
+    // Nav scroll state is handled in the unified scroll handler below
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('nav--scrolled', window.scrollY > 50);
-    });
 
     // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
@@ -1674,18 +1678,26 @@
       if (!open) dot.classList.add('stick-cta__dot--closed');
     })();
 
-    // Scroll top + Sticky CTA
+    // Unified scroll handler — single rAF-throttled passive listener
     const scrollBtn = document.getElementById('scrollTop');
     const stickCta = document.getElementById('stickCta');
-    window.addEventListener('scroll', () => {
+    let scrollTick = false;
+    const onScrollFrame = () => {
       const y = window.scrollY;
-      scrollBtn.classList.toggle('visible', y > 500);
-      // Show sticky CTA after hero, hide near footer
-      const docH = document.documentElement.scrollHeight;
-      const winH = window.innerHeight;
-      const nearBottom = y + winH > docH - 600;
-      stickCta.classList.toggle('visible', y > window.innerHeight * 0.8 && !nearBottom);
-    });
+      if (nav) nav.classList.toggle('nav--scrolled', y > 50);
+      if (scrollBtn) scrollBtn.classList.toggle('visible', y > 500);
+      if (stickCta) {
+        const docH = document.documentElement.scrollHeight;
+        const winH = window.innerHeight;
+        const nearBottom = y + winH > docH - 600;
+        stickCta.classList.toggle('visible', y > winH * 0.8 && !nearBottom);
+      }
+      scrollTick = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!scrollTick) { scrollTick = true; requestAnimationFrame(onScrollFrame); }
+    }, { passive: true });
+    onScrollFrame();
     scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     // FAQ accordion
@@ -1742,6 +1754,28 @@
         });
         stObs.observe(el);
       });
+    })();
+
+    // Count-up: Google rating 0.0 -> 4.8 when reviews enter view
+    (function () {
+      const el = document.querySelector('.reviews__rating strong');
+      if (!el || !('IntersectionObserver' in window)) return;
+      const target = 4.8, dur = 1200;
+      const cObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          cObs.unobserve(el);
+          const t0 = performance.now();
+          const step = (t) => {
+            const p = Math.min((t - t0) / dur, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = (target * eased).toFixed(1);
+            if (p < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        });
+      }, { threshold: 0.6 });
+      cObs.observe(el);
     })();
 
     // Scroll-driven color — grayscale lifts as image reaches viewport center
