@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/site.css">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
   <!-- Booking Methods — evidence-based visual hierarchy -->
@@ -107,50 +108,50 @@
 </head>
 <body class="lang-ja">
 
-  <!-- HEADER -->
-  <header class="header header--scrolled">
-    <div class="header__inner">
-      <a href="index.html" class="header__logo">
-        <span class="header__logo-main" style="color:var(--black)">HILLSIDE AUTO</span>
-      </a>
-      <nav class="header__nav">
-        <ul>
-          <li><a href="services.html" style="color:var(--gray-700)">Services</a></li>
-          <li><a href="for-foreigners.html" style="color:var(--gray-700)">English</a></li>
-          <li><a href="about.html" style="color:var(--gray-700)">About</a></li>
-          <li><a href="contact.html" style="color:var(--gray-700)">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="header__actions">
-        <div class="header__lang-toggle">
-          <button data-lang-btn="ja" class="active" style="color:var(--black)">JP</button>
-          <button data-lang-btn="en" style="color:var(--gray-300)">EN</button>
-        </div>
-        <button class="header__hamburger" aria-label="Menu"><span style="background:var(--black)"></span><span style="background:var(--black)"></span></button>
-      </div>
-    </div>
-  </header>
-  <div class="mobile-menu">
-    <nav class="mobile-menu__nav">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
+  <!-- NAV (unified) -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">Hillside Auto</a>
+    <div class="nav__links">
+      <a href="services.html" class="active">Services</a>
       <a href="for-foreigners.html">English</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
-    </nav>
-    <div class="mobile-menu__actions">
-      <a href="tel:045-641-3307" class="btn btn--primary btn--lg">045-641-3307</a>
+    </div>
+    <div class="nav__right">
+      <div class="nav__lang">
+        <button data-lang-btn="ja" class="active">JP</button>
+        <button data-lang-btn="en">EN</button>
+      </div>
+      <button class="nav__menu" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="navOverlay">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="nav-overlay" id="navOverlay">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="for-foreigners.html">English</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-overlay__contact">
+      <a href="tel:045-641-3307">045-641-3307</a>
+      <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener">LINE</a>
     </div>
   </div>
 
   <main>
     <!-- Page Header -->
-    <section class="page-header">
-      <div class="container">
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero__img" style="background-image: url('images/jimny-street.webp');"></div>
+      <div class="page-hero__body">
+        <p class="page-hero__sub">Services</p>
         <h1 data-lang-ja>サービス一覧</h1>
         <h1 data-lang-en>Our Services</h1>
-        <p data-lang-ja>お車に関するあらゆるニーズにお応えします</p>
-        <p data-lang-en>Comprehensive automotive services for all your needs</p>
+        <p class="page-hero__desc" data-lang-ja>お車に関するあらゆるニーズにお応えします</p>
+        <p class="page-hero__desc" data-lang-en>Comprehensive automotive services for all your needs</p>
       </div>
     </section>
 
@@ -158,8 +159,8 @@
     <section class="section">
       <div class="container">
         <div class="service-featured fade-in">
-          <h2 data-lang-ja>&#128663; 新車・中古車販売</h2>
-          <h2 data-lang-en>&#128663; New & Used Car Sales</h2>
+          <h2 data-lang-ja>新車・中古車販売</h2>
+          <h2 data-lang-en>New & Used Car Sales</h2>
           <ul>
             <li data-lang-ja>全メーカー対応 &mdash; トヨタ・ホンダ・日産などの国産車から、BMW・メルセデス・アウディなどの輸入車まで取扱可能</li>
             <li data-lang-en>All brands &mdash; Toyota, Honda, Nissan, BMW, Mercedes, Audi, and more</li>
@@ -203,7 +204,7 @@
           <!-- Shaken -->
           <div class="accordion fade-in">
             <button class="accordion__header">
-              <span class="accordion__icon">&#128269;</span>
+              <span class="accordion__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
               <span class="accordion__title">
                 <span data-lang-ja>車検（Shaken）</span>
                 <span data-lang-en>Shaken (Vehicle Inspection)</span>
@@ -258,7 +259,7 @@
           <!-- Maintenance -->
           <div class="accordion fade-in">
             <button class="accordion__header">
-              <span class="accordion__icon">&#128295;</span>
+              <span class="accordion__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
               <span class="accordion__title">
                 <span data-lang-ja>整備・メンテナンス</span>
                 <span data-lang-en>Maintenance & Repairs</span>
@@ -325,7 +326,7 @@
           <!-- Body Work -->
           <div class="accordion fade-in">
             <button class="accordion__header">
-              <span class="accordion__icon">&#127912;</span>
+              <span class="accordion__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span>
               <span class="accordion__title">
                 <span data-lang-ja>板金塗装・事故修理</span>
                 <span data-lang-en>Body Work & Accident Repair</span>
@@ -381,7 +382,7 @@
           <!-- Registration -->
           <div class="accordion fade-in">
             <button class="accordion__header">
-              <span class="accordion__icon">&#128203;</span>
+              <span class="accordion__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></span>
               <span class="accordion__title">
                 <span data-lang-ja>車登録・名義変更</span>
                 <span data-lang-en>Vehicle Registration & Name Transfer</span>
@@ -436,7 +437,7 @@
           <!-- Car Purchase / Trade-in -->
           <div class="accordion fade-in">
             <button class="accordion__header">
-              <span class="accordion__icon">&#128176;</span>
+              <span class="accordion__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 12h.01M18 12h.01"/></svg></span>
               <span class="accordion__title">
                 <span data-lang-ja>車買取</span>
                 <span data-lang-en>Sell Your Car</span>
@@ -485,7 +486,7 @@
           <!-- Insurance -->
           <div class="accordion fade-in">
             <button class="accordion__header">
-              <span class="accordion__icon">&#128737;</span>
+              <span class="accordion__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
               <span class="accordion__title">
                 <span data-lang-ja>保険</span>
                 <span data-lang-en>Insurance</span>
@@ -550,37 +551,76 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__top">
-        <div class="footer__brand">
-          <div class="footer__logo">HILLSIDE AUTO</div>
-          <p class="footer__desc" data-lang-ja>ヒルサイドオート株式会社<br>1949年創業。横浜で75年以上、地域の皆様の車生活を支えています。</p>
-          <p class="footer__desc" data-lang-en>Hillside Auto Inc.<br>Serving the Yokohama community since 1949.</p>
-        </div>
-        <div class="footer__links-group">
+  <!-- FOOTER (unified) -->
+  <footer class="ft">
+    <div class="ft__top">
+      <div class="ft__brand">
+        <div class="ft__logo">Hillside Auto</div>
+        <p class="ft__desc" data-lang-ja>ヒルサイドオート株式会社<br>1949年創業・横浜市中区</p>
+        <p class="ft__desc" data-lang-en>Hillside Auto Inc.<br>Since 1949 — Yokohama, Japan</p>
+      </div>
+      <div class="ft__info">
+        <p class="ft__info-line">
+          <span class="ft__info-label" data-lang-ja>住所</span>
+          <span class="ft__info-label" data-lang-en>Address</span>
+          <span class="ft__info-val" data-lang-ja>〒231-0849<br>神奈川県横浜市中区麦田町1-40</span>
+          <span class="ft__info-val" data-lang-en>1-40 Mugitacho, Naka-ku,<br>Yokohama 231-0849</span>
+        </p>
+        <p class="ft__info-line">
+          <span class="ft__info-label" data-lang-ja>営業時間</span>
+          <span class="ft__info-label" data-lang-en>Hours</span>
+          <span class="ft__info-val" data-lang-ja>9:00 – 18:00（月〜土）</span>
+          <span class="ft__info-val" data-lang-en>9:00 – 18:00 (Mon – Sat)</span>
+        </p>
+        <p class="ft__info-line">
+          <span class="ft__info-label" data-lang-ja>電話</span>
+          <span class="ft__info-label" data-lang-en>Phone</span>
+          <a class="ft__info-val ft__info-tel" href="tel:045-641-3307">045-641-3307</a>
+        </p>
+      </div>
+      <div class="ft__right">
+        <div class="ft__links">
           <a href="services.html">Services</a>
           <a href="for-foreigners.html">English</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
         </div>
-        <div class="footer__social">
+        <div class="ft__social">
           <a href="https://www.instagram.com/hillside_auto_inc/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
           <a href="https://www.facebook.com/hillsideautoinc/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
           <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener" aria-label="LINE"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
         </div>
       </div>
-      <div class="footer__bottom">&copy; 2026 Hillside Auto Inc.</div>
     </div>
+    <p class="ft__copy">&copy; 2026 Hillside Auto Inc. All Rights Reserved.</p>
   </footer>
 
-  <button class="scroll-top" aria-label="Scroll to top">&#9650;</button>
-  <div class="mobile-cta-bar">
-    <a href="tel:045-641-3307" class="mobile-cta-bar__btn mobile-cta-bar__btn--phone"><span class="mobile-cta-bar__icon">&#9742;</span><span data-lang-ja>電話する</span><span data-lang-en>Call Now</span></a>
-    <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener" class="mobile-cta-bar__btn mobile-cta-bar__btn--line"><span class="mobile-cta-bar__icon">&#9993;</span><span data-lang-ja>LINEで相談</span><span data-lang-en>LINE Chat</span></a>
+  <button class="scroll-top" id="scrollTop" aria-label="Top">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="12" x2="7" y2="2"/><polyline points="2,6 7,1 12,6"/></svg>
+  </button>
+
+  <div class="mob-bar">
+    <a href="tel:045-641-3307" class="mob-bar__tel">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span data-lang-ja>電話</span><span data-lang-en>Call</span>
+    </a>
+    <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener" class="mob-bar__line">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      LINE
+    </a>
+    <a href="contact.html" class="mob-bar__form">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span data-lang-ja>フォーム</span><span data-lang-en>Form</span>
+    </a>
   </div>
+
+  <a href="contact.html" class="stick-cta" id="stickCta">
+    <span class="stick-cta__dot"></span>
+    <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact us</span>
+  </a>
 
   <script src="js/lang-toggle.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>

@@ -609,6 +609,15 @@ body.lang-ja .review-card__text {
   font-size: 0.88rem;
   color: var(--gray-700);
   padding: var(--space-sm) 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.access__icon {
+  flex-shrink: 0;
+  color: var(--gray-400);
+  padding-top: 2px;
 }
 
 .access__item a {
@@ -693,19 +702,29 @@ body.lang-ja .section--cta h2 {
 
 .accordion__icon {
   flex-shrink: 0;
-  font-family: var(--font-en);
-  font-size: 1rem;
-  font-weight: 300;
-  color: var(--gray-300);
+  display: inline-flex;
+  align-items: center;
+  color: var(--gray-400);
+}
+
+/* Open/close indicator: "+" rotating to "x" (glyph in markup is hidden via font-size:0) */
+.accordion__arrow {
+  display: block;
+  flex-shrink: 0;
+  font-size: 0;
+  line-height: 1;
   transition: transform var(--transition-base);
 }
 
-/* Hide old arrow, show new icon */
-.accordion__arrow {
-  display: none;
+.accordion__arrow::after {
+  content: '+';
+  font-family: var(--font-en);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--gray-400);
 }
 
-.accordion.active .accordion__icon {
+.accordion.active .accordion__arrow {
   transform: rotate(45deg);
 }
 
@@ -1021,7 +1040,8 @@ body.lang-ja .section--cta h2 {
 /* Reason cards */
 .reason-card { display: flex; gap: var(--space-xl); padding: var(--space-xl) 0; border-bottom: 1px solid var(--gray-200); background: transparent; }
 .section--dark .reason-card { border-bottom-color: rgba(255,255,255,0.1); }
-.reason-card__number { flex-shrink: 0; font-family: var(--font-en); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gray-300); padding-top: 2px; }
+.reason-card__number { flex-shrink: 0; width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--gray-200); color: var(--gray-600); }
+.section--dark .reason-card__number { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); }
 .reason-card__title { font-size: 1rem; font-weight: 500; margin-bottom: var(--space-xs); }
 .reason-card__desc { font-size: 0.88rem; color: var(--gray-500); line-height: 1.8; }
 .section--dark .reason-card__desc { color: rgba(255,255,255,0.4); }
