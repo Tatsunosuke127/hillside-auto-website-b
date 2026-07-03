@@ -281,3 +281,61 @@ body.lang-ja .page-hero h1 {
 
 /* Hide any legacy fixed elements if left in markup */
 .header, .mobile-menu, .footer, .mobile-cta-bar, .line-float { display: none !important; }
+
+/* ===== MOTION (Phase 4) ===== */
+
+/* Page-hero entrance (JS-gated) */
+.js .page-hero__sub, .js .page-hero h1, .js .page-hero__desc, .js .page-hero__ctas {
+  opacity: 0; transform: translateY(20px);
+}
+.js .page-hero__sub { transition: opacity 0.9s var(--ease) 0.1s, transform 0.9s var(--ease) 0.1s; }
+.js .page-hero h1 { transition: opacity 0.9s var(--ease) 0.25s, transform 0.9s var(--ease) 0.25s; }
+.js .page-hero__desc { transition: opacity 0.9s var(--ease) 0.4s, transform 0.9s var(--ease) 0.4s; }
+.js .page-hero__ctas { transition: opacity 0.9s var(--ease) 0.55s, transform 0.9s var(--ease) 0.55s; }
+.js .hero-in .page-hero__sub { opacity: 0.6; transform: none; }
+.js .hero-in .page-hero h1,
+.js .hero-in .page-hero__ctas { opacity: 1; transform: none; }
+.js .hero-in .page-hero__desc { opacity: 1; transform: none; }
+
+/* Page-hero image settle */
+.page-hero__img { transform: scale(1.06); transition: transform 9s var(--ease); }
+.hero-in .page-hero__img { transform: scale(1); }
+
+/* Nav overlay — staggered link reveal */
+.nav-overlay > a, .nav-overlay > .nav-overlay__contact {
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+}
+.nav-overlay.active > a, .nav-overlay.active > .nav-overlay__contact {
+  opacity: 1; transform: none;
+}
+.nav-overlay.active > a:nth-of-type(2) { transition-delay: 0.06s; }
+.nav-overlay.active > a:nth-of-type(3) { transition-delay: 0.12s; }
+.nav-overlay.active > a:nth-of-type(4) { transition-delay: 0.18s; }
+.nav-overlay.active > a:nth-of-type(5) { transition-delay: 0.24s; }
+.nav-overlay.active > .nav-overlay__contact { transition-delay: 0.32s; }
+
+/* Content images: grayscale, lifting to color at viewport center */
+main .section img, main img.in-colorable {
+  filter: grayscale(100%);
+  transition: filter 0.9s ease;
+}
+@media (hover: hover) {
+  main .section img:hover { filter: grayscale(0%); }
+}
+main .section img.in-color { filter: grayscale(0%) !important; }
+
+/* Stagger reveal (classes applied by JS only) */
+.st { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.st.visible { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}

@@ -70,6 +70,51 @@
     });
   }
 
+  // --- Page-hero entrance (after fonts settle) ---
+  (function () {
+    var revealed = false;
+    var reveal = function () { if (!revealed) { revealed = true; document.body.classList.add('hero-in'); } };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(reveal);
+    setTimeout(reveal, 900);
+  })();
+
+  // --- Stagger reveals for card/step grids ---
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    var groups = ['.grid--3', '.grid--2', '.booking-methods', '.steps', '.accordion-group'];
+    var stObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          Array.prototype.forEach.call(e.target.children, function (c) { c.classList.add('visible'); });
+          stObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    groups.forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (el) {
+        el.classList.remove('fade-in');
+        el.classList.add('visible');
+        Array.prototype.forEach.call(el.children, function (c, i) {
+          c.classList.remove('fade-in');
+          c.classList.add('st');
+          c.style.transitionDelay = (i * 80) + 'ms';
+        });
+        stObs.observe(el);
+      });
+    });
+  })();
+
+  // --- Scroll-driven color: grayscale lifts at viewport center ---
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    var colorObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in-color'); colorObs.unobserve(e.target); }
+      });
+    }, { rootMargin: '-30% 0px -30% 0px' });
+    document.querySelectorAll('main .section img').forEach(function (img) { colorObs.observe(img); });
+  })();
+
   // --- Fade in (.fi) ---
   if ('IntersectionObserver' in window) {
     var obs = new IntersectionObserver(function (entries) {

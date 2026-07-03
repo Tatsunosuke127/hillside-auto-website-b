@@ -26,6 +26,7 @@
   <link rel="preload" as="image" href="images/storefront-hero-1920.webp" media="(min-width: 768px)">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"AutoRepair","name":"ヒルサイドオート株式会社","alternateName":"Hillside Auto Inc.","description":"1949年創業、横浜市中区麦田町の自動車総合サービス。新車・中古車販売、車検、整備、板金、保険まで全メーカー対応。英語対応可能。","url":"https://www.hillside-auto.jp","telephone":"+81-45-641-3307","email":"info@hillside-auto.com","foundingDate":"1949-04","priceRange":"¥¥","image":"https://www.hillside-auto.jp/images/og.jpg","address":{"@type":"PostalAddress","streetAddress":"麦田町1-40","addressLocality":"横浜市中区","addressRegion":"神奈川県","postalCode":"231-0849","addressCountry":"JP"},"geo":{"@type":"GeoCoordinates","latitude":35.4370,"longitude":139.6505},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:00"}],"availableLanguage":["ja","en"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"40","bestRating":"5","worstRating":"1"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"新車・中古車販売","alternateName":"New & Used Car Sales"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"車検","alternateName":"Shaken (Vehicle Inspection)"},"priceSpecification":{"@type":"PriceSpecification","minPrice":60000,"priceCurrency":"JPY"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"整備・メンテナンス","alternateName":"Maintenance"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"板金塗装","alternateName":"Body Work"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"自動車保険","alternateName":"Auto Insurance"}}]},"sameAs":["https://www.instagram.com/hillside_auto_inc/","https://www.facebook.com/hillsideautoinc/"]}
   </script>
@@ -165,8 +166,15 @@
       background-image: url('images/storefront-hero-900.webp');
       background-size: cover; background-position: center;
       background-repeat: no-repeat;
-      filter: brightness(0.4);
+      filter: brightness(0.55);
+      transform: scale(1.08);
+      animation: heroZoom 11s var(--ease) 0.2s forwards;
     }
+    .hero__img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 55%, rgba(0,0,0,0.72) 100%);
+    }
+    @keyframes heroZoom { to { transform: scale(1); } }
     @media (min-width: 768px) {
       .hero__img { background-image: url('images/storefront-hero-1920.webp'); }
     }
@@ -176,14 +184,26 @@
     }
     .hero__sub {
       font-size: 10px; font-weight: 500; letter-spacing: 0.35em;
-      text-transform: uppercase; opacity: 0.5; margin-bottom: 24px;
+      text-transform: uppercase; opacity: 0.75; margin-bottom: 24px;
     }
+    /* Entrance choreography (JS-gated; no-JS users see content immediately) */
+    .js .hero__sub, .js .hero__h1, .js .hero__ctas, .js .hero__arrow {
+      opacity: 0; transform: translateY(24px);
+    }
+    .js .hero__sub { transition: opacity 1s var(--ease) 0.1s, transform 1s var(--ease) 0.1s; }
+    .js .hero__h1 { transition: opacity 1s var(--ease) 0.28s, transform 1s var(--ease) 0.28s; }
+    .js .hero__ctas { transition: opacity 1s var(--ease) 0.5s, transform 1s var(--ease) 0.5s; }
+    .js .hero__arrow { transform: none; transition: opacity 1.2s var(--ease) 1s; }
+    .js .hero-in .hero__sub { opacity: 0.75; transform: none; }
+    .js .hero-in .hero__h1 { opacity: 1; transform: none; }
+    .js .hero-in .hero__ctas { opacity: 1; transform: none; }
+    .js .hero-in .hero__arrow { opacity: 0.4; }
     .hero__h1 {
       font-family: var(--font-serif); font-size: 42px; font-weight: 300;
       line-height: 1.15; letter-spacing: 0.01em;
     }
     body.lang-ja .hero__h1 {
-      font-family: var(--font-serif-jp); font-size: 32px; letter-spacing: 0.06em;
+      font-family: var(--font-serif-jp); font-size: 34px; letter-spacing: 0.06em;
     }
 
     /* Hero CTA buttons — evidence-based: above-fold CTA +30% conversion */
@@ -572,7 +592,10 @@
       width: 100%; height: 60vh; object-fit: cover;
       filter: grayscale(100%); transition: filter 0.8s ease;
     }
-    .visual__img:hover { filter: grayscale(0%); }
+    @media (hover: hover) {
+      .visual__img:hover { filter: grayscale(0%); }
+    }
+    .visual__img.in-color { filter: grayscale(0%); }
 
     /* ===== FEATURE — asymmetric text+image ===== */
     .feature {
@@ -586,7 +609,10 @@
       width: 100%; height: 100%; object-fit: cover;
       filter: grayscale(100%); transition: filter 0.8s ease;
     }
-    .feature:hover .feature__img img { filter: grayscale(0%); }
+    @media (hover: hover) {
+      .feature:hover .feature__img img { filter: grayscale(0%); }
+    }
+    .feature__img img.in-color { filter: grayscale(0%); }
     .feature__body {
       padding: 64px 40px; display: flex; flex-direction: column;
       justify-content: center;
@@ -925,10 +951,39 @@
     .fi { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .fi.visible { opacity: 1; transform: translateY(0); }
 
+    /* ===== STAGGER REVEAL (classes applied by JS only) ===== */
+    .st { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .st.visible { opacity: 1; transform: none; }
+
+    /* ===== NAV OVERLAY — staggered link reveal ===== */
+    .nav-overlay > a, .nav-overlay > .nav-overlay__contact {
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+    }
+    .nav-overlay.active > a, .nav-overlay.active > .nav-overlay__contact {
+      opacity: 1; transform: none;
+    }
+    .nav-overlay.active > a:nth-of-type(2) { transition-delay: 0.06s; }
+    .nav-overlay.active > a:nth-of-type(3) { transition-delay: 0.12s; }
+    .nav-overlay.active > a:nth-of-type(4) { transition-delay: 0.18s; }
+    .nav-overlay.active > a:nth-of-type(5) { transition-delay: 0.24s; }
+    .nav-overlay.active > .nav-overlay__contact { transition-delay: 0.32s; }
+
+    /* ===== REDUCED MOTION ===== */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+      }
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (min-width: 768px) {
       .hero__h1 { font-size: 56px; }
-      body.lang-ja .hero__h1 { font-size: 40px; }
+      body.lang-ja .hero__h1 { font-size: 46px; }
       .expertise { padding: 120px 80px 160px; }
       .expertise__name { font-size: 28px; }
       body.lang-ja .expertise__name { font-size: 18px; }
@@ -977,7 +1032,7 @@
       .nav__menu { display: none; }
       .hero__body { padding: 0 8% 100px; }
       .hero__h1 { font-size: 72px; }
-      body.lang-ja .hero__h1 { font-size: 48px; }
+      body.lang-ja .hero__h1 { font-size: 56px; }
       .expertise__item { padding: 32px 0; }
       .expertise__name { font-size: 32px; }
       body.lang-ja .expertise__name { font-size: 20px; }
@@ -1655,6 +1710,50 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+    // Hero entrance — reveal after webfonts settle (kills FOUT flicker)
+    (function () {
+      let revealed = false;
+      const reveal = () => { if (!revealed) { revealed = true; document.body.classList.add('hero-in'); } };
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(reveal);
+      setTimeout(reveal, 900); // hard cap so slow font CDN never blocks the hero
+    })();
+
+    // Stagger reveals — children rise sequentially (80ms steps)
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      const groups = ['.expertise', '.pricing__list', '.pricing__promises', '.how__steps', '.reviews__grid'];
+      const stObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            Array.from(e.target.children).forEach(c => c.classList.add('visible'));
+            stObs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      groups.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (!el) return;
+        el.classList.remove('fi'); // child stagger replaces block fade
+        el.classList.add('visible');
+        Array.from(el.children).forEach((c, i) => {
+          c.classList.add('st');
+          c.style.transitionDelay = (i * 80) + 'ms';
+        });
+        stObs.observe(el);
+      });
+    })();
+
+    // Scroll-driven color — grayscale lifts as image reaches viewport center
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      const colorObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('in-color'); colorObs.unobserve(e.target); }
+        });
+      }, { rootMargin: '-30% 0px -30% 0px' });
+      document.querySelectorAll('.visual__img, .feature__img img').forEach(img => colorObs.observe(img));
+    })();
 
     // Modal open/close
     function openModal(id) {
