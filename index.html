@@ -42,6 +42,7 @@
       --gray-200: #e8e8e8;
       --gray-400: #aaa;
       --gray-600: #666;
+      --gray-700: #444;
       --gray-800: #222;
       --font-en: 'Inter', system-ui, sans-serif;
       --font-jp: 'Noto Sans JP', sans-serif;
@@ -51,7 +52,7 @@
     }
 
     body {
-      font-family: var(--font-en);
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
       color: var(--black);
       background: var(--white);
       line-height: 1.8;
@@ -108,13 +109,19 @@
       font-size: 10px; letter-spacing: 0.1em; display: flex; gap: 4px;
     }
     .nav__lang button {
-      padding: 2px 6px; font-weight: 500; color: rgba(255,255,255,0.4);
+      /* visual stays compact; hit area expanded to ~44px for touch */
+      padding: 14px 10px; margin: -12px -4px; font-weight: 500; color: rgba(255,255,255,0.4);
       transition: color 0.4s ease;
     }
     .nav__lang button.active { color: var(--white); }
     .nav--scrolled .nav__lang button { color: var(--gray-400); }
     .nav--scrolled .nav__lang button.active { color: var(--black); }
-    .nav__menu { display: flex; flex-direction: column; gap: 6px; width: 22px; cursor: pointer; }
+    .nav__menu {
+      display: flex; flex-direction: column; justify-content: center; gap: 6px;
+      width: 22px; cursor: pointer;
+      /* visual stays 22px; hit area expanded to ~48px for touch */
+      box-sizing: content-box; padding: 13px; margin: -13px;
+    }
     .nav__menu span { height: 1px; background: var(--white); transition: all 0.4s var(--ease); }
     .nav--scrolled .nav__menu span { background: var(--black); }
     .nav__menu.active span:first-child { transform: rotate(45deg) translate(2.5px, 2.5px); }
@@ -144,7 +151,7 @@
 
     /* ===== HERO — full-screen cinematic ===== */
     .hero {
-      position: relative; height: 100vh; overflow: hidden;
+      position: relative; height: 100vh; height: 100svh; overflow: hidden;
       display: flex; align-items: flex-end;
     }
     .hero__img {
@@ -476,6 +483,14 @@
     .expertise {
       padding: 80px 40px 120px;
       max-width: 900px; margin: 0 auto;
+      scroll-margin-top: 40px;
+    }
+    /* Section label (shared) — was undefined, rendered as plain text */
+    .section__label {
+      display: block;
+      font-family: var(--font-en); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gray-400); margin-bottom: 12px;
     }
     .expertise__head {
       font-family: var(--font-serif); font-size: 32px; font-weight: 400;
@@ -784,6 +799,8 @@
     .ft__copy {
       padding-top: 32px; font-size: 10px; letter-spacing: 0.1em;
       color: rgba(255,255,255,0.15);
+      /* clear the fixed mobile CTA bar */
+      padding-bottom: calc(72px + env(safe-area-inset-bottom));
     }
 
     /* ===== SCROLL TOP ===== */
@@ -805,6 +822,8 @@
       position: fixed; bottom: 0; left: 0; width: 100%;
       display: flex; z-index: 95;
       box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
+      background: var(--black);
+      padding-bottom: env(safe-area-inset-bottom);
     }
     .mob-bar a {
       flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -922,9 +941,9 @@
         <button data-lang-btn="ja" class="active">JP</button>
         <button data-lang-btn="en">EN</button>
       </div>
-      <div class="nav__menu" id="menuBtn">
+      <button class="nav__menu" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="navOverlay">
         <span></span><span></span>
-      </div>
+      </button>
     </div>
   </nav>
 
@@ -967,7 +986,7 @@
     </section>
 
     <!-- EXPERTISE -->
-    <section class="expertise fi">
+    <section class="expertise fi" id="services">
       <div class="expertise__head">What We Offer</div>
       <a href="services.html" class="expertise__item">
         <span class="expertise__num">01</span>
@@ -1499,12 +1518,15 @@
     menuBtn.addEventListener('click', () => {
       menuBtn.classList.toggle('active');
       overlay.classList.toggle('active');
-      document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+      const open = overlay.classList.contains('active');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
     });
     overlay.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         menuBtn.classList.remove('active');
         overlay.classList.remove('active');
+        menuBtn.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       });
     });
