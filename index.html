@@ -173,10 +173,17 @@
       animation: heroZoom 11s var(--ease) 0.2s forwards;
     }
     .hero__img::after {
-      content: ''; position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0; z-index: 2;
       background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 55%, rgba(0,0,0,0.72) 100%);
     }
     @keyframes heroZoom { to { transform: scale(1); } }
+    /* Hero slideshow — real shop photos crossfade under the scrim */
+    .hero__slide {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 1.6s ease;
+    }
+    .hero__slide.visible { opacity: 1; }
     @media (min-width: 768px) {
       .hero__img { background-image: url('images/storefront-hero-1920.webp'); }
     }
@@ -1729,6 +1736,37 @@
       const reveal = () => { if (!revealed) { revealed = true; document.body.classList.add('hero-in'); } };
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(reveal);
       setTimeout(reveal, 900); // hard cap so slow font CDN never blocks the hero
+    })();
+
+    // Hero slideshow — real shop photos rotate behind the scrim.
+    // Slides are created after full page load so they never compete with LCP.
+    (function () {
+      const hero = document.querySelector('.hero__img');
+      if (!hero) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const srcs = [
+        'images/shop-entrance.webp',
+        'images/shop-showroom-jimny.webp',
+        'images/shop-showroom.webp',
+        'images/shop-garage-lift.webp',
+        'images/shop-garage.webp'
+      ];
+      window.addEventListener('load', () => {
+        const layers = srcs.map(s => {
+          const d = document.createElement('div');
+          d.className = 'hero__slide';
+          d.style.backgroundImage = "url('" + s + "')";
+          hero.appendChild(d);
+          return d;
+        });
+        // state 0 = base storefront image; 1..n = shop photos
+        let state = 0;
+        const total = srcs.length + 1;
+        setInterval(() => {
+          state = (state + 1) % total;
+          layers.forEach((l, idx) => l.classList.toggle('visible', idx === state - 1));
+        }, 6000);
+      });
     })();
 
     // Stagger reveals — children rise sequentially (80ms steps)
