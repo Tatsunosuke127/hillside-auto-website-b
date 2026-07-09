@@ -1,0 +1,331 @@
+<!-- @dsCard group="Components" name="Pricing 案A — 見積書型" subtitle="Document aesthetic: dotted leaders, tabular numerals, official-estimate feel" width="900" height="980" -->
+<!doctype html>
+<html lang="ja" class="lang-ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing 案A — 見積書型</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e8e8e8;
+      --gray-400: #aaa;
+      --gray-600: #666;
+      --gray-700: #444;
+      --gray-800: #222;
+      --font-en: 'Inter', system-ui, sans-serif;
+      --font-jp: 'Noto Sans JP', sans-serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-serif-jp: 'Noto Serif JP', serif;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+      color: var(--black);
+      background: var(--gray-100);
+      line-height: 1.8;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== PRICING 案A — The Fine Document ===== */
+    .pricing {
+      padding: 56px 48px;
+      background: var(--gray-100);
+    }
+    .pricing__inner { max-width: 900px; margin: 0 auto; }
+
+    /* Certificate frame: outer border + inner hairline */
+    .doc {
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--black);
+      padding: 54px 60px 48px;
+    }
+    .doc::before {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border: 1px solid var(--gray-800);
+      pointer-events: none;
+    }
+
+    /* Document head */
+    .doc__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--black);
+      position: relative;
+      margin-bottom: 6px;
+    }
+    .doc__head::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -4px;
+      height: 1px;
+      background: var(--gray-400);
+    }
+    .doc__eyebrow {
+      display: block;
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.38em;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .doc__title {
+      font-family: var(--font-serif-jp);
+      font-size: 27px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      line-height: 1.2;
+      color: var(--black);
+    }
+    .doc__since {
+      text-align: right;
+      padding-bottom: 2px;
+    }
+    .doc__since-label {
+      display: block;
+      font-family: var(--font-en);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .doc__since-value {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      color: var(--black);
+      line-height: 1.2;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Price rows with dotted leaders */
+    .doc__list {
+      padding: 26px 0 10px;
+      margin-bottom: 26px;
+    }
+    .doc-row { padding: 17px 0; }
+    .doc-row__line {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+    .doc-row__name {
+      font-family: var(--font-serif-jp);
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--black);
+      white-space: nowrap;
+    }
+    .doc-row__leader {
+      flex: 1;
+      align-self: flex-end;
+      height: 1em;
+      background-image: radial-gradient(circle, var(--gray-400) 1px, transparent 1.4px);
+      background-size: 9px 3px;
+      background-position: 0 calc(100% - 5px);
+      background-repeat: repeat-x;
+      min-width: 40px;
+    }
+    .doc-row__price {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--black);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum";
+      min-width: 128px;
+      text-align: right;
+    }
+    .doc-row__price small {
+      font-size: 11px;
+      color: var(--gray-600);
+      margin-left: 3px;
+      font-family: var(--font-jp);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+    .doc-row__detail {
+      font-size: 11px;
+      color: var(--gray-600);
+      letter-spacing: 0.06em;
+      margin-top: 3px;
+      line-height: 1.6;
+    }
+
+    /* 注記 — formal footnote block */
+    .doc__note {
+      border-top: 3px double var(--gray-800);
+      padding-top: 30px;
+      margin-bottom: 36px;
+    }
+    .doc__note-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .doc__note-label span {
+      font-family: var(--font-serif-jp);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.5em;
+      color: var(--gray-600);
+      white-space: nowrap;
+    }
+    .doc__note-label::after {
+      content: "";
+      flex: 0 0 32px;
+      height: 1px;
+      background: var(--gray-400);
+    }
+    .doc__note-mark {
+      font-family: var(--font-serif-jp);
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.7;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .doc__note-body {
+      font-size: 12.5px;
+      color: var(--gray-700);
+      line-height: 2.1;
+      letter-spacing: 0.03em;
+      max-width: 620px;
+    }
+
+    /* Three promises as numbered clauses in one bordered row */
+    .doc__clauses {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--gray-800);
+    }
+    .doc-clause {
+      padding: 26px 26px 24px;
+      border-left: 1px solid var(--gray-200);
+    }
+    .doc-clause:first-child { border-left: none; }
+    .doc-clause__num {
+      display: inline-block;
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: var(--black);
+      line-height: 1;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--black);
+      margin-bottom: 14px;
+      font-variant-numeric: tabular-nums;
+    }
+    .doc-clause h3 {
+      font-family: var(--font-serif-jp);
+      font-size: 14.5px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin: 0 0 8px;
+      color: var(--black);
+    }
+    .doc-clause p {
+      font-size: 11.5px;
+      color: var(--gray-600);
+      line-height: 1.9;
+      letter-spacing: 0.03em;
+      margin: 0;
+    }
+  </style>
+</head>
+<body class="lang-ja">
+  <section class="pricing">
+    <div class="pricing__inner">
+      <div class="doc">
+
+        <header class="doc__head">
+          <div>
+            <span class="doc__eyebrow">Price Guide</span>
+            <h2 class="doc__title">御見積目安</h2>
+          </div>
+          <div class="doc__since">
+            <span class="doc__since-label">Since</span>
+            <span class="doc__since-value">1949</span>
+          </div>
+        </header>
+
+        <div class="doc__list">
+          <div class="doc-row">
+            <div class="doc-row__line">
+              <span class="doc-row__name">車検（軽自動車）</span>
+              <span class="doc-row__leader" aria-hidden="true"></span>
+              <span class="doc-row__price">¥65,000<small>〜</small></span>
+            </div>
+            <div class="doc-row__detail">法定費用・整備費込み</div>
+          </div>
+          <div class="doc-row">
+            <div class="doc-row__line">
+              <span class="doc-row__name">車検（普通車）</span>
+              <span class="doc-row__leader" aria-hidden="true"></span>
+              <span class="doc-row__price">¥85,000<small>〜</small></span>
+            </div>
+            <div class="doc-row__detail">法定費用・整備費込み</div>
+          </div>
+          <div class="doc-row">
+            <div class="doc-row__line">
+              <span class="doc-row__name">オイル交換（軽自動車）</span>
+              <span class="doc-row__leader" aria-hidden="true"></span>
+              <span class="doc-row__price">¥5,000<small>〜</small></span>
+            </div>
+            <div class="doc-row__detail">純正・推奨グレードのオイル使用</div>
+          </div>
+        </div>
+
+        <div class="doc__note">
+          <div class="doc__note-label"><span>注記</span></div>
+          <p class="doc__note-mark">価格はすべて目安です。<br>不透明な費用は、一切ありません。</p>
+          <p class="doc__note-body">お車の状態・年式・必要な作業によって料金は変動します。だからこそ、私たちは事前にお見積もりをお出しし、ご納得いただいてから作業を開始します。追加費用が発生する場合は、必ず事前にご説明します。</p>
+        </div>
+
+        <div class="doc__clauses">
+          <div class="doc-clause">
+            <span class="doc-clause__num">01</span>
+            <h3>無料お見積もり</h3>
+            <p>作業前に内容と費用を明確に。お見積もりは無料です。</p>
+          </div>
+          <div class="doc-clause">
+            <span class="doc-clause__num">02</span>
+            <h3>ご納得後に作業</h3>
+            <p>内容にご納得いただいてから作業開始。勝手に進めません。</p>
+          </div>
+          <div class="doc-clause">
+            <span class="doc-clause__num">03</span>
+            <h3>追加費用は事前説明</h3>
+            <p>万一の追加作業も、必ず事前にご相談・ご説明します。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</body>
+</html>

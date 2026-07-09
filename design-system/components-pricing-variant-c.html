@@ -1,0 +1,260 @@
+<!-- @dsCard group="Components" name="Pricing 案C — エディトリアル型" subtitle="Magazine scale: oversized serif numerals, pull-quote statement, process strip" width="900" height="1050" -->
+<!doctype html>
+<html lang="ja" class="lang-ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing 案C — エディトリアル型</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e8e8e8;
+      --gray-400: #aaa;
+      --gray-600: #666;
+      --gray-700: #444;
+      --gray-800: #222;
+      --font-en: 'Inter', system-ui, sans-serif;
+      --font-jp: 'Noto Sans JP', sans-serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-serif-jp: 'Noto Serif JP', serif;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.8;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== PRICING 案C — Editorial magazine scale ===== */
+    .pricing {
+      padding: 64px 0 72px;
+      background: var(--white);
+    }
+    .pricing__inner { max-width: 900px; margin: 0 auto; }
+
+    /* --- Price grid: oversized serif numerals, hairline dividers --- */
+    .pricing__grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      border-top: 1px solid var(--black);
+      margin: 0 56px 64px;
+    }
+    .pricing__cell {
+      padding: 40px 44px 36px 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .pricing__cell--right {
+      border-left: 1px solid var(--gray-200);
+      padding-left: 44px;
+      padding-right: 0;
+    }
+    .pricing__cell--empty {
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .pricing__label {
+      font-family: var(--font-jp);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      color: var(--gray-700);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .pricing__figure {
+      font-family: var(--font-serif);
+      font-size: 46px;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--black);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .pricing__figure .yen {
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--gray-400);
+      margin-right: 6px;
+      vertical-align: 6px;
+    }
+    .pricing__figure .approx {
+      font-family: var(--font-jp);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray-400);
+      margin-left: 8px;
+      letter-spacing: 0;
+      vertical-align: 4px;
+    }
+    .pricing__detail {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--gray-600);
+      letter-spacing: 0.08em;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    /* --- Full-width pull-quote band --- */
+    .pricing__quote {
+      background: var(--gray-100);
+      padding: 60px 56px;
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      gap: 48px;
+      margin-bottom: 64px;
+    }
+    .pricing__dash {
+      font-family: var(--font-serif);
+      font-size: 56px;
+      font-weight: 300;
+      line-height: 0.9;
+      color: var(--black);
+      display: block;
+      margin-bottom: 20px;
+      letter-spacing: -0.06em;
+    }
+    .pricing__statement-mark {
+      font-family: var(--font-serif-jp);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.75;
+      letter-spacing: 0.02em;
+    }
+    .pricing__statement-body {
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--gray-700);
+      line-height: 2.15;
+      letter-spacing: 0.04em;
+      max-width: 250px;
+      padding-top: 82px;
+    }
+
+    /* --- Process strip: 01 —— 02 —— 03 --- */
+    .pricing__promises {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 0 56px;
+    }
+    .pricing__promises::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 16.666%;
+      right: 16.666%;
+      height: 1px;
+      background: var(--black);
+    }
+    .pricing__promise {
+      position: relative;
+      text-align: center;
+    }
+    .pricing__promise-num {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 300;
+      line-height: 40px;
+      color: var(--black);
+      letter-spacing: 0.08em;
+      display: inline-block;
+      background: var(--white);
+      padding: 0 20px;
+      position: relative;
+    }
+    .pricing__promise h3 {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin: 14px 0 0;
+    }
+    .pricing__promise p {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--gray-600);
+      line-height: 1.9;
+      letter-spacing: 0.04em;
+      margin: 8px auto 0;
+      max-width: 200px;
+    }
+
+    /* --- Narrow fallback --- */
+    @media (max-width: 700px) {
+      .pricing__grid { grid-template-columns: 1fr; margin: 0 24px 48px; }
+      .pricing__cell { padding: 32px 0 28px; }
+      .pricing__cell--right { border-left: none; padding-left: 0; }
+      .pricing__cell--empty { display: none; }
+      .pricing__quote { grid-template-columns: 1fr; gap: 24px; padding: 48px 24px; margin-bottom: 48px; }
+      .pricing__statement-body { padding-top: 0; max-width: none; }
+      .pricing__promises { grid-template-columns: 1fr; gap: 32px; margin: 0 24px; }
+      .pricing__promises::before { display: none; }
+    }
+  </style>
+</head>
+<body class="lang-ja">
+  <section class="pricing">
+    <div class="pricing__inner">
+
+      <!-- Price grid -->
+      <div class="pricing__grid">
+        <div class="pricing__cell">
+          <span class="pricing__label">車検（軽自動車）</span>
+          <div class="pricing__figure"><span class="yen">¥</span>65,000<span class="approx">〜</span></div>
+          <p class="pricing__detail">法定費用・整備費込み</p>
+        </div>
+        <div class="pricing__cell pricing__cell--right">
+          <span class="pricing__label">車検（普通車）</span>
+          <div class="pricing__figure"><span class="yen">¥</span>85,000<span class="approx">〜</span></div>
+          <p class="pricing__detail">法定費用・整備費込み</p>
+        </div>
+        <div class="pricing__cell pricing__cell--empty" aria-hidden="true"></div>
+        <div class="pricing__cell pricing__cell--right">
+          <span class="pricing__label">オイル交換（軽自動車）</span>
+          <div class="pricing__figure"><span class="yen">¥</span>5,000<span class="approx">〜</span></div>
+          <p class="pricing__detail">純正・推奨グレードのオイル使用</p>
+        </div>
+      </div>
+
+      <!-- Pull-quote statement -->
+      <div class="pricing__quote">
+        <div>
+          <span class="pricing__dash" aria-hidden="true">——</span>
+          <p class="pricing__statement-mark">価格はすべて目安です。<br>不透明な費用は、一切ありません。</p>
+        </div>
+        <p class="pricing__statement-body">お車の状態・年式・必要な作業によって料金は変動します。だからこそ、私たちは事前にお見積もりをお出しし、ご納得いただいてから作業を開始します。追加費用が発生する場合は、必ず事前にご説明します。</p>
+      </div>
+
+      <!-- Process strip -->
+      <div class="pricing__promises">
+        <div class="pricing__promise">
+          <span class="pricing__promise-num">01</span>
+          <h3>無料お見積もり</h3>
+          <p>作業前に内容と費用を明確に。お見積もりは無料です。</p>
+        </div>
+        <div class="pricing__promise">
+          <span class="pricing__promise-num">02</span>
+          <h3>ご納得後に作業</h3>
+          <p>内容にご納得いただいてから作業開始。勝手に進めません。</p>
+        </div>
+        <div class="pricing__promise">
+          <span class="pricing__promise-num">03</span>
+          <h3>追加費用は事前説明</h3>
+          <p>万一の追加作業も、必ず事前にご相談・ご説明します。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>

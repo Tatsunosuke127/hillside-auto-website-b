@@ -1,0 +1,234 @@
+<!-- @dsCard group="Components" name="Pricing 案B — ダーク反転型" subtitle="Black gallery section: glowing serif prices, outlined promise boxes" width="900" height="980" -->
+<!doctype html>
+<html lang="ja" class="lang-ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing 案B — ダーク反転型</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e8e8e8;
+      --gray-400: #aaa;
+      --gray-600: #666;
+      --gray-700: #444;
+      --gray-800: #222;
+      --font-en: 'Inter', system-ui, sans-serif;
+      --font-jp: 'Noto Sans JP', sans-serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-serif-jp: 'Noto Serif JP', serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      /* dark-gallery tones */
+      --ink-45: rgba(255,255,255,0.45);
+      --ink-60: rgba(255,255,255,0.6);
+      --ink-40: rgba(255,255,255,0.4);
+      --line-12: rgba(255,255,255,0.12);
+      --line-25: rgba(255,255,255,0.25);
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+      color: var(--white);
+      background: var(--black);
+      line-height: 1.8;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== PRICING 案B — Dark gallery inversion ===== */
+    .pricing {
+      padding: 72px 56px 64px;
+      background: var(--black);
+    }
+    .pricing__inner { max-width: 900px; margin: 0 auto; }
+
+    /* Section label — the site's 10px letterspaced eyebrow, dimmed for dark */
+    .pricing__label {
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--ink-40);
+      display: block;
+      margin-bottom: 40px;
+    }
+
+    /* Pricing list — prices hung on the wall like artworks */
+    .pricing__list {
+      border-top: 1px solid var(--line-12);
+      margin-bottom: 64px;
+    }
+    .pricing__row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line-12);
+      gap: 24px;
+      transition: padding-left 0.6s var(--ease);
+    }
+    .pricing__row:hover { padding-left: 8px; }
+    .pricing__name {
+      font-family: var(--font-jp);
+      font-size: 15px; font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.06em;
+    }
+    .pricing__detail {
+      font-size: 11px;
+      color: var(--ink-45);
+      letter-spacing: 0.08em;
+      margin-top: 6px;
+      font-weight: 300;
+    }
+    .pricing__price {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .pricing__price small {
+      font-size: 12px;
+      color: var(--ink-45);
+      margin-left: 6px;
+      font-family: var(--font-en);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+    }
+
+    /* Statement — white keyline on black, the manifesto on the gallery wall */
+    .pricing__statement {
+      position: relative;
+      padding: 8px 0 8px 40px;
+      border-left: 4px solid var(--white);
+      margin-bottom: 64px;
+    }
+    .pricing__statement-mark {
+      font-family: var(--font-serif-jp);
+      font-size: 27px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.7;
+      margin: 0 0 20px;
+      letter-spacing: 0.06em;
+    }
+    .pricing__statement-body {
+      font-size: 13px;
+      color: var(--ink-60);
+      line-height: 2.2;
+      letter-spacing: 0.04em;
+      font-weight: 300;
+      margin: 0;
+      max-width: 620px;
+    }
+
+    /* 3 promises — outlined frames, numbered in serif */
+    .pricing__promises {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .pricing__promise {
+      padding: 32px 26px 28px;
+      background: transparent;
+      border: 1px solid var(--line-25);
+      transition: border-color 0.6s var(--ease);
+    }
+    .pricing__promise:hover,
+    .pricing__promise.is-hover {
+      border-color: var(--white);
+    }
+    .pricing__promise-num {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--ink-40);
+      letter-spacing: 0.06em;
+      line-height: 1;
+      display: block;
+      margin-bottom: 18px;
+      transition: color 0.6s var(--ease);
+    }
+    .pricing__promise:hover .pricing__promise-num,
+    .pricing__promise.is-hover .pricing__promise-num {
+      color: var(--white);
+    }
+    .pricing__promise h3 {
+      font-family: var(--font-jp);
+      font-size: 14px; font-weight: 500;
+      color: var(--white);
+      margin: 0 0 10px;
+      letter-spacing: 0.06em;
+    }
+    .pricing__promise p {
+      font-size: 12px;
+      color: var(--ink-45);
+      line-height: 1.9;
+      letter-spacing: 0.03em;
+      font-weight: 300;
+      margin: 0;
+    }
+  </style>
+</head>
+<body class="lang-ja">
+  <section class="pricing">
+    <div class="pricing__inner">
+      <span class="pricing__label">Pricing</span>
+
+      <div class="pricing__list">
+        <div class="pricing__row">
+          <div>
+            <div class="pricing__name">車検（軽自動車）</div>
+            <div class="pricing__detail">法定費用・整備費込み</div>
+          </div>
+          <div class="pricing__price">¥65,000<small>〜</small></div>
+        </div>
+        <div class="pricing__row">
+          <div>
+            <div class="pricing__name">車検（普通車）</div>
+            <div class="pricing__detail">法定費用・整備費込み</div>
+          </div>
+          <div class="pricing__price">¥85,000<small>〜</small></div>
+        </div>
+        <div class="pricing__row">
+          <div>
+            <div class="pricing__name">オイル交換（軽自動車）</div>
+            <div class="pricing__detail">純正・推奨グレードのオイル使用</div>
+          </div>
+          <div class="pricing__price">¥5,000<small>〜</small></div>
+        </div>
+      </div>
+
+      <div class="pricing__statement">
+        <p class="pricing__statement-mark">価格はすべて目安です。<br>不透明な費用は、一切ありません。</p>
+        <p class="pricing__statement-body">お車の状態・年式・必要な作業によって料金は変動します。だからこそ、私たちは事前にお見積もりをお出しし、ご納得いただいてから作業を開始します。追加費用が発生する場合は、必ず事前にご説明します。</p>
+      </div>
+
+      <div class="pricing__promises">
+        <div class="pricing__promise">
+          <span class="pricing__promise-num">01</span>
+          <h3>無料お見積もり</h3>
+          <p>作業前に内容と費用を明確に。お見積もりは無料です。</p>
+        </div>
+        <div class="pricing__promise is-hover">
+          <span class="pricing__promise-num">02</span>
+          <h3>ご納得後に作業</h3>
+          <p>内容にご納得いただいてから作業開始。勝手に進めません。</p>
+        </div>
+        <div class="pricing__promise">
+          <span class="pricing__promise-num">03</span>
+          <h3>追加費用は事前説明</h3>
+          <p>万一の追加作業も、必ず事前にご相談・ご説明します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
