@@ -1,0 +1,111 @@
+<!-- @dsCard group="Components" name="Services list (expertise)" subtitle="Numbered offerings list — What We Offer, with hover state" width="800" height="660" -->
+<!doctype html>
+<html lang="ja" class="lang-ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services list (expertise)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e8e8e8;
+      --gray-400: #aaa;
+      --gray-600: #666;
+      --gray-700: #444;
+      --gray-800: #222;
+      --font-en: 'Inter', system-ui, sans-serif;
+      --font-jp: 'Noto Sans JP', sans-serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-serif-jp: 'Noto Serif JP', serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.8;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color:inherit; text-decoration:none; }
+
+    /* ===== EXPERTISE — numbered text list ===== */
+    .expertise {
+      padding: 56px 48px 64px;
+      max-width: 900px; margin: 0 auto;
+    }
+    .expertise__head {
+      font-family: var(--font-serif); font-size: 48px; font-weight: 400;
+      letter-spacing: 0.02em; color: var(--black);
+      margin-bottom: 32px;
+      line-height: 1.2;
+    }
+    .expertise__item {
+      display: flex; align-items: baseline; gap: 32px;
+      padding: 24px 0; border-bottom: 1px solid var(--gray-200);
+      transition: transform 0.4s var(--ease);
+    }
+    .expertise__num {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+      color: var(--gray-400); flex-shrink: 0; width: 32px;
+      transition: color 0.4s ease;
+    }
+    .expertise__name {
+      font-family: var(--font-jp); font-size: 16px; font-weight: 500;
+      flex: 1;
+    }
+    /* Hover state (rendered statically) */
+    .expertise__item.is-hover { transform: translateX(8px); }
+    .expertise__item.is-hover .expertise__num { color: var(--black); }
+
+    /* Design-system annotation tag (not part of the component) */
+    .ds-state {
+      align-self: center;
+      font-family: var(--font-en); font-size: 9px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gray-400);
+      border: 1px solid var(--gray-200);
+      padding: 2px 8px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body class="lang-ja">
+  <section class="expertise">
+    <div class="expertise__head">What We Offer</div>
+    <a href="#" class="expertise__item">
+      <span class="expertise__num">01</span>
+      <span class="expertise__name">新車・中古車販売</span>
+    </a>
+    <a href="#" class="expertise__item is-hover">
+      <span class="expertise__num">02</span>
+      <span class="expertise__name">車検</span>
+      <span class="ds-state">Hover</span>
+    </a>
+    <a href="#" class="expertise__item">
+      <span class="expertise__num">03</span>
+      <span class="expertise__name">整備・メンテナンス</span>
+    </a>
+    <a href="#" class="expertise__item">
+      <span class="expertise__num">04</span>
+      <span class="expertise__name">板金塗装・事故修理</span>
+    </a>
+    <a href="#" class="expertise__item">
+      <span class="expertise__num">05</span>
+      <span class="expertise__name">登録・名義変更</span>
+    </a>
+    <a href="#" class="expertise__item">
+      <span class="expertise__num">06</span>
+      <span class="expertise__name">保険</span>
+    </a>
+  </section>
+</body>
+</html>

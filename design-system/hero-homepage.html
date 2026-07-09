@@ -1,0 +1,152 @@
+<!-- @dsCard group="Hero" name="Homepage hero" subtitle="Full-screen cinematic: scrim, sub-label, serif JA headline, dual CTAs, scroll arrow" width="1200" height="700" -->
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Homepage hero — Hillside Auto Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Copied from index.html inline styles (hero section), simplified to static:
+       - .js entrance choreography removed (states render immediately)
+       - heroZoom animation removed
+       - background photo replaced by solid #111 stand-in */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e8e8e8;
+      --gray-400: #aaa;
+      --gray-600: #666;
+      --gray-700: #444;
+      --gray-800: #222;
+      --font-en: 'Inter', system-ui, sans-serif;
+      --font-jp: 'Noto Sans JP', sans-serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-serif-jp: 'Noto Serif JP', serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+      color: var(--black);
+      background: var(--black);
+      line-height: 1.8;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== HERO — full-screen cinematic ===== */
+    .hero {
+      position: relative; height: 100vh; height: 100svh; overflow: hidden;
+      display: flex; align-items: flex-end;
+    }
+    .hero__img {
+      position: absolute; inset: 0;
+      background-color: #111; /* PHOTO stand-in (storefront-hero-1920.webp) */
+      background-size: cover; background-position: center;
+      background-repeat: no-repeat;
+      filter: brightness(0.55);
+    }
+    .hero__img::after {
+      content: ''; position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 55%, rgba(0,0,0,0.72) 100%);
+    }
+    /* photo stand-in caption (preview only) */
+    .hero__photo-note {
+      position: absolute; top: 28px; left: 40px; z-index: 2;
+      font-size: 9px; font-weight: 500; letter-spacing: 0.35em;
+      text-transform: uppercase; color: rgba(255,255,255,0.22);
+    }
+    .hero__body {
+      position: relative; z-index: 2;
+      padding: 0 8% 100px; color: var(--white); max-width: 680px;
+    }
+    .hero__sub {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.35em;
+      text-transform: uppercase; opacity: 0.75; margin-bottom: 24px;
+    }
+    .hero__h1 {
+      font-family: var(--font-serif); font-size: 72px; font-weight: 300;
+      line-height: 1.15; letter-spacing: 0.01em;
+    }
+    body.lang-ja .hero__h1 {
+      font-family: var(--font-serif-jp); font-size: 56px; letter-spacing: 0.06em;
+    }
+
+    /* Hero CTA buttons */
+    .hero__ctas {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px;
+    }
+    .hero__cta {
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 18px 36px; min-width: 200px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--white);
+      border: 1px solid rgba(255,255,255,0.4);
+      transition: border-color 0.4s var(--ease);
+    }
+    .hero__cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-101%);
+      transition: transform 0.5s var(--ease); z-index: 0;
+    }
+    .hero__cta--filled::before { transform: translateX(0); }
+    .hero__cta--filled { color: var(--black); border-color: var(--white); }
+    .hero__cta > * { position: relative; z-index: 1; }
+    .hero__cta:hover { border-color: var(--white); }
+    .hero__cta:hover::before { transform: translateX(0); }
+    .hero__cta--filled:hover::before { transform: translateX(101%); }
+    .hero__cta:hover { color: var(--black); }
+    .hero__cta--filled:hover { color: var(--white); }
+    .hero__cta__arrow {
+      width: 28px; height: 1px; background: currentColor; position: relative;
+      transition: width 0.4s var(--ease);
+    }
+    .hero__cta__arrow::after {
+      content: ''; position: absolute; right: -1px; top: -3px;
+      width: 8px; height: 8px; border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+      transform: rotate(45deg);
+    }
+    .hero__cta:hover .hero__cta__arrow { width: 40px; }
+    .hero__arrow {
+      position: absolute; bottom: 32px; right: 40px; z-index: 2;
+      opacity: 0.4;
+    }
+  </style>
+</head>
+<body class="lang-ja">
+
+  <section class="hero">
+    <div class="hero__img"></div>
+    <span class="hero__photo-note">Photo</span>
+    <div class="hero__body">
+      <p class="hero__sub">Yokohama — Since 1949</p>
+      <h1 class="hero__h1">この交差点で、<br>76年売れ続けている理由。</h1>
+      <div class="hero__ctas">
+        <a href="#" class="hero__cta hero__cta--filled">
+          <span>お問い合わせ</span>
+          <span class="hero__cta__arrow"></span>
+        </a>
+        <a href="#" class="hero__cta">
+          <span>サービスを見る</span>
+          <span class="hero__cta__arrow"></span>
+        </a>
+      </div>
+    </div>
+    <div class="hero__arrow">
+      <svg width="16" height="48" viewBox="0 0 16 48" fill="none" stroke="#fff" stroke-width="1"><line x1="8" y1="0" x2="8" y2="44"/><polyline points="2,38 8,46 14,38"/></svg>
+    </div>
+  </section>
+
+</body>
+</html>

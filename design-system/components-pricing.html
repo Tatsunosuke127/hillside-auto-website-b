@@ -1,0 +1,156 @@
+<!-- @dsCard group="Components" name="Pricing table & promise" subtitle="Price rows, transparency statement, three promises" width="900" height="860" -->
+<!doctype html>
+<html lang="ja" class="lang-ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing table &amp; promise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e8e8e8;
+      --gray-400: #aaa;
+      --gray-600: #666;
+      --gray-700: #444;
+      --gray-800: #222;
+      --font-en: 'Inter', system-ui, sans-serif;
+      --font-jp: 'Noto Sans JP', sans-serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-serif-jp: 'Noto Serif JP', serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+      color: var(--black);
+      background: var(--gray-100);
+      line-height: 1.8;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== PRICING / PROMISE — Emphasized transparency statement ===== */
+    .pricing {
+      padding: 56px 48px;
+      background: var(--gray-100);
+    }
+    .pricing__inner { max-width: 900px; margin: 0 auto; }
+
+    /* Pricing list */
+    .pricing__list { border-top: 1px solid var(--gray-200); margin-bottom: 48px; }
+    .pricing__row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 22px 0; border-bottom: 1px solid var(--gray-200);
+      gap: 16px;
+    }
+    .pricing__name { font-size: 14px; font-weight: 500; }
+    .pricing__detail { font-size: 11px; color: var(--gray-600); letter-spacing: 0.04em; margin-top: 4px; }
+    .pricing__price {
+      font-family: var(--font-serif); font-size: 22px; font-weight: 400;
+      color: var(--black); letter-spacing: 0.01em; white-space: nowrap;
+    }
+    .pricing__price small {
+      font-size: 11px; opacity: 0.6; margin-left: 2px;
+      font-family: var(--font-en); font-weight: 400;
+    }
+
+    /* Emphasized statement card */
+    .pricing__statement {
+      position: relative;
+      padding: 48px 32px 40px;
+      background: var(--white);
+      border-left: 4px solid var(--black);
+      margin-bottom: 32px;
+    }
+    .pricing__statement-mark {
+      font-family: var(--font-serif-jp); font-size: 24px; font-weight: 500;
+      color: var(--black); line-height: 1.4; margin: 0 0 20px;
+      letter-spacing: 0.04em;
+    }
+    .pricing__statement-body {
+      font-size: 14px; color: var(--gray-700); line-height: 2;
+      margin: 0;
+    }
+
+    /* 3 promises */
+    .pricing__promises {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .pricing__promise {
+      padding: 24px 28px;
+      background: var(--white); border: 1px solid var(--gray-200);
+    }
+    .pricing__promise-num {
+      font-family: var(--font-serif); font-size: 12px;
+      color: var(--gray-600); letter-spacing: 0.1em;
+      display: block; margin-bottom: 8px;
+    }
+    .pricing__promise h3 {
+      font-size: 14px; font-weight: 600; margin: 0 0 6px;
+      letter-spacing: 0.02em;
+    }
+    .pricing__promise p {
+      font-size: 12px; color: var(--gray-600); line-height: 1.8; margin: 0;
+    }
+  </style>
+</head>
+<body class="lang-ja">
+  <section class="pricing">
+    <div class="pricing__inner">
+      <div class="pricing__list">
+        <div class="pricing__row">
+          <div>
+            <div class="pricing__name">車検（軽自動車）</div>
+            <div class="pricing__detail">法定費用・整備費込み</div>
+          </div>
+          <div class="pricing__price">¥65,000<small> 〜</small></div>
+        </div>
+        <div class="pricing__row">
+          <div>
+            <div class="pricing__name">車検（普通車）</div>
+            <div class="pricing__detail">法定費用・整備費込み</div>
+          </div>
+          <div class="pricing__price">¥85,000<small> 〜</small></div>
+        </div>
+        <div class="pricing__row">
+          <div>
+            <div class="pricing__name">オイル交換（軽自動車）</div>
+            <div class="pricing__detail">純正・推奨グレードのオイル使用</div>
+          </div>
+          <div class="pricing__price">¥5,000<small> 〜</small></div>
+        </div>
+      </div>
+
+      <div class="pricing__statement">
+        <p class="pricing__statement-mark">価格はすべて目安です。<br>不透明な費用は、一切ありません。</p>
+        <p class="pricing__statement-body">お車の状態・年式・必要な作業によって料金は変動します。だからこそ、私たちは事前にお見積もりをお出しし、ご納得いただいてから作業を開始します。追加費用が発生する場合は、必ず事前にご説明します。</p>
+      </div>
+
+      <div class="pricing__promises">
+        <div class="pricing__promise">
+          <span class="pricing__promise-num">01</span>
+          <h3>無料お見積もり</h3>
+          <p>作業前に内容と費用を明確に。お見積もりは無料です。</p>
+        </div>
+        <div class="pricing__promise">
+          <span class="pricing__promise-num">02</span>
+          <h3>ご納得後に作業</h3>
+          <p>内容にご納得いただいてから作業開始。勝手に進めません。</p>
+        </div>
+        <div class="pricing__promise">
+          <span class="pricing__promise-num">03</span>
+          <h3>追加費用は事前説明</h3>
+          <p>万一の追加作業も、必ず事前にご相談・ご説明します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

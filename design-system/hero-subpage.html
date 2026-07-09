@@ -1,0 +1,102 @@
+<!-- @dsCard group="Hero" name="Subpage page-hero" subtitle="55vh dark block with grayscale photo treatment, sub-label, serif h1, desc line" width="1200" height="480" -->
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Subpage page-hero — Hillside Auto Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Copied from css/site.css (.page-hero, unified subpage hero), simplified to static:
+       - .js entrance choreography removed (states render immediately)
+       - desktop (min-width:768px) values baked in
+       - photo replaced by solid #111 stand-in; real photo gets
+         filter: grayscale(100%) brightness(0.45) */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e8e8e8;
+      --gray-400: #aaa;
+      --gray-600: #666;
+      --gray-700: #444;
+      --gray-800: #222;
+      --font-en: 'Inter', system-ui, sans-serif;
+      --font-jp: 'Noto Sans JP', sans-serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-serif-jp: 'Noto Serif JP', serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.8;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+      padding: 24px; /* preview framing only */
+    }
+
+    /* ===== PAGE HERO (subpage cinematic) ===== */
+    .page-hero {
+      position: relative;
+      height: 62vh; height: 62svh; /* mobile: 55vh */
+      min-height: 380px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .page-hero__img {
+      position: absolute; inset: 0;
+      background-color: #111; /* PHOTO stand-in (e.g. jimny-street.webp) */
+      background-size: cover; background-position: center;
+      background-repeat: no-repeat;
+      filter: grayscale(100%) brightness(0.45);
+    }
+    /* photo stand-in caption (preview only) */
+    .page-hero__photo-note {
+      position: absolute; top: 24px; left: 8%; z-index: 2;
+      font-size: 9px; font-weight: 500; letter-spacing: 0.35em;
+      text-transform: uppercase; color: rgba(255,255,255,0.22);
+    }
+    .page-hero__body {
+      position: relative; z-index: 2;
+      padding: 0 8% 64px; color: var(--white); max-width: 760px;
+    }
+    .page-hero__sub {
+      font-family: var(--font-en);
+      font-size: 10px; font-weight: 500; letter-spacing: 0.35em;
+      text-transform: uppercase; opacity: 0.6; margin: 0 0 16px;
+    }
+    .page-hero h1 {
+      font-family: var(--font-serif); font-size: 52px; font-weight: 300;
+      line-height: 1.2; letter-spacing: 0.01em; margin: 0; color: var(--white);
+    }
+    body.lang-ja .page-hero h1 {
+      font-family: var(--font-serif-jp); font-size: 38px; letter-spacing: 0.05em;
+    }
+    .page-hero__desc {
+      font-size: 14px; color: rgba(255,255,255,0.65);
+      margin: 14px 0 0; line-height: 1.9; letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body class="lang-ja">
+
+  <section class="page-hero">
+    <div class="page-hero__img"></div>
+    <span class="page-hero__photo-note">Photo — grayscale 100% / brightness 0.45</span>
+    <div class="page-hero__body">
+      <p class="page-hero__sub">Services</p>
+      <h1>サービス一覧</h1>
+      <p class="page-hero__desc">お車に関するあらゆるニーズにお応えします</p>
+    </div>
+  </section>
+
+</body>
+</html>

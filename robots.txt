@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /design-system/
 
 Sitemap: https://www.hillside-auto.jp/sitemap.xml

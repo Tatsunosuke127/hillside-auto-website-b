@@ -1,0 +1,133 @@
+<!-- @dsCard group="Components" name="Pricing detail modal" subtitle="Static modal panel over dimmed backdrop" width="800" height="600" -->
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing detail modal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --black: #000;
+      --white: #fff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e8e8e8;
+      --gray-400: #aaa;
+      --gray-600: #666;
+      --gray-700: #444;
+      --gray-800: #222;
+      --font-en: 'Inter', system-ui, sans-serif;
+      --font-jp: 'Noto Sans JP', sans-serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-serif-jp: 'Noto Serif JP', serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    body {
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.8;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+    button { cursor:pointer; font:inherit; border:none; background:none; color:inherit; }
+
+    /* ===== MODAL ===== */
+    .modal {
+      position: fixed; inset: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal.active { opacity: 1; visibility: visible; }
+    .modal__backdrop {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+    }
+    .modal__panel {
+      position: relative;
+      background: var(--white);
+      max-width: 720px; width: 100%;
+      max-height: 88vh; overflow-y: auto;
+      padding: 32px 24px;
+      transform: translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .modal.active .modal__panel { transform: translateY(0); }
+    .modal__close {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; line-height: 1; color: var(--gray-600);
+      transition: color 0.2s ease;
+    }
+    .modal__close:hover { color: var(--black); }
+    .modal__label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gray-600);
+    }
+    .modal__title {
+      font-family: var(--font-serif); font-size: 26px; font-weight: 400;
+      margin: 8px 0 24px; line-height: 1.3;
+    }
+    /* JA variant (body.lang-ja .modal__title on site) */
+    .modal__title--ja {
+      font-family: var(--font-serif-jp); font-size: 22px;
+    }
+    .modal__section { margin-bottom: 32px; }
+    .modal__section:last-child { margin-bottom: 0; }
+    .modal__section-title {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+      margin-bottom: 12px; padding-bottom: 8px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .modal__row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 10px 0; gap: 12px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .modal__row:last-child { border-bottom: none; }
+    .modal__row-name { color: var(--gray-800); font-weight: 500; }
+    .modal__row-price {
+      font-family: var(--font-serif); font-size: 16px; font-weight: 400;
+      color: var(--black); white-space: nowrap;
+    }
+    .modal__note {
+      margin-top: 20px; padding: 14px 16px;
+      background: var(--gray-100);
+      font-size: 12px; color: var(--gray-700); line-height: 1.8;
+    }
+    @media (min-width: 640px) {
+      .modal__panel { padding: 48px 56px; }
+      .modal__title { font-size: 30px; }
+      .modal__title--ja { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="modal active" role="dialog" aria-modal="true" aria-labelledby="modalTiresTitle">
+    <div class="modal__backdrop"></div>
+    <div class="modal__panel">
+      <button class="modal__close" aria-label="Close">×</button>
+      <p class="modal__label">Pricing Detail</p>
+      <h3 class="modal__title modal__title--ja" id="modalTiresTitle">タイヤ交換 料金</h3>
+      <div class="modal__section">
+        <h4 class="modal__section-title">タイヤ本体価格（販売）</h4>
+        <div class="modal__row"><span class="modal__row-name">145/R12/6PR</span><span class="modal__row-price">¥7,700</span></div>
+        <div class="modal__row"><span class="modal__row-name">145/80R13</span><span class="modal__row-price">¥9,350</span></div>
+        <div class="modal__row"><span class="modal__row-name">155/65R14</span><span class="modal__row-price">¥11,770</span></div>
+        <p class="modal__note">※ 1本あたりの価格（税込）。他のサイズはお気軽にお問い合わせください。</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

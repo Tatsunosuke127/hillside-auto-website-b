@@ -1,0 +1,279 @@
+<!-- @dsCard group="Components" name="Buttons" subtitle="Hero CTA / pricing inquiry / btn variants — default + hover states" width="880" height="780" -->
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buttons — Hillside Auto Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --black: #000;
+    --white: #fff;
+    --gray-100: #f5f5f5;
+    --gray-200: #e8e8e8;
+    --gray-400: #aaa;
+    --gray-600: #666;
+    --gray-700: #444;
+    --gray-800: #222;
+    --font-en: 'Inter', system-ui, sans-serif;
+    --font-jp: 'Noto Sans JP', sans-serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-serif-jp: 'Noto Serif JP', serif;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-base: 0.4s var(--ease);
+  }
+
+  body {
+    font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.8;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== Hero CTA (from index.html) ===== */
+  .hero__cta {
+    position: relative; overflow: hidden;
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 18px 36px; min-width: 200px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--white);
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: border-color 0.4s var(--ease);
+  }
+  .hero__cta::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--white); transform: translateX(-101%);
+    transition: transform 0.5s var(--ease); z-index: 0;
+  }
+  .hero__cta--filled::before { transform: translateX(0); }
+  .hero__cta--filled { color: var(--black); border-color: var(--white); }
+  .hero__cta > * { position: relative; z-index: 1; }
+  .hero__cta__arrow {
+    width: 28px; height: 1px; background: currentColor; position: relative;
+    transition: width 0.4s var(--ease);
+  }
+  .hero__cta__arrow::after {
+    content: ''; position: absolute; right: -1px; top: -3px;
+    width: 8px; height: 8px; border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
+  /* Hover state applied statically via .is-hover */
+  .hero__cta.is-hover { border-color: var(--white); color: var(--black); }
+  .hero__cta.is-hover::before { transform: translateX(0); }
+  .hero__cta.is-hover .hero__cta__arrow { width: 40px; }
+  .hero__cta--filled.is-hover { color: var(--white); }
+  .hero__cta--filled.is-hover::before { transform: translateX(101%); }
+
+  /* ===== Pricing inquiry button (from index.html) ===== */
+  .pricing__inquiry-btn {
+    position: relative; overflow: hidden;
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 14px 28px;
+    background: var(--black); color: var(--white);
+    font-family: var(--font-en); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    border: 1px solid var(--black);
+    transition: color 0.4s var(--ease);
+  }
+  .pricing__inquiry-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--white); transform: translateX(-101%);
+    transition: transform 0.5s var(--ease); z-index: 0;
+  }
+  .pricing__inquiry-btn > * { position: relative; z-index: 1; }
+  .pricing__inquiry-btn__line {
+    width: 22px; height: 1px; background: currentColor; position: relative;
+    transition: width 0.4s var(--ease);
+  }
+  .pricing__inquiry-btn__line::after {
+    content: ''; position: absolute; right: -1px; top: -3px;
+    width: 7px; height: 7px;
+    border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
+  /* Hover state applied statically via .is-hover */
+  .pricing__inquiry-btn.is-hover { color: var(--black); }
+  .pricing__inquiry-btn.is-hover::before { transform: translateX(0); }
+  .pricing__inquiry-btn.is-hover .pricing__inquiry-btn__line { width: 34px; }
+
+  /* ===== .btn variants (from css/components.css) ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.75rem 2rem;
+    font-family: var(--font-en);
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+  .btn--primary {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+  }
+  .btn--outline {
+    border: 1px solid var(--white);
+    color: var(--white);
+    background: transparent;
+  }
+  .btn--outline-dark {
+    border: 1px solid var(--black);
+    color: var(--black);
+    background: transparent;
+  }
+  .btn--sm { padding: 0.5rem 1.25rem; font-size: 0.7rem; }
+  .btn--lg { padding: 0.85rem 2.5rem; font-size: 0.75rem; }
+  /* Hover states applied statically via .is-hover */
+  .btn--primary.is-hover { background: var(--gray-700); border-color: var(--gray-700); }
+  .btn--outline.is-hover { background: var(--white); color: var(--black); }
+  .btn--outline-dark.is-hover { background: var(--black); color: var(--white); }
+
+  /* ===== Preview scaffolding ===== */
+  .ds-half { padding: 40px 44px 28px; }
+  .ds-half--dark { background: var(--black); }
+  .ds-half--light { background: var(--white); }
+  .ds-label {
+    font-family: var(--font-en);
+    font-size: 10px; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; margin-bottom: 18px;
+  }
+  .ds-half--dark .ds-label { color: rgba(255,255,255,0.45); }
+  .ds-half--light .ds-label { color: var(--gray-400); }
+  .ds-row {
+    display: flex; flex-wrap: wrap; align-items: flex-start;
+    gap: 18px 24px; margin-bottom: 32px;
+  }
+  .ds-state { display: flex; flex-direction: column; gap: 9px; }
+  .ds-cap {
+    font-family: var(--font-en);
+    font-size: 9px; font-weight: 400; letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .ds-half--dark .ds-cap { color: rgba(255,255,255,0.35); }
+  .ds-half--light .ds-cap { color: var(--gray-400); }
+</style>
+</head>
+<body>
+
+  <!-- ===== DARK HALF — white / outline buttons ===== -->
+  <div class="ds-half ds-half--dark">
+    <p class="ds-label">Hero CTA — .hero__cta</p>
+    <div class="ds-row">
+      <div class="ds-state">
+        <a class="hero__cta hero__cta--filled" href="#">
+          <span>お問い合わせ</span>
+          <span class="hero__cta__arrow"></span>
+        </a>
+        <span class="ds-cap">Filled / Default</span>
+      </div>
+      <div class="ds-state">
+        <a class="hero__cta hero__cta--filled is-hover" href="#">
+          <span>お問い合わせ</span>
+          <span class="hero__cta__arrow"></span>
+        </a>
+        <span class="ds-cap">Filled / Hover</span>
+      </div>
+      <div class="ds-state">
+        <a class="hero__cta" href="#">
+          <span>サービスを見る</span>
+          <span class="hero__cta__arrow"></span>
+        </a>
+        <span class="ds-cap">Outline / Default</span>
+      </div>
+      <div class="ds-state">
+        <a class="hero__cta is-hover" href="#">
+          <span>サービスを見る</span>
+          <span class="hero__cta__arrow"></span>
+        </a>
+        <span class="ds-cap">Outline / Hover</span>
+      </div>
+    </div>
+
+    <p class="ds-label">On dark — .btn--outline</p>
+    <div class="ds-row">
+      <div class="ds-state">
+        <a class="btn btn--outline btn--lg" href="#">お問い合わせフォーム</a>
+        <span class="ds-cap">Default</span>
+      </div>
+      <div class="ds-state">
+        <a class="btn btn--outline btn--lg is-hover" href="#">お問い合わせフォーム</a>
+        <span class="ds-cap">Hover</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LIGHT HALF — dark buttons ===== -->
+  <div class="ds-half ds-half--light">
+    <p class="ds-label">Pricing inquiry — .pricing__inquiry-btn</p>
+    <div class="ds-row">
+      <div class="ds-state">
+        <a class="pricing__inquiry-btn" href="#">
+          <span>お問い合わせ</span>
+          <span class="pricing__inquiry-btn__line"></span>
+        </a>
+        <span class="ds-cap">Default</span>
+      </div>
+      <div class="ds-state">
+        <a class="pricing__inquiry-btn is-hover" href="#">
+          <span>お問い合わせ</span>
+          <span class="pricing__inquiry-btn__line"></span>
+        </a>
+        <span class="ds-cap">Hover</span>
+      </div>
+    </div>
+
+    <p class="ds-label">.btn--primary / .btn--outline-dark</p>
+    <div class="ds-row">
+      <div class="ds-state">
+        <a class="btn btn--primary" href="#">購入・買取の予約</a>
+        <span class="ds-cap">Primary / Default</span>
+      </div>
+      <div class="ds-state">
+        <a class="btn btn--primary is-hover" href="#">購入・買取の予約</a>
+        <span class="ds-cap">Primary / Hover</span>
+      </div>
+      <div class="ds-state">
+        <a class="btn btn--outline-dark" href="#">車検の予約</a>
+        <span class="ds-cap">Outline dark / Default</span>
+      </div>
+      <div class="ds-state">
+        <a class="btn btn--outline-dark is-hover" href="#">車検の予約</a>
+        <span class="ds-cap">Outline dark / Hover</span>
+      </div>
+    </div>
+
+    <p class="ds-label">Sizes — .btn--sm / default / .btn--lg</p>
+    <div class="ds-row">
+      <div class="ds-state">
+        <a class="btn btn--primary btn--sm" href="#">詳しく見る</a>
+        <span class="ds-cap">Small</span>
+      </div>
+      <div class="ds-state">
+        <a class="btn btn--primary" href="#">詳しく見る</a>
+        <span class="ds-cap">Default</span>
+      </div>
+      <div class="ds-state">
+        <a class="btn btn--primary btn--lg" href="#">詳しく見る</a>
+        <span class="ds-cap">Large</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

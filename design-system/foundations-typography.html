@@ -1,0 +1,145 @@
+<!-- @dsCard group="Foundations" name="Typography" subtitle="Serif display scale, Inter body, uppercase micro-labels" width="900" height="820" -->
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foundations — Typography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* Tokens copied from index.html :root */
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --black: #000;
+    --white: #fff;
+    --gray-100: #f5f5f5;
+    --gray-200: #e8e8e8;
+    --gray-400: #aaa;
+    --gray-600: #666;
+    --gray-700: #444;
+    --gray-800: #222;
+    --font-en: 'Inter', system-ui, sans-serif;
+    --font-jp: 'Noto Sans JP', sans-serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-serif-jp: 'Noto Serif JP', serif;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  body {
+    font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.8;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+    padding: 48px;
+  }
+
+  /* Specimen scaffolding (design-system page only) */
+  .ds-label {
+    display: block;
+    font-family: var(--font-en); font-size: 10px; font-weight: 500;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gray-400); margin-bottom: 12px;
+  }
+  .ds-title {
+    font-family: var(--font-serif); font-size: 32px; font-weight: 300;
+    line-height: 1.3; margin-bottom: 40px;
+  }
+  .spec {
+    padding: 28px 0;
+    border-top: 1px solid var(--gray-200);
+  }
+  .spec__meta {
+    font-family: var(--font-en); font-size: 10px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gray-400); margin-bottom: 14px;
+  }
+
+  /* 1. Hero display EN — copied from .hero__h1 (42px base, 56px @768, 72px @1200) */
+  .type-hero-en {
+    font-family: var(--font-serif); font-size: 72px; font-weight: 300;
+    line-height: 1.15; letter-spacing: 0.01em;
+  }
+
+  /* 2. Hero display JA — copied from body.lang-ja .hero__h1 (34px base, 46px @768, 56px @1200) */
+  .type-hero-ja {
+    font-family: var(--font-serif-jp); font-size: 56px; font-weight: 300;
+    line-height: 1.15; letter-spacing: 0.06em;
+  }
+
+  /* 3. Section heading — copied from .pricing__head h2 / .how__head h2 */
+  .type-h2-en {
+    font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 44px); font-weight: 300;
+    line-height: 1.3;
+  }
+  .type-h2-ja {
+    font-family: var(--font-serif-jp); font-size: clamp(24px, 3vw, 34px); font-weight: 300;
+    line-height: 1.3; margin-top: 8px;
+  }
+
+  /* 4. Body — copied from body */
+  .type-body {
+    font-family: var(--font-en), 'Noto Sans JP', system-ui, sans-serif;
+    font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: 0.02em;
+    max-width: 620px;
+  }
+  .type-body--muted { font-size: 13px; color: var(--gray-600); line-height: 1.9; margin-top: 8px; }
+
+  /* 5. Micro-labels — copied from .section__label and .hero__sub */
+  .type-micro {
+    font-family: var(--font-en); font-size: 10px; font-weight: 500;
+    letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-400);
+  }
+  .type-micro--hero {
+    display: inline-block; margin-top: 14px;
+    background: var(--black); color: var(--white); opacity: 0.9;
+    padding: 8px 14px;
+    font-size: 10px; letter-spacing: 0.35em;
+  }
+  .type-nav {
+    display: inline-block; margin-top: 14px;
+    font-family: var(--font-en); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-600);
+  }
+</style>
+</head>
+<body>
+
+  <span class="ds-label">Foundations</span>
+  <h1 class="ds-title">Typography</h1>
+
+  <div class="spec">
+    <p class="spec__meta">Hero display EN — Cormorant Garamond 300 / 42→72px / lh 1.15 / ls 0.01em</p>
+    <div class="type-hero-en">Who can you trust<br>with your car in Japan?</div>
+  </div>
+
+  <div class="spec">
+    <p class="spec__meta">Hero display JA — Noto Serif JP 300 / 34→56px / lh 1.15 / ls 0.06em</p>
+    <div class="type-hero-ja">この交差点で、<br>76年売れ続けている理由。</div>
+  </div>
+
+  <div class="spec">
+    <p class="spec__meta">Section heading — Cormorant 300 clamp(28px, 3.5vw, 44px) / JA: Noto Serif JP clamp(24px, 3vw, 34px)</p>
+    <h2 class="type-h2-en">Pricing Guide</h2>
+    <h2 class="type-h2-ja">料金の目安</h2>
+  </div>
+
+  <div class="spec">
+    <p class="spec__meta">Body — Inter + Noto Sans JP 400 / 14px / lh 1.8 / ls 0.02em</p>
+    <p class="type-body">車検、整備、販売、買取、登録・名義変更まで。横浜市中区麦田町・山手公園前交差点で1949年から続く、家族経営の自動車店です。</p>
+    <p class="type-body type-body--muted">Muted 13px / --gray-600 — Shaken, maintenance, sales and registration. All in English, since 1949 in Yokohama.</p>
+  </div>
+
+  <div class="spec">
+    <p class="spec__meta">Micro-labels — Inter 500 uppercase / 10–11px / ls 0.2–0.35em</p>
+    <span class="type-micro">Pricing</span><br>
+    <span class="type-micro--hero">Yokohama — Since 1949</span><br>
+    <span class="type-nav">Services &nbsp;&nbsp; About &nbsp;&nbsp; Contact</span>
+  </div>
+
+</body>
+</html>
