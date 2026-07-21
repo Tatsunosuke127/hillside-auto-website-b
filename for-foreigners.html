@@ -31,12 +31,249 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":["AutoRepair","AutoDealer"],"name":"Hillside Auto Inc.","alternateName":"ヒルサイドオート株式会社","url":"https://www.hillside-auto.jp/","telephone":"+81-45-641-3307","foundingDate":"1949","image":"https://www.hillside-auto.jp/images/og.jpg","address":{"@type":"PostalAddress","streetAddress":"麦田町1-40","addressLocality":"横浜市中区","addressRegion":"神奈川県","postalCode":"231-0849","addressCountry":"JP"},"geo":{"@type":"GeoCoordinates","latitude":35.434141,"longitude":139.6470125},"hasMap":"https://maps.app.goo.gl/iaCxwbdv7EDR1VVKA","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:00"}],"availableLanguage":["ja","en"],"areaServed":"Naka-ku, Yokohama, Kanagawa, Japan","sameAs":["https://www.instagram.com/hillside_auto_inc/","https://www.facebook.com/hillsideautoinc/"]}
+  </script>
+  <!-- Pricing + modal styles (ported from homepage) -->
+  <style>
+    /* ===== PRICING / PROMISE — Emphasized transparency statement ===== */
+    .pricing {
+      padding: 100px 40px;
+      background: var(--gray-100);
+    }
+    .pricing__inner { max-width: 900px; margin: 0 auto; }
+    .pricing__head { margin-bottom: 48px; }
+    .pricing__head h2 {
+      font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 44px); font-weight: 300;
+      margin-top: 12px; line-height: 1.3;
+    }
+    body.lang-ja .pricing__head h2 {
+      font-family: var(--font-serif-jp); font-size: clamp(24px, 3vw, 34px);
+    }
+    /* Pricing list (restored) */
+    .pricing__list { border-top: 1px solid var(--gray-200); margin-bottom: 56px; }
+    .pricing__row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 22px 0; border-bottom: 1px solid var(--gray-200);
+      gap: 16px;
+    }
+    .pricing__name { font-size: 14px; font-weight: 500; }
+    .pricing__detail { font-size: 11px; color: var(--gray-600); letter-spacing: 0.04em; margin-top: 4px; }
+    .pricing__price {
+      font-family: var(--font-serif); font-size: 22px; font-weight: 400;
+      color: var(--black); letter-spacing: 0.01em; white-space: nowrap;
+    }
+    .pricing__price small {
+      font-size: 11px; opacity: 0.6; margin-left: 2px;
+      font-family: var(--font-en); font-weight: 400;
+    }
+    /* "詳細を見る" link inside a pricing row */
+    .pricing__row--clickable { cursor: pointer; transition: background 0.2s ease; }
+    .pricing__row--clickable:hover { background: rgba(0,0,0,0.02); }
+    .pricing__see {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-en); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--black); white-space: nowrap;
+    }
+    .pricing__see::after {
+      content: ''; width: 14px; height: 1px; background: currentColor;
+      position: relative;
+    }
+    .pricing__see-wrap {
+      position: relative; padding-right: 10px;
+    }
+    .pricing__see-wrap::after {
+      content: ''; position: absolute; right: 0; top: 50%;
+      width: 7px; height: 7px;
+      border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    /* ===== MODAL ===== */
+    .modal {
+      position: fixed; inset: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal.active { opacity: 1; visibility: visible; }
+    .modal__backdrop {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+    }
+    .modal__panel {
+      position: relative;
+      background: var(--white);
+      max-width: 720px; width: 100%;
+      max-height: 88vh; overflow-y: auto;
+      padding: 32px 24px;
+      transform: translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .modal.active .modal__panel { transform: translateY(0); }
+    .modal__close {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; line-height: 1; color: var(--gray-600);
+      transition: color 0.2s ease;
+    }
+    .modal__close:hover { color: var(--black); }
+    .modal__label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gray-600);
+    }
+    .modal__title {
+      font-family: var(--font-serif); font-size: 26px; font-weight: 400;
+      margin: 8px 0 24px; line-height: 1.3;
+    }
+    body.lang-ja .modal__title {
+      font-family: var(--font-serif-jp); font-size: 22px;
+    }
+    .modal__section { margin-bottom: 32px; }
+    .modal__section:last-child { margin-bottom: 0; }
+    .modal__section-title {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+      margin-bottom: 12px; padding-bottom: 8px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .modal__row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 10px 0; gap: 12px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .modal__row:last-child { border-bottom: none; }
+    .modal__row-name { color: var(--gray-800); font-weight: 500; }
+    .modal__row-price {
+      font-family: var(--font-serif); font-size: 16px; font-weight: 400;
+      color: var(--black); white-space: nowrap;
+    }
+    .modal__note {
+      margin-top: 20px; padding: 14px 16px;
+      background: var(--gray-100);
+      font-size: 12px; color: var(--gray-700); line-height: 1.8;
+    }
+    body.modal-open { overflow: hidden; }
+    @media (min-width: 640px) {
+      .modal__panel { padding: 48px 56px; }
+      .modal__title { font-size: 30px; }
+      body.lang-ja .modal__title { font-size: 26px; }
+    }
+
+    /* Inquiry CTA — for prices not listed */
+    .pricing__inquiry {
+      display: flex; flex-direction: column; align-items: flex-start;
+      gap: 20px;
+      padding: 28px 24px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      margin-bottom: 32px;
+    }
+    .pricing__inquiry-text {
+      font-size: 14px; line-height: 1.8;
+      color: var(--gray-800); margin: 0;
+    }
+    .pricing__inquiry-text strong {
+      color: var(--black); font-weight: 600;
+    }
+    .pricing__inquiry-btn {
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 14px 28px;
+      background: var(--black); color: var(--white);
+      font-family: var(--font-en); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      border: 1px solid var(--black);
+      transition: color 0.4s var(--ease);
+    }
+    .pricing__inquiry-btn::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-101%);
+      transition: transform 0.5s var(--ease); z-index: 0;
+    }
+    .pricing__inquiry-btn > * { position: relative; z-index: 1; }
+    .pricing__inquiry-btn:hover { color: var(--black); }
+    .pricing__inquiry-btn:hover::before { transform: translateX(0); }
+    .pricing__inquiry-btn__line {
+      width: 22px; height: 1px; background: currentColor; position: relative;
+      transition: width 0.4s var(--ease);
+    }
+    .pricing__inquiry-btn__line::after {
+      content: ''; position: absolute; right: -1px; top: -3px;
+      width: 7px; height: 7px;
+      border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+      transform: rotate(45deg);
+    }
+    .pricing__inquiry-btn:hover .pricing__inquiry-btn__line { width: 34px; }
+    @media (min-width: 640px) {
+      .pricing__inquiry {
+        flex-direction: row; align-items: center; justify-content: space-between;
+        padding: 28px 32px; gap: 32px;
+      }
+      .pricing__inquiry-btn { flex-shrink: 0; }
+    }
+
+    /* Emphasized statement card */
+    .pricing__statement {
+      position: relative;
+      padding: 48px 32px 40px;
+      background: var(--white);
+      border-left: 4px solid var(--black);
+      margin-bottom: 32px;
+    }
+    .pricing__statement-mark {
+      font-family: var(--font-serif); font-size: 28px; font-weight: 500;
+      color: var(--black); line-height: 1.4; margin: 0 0 20px;
+      letter-spacing: 0.02em;
+    }
+    body.lang-ja .pricing__statement-mark {
+      font-family: var(--font-serif-jp); font-size: 24px; letter-spacing: 0.04em;
+    }
+    .pricing__statement-body {
+      font-size: 14px; color: var(--gray-700); line-height: 2;
+      margin: 0;
+    }
+    /* 3 promises */
+    .pricing__promises {
+      display: grid; grid-template-columns: 1fr; gap: 24px;
+    }
+    .pricing__promise {
+      padding: 24px 28px;
+      background: var(--white); border: 1px solid var(--gray-200);
+    }
+    .pricing__promise-num {
+      font-family: var(--font-serif); font-size: 12px;
+      color: var(--gray-600); letter-spacing: 0.1em;
+      display: block; margin-bottom: 8px;
+    }
+    .pricing__promise h3 {
+      font-size: 14px; font-weight: 600; margin: 0 0 6px;
+      letter-spacing: 0.02em;
+    }
+    .pricing__promise p {
+      font-size: 12px; color: var(--gray-600); line-height: 1.8; margin: 0;
+    }
+
+
+    @media (min-width: 768px) {
+
+      .pricing { padding: 140px 80px; }
+      .pricing__statement { padding: 64px 56px 56px; border-left-width: 6px; }
+      .pricing__statement-mark { font-size: 36px; }
+      body.lang-ja .pricing__statement-mark { font-size: 30px; }
+      .pricing__promises { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    }
+  </style>
 </head>
 <body class="lang-en" data-default-lang="en">
 
   <!-- NAV (unified) -->
   <nav class="nav" id="nav">
-    <a href="index.html" class="nav__logo">Hillside Auto</a>
+    <a href="/" class="nav__logo">Hillside Auto</a>
     <div class="nav__links">
       <a href="services.html">Services</a>
       <a href="for-foreigners.html" class="active">English</a>
@@ -56,7 +293,7 @@
 
   <!-- MOBILE OVERLAY -->
   <div class="nav-overlay" id="navOverlay">
-    <a href="index.html">Home</a>
+    <a href="/">Home</a>
     <a href="services.html">Services</a>
     <a href="for-foreigners.html">English</a>
     <a href="about.html">About</a>
@@ -119,7 +356,9 @@
           </div>
           <div class="service-card fade-in">
             <div class="service-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <h3 class="service-card__title" data-lang-en>Car Insurance</h3>
             <h3 class="service-card__title" data-lang-ja>保険</h3>
+            <p class="service-card__desc" data-lang-en>We recommend the right insurance plan for your situation and explain every clause in English — before you sign anything.</p>
             <p class="service-card__desc" data-lang-ja>最適な自動車保険プランをご提案します。</p>
           </div>
           <div class="service-card fade-in">
@@ -139,6 +378,123 @@
         </div>
       </div>
     </section>
+
+    <!-- PRICING — Transparency builds trust -->
+    <section class="pricing fi">
+      <div class="pricing__inner">
+        <div class="pricing__head">
+          <span class="section__label">Pricing</span>
+          <h2 data-lang-ja>料金の目安</h2>
+          <h2 data-lang-en>Pricing Guide</h2>
+        </div>
+        <div class="pricing__list">
+          <div class="pricing__row">
+            <div>
+              <div class="pricing__name" data-lang-ja>車検（軽自動車）</div>
+              <div class="pricing__name" data-lang-en>Shaken (Light Vehicle)</div>
+              <div class="pricing__detail" data-lang-ja>法定費用・整備費込み</div>
+              <div class="pricing__detail" data-lang-en>Includes statutory fees & basic service</div>
+            </div>
+            <div class="pricing__price">¥65,000<small> 〜</small></div>
+          </div>
+          <div class="pricing__row">
+            <div>
+              <div class="pricing__name" data-lang-ja>車検（普通車）</div>
+              <div class="pricing__name" data-lang-en>Shaken (Standard Vehicle)</div>
+              <div class="pricing__detail" data-lang-ja>法定費用・整備費込み</div>
+              <div class="pricing__detail" data-lang-en>Includes statutory fees & basic service</div>
+            </div>
+            <div class="pricing__price">¥85,000<small> 〜</small></div>
+          </div>
+          <div class="pricing__row">
+            <div>
+              <div class="pricing__name" data-lang-ja>オイル交換（軽自動車）</div>
+              <div class="pricing__name" data-lang-en>Oil Change (Light Vehicle)</div>
+              <div class="pricing__detail" data-lang-ja>純正・推奨グレードのオイル使用</div>
+              <div class="pricing__detail" data-lang-en>OEM / recommended grade oil</div>
+            </div>
+            <div class="pricing__price">¥5,000<small> 〜</small></div>
+          </div>
+          <div class="pricing__row">
+            <div>
+              <div class="pricing__name" data-lang-ja>オイル交換（普通車）</div>
+              <div class="pricing__name" data-lang-en>Oil Change (Standard Vehicle)</div>
+              <div class="pricing__detail" data-lang-ja>純正・推奨グレードのオイル使用</div>
+              <div class="pricing__detail" data-lang-en>OEM / recommended grade oil</div>
+            </div>
+            <div class="pricing__price">¥8,000<small> 〜</small></div>
+          </div>
+          <div class="pricing__row pricing__row--clickable" data-modal="tires">
+            <div>
+              <div class="pricing__name" data-lang-ja>タイヤ交換</div>
+              <div class="pricing__name" data-lang-en>Tire Replacement</div>
+              <div class="pricing__detail" data-lang-ja>サイズ・本数による（タイヤ販売・持込どちらも対応）</div>
+              <div class="pricing__detail" data-lang-en>Varies by size and quantity (we sell or fit yours)</div>
+            </div>
+            <div class="pricing__see-wrap"><span class="pricing__see" data-lang-ja>詳細を見る</span><span class="pricing__see" data-lang-en>View Details</span></div>
+          </div>
+          <div class="pricing__row pricing__row--clickable" data-modal="battery">
+            <div>
+              <div class="pricing__name" data-lang-ja>バッテリー交換</div>
+              <div class="pricing__name" data-lang-en>Battery Replacement</div>
+              <div class="pricing__detail" data-lang-ja>車種・型番による</div>
+              <div class="pricing__detail" data-lang-en>Varies by vehicle type and battery model</div>
+            </div>
+            <div class="pricing__see-wrap"><span class="pricing__see" data-lang-ja>詳細を見る</span><span class="pricing__see" data-lang-en>View Details</span></div>
+          </div>
+          <div class="pricing__row">
+            <div>
+              <div class="pricing__name" data-lang-ja>板金・キズ修理</div>
+              <div class="pricing__name" data-lang-en>Body Work & Scratch Repair</div>
+              <div class="pricing__detail" data-lang-ja>現車状態によります（例：フロントバンパーペイント ¥25,000）</div>
+              <div class="pricing__detail" data-lang-en>Depends on vehicle condition (e.g. front bumper paint ¥25,000)</div>
+            </div>
+            <div class="pricing__price" data-lang-ja><small style="font-size:13px;font-family:var(--font-jp);">要見積もり</small></div>
+            <div class="pricing__price" data-lang-en><small style="font-size:13px;font-family:var(--font-en);">Quote</small></div>
+          </div>
+        </div>
+
+        <!-- Inquiry CTA — for unlisted services -->
+        <div class="pricing__inquiry">
+          <p class="pricing__inquiry-text" data-lang-ja><strong>上記にない修理・整備の料金もお気軽にお問い合わせください。</strong><br>お車の状態に合わせて、無料でお見積もりをお出しします。<br><span style="font-size:11px;color:var(--gray-600);">フォーム・LINEは24時間受付。翌営業日にご返信します。</span></p>
+          <p class="pricing__inquiry-text" data-lang-en><strong>Curious about a service not listed here?</strong><br>Get in touch — we provide free, tailored estimates based on your vehicle.<br><span style="font-size:11px;color:var(--gray-600);">Form &amp; LINE available 24/7 — we reply next business day.</span></p>
+          <a href="contact.html" class="pricing__inquiry-btn">
+            <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact Us</span>
+            <span class="pricing__inquiry-btn__line"></span>
+          </a>
+        </div>
+
+        <div class="pricing__statement">
+          <p class="pricing__statement-mark" data-lang-ja>価格はすべて目安です。<br>不透明な費用は、一切ありません。</p>
+          <p class="pricing__statement-mark" data-lang-en>No hidden fees, ever.</p>
+          <p class="pricing__statement-body" data-lang-ja>お車の状態・年式・必要な作業によって料金は変動します。だからこそ、私たちは事前にお見積もりをお出しし、ご納得いただいてから作業を開始します。追加費用が発生する場合は、必ず事前にご説明します。</p>
+          <p class="pricing__statement-body" data-lang-en>Pricing varies based on your vehicle condition, year, and required work. That is exactly why we always provide a detailed estimate first — and begin work only after your approval. If any additional costs come up, we explain them before proceeding.</p>
+        </div>
+
+        <div class="pricing__promises">
+          <div class="pricing__promise">
+            <span class="pricing__promise-num">01</span>
+            <h3 data-lang-ja>無料お見積もり</h3>
+            <h3 data-lang-en>Free Estimate</h3>
+            <p data-lang-ja>作業前に内容と費用を明確に。お見積もりは無料です。</p>
+            <p data-lang-en>Clear scope and cost — provided free, before any work begins.</p>
+          </div>
+          <div class="pricing__promise">
+            <span class="pricing__promise-num">02</span>
+            <h3 data-lang-ja>ご納得後に作業</h3>
+            <h3 data-lang-en>Approved by You First</h3>
+            <p data-lang-ja>内容にご納得いただいてから作業開始。勝手に進めません。</p>
+            <p data-lang-en>We only begin once you approve. Nothing happens without your sign-off.</p>
+          </div>
+          <div class="pricing__promise">
+            <span class="pricing__promise-num">03</span>
+            <h3 data-lang-ja>追加費用は事前説明</h3>
+            <h3 data-lang-en>No Surprise Charges</h3>
+            <p data-lang-ja>万一の追加作業も、必ず事前にご相談・ご説明します。</p>
+            <p data-lang-en>If additional work is needed, we always discuss and explain it first.</p>
+          </div>
+        </div>
+      </section>
 
     <!-- Why Choose Us -->
     <section class="section section--gray">
@@ -343,6 +699,131 @@
     <span class="stick-cta__dot"></span>
     <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact us</span>
   </a>
+
+  <!-- MODAL: Tires -->
+  <div class="modal" id="modalTires" role="dialog" aria-modal="true" aria-labelledby="modalTiresTitle">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+      <button class="modal__close" aria-label="Close" data-close-modal>×</button>
+      <p class="modal__label">Pricing Detail</p>
+      <h3 class="modal__title" id="modalTiresTitle" data-lang-ja>タイヤ交換 料金</h3>
+      <h3 class="modal__title" id="modalTiresTitleEn" data-lang-en>Tire Replacement</h3>
+
+      <!-- Section 1: Tire price (sale) -->
+      <div class="modal__section">
+        <h4 class="modal__section-title" data-lang-ja>タイヤ本体価格（販売）</h4>
+        <h4 class="modal__section-title" data-lang-en>Tire Prices (when buying from us)</h4>
+        <div class="modal__row"><span class="modal__row-name">145/R12/6PR</span><span class="modal__row-price">¥7,700</span></div>
+        <div class="modal__row"><span class="modal__row-name">145/80R12</span><span class="modal__row-price">¥7,700</span></div>
+        <div class="modal__row"><span class="modal__row-name">145/80R13</span><span class="modal__row-price">¥9,350</span></div>
+        <div class="modal__row"><span class="modal__row-name">155/65R13</span><span class="modal__row-price">¥10,450</span></div>
+        <div class="modal__row"><span class="modal__row-name">155/65R14</span><span class="modal__row-price">¥11,770</span></div>
+        <p class="modal__note" data-lang-ja>※ 1本あたりの価格（税込）。他のサイズはお気軽にお問い合わせください。</p>
+        <p class="modal__note" data-lang-en>* Per tire (tax included). For other sizes, please inquire.</p>
+      </div>
+
+      <!-- Section 2: Labor (when buying tires) -->
+      <div class="modal__section">
+        <h4 class="modal__section-title" data-lang-ja>交換工賃（タイヤをこちらでご購入の場合・1本あたり）</h4>
+        <h4 class="modal__section-title" data-lang-en>Labor (when buying tires from us, per tire)</h4>
+        <div class="modal__row"><span class="modal__row-name" data-lang-ja>軽〜15インチ</span><span class="modal__row-name" data-lang-en>Light vehicle – 15"</span><span class="modal__row-price">¥2,200</span></div>
+        <div class="modal__row"><span class="modal__row-name">16〜17"</span><span class="modal__row-price">¥2,750</span></div>
+        <div class="modal__row"><span class="modal__row-name">18"</span><span class="modal__row-price">¥4,950</span></div>
+        <div class="modal__row"><span class="modal__row-name">19"</span><span class="modal__row-price">¥6,050</span></div>
+        <div class="modal__row"><span class="modal__row-name">20"</span><span class="modal__row-price">¥7,150</span></div>
+      </div>
+
+      <!-- Section 3: Labor (when bringing your own tires) -->
+      <div class="modal__section">
+        <h4 class="modal__section-title" data-lang-ja>交換工賃（タイヤ持込の場合・1本あたり）</h4>
+        <h4 class="modal__section-title" data-lang-en>Labor (when bringing your own tires, per tire)</h4>
+        <div class="modal__row"><span class="modal__row-name" data-lang-ja>軽〜15インチ</span><span class="modal__row-name" data-lang-en>Light vehicle – 15"</span><span class="modal__row-price">¥4,400</span></div>
+        <div class="modal__row"><span class="modal__row-name">16〜17"</span><span class="modal__row-price">¥5,500</span></div>
+        <div class="modal__row"><span class="modal__row-name">18"</span><span class="modal__row-price">¥6,600</span></div>
+        <div class="modal__row"><span class="modal__row-name">19"</span><span class="modal__row-price">¥8,800</span></div>
+        <p class="modal__note" data-lang-ja>※ 廃タイヤ処分費 1本 ¥825（税込）。</p>
+        <p class="modal__note" data-lang-en>* Tire disposal fee: ¥825 per tire (tax included).</p>
+      </div>
+
+      <!-- Section 4: Seasonal change (with wheels) -->
+      <div class="modal__section">
+        <h4 class="modal__section-title" data-lang-ja>タイヤ付替え工賃（ホイル付・1台あたり）</h4>
+        <h4 class="modal__section-title" data-lang-en>Seasonal Change (with wheels, per car)</h4>
+        <div class="modal__row"><span class="modal__row-name" data-lang-ja>軽〜16インチ</span><span class="modal__row-name" data-lang-en>Light vehicle – 16"</span><span class="modal__row-price">¥4,400</span></div>
+        <div class="modal__row"><span class="modal__row-name">17〜18"</span><span class="modal__row-price">¥6,600</span></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL: Battery -->
+  <div class="modal" id="modalBattery" role="dialog" aria-modal="true" aria-labelledby="modalBatteryTitle">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+      <button class="modal__close" aria-label="Close" data-close-modal>×</button>
+      <p class="modal__label">Pricing Detail</p>
+      <h3 class="modal__title" id="modalBatteryTitle" data-lang-ja>バッテリー交換 料金</h3>
+      <h3 class="modal__title" id="modalBatteryTitleEn" data-lang-en>Battery Replacement</h3>
+
+      <div class="modal__section">
+        <h4 class="modal__section-title" data-lang-ja>バッテリー本体価格（型番別・税込）</h4>
+        <h4 class="modal__section-title" data-lang-en>Battery Prices (by model, tax included)</h4>
+        <div class="modal__row"><span class="modal__row-name">40B19L/R</span><span class="modal__row-price">¥11,000</span></div>
+        <div class="modal__row"><span class="modal__row-name">K42L/R</span><span class="modal__row-price">¥13,200</span></div>
+        <div class="modal__row"><span class="modal__row-name">M42L/R</span><span class="modal__row-price">¥21,780</span></div>
+        <div class="modal__row"><span class="modal__row-name">M55L/R</span><span class="modal__row-price">¥20,900</span></div>
+        <div class="modal__row"><span class="modal__row-name">55B24L/R</span><span class="modal__row-price">¥21,780</span></div>
+        <div class="modal__row"><span class="modal__row-name">80D23L/R</span><span class="modal__row-price">¥28,600</span></div>
+        <div class="modal__row"><span class="modal__row-name">80D26L/R</span><span class="modal__row-price">¥38,280</span></div>
+        <div class="modal__row"><span class="modal__row-name">95D31L/R</span><span class="modal__row-price">¥39,600</span></div>
+        <div class="modal__row"><span class="modal__row-name">S95 (130D26)</span><span class="modal__row-price">¥39,600</span></div>
+        <div class="modal__row"><span class="modal__row-name">HV-S34B20R/L</span><span class="modal__row-price">¥28,600</span></div>
+        <div class="modal__row"><span class="modal__row-name">LN1</span><span class="modal__row-price">¥31,900</span></div>
+      </div>
+
+      <div class="modal__section">
+        <p class="modal__note" data-lang-ja>※ 充電制御車対応バッテリーは <strong>+¥2,200（税込）</strong>。<br>※ 交換工賃 1本あたり <strong>¥1,100（税込）</strong>。</p>
+        <p class="modal__note" data-lang-en>* For charge-controlled batteries, add <strong>+¥2,200 (tax incl.)</strong>.<br>* Replacement labor: <strong>¥1,100 per battery (tax incl.)</strong>.</p>
+      </div>
+
+      <div class="modal__section">
+        <p class="modal__note" data-lang-ja>※ 上記以外の型番もお取扱い可能です。お気軽にお問い合わせください。</p>
+        <p class="modal__note" data-lang-en>* Other battery models are also available. Please contact us for details.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Pricing detail modals (ported from homepage)
+    // Modal open/close
+    function openModal(id) {
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal(m) {
+      m.classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    document.querySelectorAll('[data-modal]').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const key = trigger.getAttribute('data-modal');
+        const map = { tires: 'modalTires', battery: 'modalBattery' };
+        if (map[key]) openModal(map[key]);
+      });
+    });
+    document.querySelectorAll('.modal').forEach(m => {
+      m.querySelectorAll('[data-close-modal]').forEach(btn => {
+        btn.addEventListener('click', () => closeModal(m));
+      });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.active').forEach(closeModal);
+      }
+    });
+  </script>
 
   <script src="js/lang-toggle.js"></script>
   <script src="js/main.js"></script>
