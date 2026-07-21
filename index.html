@@ -692,7 +692,6 @@
       transition: color 0.3s ease;
     }
     a.reviews__rating:hover { color: rgba(255,255,255,0.85); }
-    .reviews__rating strong { color: var(--white); font-weight: 500; }
     .reviews__rating-link {
       margin-left: 12px; font-size: 11px; letter-spacing: 0.08em;
       color: rgba(255,255,255,0.35);
@@ -1360,9 +1359,8 @@
       <div class="reviews__head">
         <span class="reviews__label">Reviews</span>
         <a class="reviews__rating" href="https://maps.app.goo.gl/iaCxwbdv7EDR1VVKA" target="_blank" rel="noopener">
-          <strong>4.8</strong> / 5.0 — Google
-          <span class="reviews__rating-link" data-lang-ja>レビューを見る →</span>
-          <span class="reviews__rating-link" data-lang-en>See reviews →</span>
+          <span class="reviews__rating-link" data-lang-ja>Googleのクチコミを見る →</span>
+          <span class="reviews__rating-link" data-lang-en>Read our Google reviews →</span>
         </a>
       </div>
       <div class="reviews__grid">
@@ -1797,28 +1795,6 @@
         });
         stObs.observe(el);
       });
-    })();
-
-    // Count-up: Google rating 0.0 -> 4.8 when reviews enter view
-    (function () {
-      const el = document.querySelector('.reviews__rating strong');
-      if (!el || !('IntersectionObserver' in window)) return;
-      const target = 4.8, dur = 1200;
-      const cObs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (!e.isIntersecting) return;
-          cObs.unobserve(el);
-          const t0 = performance.now();
-          const step = (t) => {
-            const p = Math.min((t - t0) / dur, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            el.textContent = (target * eased).toFixed(1);
-            if (p < 1) requestAnimationFrame(step);
-          };
-          requestAnimationFrame(step);
-        });
-      }, { threshold: 0.6 });
-      cObs.observe(el);
     })();
 
     // Scroll-driven color — grayscale lifts as image reaches viewport center
