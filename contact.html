@@ -226,6 +226,20 @@
               </div>
 
               <div class="form-group">
+                <label data-lang-ja>当店をどこで知りましたか <span class="optional">（任意）</span></label>
+                <label data-lang-en>How did you find us? <span class="optional">(optional)</span></label>
+                <select name="referral_source" class="form-select" data-select-lang>
+                  <option value="" data-ja="選択してください" data-en="Please select">選択してください</option>
+                  <option value="google_search" data-ja="Google 検索" data-en="Google Search">Google 検索</option>
+                  <option value="article_blog" data-ja="記事・ブログ" data-en="Article or blog">記事・ブログ</option>
+                  <option value="instagram_threads" data-ja="Instagram・Threads" data-en="Instagram or Threads">Instagram・Threads</option>
+                  <option value="referral" data-ja="知人の紹介" data-en="Referral from a friend">知人の紹介</option>
+                  <option value="passed_by" data-ja="店の前を通って" data-en="Passed by the shop">店の前を通って</option>
+                  <option value="other" data-ja="その他" data-en="Other">その他</option>
+                </select>
+              </div>
+
+              <div class="form-group">
                 <label data-lang-ja>お問い合わせ内容 <span class="text-accent">*</span></label>
                 <label data-lang-en>Message <span class="text-accent">*</span></label>
                 <textarea name="message" class="form-textarea" required rows="6"
