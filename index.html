@@ -1746,7 +1746,9 @@
       if (!hero) return;
       if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const srcs = [
-        'images/shop-storefront.webp'
+        'images/shop-storefront.webp',
+        'images/shop-jimny-5door.webp',
+        'images/shop-oil-change.webp'
       ];
       window.addEventListener('load', () => {
         const layers = srcs.map(s => {
