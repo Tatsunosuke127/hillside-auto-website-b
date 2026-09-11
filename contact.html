@@ -36,6 +36,27 @@
   </script>
 </head>
 <body class="lang-ja">
+  <script>
+    /* Decide the language before anything paints. Same rules as js/lang-toggle.js;
+       that script still runs afterwards and handles titles, meta and controls. */
+    (function () {
+      var SUPPORTED = ['ja', 'en'], KEY = 'hillside-lang', saved = null;
+      try {
+        var v = localStorage.getItem(KEY);
+        if (v && SUPPORTED.indexOf(v) > -1) saved = v;
+      } catch (e) { /* storage unavailable */ }
+      var b = document.body, lang = saved;
+      if (!lang) {
+        var n = (navigator.language || navigator.userLanguage || '').split('-')[0].toLowerCase();
+        lang = SUPPORTED.indexOf(n) > -1 ? n : 'ja';
+      }
+      if (!saved && b.getAttribute('data-default-lang') === 'en') lang = 'en';
+      b.classList.remove('lang-ja', 'lang-en');
+      b.classList.add('lang-' + lang);
+      document.documentElement.lang = lang;
+    })();
+  </script>
+
 
   <!-- NAV (unified) -->
   <nav class="nav" id="nav">
