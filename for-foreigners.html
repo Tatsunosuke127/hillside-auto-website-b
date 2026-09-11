@@ -51,6 +51,24 @@
       font-family: var(--font-serif-jp); font-size: clamp(24px, 3vw, 34px);
     }
     /* Pricing list (restored) */
+    .pricing__basis {
+      font-size: 12.5px; line-height: 1.85; color: var(--gray-600);
+      margin: 14px 0 0; max-width: 620px;
+    }
+    .pricing__full {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      margin-top: 28px; padding: 20px 0;
+      border-top: 1px solid var(--black); border-bottom: 1px solid var(--black);
+      font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+      color: var(--black); text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+    .pricing__full:hover { opacity: 0.55; }
+    .pricing__full::after {
+      content: ''; flex: none; width: 8px; height: 8px;
+      border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+      transform: rotate(45deg);
+    }
     .pricing__list { border-top: 1px solid var(--gray-200); margin-bottom: 56px; }
     .pricing__row {
       display: flex; justify-content: space-between; align-items: baseline;
@@ -276,6 +294,7 @@
     <a href="/" class="nav__logo">Hillside Auto</a>
     <div class="nav__links">
       <a href="services.html">Services</a>
+      <a href="pricing.html">Pricing</a>
       <a href="for-foreigners.html" class="active">English</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -295,6 +314,7 @@
   <div class="nav-overlay" id="navOverlay">
     <a href="/">Home</a>
     <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
     <a href="for-foreigners.html">English</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
@@ -310,8 +330,8 @@
       <div class="page-hero__img" style="background-image: url('images/english-support.webp');"></div>
       <div class="page-hero__body">
         <p class="page-hero__sub">English Support</p>
-        <h1 data-lang-en>Navigating Car Ownership in Japan?<br>We've Got You Covered.</h1>
-        <h1 data-lang-ja>日本での車の所有でお困りですか？<br>私たちにお任せください。</h1>
+        <h1 data-lang-en>Japan Car Life,<br>Made Simple.</h1>
+        <h1 data-lang-ja>クルマのことを、<br>もっとシンプルに。</h1>
         <p class="page-hero__desc" data-lang-en>Hillside Auto provides full English-speaking support for car repair, vehicle inspection, and every automotive need in Yokohama — trusted by foreign residents.</p>
         <p class="page-hero__desc" data-lang-ja>ヒルサイドオートは、横浜で全ての自動車サービスを英語でご提供します。</p>
         <div class="page-hero__ctas">
@@ -379,43 +399,45 @@
           <span class="section__label">Pricing</span>
           <h2 data-lang-ja>料金の目安</h2>
           <h2 data-lang-en>Pricing Guide</h2>
+          <p class="pricing__basis" data-lang-ja>表示はすべて税込・技術料（工賃）です。部品代・法定費用は別途かかります。</p>
+          <p class="pricing__basis" data-lang-en>All figures include tax and cover labour only. Parts and statutory costs are extra.</p>
         </div>
         <div class="pricing__list">
           <div class="pricing__row">
             <div>
               <div class="pricing__name" data-lang-ja>車検（軽自動車）</div>
               <div class="pricing__name" data-lang-en>Shaken (Light Vehicle)</div>
-              <div class="pricing__detail" data-lang-ja>法定費用・整備費込み</div>
-              <div class="pricing__detail" data-lang-en>Includes statutory fees & basic service</div>
+              <div class="pricing__detail" data-lang-ja>車検基本料＋代行料（法定費用・整備費は別）</div>
+              <div class="pricing__detail" data-lang-en>Inspection + agency fee (statutory costs and repairs extra)</div>
             </div>
-            <div class="pricing__price">¥65,000<small> 〜</small></div>
+            <div class="pricing__price">¥35,200<small> 〜</small></div>
           </div>
           <div class="pricing__row">
             <div>
               <div class="pricing__name" data-lang-ja>車検（普通車）</div>
               <div class="pricing__name" data-lang-en>Shaken (Standard Vehicle)</div>
-              <div class="pricing__detail" data-lang-ja>法定費用・整備費込み</div>
-              <div class="pricing__detail" data-lang-en>Includes statutory fees & basic service</div>
+              <div class="pricing__detail" data-lang-ja>車検基本料＋代行料（法定費用・整備費は別）</div>
+              <div class="pricing__detail" data-lang-en>Inspection + agency fee (statutory costs and repairs extra)</div>
             </div>
-            <div class="pricing__price">¥85,000<small> 〜</small></div>
+            <div class="pricing__price">¥41,800<small> 〜</small></div>
           </div>
           <div class="pricing__row">
             <div>
-              <div class="pricing__name" data-lang-ja>オイル交換（軽自動車）</div>
-              <div class="pricing__name" data-lang-en>Oil Change (Light Vehicle)</div>
-              <div class="pricing__detail" data-lang-ja>純正・推奨グレードのオイル使用</div>
-              <div class="pricing__detail" data-lang-en>OEM / recommended grade oil</div>
+              <div class="pricing__name" data-lang-ja>エンジンオイル交換（軽・普通車）</div>
+              <div class="pricing__name" data-lang-en>Engine Oil Change (Kei / Standard)</div>
+              <div class="pricing__detail" data-lang-ja>技術料のみ（オイル代は別）</div>
+              <div class="pricing__detail" data-lang-en>Labour only (oil charged separately)</div>
             </div>
-            <div class="pricing__price">¥5,000<small> 〜</small></div>
+            <div class="pricing__price">¥1,100<small> 〜</small></div>
           </div>
           <div class="pricing__row">
             <div>
-              <div class="pricing__name" data-lang-ja>オイル交換（普通車）</div>
-              <div class="pricing__name" data-lang-en>Oil Change (Standard Vehicle)</div>
-              <div class="pricing__detail" data-lang-ja>純正・推奨グレードのオイル使用</div>
-              <div class="pricing__detail" data-lang-en>OEM / recommended grade oil</div>
+              <div class="pricing__name" data-lang-ja>エンジンオイル交換（輸入車）</div>
+              <div class="pricing__name" data-lang-en>Engine Oil Change (Imported)</div>
+              <div class="pricing__detail" data-lang-ja>技術料のみ（オイル代は別）</div>
+              <div class="pricing__detail" data-lang-en>Labour only (oil charged separately)</div>
             </div>
-            <div class="pricing__price">¥8,000<small> 〜</small></div>
+            <div class="pricing__price">¥1,650<small> 〜</small></div>
           </div>
           <div class="pricing__row pricing__row--clickable" data-modal="tires">
             <div>
@@ -446,6 +468,11 @@
             <div class="pricing__price" data-lang-en><small style="font-size:13px;font-family:var(--font-en);">Quote</small></div>
           </div>
         </div>
+
+        <a href="pricing.html" class="pricing__full">
+          <span data-lang-ja>料金表をすべて見る — 車検・整備・書類手続き 61項目</span>
+          <span data-lang-en>See the full price list — 61 items across inspection, servicing and registration</span>
+        </a>
 
         <!-- Inquiry CTA — for unlisted services -->
         <div class="pricing__inquiry">
@@ -668,6 +695,7 @@
       <div class="ft__right">
         <div class="ft__links">
           <a href="services.html">Services</a>
+          <a href="pricing.html">Pricing</a>
           <a href="for-foreigners.html">English</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>

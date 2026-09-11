@@ -277,6 +277,24 @@
       font-family: var(--font-serif-jp); font-size: clamp(24px, 3vw, 34px);
     }
     /* Pricing list (restored) */
+    .pricing__basis {
+      font-size: 12.5px; line-height: 1.85; color: var(--gray-600);
+      margin: 14px 0 0; max-width: 620px;
+    }
+    .pricing__full {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      margin-top: 28px; padding: 20px 0;
+      border-top: 1px solid var(--black); border-bottom: 1px solid var(--black);
+      font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+      color: var(--black); text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+    .pricing__full:hover { opacity: 0.55; }
+    .pricing__full::after {
+      content: ''; flex: none; width: 8px; height: 8px;
+      border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+      transform: rotate(45deg);
+    }
     .pricing__list { border-top: 1px solid var(--gray-200); margin-bottom: 56px; }
     .pricing__row {
       display: flex; justify-content: space-between; align-items: baseline;
@@ -1060,6 +1078,7 @@
     <a href="/" class="nav__logo">Hillside Auto</a>
     <div class="nav__links">
       <a href="services.html">Services</a>
+      <a href="pricing.html">Pricing</a>
       <a href="for-foreigners.html">English</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -1079,6 +1098,7 @@
   <div class="nav-overlay" id="navOverlay">
     <a href="/">Home</a>
     <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
     <a href="for-foreigners.html">English</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
@@ -1115,7 +1135,8 @@
 
     <!-- EXPERTISE -->
     <section class="expertise fi" id="services">
-      <div class="expertise__head">What We Offer</div>
+      <div class="expertise__head" data-lang-ja>サービス内容</div>
+      <div class="expertise__head" data-lang-en>What We Offer</div>
       <a href="services.html" class="expertise__item">
         <span class="expertise__num">01</span>
         <span class="expertise__name" data-lang-ja>新車・中古車販売</span>
@@ -1156,43 +1177,45 @@
           <span class="section__label">Pricing</span>
           <h2 data-lang-ja>料金の目安</h2>
           <h2 data-lang-en>Pricing Guide</h2>
+          <p class="pricing__basis" data-lang-ja>表示はすべて税込・技術料（工賃）です。部品代・法定費用は別途かかります。</p>
+          <p class="pricing__basis" data-lang-en>All figures include tax and cover labour only. Parts and statutory costs are extra.</p>
         </div>
         <div class="pricing__list">
           <div class="pricing__row">
             <div>
               <div class="pricing__name" data-lang-ja>車検（軽自動車）</div>
               <div class="pricing__name" data-lang-en>Shaken (Light Vehicle)</div>
-              <div class="pricing__detail" data-lang-ja>法定費用・整備費込み</div>
-              <div class="pricing__detail" data-lang-en>Includes statutory fees & basic service</div>
+              <div class="pricing__detail" data-lang-ja>車検基本料＋代行料（法定費用・整備費は別）</div>
+              <div class="pricing__detail" data-lang-en>Inspection + agency fee (statutory costs and repairs extra)</div>
             </div>
-            <div class="pricing__price">¥65,000<small> 〜</small></div>
+            <div class="pricing__price">¥35,200<small> 〜</small></div>
           </div>
           <div class="pricing__row">
             <div>
               <div class="pricing__name" data-lang-ja>車検（普通車）</div>
               <div class="pricing__name" data-lang-en>Shaken (Standard Vehicle)</div>
-              <div class="pricing__detail" data-lang-ja>法定費用・整備費込み</div>
-              <div class="pricing__detail" data-lang-en>Includes statutory fees & basic service</div>
+              <div class="pricing__detail" data-lang-ja>車検基本料＋代行料（法定費用・整備費は別）</div>
+              <div class="pricing__detail" data-lang-en>Inspection + agency fee (statutory costs and repairs extra)</div>
             </div>
-            <div class="pricing__price">¥85,000<small> 〜</small></div>
+            <div class="pricing__price">¥41,800<small> 〜</small></div>
           </div>
           <div class="pricing__row">
             <div>
-              <div class="pricing__name" data-lang-ja>オイル交換（軽自動車）</div>
-              <div class="pricing__name" data-lang-en>Oil Change (Light Vehicle)</div>
-              <div class="pricing__detail" data-lang-ja>純正・推奨グレードのオイル使用</div>
-              <div class="pricing__detail" data-lang-en>OEM / recommended grade oil</div>
+              <div class="pricing__name" data-lang-ja>エンジンオイル交換（軽・普通車）</div>
+              <div class="pricing__name" data-lang-en>Engine Oil Change (Kei / Standard)</div>
+              <div class="pricing__detail" data-lang-ja>技術料のみ（オイル代は別）</div>
+              <div class="pricing__detail" data-lang-en>Labour only (oil charged separately)</div>
             </div>
-            <div class="pricing__price">¥5,000<small> 〜</small></div>
+            <div class="pricing__price">¥1,100<small> 〜</small></div>
           </div>
           <div class="pricing__row">
             <div>
-              <div class="pricing__name" data-lang-ja>オイル交換（普通車）</div>
-              <div class="pricing__name" data-lang-en>Oil Change (Standard Vehicle)</div>
-              <div class="pricing__detail" data-lang-ja>純正・推奨グレードのオイル使用</div>
-              <div class="pricing__detail" data-lang-en>OEM / recommended grade oil</div>
+              <div class="pricing__name" data-lang-ja>エンジンオイル交換（輸入車）</div>
+              <div class="pricing__name" data-lang-en>Engine Oil Change (Imported)</div>
+              <div class="pricing__detail" data-lang-ja>技術料のみ（オイル代は別）</div>
+              <div class="pricing__detail" data-lang-en>Labour only (oil charged separately)</div>
             </div>
-            <div class="pricing__price">¥8,000<small> 〜</small></div>
+            <div class="pricing__price">¥1,650<small> 〜</small></div>
           </div>
           <div class="pricing__row pricing__row--clickable" data-modal="tires">
             <div>
@@ -1223,6 +1246,11 @@
             <div class="pricing__price" data-lang-en><small style="font-size:13px;font-family:var(--font-en);">Quote</small></div>
           </div>
         </div>
+
+        <a href="pricing.html" class="pricing__full">
+          <span data-lang-ja>料金表をすべて見る — 車検・整備・書類手続き 61項目</span>
+          <span data-lang-en>See the full price list — 61 items across inspection, servicing and registration</span>
+        </a>
 
         <!-- Inquiry CTA — for unlisted services -->
         <div class="pricing__inquiry">
@@ -1397,6 +1425,13 @@
     <section class="faq fi">
       <div class="faq__head">FAQ</div>
       <div class="faq__item">
+        <button class="faq__q"><span><span data-lang-ja>車検はいくらかかりますか？</span><span data-lang-en>How much does Shaken cost?</span></span><span class="faq__icon">+</span></button>
+        <div class="faq__a"><div class="faq__a-inner">
+          <p data-lang-ja>車検の費用は3つに分かれます。<strong>①当店にお支払いいただく技術料</strong>（車検基本料＋代行料）は、軽自動車 ¥35,200〜、普通車 ¥41,800〜（税込）。<strong>②法定費用</strong>（自賠責保険料・重量税・検査印紙代）は非課税で、お車の重量と年式によって決まります。<strong>③必要な整備費</strong>は、保安基準に適合させるために交換が必要になった部品と作業です。作業前に必ずお見積りをご提示します。<br><br>全区分の料金は<a href="pricing.html" style="text-decoration:underline;">料金表</a>でご確認いただけます。</p>
+          <p data-lang-en>A shaken bill has three parts. <strong>1. Our labour</strong> (inspection fee + agency fee) starts at ¥35,200 for a kei car and ¥41,800 for a standard vehicle, tax included. <strong>2. Statutory costs</strong> — compulsory insurance, weight tax and the inspection stamp — are tax-exempt and set by your vehicle's weight and age. <strong>3. Any repairs needed</strong> to meet the safety standard. We always provide a written estimate before starting.<br><br>Every class is listed on our <a href="pricing.html" style="text-decoration:underline;">price list</a>.</p>
+        </div></div>
+      </div>
+      <div class="faq__item">
         <button class="faq__q"><span><span data-lang-ja>どんな車でも買取してもらえますか？</span><span data-lang-en>Do you buy any car?</span></span><span class="faq__icon">+</span></button>
         <div class="faq__a"><div class="faq__a-inner">
           <p data-lang-ja>はい、国産車・輸入車を問わず、年式・走行距離・状態に関わらず買取いたします。動かない車・事故車・古いお車も大歓迎です。査定は無料、その場でお見積もりをお出しします。名義変更や抹消登録などの手続きはすべて当社で代行いたしますので、お客様のお手間はかかりません。書類のご案内も丁寧に行います（外国人のお客様には英語でご対応可能）。<br><br>まずはお気軽にお問い合わせください。お電話・LINE・お問い合わせフォームのいずれでもお受けしております。</p>
@@ -1518,6 +1553,7 @@
       <div class="ft__right">
         <div class="ft__links">
           <a href="services.html">Services</a>
+          <a href="pricing.html">Pricing</a>
           <a href="for-foreigners.html">English</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
@@ -1835,7 +1871,7 @@
   </script>
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does Shaken cost?","acceptedAnswer":{"@type":"Answer","text":"Light vehicles start from around ¥65,000, standard vehicles from around ¥85,000. We provide a quote in advance."}},{"@type":"Question","name":"Do you offer services in English?","acceptedAnswer":{"@type":"Answer","text":"Yes, full English support for all services."}},{"@type":"Question","name":"Can you source the specific car I want?","acceptedAnswer":{"@type":"Answer","text":"Yes. Through our nationwide auction network, we search for a vehicle that matches your preferred make, model year, and budget — both domestic and imported."}},{"@type":"Question","name":"Do you provide a loaner car?","acceptedAnswer":{"@type":"Answer","text":"Yes, we provide a free loaner car during Shaken and repair periods. Availability is limited, so we recommend booking early."}},{"@type":"Question","name":"Can I visit without an appointment?","acceptedAnswer":{"@type":"Answer","text":"Yes, walk-ins are welcome."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does Shaken cost?","acceptedAnswer":{"@type":"Answer","text":"A shaken bill has three parts. 1. Our labour (inspection fee + agency fee) starts at ¥35,200 for a kei car and ¥41,800 for a standard vehicle, tax included. 2. Statutory costs — compulsory insurance, weight tax and the inspection stamp — are tax-exempt and set by your vehicle's weight and age. 3. Any repairs needed to meet the safety standard. We always provide a written estimate before starting."}},{"@type":"Question","name":"Do you offer services in English?","acceptedAnswer":{"@type":"Answer","text":"Yes, full English support for all services."}},{"@type":"Question","name":"Can you source the specific car I want?","acceptedAnswer":{"@type":"Answer","text":"Yes. Through our nationwide auction network, we search for a vehicle that matches your preferred make, model year, and budget — both domestic and imported."}},{"@type":"Question","name":"Do you provide a loaner car?","acceptedAnswer":{"@type":"Answer","text":"Yes, we provide a free loaner car during Shaken and repair periods. Availability is limited, so we recommend booking early."}},{"@type":"Question","name":"Can I visit without an appointment?","acceptedAnswer":{"@type":"Answer","text":"Yes, walk-ins are welcome."}}]}
   </script>
 </body>
 </html>
