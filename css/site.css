@@ -85,6 +85,10 @@
   text-decoration: none;
 }
 .nav-overlay a:hover { opacity: 0.5; }
+/* Japanese labels in the nav need their own type treatment */
+body.lang-ja .nav__links a { font-size: 12px; letter-spacing: 0.12em; }
+body.lang-ja .nav-overlay > a { font-family: var(--font-serif-jp); font-size: 26px; letter-spacing: 0.06em; }
+body.lang-ja .ft__links a { font-size: 11px; letter-spacing: 0.1em; }
 .nav-overlay__contact {
   margin-top: 48px; display: flex; gap: 16px;
 }

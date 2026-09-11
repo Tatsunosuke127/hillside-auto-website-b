@@ -149,6 +149,10 @@
       transition: opacity 0.3s ease;
     }
     .nav-overlay a:hover { opacity: 0.5; }
+    /* Japanese labels in the nav need their own type treatment */
+    body.lang-ja .nav__links a { font-size: 12px; letter-spacing: 0.12em; }
+    body.lang-ja .nav-overlay > a { font-family: var(--font-serif-jp); font-size: 26px; letter-spacing: 0.06em; }
+    body.lang-ja .ft__links a { font-size: 11px; letter-spacing: 0.1em; }
     .nav-overlay__contact {
       margin-top: 48px; display: flex; gap: 16px;
     }
@@ -1098,11 +1102,11 @@
   <nav class="nav" id="nav">
     <a href="/" class="nav__logo">Hillside Auto</a>
     <div class="nav__links">
-      <a href="services.html">Services</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="for-foreigners.html">English</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="services.html"><span data-lang-ja>サービス</span><span data-lang-en>Services</span></a>
+      <a href="pricing.html"><span data-lang-ja>料金表</span><span data-lang-en>Pricing</span></a>
+      <a href="for-foreigners.html"><span data-lang-ja>外国人の方へ</span><span data-lang-en>English</span></a>
+      <a href="about.html"><span data-lang-ja>会社概要</span><span data-lang-en>About</span></a>
+      <a href="contact.html"><span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact</span></a>
     </div>
     <div class="nav__right">
       <div class="nav__lang">
@@ -1117,12 +1121,12 @@
 
   <!-- MOBILE OVERLAY -->
   <div class="nav-overlay" id="navOverlay">
-    <a href="/">Home</a>
-    <a href="services.html">Services</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="for-foreigners.html">English</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="/"><span data-lang-ja>ホーム</span><span data-lang-en>Home</span></a>
+    <a href="services.html"><span data-lang-ja>サービス</span><span data-lang-en>Services</span></a>
+    <a href="pricing.html"><span data-lang-ja>料金表</span><span data-lang-en>Pricing</span></a>
+    <a href="for-foreigners.html"><span data-lang-ja>外国人の方へ</span><span data-lang-en>English</span></a>
+    <a href="about.html"><span data-lang-ja>会社概要</span><span data-lang-en>About</span></a>
+    <a href="contact.html"><span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact</span></a>
     <div class="nav-overlay__contact">
       <a href="tel:045-641-3307">045-641-3307</a>
       <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener">LINE</a>
@@ -1573,11 +1577,11 @@
       </div>
       <div class="ft__right">
         <div class="ft__links">
-          <a href="services.html">Services</a>
-          <a href="pricing.html">Pricing</a>
-          <a href="for-foreigners.html">English</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
+          <a href="services.html"><span data-lang-ja>サービス</span><span data-lang-en>Services</span></a>
+          <a href="pricing.html"><span data-lang-ja>料金表</span><span data-lang-en>Pricing</span></a>
+          <a href="for-foreigners.html"><span data-lang-ja>外国人の方へ</span><span data-lang-en>English</span></a>
+          <a href="about.html"><span data-lang-ja>会社概要</span><span data-lang-en>About</span></a>
+          <a href="contact.html"><span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact</span></a>
         </div>
         <div class="ft__social">
           <a href="https://www.instagram.com/hillside_auto_inc/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
