@@ -103,6 +103,7 @@
     }
     .nav--scrolled .nav__logo { color: var(--black); }
     .nav__links { display:none; gap: 40px; }
+    @media (min-width: 1024px) and (max-width: 1199px) { .nav__links { gap: 28px; } }
     .nav__links a {
       font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
       text-transform: uppercase; color: rgba(255,255,255,0.7);
@@ -1071,6 +1072,7 @@
       body.lang-ja .expertise__name { font-size: 20px; }
     }
   </style>
+  <link rel="stylesheet" href="css/works.css">
 </head>
 <body class="lang-ja">
   <script>
@@ -1101,6 +1103,7 @@
     <div class="nav__links">
       <a href="services.html"><span data-lang-ja>サービス</span><span data-lang-en>Services</span></a>
       <a href="pricing.html"><span data-lang-ja>料金表</span><span data-lang-en>Pricing</span></a>
+      <a href="works.html"><span data-lang-ja>作業実績</span><span data-lang-en>Our Work</span></a>
       <a href="faq.html"><span data-lang-ja>よくある質問</span><span data-lang-en>Q&amp;A</span></a>
       <a href="for-foreigners.html"><span data-lang-ja>外国人の方へ</span><span data-lang-en>English</span></a>
       <a href="about.html"><span data-lang-ja>会社概要</span><span data-lang-en>About</span></a>
@@ -1122,6 +1125,7 @@
     <a href="/"><span data-lang-ja>ホーム</span><span data-lang-en>Home</span></a>
     <a href="services.html"><span data-lang-ja>サービス</span><span data-lang-en>Services</span></a>
     <a href="pricing.html"><span data-lang-ja>料金表</span><span data-lang-en>Pricing</span></a>
+    <a href="works.html"><span data-lang-ja>作業実績</span><span data-lang-en>Our Work</span></a>
     <a href="faq.html"><span data-lang-ja>よくある質問</span><span data-lang-en>Q&amp;A</span></a>
     <a href="for-foreigners.html"><span data-lang-ja>外国人の方へ</span><span data-lang-en>English</span></a>
     <a href="about.html"><span data-lang-ja>会社概要</span><span data-lang-en>About</span></a>
@@ -1317,6 +1321,24 @@
           </div>
         </div>
       </section>
+
+    <!-- WORKS — latest three real jobs, rendered from works.json by js/works.js -->
+    <section class="works fi" id="works" data-works data-works-limit="3">
+      <div class="works__inner">
+        <div class="works__head">
+          <span class="works__label">Our Work</span>
+          <h2 data-lang-ja>実際の作業と費用</h2>
+          <h2 data-lang-en>Real Work, Real Prices</h2>
+          <p class="works__lead" data-lang-ja>実際に行った作業の内容と金額を公開しています。詳しい作業の様子は、各記事でご覧いただけます。</p>
+          <p class="works__lead" data-lang-en>Real jobs from our workshop, with what we did and what it cost. Each one links to the full write-up.</p>
+        </div>
+        <div class="works__grid" data-works-grid></div>
+        <a href="works.html" class="works__all">
+          <span data-lang-ja>作業実績をすべて見る</span>
+          <span data-lang-en>See all our work</span>
+        </a>
+      </div>
+    </section>
 
     <!-- VISUAL — two images side by side -->
     <section class="visual fi">
@@ -1578,6 +1600,7 @@
         <div class="ft__links">
           <a href="services.html"><span data-lang-ja>サービス</span><span data-lang-en>Services</span></a>
           <a href="pricing.html"><span data-lang-ja>料金表</span><span data-lang-en>Pricing</span></a>
+          <a href="works.html"><span data-lang-ja>作業実績</span><span data-lang-en>Our Work</span></a>
           <a href="faq.html"><span data-lang-ja>よくある質問</span><span data-lang-en>Q&amp;A</span></a>
           <a href="for-foreigners.html"><span data-lang-ja>外国人の方へ</span><span data-lang-en>English</span></a>
           <a href="about.html"><span data-lang-ja>会社概要</span><span data-lang-en>About</span></a>
@@ -1712,6 +1735,7 @@
   </div>
 
   <script src="js/lang-toggle.js"></script>
+  <script src="js/works.js"></script>
   <script>
     // Nav scroll state is handled in the unified scroll handler below
     const nav = document.getElementById('nav');
