@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/for-foreigners.html", "destination": "/english.html", "permanent": true },
+    { "source": "/for-foreigners", "destination": "/english.html", "permanent": true }
+  ]
+}
