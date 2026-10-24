@@ -112,6 +112,7 @@
       letter-spacing: .14em; text-transform: uppercase;
       padding: 11px 14px; text-align: right; white-space: nowrap; }
     .pt thead th.pt__hname { text-align: left; }
+    .pt thead th small { display: block; font-size: 9px; font-weight: 400; letter-spacing: .08em; text-transform: none; opacity: .7; margin-top: 3px; }
     .pt tbody th { text-align: left; font-weight: 400; padding: 15px 14px 15px 0;
       border-bottom: 1px solid var(--gray-200, #e8e8e8); vertical-align: top; }
     .pt tbody td { padding: 15px 14px; border-bottom: 1px solid var(--gray-200, #e8e8e8);
@@ -311,8 +312,8 @@
           <p class="players__h" data-lang-en>A shaken bill has four parts</p>
           <p class="players__s" data-lang-ja>下の表に載っているのは、このうち上の2つ（固定料金）です。</p>
           <p class="players__s" data-lang-en>Only the first two are fixed, and those are what the table below lists.</p>
-          <div class="prow prow--fix"><span class="prow__b"><span data-lang-ja>車検基本料</span><span data-lang-en>Inspection fee</span><i>Inspection fee</i></span><span class="prow__t"><span data-lang-ja>固定料金</span><span data-lang-en>Fixed</span></span></div>
-          <div class="prow prow--fix"><span class="prow__b"><span data-lang-ja>代行料</span><span data-lang-en>Agency fee</span><i>Agency fee</i></span><span class="prow__t"><span data-lang-ja>固定料金</span><span data-lang-en>Fixed</span></span></div>
+          <div class="prow prow--fix"><span class="prow__b"><span data-lang-ja>車検基本料（法定24ヶ月点検）</span><span data-lang-en>Inspection fee (statutory 24-month inspection)</span><i>Statutory 24-month inspection</i></span><span class="prow__t"><span data-lang-ja>固定料金</span><span data-lang-en>Fixed</span></span></div>
+          <div class="prow prow--fix"><span class="prow__b"><span data-lang-ja>検査場への持ち込み・受検手続き</span><span data-lang-en>Taking the car in and handling the test</span><i>Taking the car in &amp; handling the test</i></span><span class="prow__t"><span data-lang-ja>固定料金</span><span data-lang-en>Fixed</span></span></div>
           <div class="prow prow--var"><span class="prow__b"><span data-lang-ja>法定費用</span><span data-lang-en>Statutory costs</span><i>Statutory costs</i></span><span class="prow__t"><span data-lang-ja>お車ごとに変動</span><span data-lang-en>Varies</span></span></div>
           <div class="prow prow--var"><span class="prow__b"><span data-lang-ja>必要な整備</span><span data-lang-en>Repairs needed</span><i>Repairs needed</i></span><span class="prow__t"><span data-lang-ja>お車ごとに変動</span><span data-lang-en>Varies</span></span></div>
           <p class="players__n" data-lang-ja>法定費用は<strong>自賠責保険料・重量税・検査印紙代</strong>で、非課税です。お車の重量と年式によって決まります。必要な整備は、保安基準に適合させるために交換が必要になった部品と作業です。</p>
@@ -322,8 +323,8 @@
         <div class="pt__wrap"><table class="pt">
           <thead><tr>
             <th class="pt__hname"><span data-lang-ja>区分</span><span data-lang-en>Class</span></th>
-            <th><span data-lang-ja>車検基本料</span><span data-lang-en>Inspection</span></th>
-            <th><span data-lang-ja>代行料</span><span data-lang-en>Agency</span></th>
+            <th><span data-lang-ja>車検基本料<small>法定24ヶ月点検</small></span><span data-lang-en>Inspection<small>24-month check</small></span></th>
+            <th><span data-lang-ja>持ち込み・受検<small>検査場への持ち込み・受検手続き</small></span><span data-lang-en>Test handling<small>taking the car in</small></span></th>
             <th><span data-lang-ja>合計</span><span data-lang-en>Total</span></th>
           </tr></thead>
           <tbody>
@@ -342,7 +343,7 @@
 
         <div class="ptwo">
           <div class="pbox">
-            <h4 data-lang-ja>車検基本料に含まれるもの</h4>
+            <h4 data-lang-ja>車検基本料（法定24ヶ月点検）に含まれるもの</h4>
             <h4 data-lang-en>What the inspection fee covers</h4>
             <ul>
               <li><span data-lang-ja><strong>法定点検 59項目</strong>（エンジンルーム 25／室内 6／足回り 15／下廻り 13）</span><span data-lang-en><strong>The statutory 59-point inspection</strong> (engine bay 25 / cabin 6 / suspension 15 / underbody 13)</span></li>
@@ -354,7 +355,7 @@
             <h4 data-lang-en>What it does not cover</h4>
             <ul>
               <li><span data-lang-ja>整備・部品交換（オイル、ブレーキフルード等）</span><span data-lang-en>Servicing and parts (oil, brake fluid and so on)</span></li>
-              <li><span data-lang-ja>陸運支局への持込（代行料）</span><span data-lang-en>Taking the car to the transport bureau (the agency fee)</span></li>
+              <li><span data-lang-ja>検査場への持ち込み・受検手続き（別項目として表示）</span><span data-lang-en>Taking the car in and handling the test (listed separately)</span></li>
               <li><span data-lang-ja>法定費用（自賠責保険料・重量税・検査印紙代）</span><span data-lang-en>Statutory costs (compulsory insurance, weight tax, inspection stamp)</span></li>
             </ul>
           </div>
