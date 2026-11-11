@@ -110,6 +110,10 @@
     /* Hide old booking button rows when new design is present */
     .booking-methods + .btn,
     .accordion__content > a.btn--primary[href*="timerex"] { display: none !important; }
+
+    /* Text link from an accordion to its detail page */
+    .accordion__content p.acc-more { margin: 14px 0 22px; color: var(--black, #000); }
+    .acc-more a { border-bottom: 1px solid currentColor; padding-bottom: 2px; }
   </style>
 </head>
 <body class="lang-ja">
@@ -484,6 +488,7 @@
                   <li data-lang-ja>下取り対応</li><li data-lang-en>Trade-in available</li>
                   <li data-lang-ja>廃車手続き代行</li><li data-lang-en>Scrapping procedures handled</li>
                 </ul>
+                <p class="acc-more"><a href="kaitori.html" data-lang-ja>買取の流れと条件を見る</a><a href="sell-your-car.html" data-lang-en>How selling your car works</a></p>
                 <div class="booking-methods">
                   <a href="https://timerex.net/s/hillsideauto3307_acc6/0e78cadc" target="_blank" rel="noopener" class="booking-method booking-method--primary">
                     <div class="booking-method__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
