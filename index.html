@@ -62,7 +62,7 @@
       color: var(--black);
       background: var(--white);
       line-height: 1.8;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 400;
       letter-spacing: 0.02em;
       overflow-x: hidden;
@@ -105,7 +105,7 @@
     .nav__links { display:none; gap: 40px; }
     @media (min-width: 1024px) and (max-width: 1199px) { .nav__links { gap: 28px; } }
     .nav__links a {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.2em;
       text-transform: uppercase; color: rgba(255,255,255,0.7);
       transition: color 0.4s ease, opacity 0.3s ease;
     }
@@ -113,7 +113,7 @@
     .nav--scrolled .nav__links a { color: var(--gray-600); }
     .nav__right { display: flex; align-items: center; gap: 16px; }
     .nav__lang {
-      font-size: 10px; letter-spacing: 0.1em; display: flex; gap: 4px;
+      font-size: 12px; letter-spacing: 0.1em; display: flex; gap: 4px;
     }
     .nav__lang button {
       /* visual stays compact; hit area expanded to ~44px for touch */
@@ -148,14 +148,14 @@
     }
     .nav-overlay a:hover { opacity: 0.5; }
     /* Japanese labels in the nav need their own type treatment */
-    body.lang-ja .nav__links a { font-size: 12px; letter-spacing: 0.12em; }
+    body.lang-ja .nav__links a { font-size: 13px; letter-spacing: 0.12em; }
     body.lang-ja .nav-overlay > a { font-family: var(--font-serif-jp); font-size: 26px; letter-spacing: 0.06em; }
-    body.lang-ja .ft__links a { font-size: 11px; letter-spacing: 0.1em; }
+    body.lang-ja .ft__links a { font-size: 13px; letter-spacing: 0.1em; }
     .nav-overlay__contact {
       margin-top: 48px; display: flex; gap: 16px;
     }
     .nav-overlay__contact a {
-      font-family: var(--font-en); font-size: 11px; font-weight: 500;
+      font-family: var(--font-en); font-size: 13px; font-weight: 500;
       letter-spacing: 0.15em; text-transform: uppercase;
       border: 1px solid rgba(255,255,255,0.3); padding: 12px 28px;
     }
@@ -195,21 +195,10 @@
       padding: 0 40px 80px; color: var(--white); max-width: 680px;
     }
     .hero__sub {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.35em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.35em;
       text-transform: uppercase; opacity: 0.75; margin-bottom: 24px;
     }
-    /* Entrance choreography (JS-gated; no-JS users see content immediately) */
-    .js .hero__sub, .js .hero__h1, .js .hero__ctas, .js .hero__arrow {
-      opacity: 0; transform: translateY(24px);
-    }
-    .js .hero__sub { transition: opacity 1s var(--ease) 0.1s, transform 1s var(--ease) 0.1s; }
-    .js .hero__h1 { transition: opacity 1s var(--ease) 0.28s, transform 1s var(--ease) 0.28s; }
-    .js .hero__ctas { transition: opacity 1s var(--ease) 0.5s, transform 1s var(--ease) 0.5s; }
-    .js .hero__arrow { transform: none; transition: opacity 1.2s var(--ease) 1s; }
-    .js .hero-in .hero__sub { opacity: 0.75; transform: none; }
-    .js .hero-in .hero__h1 { opacity: 1; transform: none; }
-    .js .hero-in .hero__ctas { opacity: 1; transform: none; }
-    .js .hero-in .hero__arrow { opacity: 0.4; }
+    /* Top heading, summary line and buttons are visible from first paint (no entrance fade). */
     .hero__h1 {
       font-family: var(--font-serif); font-size: 42px; font-weight: 300;
       line-height: 1.15; letter-spacing: 0.01em;
@@ -219,18 +208,23 @@
     }
 
     /* Hero CTA buttons — evidence-based: above-fold CTA +30% conversion */
+    .hero__what {
+      margin-top: 18px; font-size: 14px; line-height: 1.7; font-weight: 400;
+      letter-spacing: 0.04em; color: rgba(255,255,255,0.92);
+    }
     .hero__ctas {
-      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px;
     }
     .hero__cta {
       position: relative; overflow: hidden;
-      display: inline-flex; align-items: center; gap: 14px;
-      padding: 18px 36px; min-width: 200px;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--white);
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 0 16px; min-height: 48px;
+      font-size: 14px; font-weight: 500; letter-spacing: 0.08em;
+      color: var(--white);
       border: 1px solid rgba(255,255,255,0.4);
       transition: border-color 0.4s var(--ease);
     }
+    body.lang-ja a.hero__cta[data-lang-ja], body.lang-en a.hero__cta[data-lang-en] { display: flex !important; }
     .hero__cta::before {
       content: ''; position: absolute; inset: 0;
       background: var(--white); transform: translateX(-101%);
@@ -245,7 +239,7 @@
     .hero__cta:hover { color: var(--black); }
     .hero__cta--filled:hover { color: var(--white); }
     .hero__cta__arrow {
-      width: 28px; height: 1px; background: currentColor; position: relative;
+      width: 18px; flex: none; height: 1px; background: currentColor; position: relative;
       transition: width 0.4s var(--ease);
     }
     .hero__cta__arrow::after {
@@ -253,7 +247,12 @@
       width: 8px; height: 8px; border-top: 1px solid currentColor; border-right: 1px solid currentColor;
       transform: rotate(45deg);
     }
-    .hero__cta:hover .hero__cta__arrow { width: 40px; }
+    .hero__cta:hover .hero__cta__arrow { width: 24px; }
+    @media (min-width: 768px) {
+      .hero__what { font-size: 16px; margin-top: 22px; }
+      .hero__ctas { grid-template-columns: repeat(4, auto); justify-content: start; gap: 12px; margin-top: 30px; }
+      .hero__cta { padding: 0 24px; min-height: 52px; gap: 16px; }
+    }
     .hero__arrow {
       position: absolute; bottom: 32px; right: 40px; z-index: 2;
       opacity: 0.4;
@@ -280,14 +279,14 @@
     }
     /* Pricing list (restored) */
     .pricing__basis {
-      font-size: 12.5px; line-height: 1.85; color: var(--gray-600);
+      font-size: 14px; line-height: 1.85; color: var(--gray-600);
       margin: 14px 0 0; max-width: 620px;
     }
     .pricing__full {
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
       margin-top: 28px; padding: 20px 0;
       border-top: 1px solid var(--black); border-bottom: 1px solid var(--black);
-      font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+      font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
       color: var(--black); text-decoration: none;
       transition: opacity 0.3s ease;
     }
@@ -303,14 +302,14 @@
       padding: 22px 0; border-bottom: 1px solid var(--gray-200);
       gap: 16px;
     }
-    .pricing__name { font-size: 14px; font-weight: 500; }
-    .pricing__detail { font-size: 11px; color: var(--gray-600); letter-spacing: 0.04em; margin-top: 4px; }
+    .pricing__name { font-size: 16px; font-weight: 500; }
+    .pricing__detail { font-size: 14px; color: var(--gray-600); letter-spacing: 0.04em; margin-top: 4px; }
     .pricing__price {
       font-family: var(--font-serif); font-size: 22px; font-weight: 400;
       color: var(--black); letter-spacing: 0.01em; white-space: nowrap;
     }
     .pricing__price small {
-      font-size: 11px; opacity: 0.6; margin-left: 2px;
+      font-size: 12px; opacity: 0.6; margin-left: 2px;
       font-family: var(--font-en); font-weight: 400;
     }
     /* "詳細を見る" link inside a pricing row */
@@ -318,7 +317,7 @@
     .pricing__row--clickable:hover { background: rgba(0,0,0,0.02); }
     .pricing__see {
       display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-en); font-size: 11px; font-weight: 500;
+      font-family: var(--font-en); font-size: 12px; font-weight: 500;
       letter-spacing: 0.15em; text-transform: uppercase;
       color: var(--black); white-space: nowrap;
     }
@@ -369,7 +368,7 @@
     }
     .modal__close:hover { color: var(--black); }
     .modal__label {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.2em;
       text-transform: uppercase; color: var(--gray-600);
     }
     .modal__title {
@@ -382,14 +381,14 @@
     .modal__section { margin-bottom: 32px; }
     .modal__section:last-child { margin-bottom: 0; }
     .modal__section-title {
-      font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+      font-size: 14px; font-weight: 600; letter-spacing: 0.04em;
       margin-bottom: 12px; padding-bottom: 8px;
       border-bottom: 1px solid var(--gray-200);
     }
     .modal__row {
       display: flex; justify-content: space-between; align-items: baseline;
       padding: 10px 0; gap: 12px;
-      font-size: 13px;
+      font-size: 15px;
       border-bottom: 1px solid var(--gray-100);
     }
     .modal__row:last-child { border-bottom: none; }
@@ -401,7 +400,7 @@
     .modal__note {
       margin-top: 20px; padding: 14px 16px;
       background: var(--gray-100);
-      font-size: 12px; color: var(--gray-700); line-height: 1.8;
+      font-size: 13px; color: var(--gray-700); line-height: 1.8;
     }
     body.modal-open { overflow: hidden; }
     @media (min-width: 640px) {
@@ -420,7 +419,7 @@
       margin-bottom: 32px;
     }
     .pricing__inquiry-text {
-      font-size: 14px; line-height: 1.8;
+      font-size: 16px; line-height: 1.8;
       color: var(--gray-800); margin: 0;
     }
     .pricing__inquiry-text strong {
@@ -431,7 +430,7 @@
       display: inline-flex; align-items: center; gap: 14px;
       padding: 14px 28px;
       background: var(--black); color: var(--white);
-      font-family: var(--font-en); font-size: 11px; font-weight: 500;
+      font-family: var(--font-en); font-size: 12px; font-weight: 500;
       letter-spacing: 0.2em; text-transform: uppercase;
       border: 1px solid var(--black);
       transition: color 0.4s var(--ease);
@@ -480,7 +479,7 @@
       font-family: var(--font-serif-jp); font-size: 24px; letter-spacing: 0.04em;
     }
     .pricing__statement-body {
-      font-size: 14px; color: var(--gray-700); line-height: 2;
+      font-size: 16px; color: var(--gray-700); line-height: 2;
       margin: 0;
     }
     /* 3 promises */
@@ -497,11 +496,11 @@
       display: block; margin-bottom: 8px;
     }
     .pricing__promise h3 {
-      font-size: 14px; font-weight: 600; margin: 0 0 6px;
+      font-size: 16px; font-weight: 600; margin: 0 0 6px;
       letter-spacing: 0.02em;
     }
     .pricing__promise p {
-      font-size: 12px; color: var(--gray-600); line-height: 1.8; margin: 0;
+      font-size: 14px; color: var(--gray-600); line-height: 1.8; margin: 0;
     }
 
     /* ===== HOW IT WORKS — Hick's Law: clear steps +50% decision speed ===== */
@@ -538,7 +537,7 @@
       font-family: var(--font-jp);
     }
     .how__step p {
-      font-size: 13px; color: var(--gray-600); line-height: 1.9;
+      font-size: 16px; color: var(--gray-600); line-height: 1.9;
     }
 
     /* ===== EXPERTISE — numbered text list ===== */
@@ -550,7 +549,7 @@
     /* Section label (shared) — was undefined, rendered as plain text */
     .section__label {
       display: block;
-      font-family: var(--font-en); font-size: 10px; font-weight: 500;
+      font-family: var(--font-en); font-size: 12px; font-weight: 500;
       letter-spacing: 0.3em; text-transform: uppercase;
       color: var(--gray-400); margin-bottom: 12px;
     }
@@ -577,7 +576,7 @@
       .expertise__item:hover .expertise__num { color: var(--black); }
     }
     .expertise__num {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
       color: var(--gray-400); flex-shrink: 0; width: 32px;
       transition: color 0.4s ease;
     }
@@ -594,7 +593,7 @@
     .expertise__cta a {
       position: relative; overflow: hidden;
       display: inline-flex; align-items: center; gap: 14px;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.2em;
       text-transform: uppercase; background: var(--black); color: var(--white);
       padding: 18px 40px; min-width: 200px; justify-content: center;
       transition: color 0.4s var(--ease);
@@ -653,7 +652,7 @@
       justify-content: center;
     }
     .feature__label {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.3em;
       text-transform: uppercase; color: var(--gray-400); margin-bottom: 20px;
     }
     .feature__h2 {
@@ -664,11 +663,11 @@
       font-family: var(--font-serif-jp); font-size: 22px; letter-spacing: 0.04em;
     }
     .feature__p {
-      color: var(--gray-600); line-height: 2; margin-bottom: 32px; font-size: 14px;
+      color: var(--gray-600); line-height: 2; margin-bottom: 32px; font-size: 16px;
     }
     .feature__link {
       display: inline-flex; align-items: center; gap: 14px;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.2em;
       text-transform: uppercase; position: relative;
       padding-bottom: 12px;
     }
@@ -704,7 +703,7 @@
       margin-bottom: 64px; flex-wrap: wrap; gap: 16px;
     }
     .reviews__label {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.3em;
       text-transform: uppercase; color: var(--gray-400);
     }
     .reviews__rating {
@@ -713,7 +712,7 @@
     }
     a.reviews__rating:hover { color: rgba(255,255,255,0.85); }
     .reviews__rating-link {
-      margin-left: 12px; font-size: 11px; letter-spacing: 0.08em;
+      margin-left: 12px; font-size: 12px; letter-spacing: 0.08em;
       color: rgba(255,255,255,0.35);
       border-bottom: 1px solid rgba(255,255,255,0.25);
       padding-bottom: 1px;
@@ -733,10 +732,10 @@
       line-height: 1.9; color: rgba(255,255,255,0.65); margin-bottom: 16px;
     }
     body.lang-ja .reviews__text {
-      font-family: var(--font-jp); font-size: 14px;
+      font-family: var(--font-jp); font-size: 16px;
     }
     .reviews__author {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.15em;
       text-transform: uppercase; color: rgba(255,255,255,0.25);
     }
 
@@ -749,13 +748,13 @@
     .rv__src { font-size: 12px; color: rgba(255,255,255,0.7); letter-spacing: 0.02em; }
     .rv__stars { font-size: 13px; letter-spacing: 2px; color: rgba(255,255,255,0.9); line-height: 1; }
     .rv__off { color: rgba(255,255,255,0.18); }
-    .rv__text { font-family: var(--font-en, 'Inter', sans-serif) !important; font-size: 15px !important;
+    .rv__text { font-family: var(--font-en, 'Inter', sans-serif) !important; font-size: 16px !important;
       line-height: 1.8 !important; color: rgba(255,255,255,0.75) !important; margin-bottom: 0 !important; }
-    body.lang-ja .rv__text { font-family: var(--font-jp, 'Noto Sans JP', sans-serif) !important; font-size: 14px !important; }
+    body.lang-ja .rv__text { font-family: var(--font-jp, 'Noto Sans JP', sans-serif) !important; font-size: 16px !important; }
     .reviews__foot { max-width: 1100px; margin: 0 auto; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
       display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; }
-    .reviews__foot-q { font-size: 13px; color: rgba(255,255,255,0.5); }
-    .reviews__write { font-size: 11px; letter-spacing: 0.08em; color: rgba(255,255,255,0.6);
+    .reviews__foot-q { font-size: 14px; color: rgba(255,255,255,0.5); }
+    .reviews__write { font-size: 12px; letter-spacing: 0.08em; color: rgba(255,255,255,0.6);
       border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 1px; transition: color 0.3s ease, border-color 0.3s ease; }
     .reviews__write:hover { color: var(--white); border-color: var(--white); }
     /* ===== FAQ — minimal accordion ===== */
@@ -763,7 +762,7 @@
       padding: 120px 40px; max-width: 800px; margin: 0 auto;
     }
     .faq__head {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.3em;
       text-transform: uppercase; color: var(--gray-400);
       margin-bottom: 48px; padding-bottom: 16px;
       border-bottom: 1px solid var(--gray-200);
@@ -771,7 +770,7 @@
     .faq__item { border-bottom: 1px solid var(--gray-200); }
     .faq__q {
       width: 100%; display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 0; font-size: 15px; font-weight: 400; text-align: left;
+      padding: 20px 0; font-size: 16px; font-weight: 400; text-align: left;
       gap: 16px; transition: opacity 0.3s ease;
     }
     .faq__q:hover { opacity: 0.5; }
@@ -784,7 +783,7 @@
       max-height: 0; overflow: hidden; transition: max-height 0.5s var(--ease);
     }
     .faq__a-inner {
-      padding: 0 0 24px; color: var(--gray-600); font-size: 14px; line-height: 2;
+      padding: 0 0 24px; color: var(--gray-600); font-size: 16px; line-height: 2;
     }
 
     /* ===== LOCATION ===== */
@@ -802,11 +801,11 @@
       padding: 64px 40px;
     }
     .location__label {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.3em;
       text-transform: uppercase; color: var(--gray-400); margin-bottom: 32px;
     }
     .location__line {
-      font-size: 14px; color: var(--gray-600); margin-bottom: 12px; line-height: 1.8;
+      font-size: 16px; color: var(--gray-600); margin-bottom: 12px; line-height: 1.8;
     }
     .location__line a {
       border-bottom: 1px solid transparent;
@@ -829,26 +828,26 @@
     }
     .certified__label {
       display: block;
-      font-family: var(--font-en); font-size: 10px; font-weight: 500;
+      font-family: var(--font-en); font-size: 12px; font-weight: 500;
       letter-spacing: 0.3em; text-transform: uppercase;
       color: var(--gray-400); margin-bottom: 10px;
     }
     .certified__text {
-      font-size: 13px; letter-spacing: 0.12em;
+      font-size: 14px; letter-spacing: 0.12em;
       color: var(--gray-800); margin: 0;
     }
     @media (min-width: 768px) {
       .certified { padding: 48px 40px; }
-      .certified__text { font-size: 14px; letter-spacing: 0.18em; }
+      .certified__text { font-size: 15px; letter-spacing: 0.18em; }
     }
 
     .cta__note {
       margin-top: 24px;
-      font-size: 11px; letter-spacing: 0.08em;
+      font-size: 13px; letter-spacing: 0.08em;
       color: var(--gray-600);
     }
     .cta__label {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.3em;
       text-transform: uppercase; color: var(--gray-600); margin-bottom: 32px;
     }
     .cta__h2 {
@@ -864,7 +863,7 @@
     .cta__btns a {
       position: relative; overflow: hidden;
       display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.2em;
       text-transform: uppercase; padding: 20px 40px; min-width: 220px;
       border: 1px solid rgba(255,255,255,0.4); color: var(--white);
       transition: color 0.4s var(--ease), border-color 0.4s var(--ease);
@@ -893,18 +892,18 @@
       padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .ft__logo {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.3em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.3em;
       text-transform: uppercase; margin-bottom: 16px;
     }
-    .ft__desc { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 2; }
+    .ft__desc { font-size: 14px; color: rgba(255,255,255,0.3); line-height: 2; }
     .ft__brand { max-width: 280px; }
     .ft__info { display: flex; flex-direction: column; gap: 16px; }
     .ft__info-line {
       display: flex; flex-direction: column; gap: 4px;
-      font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.7; margin: 0;
+      font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin: 0;
     }
     .ft__info-label {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.18em;
       text-transform: uppercase; color: rgba(255,255,255,0.3);
     }
     .ft__info-val { color: rgba(255,255,255,0.65); }
@@ -919,7 +918,7 @@
       display: flex; flex-wrap: wrap; gap: 32px;
     }
     .ft__links a {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.18em;
       text-transform: uppercase; color: rgba(255,255,255,0.4);
       transition: color 0.3s ease;
     }
@@ -930,7 +929,7 @@
     }
     .ft__social a:hover { color: var(--white); }
     .ft__copy {
-      padding-top: 32px; font-size: 10px; letter-spacing: 0.1em;
+      padding-top: 32px; font-size: 12px; letter-spacing: 0.1em;
       color: rgba(255,255,255,0.15);
       /* clear the fixed mobile CTA bar */
       padding-bottom: calc(72px + env(safe-area-inset-bottom));
@@ -960,7 +959,7 @@
     }
     .mob-bar a {
       flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px;
-      padding: 16px 6px; font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+      padding: 16px 6px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--white); text-decoration: none;
       min-height: 56px; white-space: nowrap;
       transition: background 0.3s ease;
@@ -978,7 +977,7 @@
       position: fixed; bottom: 32px; right: 32px;
       display: none; align-items: center; gap: 12px;
       padding: 16px 28px; background: var(--black); color: var(--white);
-      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.2em;
       text-transform: uppercase; z-index: 90;
       opacity: 0; transform: translateY(20px);
       transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease;
@@ -1004,11 +1003,11 @@
     }
 
     /* ===== FADE IN (JS-gated: content stays visible without JS) ===== */
-    .js .fi { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .js .fi { opacity: 0; transform: translateY(12px); transition: opacity 0.3s ease, transform 0.3s ease; }
     .js .fi.visible { opacity: 1; transform: translateY(0); }
 
     /* ===== STAGGER REVEAL (classes applied by JS only) ===== */
-    .st { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .st { opacity: 0; transform: translateY(12px); transition: opacity 0.3s var(--ease), transform 0.3s var(--ease); }
     .st.visible { opacity: 1; transform: none; }
 
     /* ===== NAV OVERLAY — staggered link reveal ===== */
@@ -1161,13 +1160,27 @@
         <p class="hero__sub">Yokohama — Since 1949</p>
         <h1 class="hero__h1" data-lang-ja>クルマのことを、<br>もっとシンプルに。</h1>
         <h1 class="hero__h1" data-lang-en>Japan Car Life,<br>Made Simple.</h1>
+        <p class="hero__what" data-lang-ja>車検・整備・販売・買取｜国産車・輸入車 全メーカー対応｜English OK</p>
+        <p class="hero__what" data-lang-en>Shaken, repairs, sales and buyback | All makes, Japanese and imported | English OK</p>
         <div class="hero__ctas">
-          <a href="contact.html" class="hero__cta hero__cta--filled">
-            <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact</span>
+          <a href="shaken.html" class="hero__cta hero__cta--filled">
+            <span data-lang-ja>車検</span><span data-lang-en>Shaken</span>
             <span class="hero__cta__arrow"></span>
           </a>
-          <a href="#services" class="hero__cta">
-            <span data-lang-ja>サービスを見る</span><span data-lang-en>View Services</span>
+          <a href="services.html" class="hero__cta">
+            <span data-lang-ja>修理・整備</span><span data-lang-en>Repairs</span>
+            <span class="hero__cta__arrow"></span>
+          </a>
+          <a href="kaitori.html" class="hero__cta" data-lang-ja>
+            <span>買う・売る</span>
+            <span class="hero__cta__arrow"></span>
+          </a>
+          <a href="sell-your-car.html" class="hero__cta" data-lang-en>
+            <span>Buy &amp; Sell</span>
+            <span class="hero__cta__arrow"></span>
+          </a>
+          <a href="english.html" class="hero__cta">
+            <span data-lang-ja>English</span><span data-lang-en>English page</span>
             <span class="hero__cta__arrow"></span>
           </a>
         </div>
@@ -1286,8 +1299,8 @@
               <div class="pricing__detail" data-lang-ja>現車状態によります（例：フロントバンパーペイント ¥25,000）</div>
               <div class="pricing__detail" data-lang-en>Depends on vehicle condition (e.g. front bumper paint ¥25,000)</div>
             </div>
-            <div class="pricing__price" data-lang-ja><small style="font-size:13px;font-family:var(--font-jp);">要見積もり</small></div>
-            <div class="pricing__price" data-lang-en><small style="font-size:13px;font-family:var(--font-en);">Quote</small></div>
+            <div class="pricing__price" data-lang-ja><small style="font-size:14px;font-family:var(--font-jp);">要見積もり</small></div>
+            <div class="pricing__price" data-lang-en><small style="font-size:14px;font-family:var(--font-en);">Quote</small></div>
           </div>
         </div>
 
@@ -1298,8 +1311,8 @@
 
         <!-- Inquiry CTA — for unlisted services -->
         <div class="pricing__inquiry">
-          <p class="pricing__inquiry-text" data-lang-ja><strong>上記にない修理・整備の料金もお気軽にお問い合わせください。</strong><br>お車の状態に合わせて、無料でお見積もりをお出しします。<br><span style="font-size:11px;color:var(--gray-600);">フォーム・LINEは24時間受付。翌営業日にご返信します。</span></p>
-          <p class="pricing__inquiry-text" data-lang-en><strong>Curious about a service not listed here?</strong><br>Get in touch — we provide free, tailored estimates based on your vehicle.<br><span style="font-size:11px;color:var(--gray-600);">Form &amp; LINE available 24/7 — we reply next business day.</span></p>
+          <p class="pricing__inquiry-text" data-lang-ja><strong>上記にない修理・整備の料金もお気軽にお問い合わせください。</strong><br>お車の状態に合わせて、無料でお見積もりをお出しします。<br><span style="font-size:12px;color:var(--gray-600);">フォーム・LINEは24時間受付。翌営業日にご返信します。</span></p>
+          <p class="pricing__inquiry-text" data-lang-en><strong>Curious about a service not listed here?</strong><br>Get in touch — we provide free, tailored estimates based on your vehicle.<br><span style="font-size:12px;color:var(--gray-600);">Form &amp; LINE available 24/7 — we reply next business day.</span></p>
           <a href="contact.html" class="pricing__inquiry-btn">
             <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact Us</span>
             <span class="pricing__inquiry-btn__line"></span>
@@ -1389,8 +1402,8 @@
         <p class="feature__label">All Brands</p>
         <h2 class="feature__h2" data-lang-ja>国産車も輸入車も、<br>全メーカー対応</h2>
         <h2 class="feature__h2" data-lang-en>Every Brand,<br>Domestic &amp; Imported</h2>
-        <p class="feature__p" data-lang-ja>国産車も輸入車も、全メーカー対応。スズキ副代理店として、また複数メーカーの協力工場として、最適な一台をご提案します。<br><span style="font-size:0.85em;opacity:0.75;">※テスラは専用設備がないため、車検・整備をお受けしておりません。</span></p>
-        <p class="feature__p" data-lang-en>Every brand, domestic and imported. As an authorized Suzuki sub-dealer and a partner workshop for several manufacturers, we help you find the right car.<br><span style="font-size:0.85em;opacity:0.75;">Note: we cannot take Tesla vehicles for shaken or servicing, as we do not have the dedicated equipment.</span></p>
+        <p class="feature__p" data-lang-ja>国産車も輸入車も、全メーカー対応。スズキ副代理店として、また複数メーカーの協力工場として、最適な一台をご提案します。<br><span style="font-size:0.875em;opacity:0.75;">※テスラは専用設備がないため、車検・整備をお受けしておりません。</span></p>
+        <p class="feature__p" data-lang-en>Every brand, domestic and imported. As an authorized Suzuki sub-dealer and a partner workshop for several manufacturers, we help you find the right car.<br><span style="font-size:0.875em;opacity:0.75;">Note: we cannot take Tesla vehicles for shaken or servicing, as we do not have the dedicated equipment.</span></p>
         <a href="services.html" class="feature__link">
           <span data-lang-ja>詳しく見る</span><span data-lang-en>Learn more</span>
           <span class="feature__link__line"></span>
@@ -1691,7 +1704,7 @@
         <h4 class="modal__section-title" data-lang-en>Fitting labour (per tyre)</h4>
         <div class="modal__row"><span class="modal__row-name" data-lang-ja>13〜15インチ</span><span class="modal__row-name" data-lang-en>13&ndash;15 inch</span><span class="modal__row-price">¥4,400〜</span></div>
         <div class="modal__row"><span class="modal__row-name" data-lang-ja>16〜17インチ</span><span class="modal__row-name" data-lang-en>16&ndash;17 inch</span><span class="modal__row-price">¥5,500〜</span></div>
-        <div class="modal__row"><span class="modal__row-name" data-lang-ja>18インチ以上</span><span class="modal__row-name" data-lang-en>18 inch and above</span><span class="modal__row-price" style="font-size:13px;" data-lang-ja>お見積り</span><span class="modal__row-price" style="font-size:13px;" data-lang-en>Quote</span></div>
+        <div class="modal__row"><span class="modal__row-name" data-lang-ja>18インチ以上</span><span class="modal__row-name" data-lang-en>18 inch and above</span><span class="modal__row-price" style="font-size:14px;" data-lang-ja>お見積り</span><span class="modal__row-price" style="font-size:14px;" data-lang-en>Quote</span></div>
         <p class="modal__note" data-lang-ja>※ 脱着・組替・バランス込（税込）。</p>
         <p class="modal__note" data-lang-ja>ホイール付きタイヤの履き替えは、お持ち込みのタイヤでも承ります。タイヤの組み換え（お持ち込みのタイヤをホイールに組む作業）は、ご相談のうえお見積りします。</p>
         <p class="modal__note" data-lang-en>* Includes removal, fitting and balancing (tax included).</p>
@@ -1893,7 +1906,7 @@
         el.classList.add('visible');
         Array.from(el.children).forEach((c, i) => {
           c.classList.add('st');
-          c.style.transitionDelay = (i * 80) + 'ms';
+          c.style.transitionDelay = (i * 40) + 'ms';
         });
         stObs.observe(el);
       });

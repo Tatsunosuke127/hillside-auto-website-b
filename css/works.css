@@ -11,7 +11,7 @@
 .works__label {
   display: block;
   font-family: var(--font-en, 'Inter', system-ui, sans-serif);
-  font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.3em;
   text-transform: uppercase; color: var(--gray-400, #aaa);
 }
 .works__head h2 {
@@ -24,7 +24,7 @@ body.lang-ja .works__head h2 {
   font-size: clamp(24px, 3vw, 34px);
 }
 .works__lead {
-  font-size: 14px; line-height: 1.9; color: var(--gray-600, #666);
+  font-size: 16px; line-height: 1.9; color: var(--gray-600, #666);
   margin: 16px 0 0; max-width: 680px;
 }
 
@@ -32,14 +32,14 @@ body.lang-ja .works__head h2 {
 .works__filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 36px; }
 .works__filter {
   font-family: var(--font-en, 'Inter', system-ui, sans-serif);
-  font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
   padding: 10px 16px; border: 1px solid var(--gray-200, #e8e8e8);
   background: none; color: var(--gray-700, #444); cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 body.lang-ja .works__filter {
   font-family: var(--font-jp, 'Noto Sans JP', sans-serif);
-  font-size: 12px; letter-spacing: 0.08em; text-transform: none;
+  font-size: 13px; letter-spacing: 0.08em; text-transform: none;
 }
 .works__filter:hover { border-color: var(--black, #000); color: var(--black, #000); }
 .works__filter.active { background: var(--black, #000); border-color: var(--black, #000); color: var(--white, #fff); }
@@ -56,36 +56,36 @@ body.lang-ja .works__filter {
 .work__img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
 .work__cat {
   font-family: var(--font-en, 'Inter', system-ui, sans-serif);
-  font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--gray-600, #666); margin: 18px 0 0;
 }
 .work__title {
   font-size: 16px; font-weight: 500; line-height: 1.55;
   margin: 8px 0 0; color: var(--black, #000);
 }
-.work__car { font-size: 12px; color: var(--gray-600, #666); margin: 6px 0 0; letter-spacing: 0.02em; }
+.work__car { font-size: 14px; color: var(--gray-600, #666); margin: 6px 0 0; letter-spacing: 0.02em; }
 .work__price { display: flex; align-items: baseline; gap: 10px; margin: 14px 0 0; }
 .work__price-label {
-  font-size: 11px; letter-spacing: 0.06em; color: var(--gray-600, #666);
+  font-size: 12px; letter-spacing: 0.06em; color: var(--gray-600, #666);
 }
 .work__price-value {
   font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
   font-size: 26px; font-weight: 400; letter-spacing: 0.01em; color: var(--black, #000);
   font-variant-numeric: tabular-nums;
 }
-.work__sum { font-size: 13px; line-height: 1.85; color: var(--gray-700, #444); margin: 12px 0 20px; flex: 1; }
+.work__sum { font-size: 16px; line-height: 1.85; color: var(--gray-700, #444); margin: 12px 0 20px; flex: 1; }
 .work__btn {
   align-self: flex-start;
   display: inline-flex; align-items: center; gap: 10px;
   font-family: var(--font-en, 'Inter', system-ui, sans-serif);
-  font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
   padding: 12px 20px; border: 1px solid var(--black, #000);
   color: var(--black, #000); text-decoration: none; background: none;
   transition: background 0.3s ease, color 0.3s ease;
 }
 body.lang-ja .work__btn {
   font-family: var(--font-jp, 'Noto Sans JP', sans-serif);
-  font-size: 12px; letter-spacing: 0.08em; text-transform: none;
+  font-size: 13px; letter-spacing: 0.08em; text-transform: none;
 }
 .work__btn::after {
   content: ''; width: 6px; height: 6px;
@@ -99,7 +99,7 @@ body.lang-ja .work__btn {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   margin-top: 48px; padding: 20px 0;
   border-top: 1px solid var(--black, #000); border-bottom: 1px solid var(--black, #000);
-  font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
   color: var(--black, #000); text-decoration: none;
   transition: opacity 0.3s ease;
 }
@@ -109,6 +109,6 @@ body.lang-ja .work__btn {
   border-top: 1px solid currentColor; border-right: 1px solid currentColor;
   transform: rotate(45deg);
 }
-.works__empty { font-size: 13px; color: var(--gray-600, #666); line-height: 1.8; }
+.works__empty { font-size: 16px; color: var(--gray-600, #666); line-height: 1.8; }
 
 @media (min-width: 768px) { .works { padding: 130px 80px; } }

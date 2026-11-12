@@ -93,7 +93,7 @@
         Array.prototype.forEach.call(el.children, function (c, i) {
           c.classList.remove('fade-in');
           c.classList.add('st');
-          c.style.transitionDelay = (i * 80) + 'ms';
+          c.style.transitionDelay = (i * 40) + 'ms';
         });
         stObs.observe(el);
       });
