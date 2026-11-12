@@ -20,6 +20,9 @@
   <meta property="og:locale" content="ja_JP">
   <meta property="og:locale:alternate" content="en_US">
   <link rel="canonical" href="https://www.hillside-auto.jp/">
+  <link rel="alternate" hreflang="ja" href="https://www.hillside-auto.jp/">
+  <link rel="alternate" hreflang="en" href="https://www.hillside-auto.jp/">
+  <link rel="alternate" hreflang="x-default" href="https://www.hillside-auto.jp/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- LCP: preload the hero image (right variant per viewport) -->
@@ -31,7 +34,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":["AutoRepair","AutoDealer"],"name":"Hillside Auto Inc.","alternateName":"ヒルサイドオート株式会社","description":"1949年創業、横浜市中区麦田町の自動車総合サービス。新車・中古車販売、車検、整備、板金まで全メーカー対応。英語対応可能。","url":"https://www.hillside-auto.jp/","telephone":"+81-45-641-3307","foundingDate":"1949","image":"https://www.hillside-auto.jp/images/og.jpg","address":{"@type":"PostalAddress","streetAddress":"麦田町1-40","addressLocality":"横浜市中区","addressRegion":"神奈川県","postalCode":"231-0849","addressCountry":"JP"},"geo":{"@type":"GeoCoordinates","latitude":35.434141,"longitude":139.6470125},"hasMap":"https://maps.app.goo.gl/iaCxwbdv7EDR1VVKA","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:00"}],"knowsLanguage":["ja","en"],"email":"info@hillside-auto.com","areaServed":"Naka-ku, Yokohama, Kanagawa, Japan","hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"新車・中古車販売","alternateName":"New & Used Car Sales"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"車検","alternateName":"Shaken (Vehicle Inspection)"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"整備・メンテナンス","alternateName":"Maintenance"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"板金塗装","alternateName":"Body Work"}}]},"sameAs":["https://www.instagram.com/hillside_auto_inc/","https://www.facebook.com/hillsideautoinc/","https://note.com/hillside_auto","https://www.yelp.com/biz/hillside-auto-inc-%E6%A8%AA%E6%B5%9C%E5%B8%82"]}
+  {"@context":"https://schema.org","@type":["AutoRepair","AutoDealer"],"name":"Hillside Auto Inc.","alternateName":"ヒルサイドオート株式会社","description":"1949年創業、横浜市中区麦田町の自動車総合サービス。新車・中古車販売、車検、整備、板金まで、国産車・輸入車に対応。英語対応可能。","url":"https://www.hillside-auto.jp/","telephone":"+81-45-641-3307","foundingDate":"1949","image":"https://www.hillside-auto.jp/images/og.jpg","address":{"@type":"PostalAddress","streetAddress":"麦田町1-40","addressLocality":"横浜市中区","addressRegion":"神奈川県","postalCode":"231-0849","addressCountry":"JP"},"geo":{"@type":"GeoCoordinates","latitude":35.434141,"longitude":139.6470125},"hasMap":"https://maps.app.goo.gl/iaCxwbdv7EDR1VVKA","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:00"}],"knowsLanguage":["ja","en"],"email":"info@hillside-auto.com","areaServed":"Naka-ku, Yokohama, Kanagawa, Japan","hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"新車・中古車販売","alternateName":"New & Used Car Sales"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"車検","alternateName":"Shaken (Vehicle Inspection)"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"整備・メンテナンス","alternateName":"Maintenance"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"板金塗装","alternateName":"Body Work"}}]},"sameAs":["https://www.instagram.com/hillside_auto_inc/","https://www.facebook.com/hillsideautoinc/","https://note.com/hillside_auto","https://www.yelp.com/biz/hillside-auto-inc-%E6%A8%AA%E6%B5%9C%E5%B8%82"]}
   </script>
   <style>
     /* ============================================
@@ -432,7 +435,7 @@
     .modal__note {
       margin-top: 20px; padding: 14px 16px;
       background: var(--gray-100);
-      font-size: 13px; color: var(--gray-700); line-height: 1.8;
+      font-size: 14px; color: var(--gray-700); line-height: 1.8;
     }
     body.modal-open { overflow: hidden; }
     @media (min-width: 640px) {
@@ -875,7 +878,7 @@
 
     .cta__note {
       margin-top: 24px;
-      font-size: 13px; letter-spacing: 0.08em;
+      font-size: 14px; letter-spacing: 0.08em;
       color: var(--gray-600);
     }
     .cta__label {
@@ -1120,6 +1123,22 @@
       .expertise__name { font-size: 32px; }
       body.lang-ja .expertise__name { font-size: 20px; }
     }
+    .expertise__note { margin-top: 20px; font-size: 14px; line-height: 1.7; color: var(--gray-600, #666); }
+    .faq-link { padding: 0 40px 56px; max-width: 1200px; margin: 0 auto; }
+    @media (max-width: 767px) { .faq-link { padding: 0 24px 40px; } .works .work__sum { display: none; } }
+    /* ===== Tap targets: 44px minimum for buttons and standalone links ===== */
+    .nav__logo { display: inline-flex; align-items: center; min-height: 44px; margin: -6px 0; }
+    .nav__menu { padding: 18px 13px; margin: -18px -13px; }
+    .nav__lang button { min-width: 44px; min-height: 44px; padding: 0 6px; margin: -6px -4px; }
+    .ft a { display: inline-flex; align-items: center; min-height: 44px; }
+    .btn { min-height: 44px; }
+    .reviews__rating, .reviews__write, .reviews__rating-link { display: inline-flex; align-items: center; min-height: 44px; }
+    @media (max-width: 767px) {
+      .nav { padding-left: 20px; padding-right: 20px; }
+      .nav__logo { font-size: 16px; letter-spacing: 0.12em; white-space: nowrap; }
+      .nav__right { gap: 10px; }
+      .nav__lang { gap: 0; }
+    }
     /* ===== Phone: tighter vertical rhythm so the page is shorter (content unchanged) ===== */
     @media (max-width: 767px) {
       .expertise { padding-top: 56px; padding-bottom: 56px; }
@@ -1282,6 +1301,8 @@
         <span class="expertise__num">06</span>
         <span class="expertise__name">Sell Your Car</span>
       </a>
+      <p class="expertise__note" data-lang-ja>※テスラは専用設備がないため、車検・整備をお受けしておりません。改造車もお受けしておりません。</p>
+      <p class="expertise__note" data-lang-en>Note: we cannot take Tesla vehicles for shaken or servicing, as we do not have the dedicated equipment. We do not take modified cars either.</p>
       <div class="expertise__cta">
         <a href="services.html">
           <span data-lang-ja>すべて見る</span><span data-lang-en>All in English. View All</span>
@@ -1377,42 +1398,6 @@
       </div>
     </section>
 
-    <!-- FEATURE 1: English Support -->
-    <section class="feature fi">
-      <div class="feature__img">
-        <img src="images/english-support.webp" alt="英語対応可能 — 英語でのご説明・ご予約も承ります" loading="lazy" width="1200" height="801">
-      </div>
-      <div class="feature__body">
-        <p class="feature__label">English Support</p>
-        <h2 class="feature__h2" data-lang-ja>完全英語対応</h2>
-        <h2 class="feature__h2" data-lang-en>Full English Support</h2>
-        <p class="feature__p" data-lang-ja>横浜エリアで数少ない、全サービスを英語でご提供できる自動車会社です。購入相談から車検の説明、書類手続き、アフターケアまで、言葉の壁を感じることなくご利用いただけます。</p>
-        <p class="feature__p" data-lang-en>One of the few auto service companies in Yokohama offering full English support. From car purchases to Shaken, paperwork, and after-care — no language barrier, ever.</p>
-        <a href="english.html" class="feature__link">
-          <span data-lang-ja>詳しく見る</span><span data-lang-en>Learn more</span>
-          <span class="feature__link__line"></span>
-        </a>
-      </div>
-    </section>
-
-    <!-- FEATURE 2: All Brands (reversed) -->
-    <section class="feature feature--reverse fi">
-      <div class="feature__img">
-        <img src="images/brand-allmakers.webp" alt="トヨタ・日産・ホンダ・BMW・メルセデス等、全メーカーの新車・中古車に対応" loading="lazy" width="1024" height="1024">
-      </div>
-      <div class="feature__body">
-        <p class="feature__label">All Brands</p>
-        <h2 class="feature__h2" data-lang-ja>国産車も輸入車も、<br>全メーカー対応</h2>
-        <h2 class="feature__h2" data-lang-en>Every Brand,<br>Domestic &amp; Imported</h2>
-        <p class="feature__p" data-lang-ja>国産車も輸入車も、全メーカー対応。スズキ副代理店として、また複数メーカーの協力工場として、最適な一台をご提案します。<br><span style="font-size:0.875em;opacity:0.75;">※テスラは専用設備がないため、車検・整備をお受けしておりません。改造車もお受けしておりません。</span></p>
-        <p class="feature__p" data-lang-en>Every brand, domestic and imported. As an authorized Suzuki sub-dealer and a partner workshop for several manufacturers, we help you find the right car.<br><span style="font-size:0.875em;opacity:0.75;">Note: we cannot take Tesla vehicles for shaken or servicing, as we do not have the dedicated equipment. We do not take modified cars either.</span></p>
-        <a href="services.html" class="feature__link">
-          <span data-lang-ja>詳しく見る</span><span data-lang-en>Learn more</span>
-          <span class="feature__link__line"></span>
-        </a>
-      </div>
-    </section>
-
     <!-- HOW IT WORKS — 4 step process -->
     <section class="how fi">
       <div class="how__inner">
@@ -1503,51 +1488,12 @@
       <p class="certified__text" data-lang-en>We service government vehicles — Certified workshop</p>
     </section>
 
-    <!-- FAQ -->
-    <section class="faq fi">
-      <div class="faq__head">FAQ</div>
-      <div class="faq__item">
-        <button class="faq__q"><span><span data-lang-ja>車検はいくらかかりますか？</span><span data-lang-en>How much does Shaken cost?</span></span><span class="faq__icon">+</span></button>
-        <div class="faq__a"><div class="faq__a-inner">
-          <p data-lang-ja>車検の費用は3つに分かれます。<strong>①当店にお支払いいただく技術料</strong>（車検基本料〈法定24ヶ月点検〉＋検査場への持ち込み・受検手続き）は、軽自動車 ¥35,200〜、普通車 ¥41,800〜（税込）。<strong>②法定費用</strong>（自賠責保険料・重量税・検査印紙代）は非課税で、お車の重量と年式によって決まります。<strong>③必要な整備費</strong>は、保安基準に適合させるために交換が必要になった部品と作業です。作業前に必ずお見積りをご提示します。法定費用を含めた総額の目安は、軽自動車62,960円〜、普通車79,260円〜、輸入車80,460円〜です（整備費は別）。<br><br>全区分の料金は<a href="pricing.html" style="text-decoration:underline;">料金表</a>でご確認いただけます。</p>
-          <p data-lang-en>A shaken bill has three parts. <strong>1. Our labour</strong> (inspection fee + taking the car in for the test) starts at ¥35,200 for a kei car and ¥41,800 for a standard vehicle, tax included. <strong>2. Statutory costs</strong> — compulsory insurance, weight tax and the inspection stamp — are tax-exempt and set by your vehicle's weight and age. <strong>3. Any repairs needed</strong> to meet the safety standard. We always provide a written estimate before starting.<br><br>Every class is listed on our <a href="pricing.html" style="text-decoration:underline;">price list</a>.</p>
-        </div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q"><span><span data-lang-ja>どんな車でも買取してもらえますか？</span><span data-lang-en>Do you buy any car?</span></span><span class="faq__icon">+</span></button>
-        <div class="faq__a"><div class="faq__a-inner">
-          <p data-lang-ja>動くお車であれば、国産車・輸入車を問わず、年式・走行距離に関わらず買取いたします。車検が切れているお車や、古いお車も大歓迎です。車検切れのお車は、場所によっては当社が引き取りに伺えます。あまりに遠い場所には対応できませんので、まずはご相談ください。動かないお車は扱っておりません。査定は無料、その場でお見積もりをお出しします。名義変更や抹消登録などの手続きはすべて当社で代行いたしますので、お客様のお手間はかかりません。書類のご案内も丁寧に行います（英語でのご説明も可能です）。<br><br>まずはお気軽にお問い合わせください。お電話・LINE・お問い合わせフォームのいずれでもお受けしております。<br><br><a href="kaitori.html" style="text-decoration:underline;">買取の流れと条件を見る</a></p>
-          <p data-lang-en>We buy any car that runs — domestic or imported, regardless of year or mileage. Cars with expired shaken and older cars are welcome. If your shaken has expired, we can collect the car depending on where you are. We cannot come if you are too far away, so please ask us first. We do not buy cars that do not run. Valuation is free and provided on the spot. We handle all paperwork (title transfer, deregistration, etc.) — no hassle on your end. We can guide you through document requirements in English as well.<br><br>Please feel free to reach out by phone, LINE, or our contact form.</p>
-        </div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q"><span><span data-lang-ja>英語で対応してもらえますか？</span><span data-lang-en>Do you offer services in English?</span></span><span class="faq__icon">+</span></button>
-        <div class="faq__a"><div class="faq__a-inner">
-          <p data-lang-ja>はい、全てのサービスを英語でご提供可能です。</p>
-          <p data-lang-en>Yes! Full English support for all services.</p>
-        </div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q"><span><span data-lang-ja>希望の車種を取り寄せてもらえますか？</span><span data-lang-en>Can you source the specific car I want?</span></span><span class="faq__icon">+</span></button>
-        <div class="faq__a"><div class="faq__a-inner">
-          <p data-lang-ja>はい。全国オークションネットワークから、ご希望の車種・年式・予算に合う車両をお探しします。国産・輸入問いません。</p>
-          <p data-lang-en>Yes. Through our nationwide auction network, we search for a vehicle that matches your preferred make, model year, and budget — both domestic and imported.</p>
-        </div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q"><span><span data-lang-ja>代車は用意してもらえますか？</span><span data-lang-en>Do you provide a loaner car?</span></span><span class="faq__icon">+</span></button>
-        <div class="faq__a"><div class="faq__a-inner">
-          <p data-lang-ja>車検・修理でお預かりしている間の代車は、1日1,100円（保険代として）でご用意します。台数に限りがあるため、ご予約時にお申し付けください。</p>
-          <p data-lang-en>While your car is with us for shaken or repairs, a loaner car is available for ¥1,100 a day (to cover insurance). We only have a few, so please ask for one when you book.</p>
-        </div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q"><span><span data-lang-ja>予約なしで来店できますか？</span><span data-lang-en>Can I visit without an appointment?</span></span><span class="faq__icon">+</span></button>
-        <div class="faq__a"><div class="faq__a-inner">
-          <p data-lang-ja>はい、ご来店は歓迎です。ただし、ご予約のお客様の作業が入っているため、すぐに拝見できない場合があります。事前にお電話かLINEでご連絡いただけると、空いている時間をお伝えできます。</p>
-          <p data-lang-en>Yes, you are welcome to drop by. Please understand that we may not be able to look at your car straight away, because booked work comes first. If you call or message us on LINE before you come, we can tell you when someone will be free.</p>
-        </div></div>
-      </div>
+    <!-- FAQ link (the questions live on faq.html) -->
+    <section class="faq-link fi">
+      <a href="faq.html" class="pricing__full">
+        <span data-lang-ja>よくある質問を見る</span>
+        <span data-lang-en>See the Q&amp;A</span>
+      </a>
     </section>
 
     <!-- LOCATION -->
@@ -1675,6 +1621,8 @@
         <div class="modal__row"><span class="modal__row-name">155/65R14</span><span class="modal__row-price">¥11,770</span></div>
         <p class="modal__note" data-lang-ja>※ 1本あたりの価格（税込）。他のサイズはお気軽にお問い合わせください。</p>
         <p class="modal__note" data-lang-en>* Per tyre (tax included). For other sizes, please inquire.</p>
+        <p class="modal__note" data-lang-ja>※ 2026年11月時点の価格です。仕入れ状況により変わる場合があります。</p>
+        <p class="modal__note" data-lang-en>* Prices as of November 2026. They may change with supply.</p>
       </div>
 
       <!-- Section 2: Labor (when buying tires) -->
@@ -1710,44 +1658,7 @@
     </div>
   </div>
 
-  <!-- MODAL: Battery -->
-  <div class="modal" id="modalBattery" role="dialog" aria-modal="true" aria-labelledby="modalBatteryTitle">
-    <div class="modal__backdrop" data-close-modal></div>
-    <div class="modal__panel">
-      <button class="modal__close" aria-label="Close" data-close-modal>×</button>
-      <p class="modal__label">Pricing Detail</p>
-      <h3 class="modal__title" id="modalBatteryTitle" data-lang-ja>バッテリー交換 料金</h3>
-      <h3 class="modal__title" id="modalBatteryTitleEn" data-lang-en>Battery Replacement</h3>
-
-      <div class="modal__section">
-        <h4 class="modal__section-title" data-lang-ja>バッテリー本体価格（型番別・税込）</h4>
-        <h4 class="modal__section-title" data-lang-en>Battery Prices (by model, tax included)</h4>
-        <div class="modal__row"><span class="modal__row-name">40B19L/R</span><span class="modal__row-price">¥11,000</span></div>
-        <div class="modal__row"><span class="modal__row-name">K42L/R</span><span class="modal__row-price">¥13,200</span></div>
-        <div class="modal__row"><span class="modal__row-name">M42L/R</span><span class="modal__row-price">¥21,780</span></div>
-        <div class="modal__row"><span class="modal__row-name">M55L/R</span><span class="modal__row-price">¥20,900</span></div>
-        <div class="modal__row"><span class="modal__row-name">55B24L/R</span><span class="modal__row-price">¥21,780</span></div>
-        <div class="modal__row"><span class="modal__row-name">80D23L/R</span><span class="modal__row-price">¥28,600</span></div>
-        <div class="modal__row"><span class="modal__row-name">80D26L/R</span><span class="modal__row-price">¥38,280</span></div>
-        <div class="modal__row"><span class="modal__row-name">95D31L/R</span><span class="modal__row-price">¥39,600</span></div>
-        <div class="modal__row"><span class="modal__row-name">S95 (130D26)</span><span class="modal__row-price">¥39,600</span></div>
-        <div class="modal__row"><span class="modal__row-name">HV-S34B20R/L</span><span class="modal__row-price">¥28,600</span></div>
-        <div class="modal__row"><span class="modal__row-name">LN1</span><span class="modal__row-price">¥31,900</span></div>
-      </div>
-
-      <div class="modal__section">
-        <p class="modal__note" data-lang-ja>※ 充電制御車対応バッテリーは <strong>+¥2,200（税込）</strong>。<br>※ 交換工賃 1本あたり <strong>¥1,100（税込）</strong>。</p>
-        <p class="modal__note" data-lang-en>* For charge-controlled batteries, add <strong>+¥2,200 (tax incl.)</strong>.<br>* Replacement labor: <strong>¥1,100 per battery (tax incl.)</strong>.</p>
-      </div>
-
-      <div class="modal__section">
-        <p class="modal__note" data-lang-ja>※ 上記以外の型番もお取扱い可能です。お気軽にお問い合わせください。</p>
-        <p class="modal__note" data-lang-en>* Other battery models are also available. Please contact us for details.</p>
-      </div>
-    </div>
-  </div>
-
-  <script src="js/lang-toggle.js"></script>
+<script src="js/lang-toggle.js"></script>
   <script src="js/works.js"></script>
   <script>
     // Nav scroll state is handled in the unified scroll handler below

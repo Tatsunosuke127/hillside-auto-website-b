@@ -65,7 +65,7 @@
     }
 
     var submitBtn = form.querySelector('button[type="submit"]');
-    var originalText = submitBtn.textContent;
+    var originalHtml = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.textContent = '...';
 
@@ -80,7 +80,12 @@
       .then(function (response) {
         if (response.ok) {
           form.style.display = 'none';
-          if (successMsg) successMsg.classList.add('visible');
+          if (successMsg) {
+            successMsg.classList.add('visible');
+            // Bring the confirmation into view (on phones it used to appear off-screen)
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            try { successMsg.focus({ preventScroll: true }); } catch (err) {}
+          }
         } else {
           throw new Error('Form submission failed');
         }
@@ -88,7 +93,7 @@
       .catch(function () {
         alert('送信に失敗しました。お電話またはLINEでお問い合わせください。\nSubmission failed. Please contact us by phone or LINE.');
         submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
+        submitBtn.innerHTML = originalHtml;
       });
   });
 })();

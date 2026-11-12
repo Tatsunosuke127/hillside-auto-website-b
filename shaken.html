@@ -127,14 +127,14 @@
     .pt__p--q { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 500;
       letter-spacing: .1em; text-transform: uppercase; color: var(--gray-600, #666); }
     body.lang-ja .pt__p--q { font-family: 'Noto Sans JP', sans-serif; letter-spacing: .04em;
-      text-transform: none; font-size: 13px; }
+      text-transform: none; font-size: 14px; }
     .pt__jp { display: block; font-size: 15px; font-weight: 500; line-height: 1.6; }
     .pt__cat { display: block; font-size: 16px; font-weight: 600; }
-    .pt__sub { display: block; font-size: 13px; color: var(--gray-700, #444);
+    .pt__sub { display: block; font-size: 14px; color: var(--gray-700, #444);
       margin-top: 5px; line-height: 1.7; white-space: normal; }
     .pt__fb { display: block; font-size: 12px; color: var(--gray-600, #666);
       margin-top: 4px; line-height: 1.7; white-space: normal; }
-    .pt__note { display: block; font-size: 13px; color: var(--gray-700, #444);
+    .pt__note { display: block; font-size: 14px; color: var(--gray-700, #444);
       margin-top: 7px; padding-left: 10px; border-left: 1px solid var(--gray-200, #e8e8e8);
       line-height: 1.75; white-space: normal; }
 
@@ -169,7 +169,7 @@
     .pq__note span { display: block; font-size: 14px; line-height: 1.8;
       color: var(--gray-700, #444); margin-top: 3px; }
 
-    .pfoot { font-family: 'Inter', system-ui, sans-serif; font-size: 13px; letter-spacing: .06em;
+    .pfoot { font-family: 'Inter', system-ui, sans-serif; font-size: 14px; letter-spacing: .06em;
       color: var(--gray-600, #666); margin: 40px 0 0; padding-top: 20px;
       border-top: 1px solid var(--gray-200, #e8e8e8); }
   
@@ -195,6 +195,31 @@
     .scta__t { font-size: 16px; line-height: 1.9; color: var(--gray-700, #444); margin: 0 auto 28px; max-width: 560px; }
     .scta__btns { justify-content: center; }
     @media (max-width: 560px) { .scta__btns .btn { width: 100%; } }
+    /* ===== Phones: each table row becomes a card (no sideways scrolling) ===== */
+    @media (max-width: 699px) {
+      .pt__wrap { overflow: visible; }
+      .pt { min-width: 0; display: block; }
+      .pt thead { display: none; }
+      .pt tbody { display: block; }
+      .pt tbody tr { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 10px;
+        padding: 16px 0; border-bottom: 1px solid var(--gray-200, #e8e8e8); }
+      .pt tbody tr:last-child { border-bottom: 0; }
+      .pt tbody th, .pt tbody td { display: block; padding: 0; border: 0; text-align: left; white-space: normal; }
+      .pt tbody th { grid-column: 1 / -1; }
+      .pt tbody td[colspan] { grid-column: 1 / -1; }
+      .pt tbody td::before { display: block; font-family: 'Noto Sans JP', 'Inter', sans-serif; font-size: 12px;
+        font-weight: 500; letter-spacing: .04em; color: var(--gray-600, #666); margin-bottom: 2px; }
+      body.lang-ja .pt tbody td[data-l-ja]::before { content: attr(data-l-ja); }
+      body.lang-en .pt tbody td[data-l-en]::before { content: attr(data-l-en); }
+    }
+    body.lang-en .prow__b i { display: none; }
+
+    /* ===== Fee summary in the hero ===== */
+    .sfee { list-style: none; margin: 18px 0 0; padding: 0; max-width: 340px; border-top: 1px solid rgba(255,255,255,0.35); }
+    .sfee li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.35); font-size: 16px; }
+    .sfee b { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; font-weight: 400; }
+    .sfee__n { margin: 8px 0 0; font-size: 14px; opacity: 0.8; }
   </style>
 </head>
 <body class="lang-ja">
@@ -275,6 +300,13 @@
         <h1 data-lang-en>Shaken in Naka-ku, Yokohama</h1>
         <p class="page-hero__desc" data-lang-ja>料金・日数・持ち物・お支払い方法を、ご予約の前にすべてお見せします。</p>
         <p class="page-hero__desc" data-lang-en>Prices, timing, what to bring and how to pay — all on one page, before you book.</p>
+        <ul class="sfee">
+          <li><span data-lang-ja>軽自動車</span><span data-lang-en>Kei car</span><b>¥35,200〜</b></li>
+          <li><span data-lang-ja>普通車</span><span data-lang-en>Standard vehicle</span><b>¥41,800〜</b></li>
+          <li><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span><b>¥42,900〜</b></li>
+        </ul>
+        <p class="sfee__n" data-lang-ja>税込。法定費用・整備費は別</p>
+        <p class="sfee__n" data-lang-en>Tax included. Statutory costs and repairs extra</p>
       </div>
     </section>
 
@@ -355,8 +387,8 @@
         </div>
 
         <div class="players">
-          <p class="players__h" data-lang-ja>車検代金は4つで構成されます</p>
-          <p class="players__h" data-lang-en>A shaken bill has four parts</p>
+          <p class="players__h" data-lang-ja>車検代金の内訳</p>
+          <p class="players__h" data-lang-en>What a shaken bill is made of</p>
           <p class="players__s" data-lang-ja>下の表に載っているのは、このうち上の2つ（固定料金）です。</p>
           <p class="players__s" data-lang-en>Only the first two are fixed, and those are what the table below lists.</p>
           <div class="prow prow--fix"><span class="prow__b"><span data-lang-ja>車検基本料（法定24ヶ月点検）</span><span data-lang-en>Inspection fee (statutory 24-month inspection)</span><i>Statutory 24-month inspection</i></span><span class="prow__t"><span data-lang-ja>固定料金</span><span data-lang-en>Fixed</span></span></div>
@@ -375,14 +407,14 @@
             <th><span data-lang-ja>合計</span><span data-lang-en>Total</span></th>
           </tr></thead>
           <tbody>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>軽自動車</span><span data-lang-en>Kei car</span></span><span class="pt__sub"><span data-lang-ja>乗用・貨物とも</span><span data-lang-en>passenger and commercial</span></span></th><td class="pt__p">¥24,200</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥35,200</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>普通車</span><span data-lang-en>Standard vehicle</span></span><span class="pt__sub"><span data-lang-ja>下記以外すべて</span><span data-lang-en>everything not listed below</span></span></th><td class="pt__p">¥30,800</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥41,800</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>普通車（大型）</span><span data-lang-en>Standard vehicle (large)</span></span><span class="pt__sub"><span data-lang-ja>3ナンバー かつ 車両重量 1.5t 超</span><span data-lang-en>"3" plate and over 1.5t kerb weight</span></span></th><td class="pt__p">¥37,400</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥48,400</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span></span><span class="pt__sub"><span data-lang-ja>～1.0t</span><span data-lang-en>up to 1.0t</span></span></th><td class="pt__p">¥31,900</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥42,900</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span></span><span class="pt__sub"><span data-lang-ja>1.0〜1.5t</span><span data-lang-en>1.0–1.5t</span></span></th><td class="pt__p">¥41,250</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥52,250</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span></span><span class="pt__sub"><span data-lang-ja>1.5〜2.0t</span><span data-lang-en>1.5–2.0t</span></span></th><td class="pt__p">¥49,500</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥60,500</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>貨物車（バン）</span><span data-lang-en>Commercial van</span></span><span class="pt__sub"><span data-lang-ja>ハイエース・キャラバン（NV350）・NV200・ADバン・プロボックス・ボンゴ・タウンエース など</span><span data-lang-en>HiAce, Caravan (NV350), NV200, AD Van, Probox, Bongo, TownAce and similar</span></span><span class="pt__fb"><span data-lang-ja>上記以外は車両総重量3.5t未満が目安</span><span data-lang-en>Otherwise, a gross weight under 3.5t is the guide</span></span></th><td class="pt__p">¥30,800</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥41,800</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>貨物車（トラック）</span><span data-lang-en>Truck</span></span><span class="pt__sub"><span data-lang-ja>エルフ・ダイナ・キャンター・タイタン・アトラス・デュトロ など</span><span data-lang-en>Elf, Dyna, Canter, Titan, Atlas, Dutro and similar</span></span><span class="pt__fb"><span data-lang-ja>上記以外は車両総重量3.5t以上が目安</span><span data-lang-en>Otherwise, a gross weight of 3.5t or more is the guide</span></span></th><td class="pt__p">¥44,000</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥55,000</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>軽自動車</span><span data-lang-en>Kei car</span></span><span class="pt__sub"><span data-lang-ja>乗用・貨物とも</span><span data-lang-en>passenger and commercial</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥24,200</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥35,200</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>普通車</span><span data-lang-en>Standard vehicle</span></span><span class="pt__sub"><span data-lang-ja>下記以外すべて</span><span data-lang-en>everything not listed below</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥30,800</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥41,800</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>普通車（大型）</span><span data-lang-en>Standard vehicle (large)</span></span><span class="pt__sub"><span data-lang-ja>3ナンバー かつ 車両重量 1.5t 超</span><span data-lang-en>"3" plate and over 1.5t kerb weight</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥37,400</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥48,400</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span></span><span class="pt__sub"><span data-lang-ja>～1.0t</span><span data-lang-en>up to 1.0t</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥31,900</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥42,900</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span></span><span class="pt__sub"><span data-lang-ja>1.0〜1.5t</span><span data-lang-en>1.0–1.5t</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥41,250</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥52,250</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span></span><span class="pt__sub"><span data-lang-ja>1.5〜2.0t</span><span data-lang-en>1.5–2.0t</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥49,500</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥60,500</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>貨物車（バン）</span><span data-lang-en>Commercial van</span></span><span class="pt__sub"><span data-lang-ja>ハイエース・キャラバン（NV350）・NV200・ADバン・プロボックス・ボンゴ・タウンエース など</span><span data-lang-en>HiAce, Caravan (NV350), NV200, AD Van, Probox, Bongo, TownAce and similar</span></span><span class="pt__fb"><span data-lang-ja>上記以外は車両総重量3.5t未満が目安</span><span data-lang-en>Otherwise, a gross weight under 3.5t is the guide</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥30,800</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥41,800</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>貨物車（トラック）</span><span data-lang-en>Truck</span></span><span class="pt__sub"><span data-lang-ja>エルフ・ダイナ・キャンター・タイタン・アトラス・デュトロ など</span><span data-lang-en>Elf, Dyna, Canter, Titan, Atlas, Dutro and similar</span></span><span class="pt__fb"><span data-lang-ja>上記以外は車両総重量3.5t以上が目安</span><span data-lang-en>Otherwise, a gross weight of 3.5t or more is the guide</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥44,000</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥55,000</td></tr>
           <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車 2.0t超</span><span data-lang-en>Imported vehicle over 2.0t</span></span></th><td class="pt__p pt__p--q" colspan="3"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
           <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>8ナンバー（特種用途自動車）</span><span data-lang-en>"8" plate — special-purpose vehicle</span></span></th><td class="pt__p pt__p--q" colspan="3"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
           

@@ -68,7 +68,31 @@
       grid.querySelectorAll('.work').forEach(function (el) {
         el.hidden = !!key && el.getAttribute('data-category') !== key;
       });
+      if (root._worksRefresh) root._worksRefresh();
     });
+  }
+
+  // Optional: <section data-works data-works-more="6"> shows six cards, then a "more" button
+  function buildMore(root, grid) {
+    var first = parseInt(root.getAttribute('data-works-more') || '0', 10);
+    if (!(first > 0)) return;
+    var expanded = false;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'works__more';
+    btn.innerHTML = bi('もっと見る', 'Show more');
+    grid.insertAdjacentElement('afterend', btn);
+    root._worksRefresh = function () {
+      var n = 0;
+      grid.querySelectorAll('.work').forEach(function (el) {
+        if (el.hidden) { el.classList.remove('work--more'); return; }
+        n++;
+        el.classList.toggle('work--more', !expanded && n > first);
+      });
+      btn.hidden = expanded || n <= first;
+    };
+    btn.addEventListener('click', function () { expanded = true; root._worksRefresh(); });
+    root._worksRefresh();
   }
 
   function render(root, list) {
@@ -80,6 +104,7 @@
     if (limit > 0) sorted = sorted.slice(0, limit);
     grid.innerHTML = sorted.map(card).join('');
     buildFilters(root, sorted, grid);
+    buildMore(root, grid);
     if (window.HillsideLang && document.body.classList.contains('lang-en')) {
       window.HillsideLang.setLang('en'); // re-apply so select/placeholder hooks stay consistent
     }

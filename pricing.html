@@ -124,14 +124,14 @@
     .pt__p--q { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 500;
       letter-spacing: .1em; text-transform: uppercase; color: var(--gray-600, #666); }
     body.lang-ja .pt__p--q { font-family: 'Noto Sans JP', sans-serif; letter-spacing: .04em;
-      text-transform: none; font-size: 13px; }
+      text-transform: none; font-size: 14px; }
     .pt__jp { display: block; font-size: 15px; font-weight: 500; line-height: 1.6; }
     .pt__cat { display: block; font-size: 16px; font-weight: 600; }
-    .pt__sub { display: block; font-size: 13px; color: var(--gray-700, #444);
+    .pt__sub { display: block; font-size: 14px; color: var(--gray-700, #444);
       margin-top: 5px; line-height: 1.7; white-space: normal; }
     .pt__fb { display: block; font-size: 12px; color: var(--gray-600, #666);
       margin-top: 4px; line-height: 1.7; white-space: normal; }
-    .pt__note { display: block; font-size: 13px; color: var(--gray-700, #444);
+    .pt__note { display: block; font-size: 14px; color: var(--gray-700, #444);
       margin-top: 7px; padding-left: 10px; border-left: 1px solid var(--gray-200, #e8e8e8);
       line-height: 1.75; white-space: normal; }
 
@@ -166,9 +166,50 @@
     .pq__note span { display: block; font-size: 14px; line-height: 1.8;
       color: var(--gray-700, #444); margin-top: 3px; }
 
-    .pfoot { font-family: 'Inter', system-ui, sans-serif; font-size: 13px; letter-spacing: .06em;
+    .pfoot { font-family: 'Inter', system-ui, sans-serif; font-size: 14px; letter-spacing: .06em;
       color: var(--gray-600, #666); margin: 40px 0 0; padding-top: 20px;
       border-top: 1px solid var(--gray-200, #e8e8e8); }
+    /* ===== Phones: each table row becomes a card (no sideways scrolling) ===== */
+    @media (max-width: 699px) {
+      .pt__wrap { overflow: visible; }
+      .pt { min-width: 0; display: block; }
+      .pt thead { display: none; }
+      .pt tbody { display: block; }
+      .pt tbody tr { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 10px;
+        padding: 16px 0; border-bottom: 1px solid var(--gray-200, #e8e8e8); }
+      .pt tbody tr:last-child { border-bottom: 0; }
+      .pt tbody th, .pt tbody td { display: block; padding: 0; border: 0; text-align: left; white-space: normal; }
+      .pt tbody th { grid-column: 1 / -1; }
+      .pt tbody td[colspan] { grid-column: 1 / -1; }
+      .pt tbody td::before { display: block; font-family: 'Noto Sans JP', 'Inter', sans-serif; font-size: 12px;
+        font-weight: 500; letter-spacing: .04em; color: var(--gray-600, #666); margin-bottom: 2px; }
+      body.lang-ja .pt tbody td[data-l-ja]::before { content: attr(data-l-ja); }
+      body.lang-en .pt tbody td[data-l-en]::before { content: attr(data-l-en); }
+    }
+    body.lang-en .prow__b i { display: none; }
+
+    /* ===== ON-THIS-PAGE LINKS ===== */
+    .ejump { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 24px; background: var(--white, #fff); border-bottom: 1px solid var(--gray-200, #e5e5e5); }
+    .ejump a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--black, #000);
+      font-size: 14px; letter-spacing: 0.04em; color: var(--black, #000); text-decoration: none; }
+    .panchor { display: block; scroll-margin-top: 96px; }
+    @media (min-width: 768px) { .ejump { padding: 20px 8%; } }
+    /* ===== Collapsible category blocks ===== */
+    details.pblk { margin-top: 0; border-bottom: 1px solid var(--black, #000); }
+    details.pblk:first-of-type { border-top: 1px solid var(--black, #000); }
+    summary.pblk__h { margin: 0; min-height: 56px; cursor: pointer; list-style: none; }
+    summary.pblk__h::-webkit-details-marker { display: none; }
+    summary.pblk__h::after { content: '+'; margin-left: auto; font-size: 22px; font-weight: 300; line-height: 1; }
+    details[open] > summary.pblk__h::after { content: '\2212'; }
+    details[open].pblk { padding-bottom: 20px; }
+    details.pfold { margin-top: 20px; border-top: 1px solid var(--black, #000); border-bottom: 1px solid var(--black, #000); }
+    summary.pfold__s { display: flex; align-items: center; min-height: 56px; cursor: pointer; list-style: none; font-size: 16px; font-weight: 600; }
+    summary.pfold__s::-webkit-details-marker { display: none; }
+    summary.pfold__s::after { content: '+'; margin-left: auto; font-size: 22px; font-weight: 300; line-height: 1; }
+    details[open] > summary.pfold__s::after { content: '\2212'; }
+    details[open].pfold { padding-bottom: 24px; }
+    @media (min-width: 700px) { details.pfold { border: 0; margin-top: 0; } summary.pfold__s { display: none; } }
+    @media (max-width: 699px) { .psec { padding-top: 48px; padding-bottom: 48px; } }
   </style>
 </head>
 <body class="lang-ja">
@@ -252,6 +293,13 @@
       </div>
     </section>
 
+    <!-- ON THIS PAGE -->
+    <nav class="ejump" aria-label="On this page">
+      <a href="#sec-shaken"><span data-lang-ja>車検</span><span data-lang-en>Vehicle inspection</span></a>
+      <a href="#sec-maintenance"><span data-lang-ja>整備・書類</span><span data-lang-en>Maintenance &amp; registration</span></a>
+      <a href="#sec-quoted"><span data-lang-ja>お見積りの作業</span><span data-lang-en>Quoted individually</span></a>
+    </nav>
+
     <!-- HOW TO READ -->
     <section class="psec">
       <div class="pwrap">
@@ -266,6 +314,8 @@
           <span class="ph2__lab">Guide</span>
         </div>
 
+        <details class="pfold">
+          <summary class="pfold__s"><span data-lang-ja>見方を開く</span><span data-lang-en>Show how to read it</span></summary>
         <div class="phow">
           <div class="phow__i"><span class="phow__k">1</span><div>
             <p class="phow__b" data-lang-ja>表示価格はすべて税込です</p>
@@ -305,6 +355,7 @@
             <div><span class="pex__mk">2</span><span><span data-lang-ja><strong>お支払いいただく金額（税込）</strong>　「〜」は、この金額からという意味です</span><span data-lang-en><strong>What you pay, tax included.</strong> "〜" means the price starts here</span></span></div>
           </div>
         </div>
+        </details>
       </div>
     </section>
 
@@ -312,14 +363,14 @@
     <section class="psec psec--gray">
       <div class="pwrap">
         <div class="ph2">
-          <h2 data-lang-ja>車検</h2>
+          <span id="sec-shaken" class="panchor"></span><h2 data-lang-ja>車検</h2>
           <h2 data-lang-en>Vehicle inspection</h2>
           <span class="ph2__lab">Shaken</span>
         </div>
 
         <div class="players">
-          <p class="players__h" data-lang-ja>車検代金は4つで構成されます</p>
-          <p class="players__h" data-lang-en>A shaken bill has four parts</p>
+          <p class="players__h" data-lang-ja>車検代金の内訳</p>
+          <p class="players__h" data-lang-en>What a shaken bill is made of</p>
           <p class="players__s" data-lang-ja>下の表に載っているのは、このうち上の2つ（固定料金）です。</p>
           <p class="players__s" data-lang-en>Only the first two are fixed, and those are what the table below lists.</p>
           <div class="prow prow--fix"><span class="prow__b"><span data-lang-ja>車検基本料（法定24ヶ月点検）</span><span data-lang-en>Inspection fee (statutory 24-month inspection)</span><i>Statutory 24-month inspection</i></span><span class="prow__t"><span data-lang-ja>固定料金</span><span data-lang-en>Fixed</span></span></div>
@@ -338,14 +389,14 @@
             <th><span data-lang-ja>合計</span><span data-lang-en>Total</span></th>
           </tr></thead>
           <tbody>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>軽自動車</span><span data-lang-en>Kei car</span></span><span class="pt__sub"><span data-lang-ja>乗用・貨物とも</span><span data-lang-en>passenger and commercial</span></span></th><td class="pt__p">¥24,200</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥35,200</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>普通車</span><span data-lang-en>Standard vehicle</span></span><span class="pt__sub"><span data-lang-ja>下記以外すべて</span><span data-lang-en>everything not listed below</span></span></th><td class="pt__p">¥30,800</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥41,800</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>普通車（大型）</span><span data-lang-en>Standard vehicle (large)</span></span><span class="pt__sub"><span data-lang-ja>3ナンバー かつ 車両重量 1.5t 超</span><span data-lang-en>"3" plate and over 1.5t kerb weight</span></span></th><td class="pt__p">¥37,400</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥48,400</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span></span><span class="pt__sub"><span data-lang-ja>～1.0t</span><span data-lang-en>up to 1.0t</span></span></th><td class="pt__p">¥31,900</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥42,900</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span></span><span class="pt__sub"><span data-lang-ja>1.0〜1.5t</span><span data-lang-en>1.0–1.5t</span></span></th><td class="pt__p">¥41,250</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥52,250</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span></span><span class="pt__sub"><span data-lang-ja>1.5〜2.0t</span><span data-lang-en>1.5–2.0t</span></span></th><td class="pt__p">¥49,500</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥60,500</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>貨物車（バン）</span><span data-lang-en>Commercial van</span></span><span class="pt__sub"><span data-lang-ja>ハイエース・キャラバン（NV350）・NV200・ADバン・プロボックス・ボンゴ・タウンエース など</span><span data-lang-en>HiAce, Caravan (NV350), NV200, AD Van, Probox, Bongo, TownAce and similar</span></span><span class="pt__fb"><span data-lang-ja>上記以外は車両総重量3.5t未満が目安</span><span data-lang-en>Otherwise, a gross weight under 3.5t is the guide</span></span></th><td class="pt__p">¥30,800</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥41,800</td></tr>
-          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>貨物車（トラック）</span><span data-lang-en>Truck</span></span><span class="pt__sub"><span data-lang-ja>エルフ・ダイナ・キャンター・タイタン・アトラス・デュトロ など</span><span data-lang-en>Elf, Dyna, Canter, Titan, Atlas, Dutro and similar</span></span><span class="pt__fb"><span data-lang-ja>上記以外は車両総重量3.5t以上が目安</span><span data-lang-en>Otherwise, a gross weight of 3.5t or more is the guide</span></span></th><td class="pt__p">¥44,000</td><td class="pt__p">¥11,000</td><td class="pt__p pt__p--tot">¥55,000</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>軽自動車</span><span data-lang-en>Kei car</span></span><span class="pt__sub"><span data-lang-ja>乗用・貨物とも</span><span data-lang-en>passenger and commercial</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥24,200</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥35,200</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>普通車</span><span data-lang-en>Standard vehicle</span></span><span class="pt__sub"><span data-lang-ja>下記以外すべて</span><span data-lang-en>everything not listed below</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥30,800</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥41,800</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>普通車（大型）</span><span data-lang-en>Standard vehicle (large)</span></span><span class="pt__sub"><span data-lang-ja>3ナンバー かつ 車両重量 1.5t 超</span><span data-lang-en>"3" plate and over 1.5t kerb weight</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥37,400</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥48,400</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span></span><span class="pt__sub"><span data-lang-ja>～1.0t</span><span data-lang-en>up to 1.0t</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥31,900</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥42,900</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span></span><span class="pt__sub"><span data-lang-ja>1.0〜1.5t</span><span data-lang-en>1.0–1.5t</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥41,250</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥52,250</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車</span><span data-lang-en>Imported vehicle</span></span><span class="pt__sub"><span data-lang-ja>1.5〜2.0t</span><span data-lang-en>1.5–2.0t</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥49,500</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥60,500</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>貨物車（バン）</span><span data-lang-en>Commercial van</span></span><span class="pt__sub"><span data-lang-ja>ハイエース・キャラバン（NV350）・NV200・ADバン・プロボックス・ボンゴ・タウンエース など</span><span data-lang-en>HiAce, Caravan (NV350), NV200, AD Van, Probox, Bongo, TownAce and similar</span></span><span class="pt__fb"><span data-lang-ja>上記以外は車両総重量3.5t未満が目安</span><span data-lang-en>Otherwise, a gross weight under 3.5t is the guide</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥30,800</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥41,800</td></tr>
+          <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>貨物車（トラック）</span><span data-lang-en>Truck</span></span><span class="pt__sub"><span data-lang-ja>エルフ・ダイナ・キャンター・タイタン・アトラス・デュトロ など</span><span data-lang-en>Elf, Dyna, Canter, Titan, Atlas, Dutro and similar</span></span><span class="pt__fb"><span data-lang-ja>上記以外は車両総重量3.5t以上が目安</span><span data-lang-en>Otherwise, a gross weight of 3.5t or more is the guide</span></span></th><td class="pt__p" data-l-ja="車検基本料" data-l-en="Inspection">¥44,000</td><td class="pt__p" data-l-ja="持ち込み・受検" data-l-en="Test handling">¥11,000</td><td class="pt__p pt__p--tot" data-l-ja="合計" data-l-en="Total">¥55,000</td></tr>
           <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>輸入車 2.0t超</span><span data-lang-en>Imported vehicle over 2.0t</span></span></th><td class="pt__p pt__p--q" colspan="3"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
           <tr><th class="pt__name"><span class="pt__cat"><span data-lang-ja>8ナンバー（特種用途自動車）</span><span data-lang-en>"8" plate — special-purpose vehicle</span></span></th><td class="pt__p pt__p--q" colspan="3"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
           </tbody>
@@ -385,7 +436,7 @@
     <section class="psec">
       <div class="pwrap">
         <div class="ph2">
-          <h2 data-lang-ja>整備・書類</h2>
+          <span id="sec-maintenance" class="panchor"></span><h2 data-lang-ja>整備・書類</h2>
           <h2 data-lang-en>Maintenance &amp; registration</h2>
           <span class="ph2__lab">Servicing</span>
         </div>
@@ -394,10 +445,10 @@
           <p data-lang-en>Everything below is <strong>labour only</strong>. Parts are charged separately where required.</p>
         </div>
 
-        <section class="pblk">
-          <h3 class="pblk__h"><span class="pblk__n">1</span>
+        <details class="pblk">
+          <summary class="pblk__h"><span class="pblk__n">1</span>
             <span class="pblk__t"><span data-lang-ja>油脂・フルード類</span><span data-lang-en>Oils &amp; fluids</span></span>
-          </h3>
+          </summary>
           <div class="pt__wrap"><table class="pt">
             <thead><tr>
               <th class="pt__hname"><span data-lang-ja>作業内容</span><span data-lang-en>Work</span></th>
@@ -406,23 +457,23 @@
               <th><span data-lang-ja>輸入車</span><span data-lang-en>Import</span></th>
             </tr></thead>
             <tbody>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>エンジンオイル交換</span><span data-lang-en>Engine oil change</span></span></th><td class="pt__p">¥1,100〜</td><td class="pt__p">¥1,100〜</td><td class="pt__p">¥1,650〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>オイルエレメント（フィルター）交換</span><span data-lang-en>Oil filter change</span></span><span class="pt__note"><span data-lang-ja>オイル交換に追加</span><span data-lang-en>Added to an oil change</span></span></th><td class="pt__p">¥+550〜</td><td class="pt__p">¥+550〜</td><td class="pt__p">¥+1,100〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキフルード交換</span><span data-lang-en>Brake fluid change</span></span></th><td class="pt__p">¥7,700〜</td><td class="pt__p">¥7,700〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>クーラント（LLC）交換</span><span data-lang-en>Coolant change</span></span></th><td class="pt__p">¥3,300〜</td><td class="pt__p">¥3,300〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ATF交換（抜き替え）</span><span data-lang-en>ATF change (drain &amp; fill)</span></span></th><td class="pt__p">¥3,300〜</td><td class="pt__p">¥3,300〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ミッションオイル（MT）交換</span><span data-lang-en>Manual gearbox oil change</span></span></th><td class="pt__p">¥2,200〜</td><td class="pt__p">¥2,200〜</td><td class="pt__p">—</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>デフオイル交換</span><span data-lang-en>Differential oil change</span></span></th><td class="pt__p">¥2,200〜</td><td class="pt__p">¥2,200〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>トランスファーオイル交換</span><span data-lang-en>Transfer case oil change</span></span></th><td class="pt__p">¥2,200〜</td><td class="pt__p">¥2,200〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>パワーステアリングフルード交換</span><span data-lang-en>Power steering fluid change</span></span></th><td class="pt__p">¥2,200〜</td><td class="pt__p">¥2,200〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>エンジンオイル交換</span><span data-lang-en>Engine oil change</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥1,100〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥1,100〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥1,650〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>オイルエレメント（フィルター）交換</span><span data-lang-en>Oil filter change</span></span><span class="pt__note"><span data-lang-ja>オイル交換に追加</span><span data-lang-en>Added to an oil change</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥+550〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥+550〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥+1,100〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキフルード交換</span><span data-lang-en>Brake fluid change</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥7,700〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥7,700〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>クーラント（LLC）交換</span><span data-lang-en>Coolant change</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥3,300〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥3,300〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ATF交換（抜き替え）</span><span data-lang-en>ATF change (drain &amp; fill)</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥3,300〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥3,300〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ミッションオイル（MT）交換</span><span data-lang-en>Manual gearbox oil change</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥2,200〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥2,200〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">—</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>デフオイル交換</span><span data-lang-en>Differential oil change</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥2,200〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥2,200〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>トランスファーオイル交換</span><span data-lang-en>Transfer case oil change</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥2,200〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥2,200〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>パワーステアリングフルード交換</span><span data-lang-en>Power steering fluid change</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥2,200〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥2,200〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
             </tbody>
           </table></div>
-        </section>
+        </details>
 
-        <section class="pblk">
-          <h3 class="pblk__h"><span class="pblk__n">2</span>
+        <details class="pblk">
+          <summary class="pblk__h"><span class="pblk__n">2</span>
             <span class="pblk__t"><span data-lang-ja>ブレーキ系</span><span data-lang-en>Brakes</span></span>
-          </h3>
+          </summary>
           <div class="pt__wrap"><table class="pt">
             <thead><tr>
               <th class="pt__hname"><span data-lang-ja>作業内容</span><span data-lang-en>Work</span></th>
@@ -431,20 +482,20 @@
               <th><span data-lang-ja>輸入車</span><span data-lang-en>Import</span></th>
             </tr></thead>
             <tbody>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキパッド交換（フロント・左右）</span><span data-lang-en>Brake pads — front pair</span></span></th><td class="pt__p">¥9,900〜</td><td class="pt__p">¥9,900〜</td><td class="pt__p">¥13,200〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキパッド交換（リア・左右）</span><span data-lang-en>Brake pads — rear pair</span></span></th><td class="pt__p">¥9,900〜</td><td class="pt__p">¥9,900〜</td><td class="pt__p">¥13,200〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキローター交換（フロント・左右）</span><span data-lang-en>Brake rotors — front pair</span></span></th><td class="pt__p">¥12,100〜</td><td class="pt__p">¥12,100〜</td><td class="pt__p">¥15,400〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキローター交換（リア・左右）</span><span data-lang-en>Brake rotors — rear pair</span></span></th><td class="pt__p">¥12,100〜</td><td class="pt__p">¥12,100〜</td><td class="pt__p">¥15,400〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキシュー交換（リア・左右）</span><span data-lang-en>Brake shoes — rear pair</span></span></th><td class="pt__p">¥14,300〜</td><td class="pt__p">¥14,300〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキドラム交換（左右）</span><span data-lang-en>Brake drums — pair</span></span></th><td class="pt__p">¥8,800〜</td><td class="pt__p">¥8,800〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキパッド交換（フロント・左右）</span><span data-lang-en>Brake pads — front pair</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥9,900〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥9,900〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥13,200〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキパッド交換（リア・左右）</span><span data-lang-en>Brake pads — rear pair</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥9,900〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥9,900〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥13,200〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキローター交換（フロント・左右）</span><span data-lang-en>Brake rotors — front pair</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥12,100〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥12,100〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥15,400〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキローター交換（リア・左右）</span><span data-lang-en>Brake rotors — rear pair</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥12,100〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥12,100〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥15,400〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキシュー交換（リア・左右）</span><span data-lang-en>Brake shoes — rear pair</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥14,300〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥14,300〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキドラム交換（左右）</span><span data-lang-en>Brake drums — pair</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥8,800〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥8,800〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
             </tbody>
           </table></div>
-        </section>
+        </details>
 
-        <section class="pblk">
-          <h3 class="pblk__h"><span class="pblk__n">3</span>
+        <details class="pblk">
+          <summary class="pblk__h"><span class="pblk__n">3</span>
             <span class="pblk__t"><span data-lang-ja>電装・バッテリー</span><span data-lang-en>Electrical &amp; battery</span></span>
-          </h3>
+          </summary>
           <div class="pt__wrap"><table class="pt">
             <thead><tr>
               <th class="pt__hname"><span data-lang-ja>作業内容</span><span data-lang-en>Work</span></th>
@@ -453,30 +504,30 @@
               <th><span data-lang-ja>輸入車</span><span data-lang-en>Import</span></th>
             </tr></thead>
             <tbody>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>バッテリー交換（一般車）</span><span data-lang-en>Battery replacement — standard</span></span></th><td class="pt__p">¥1,100〜</td><td class="pt__p">¥1,100〜</td><td class="pt__p">¥3,300〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>バッテリー交換（アイドリングストップ車）</span><span data-lang-en>Battery replacement — idling-stop</span></span></th><td class="pt__p">¥1,100〜</td><td class="pt__p">¥1,100〜</td><td class="pt__p">¥3,300〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>バッテリー交換（ハイブリッド補機）</span><span data-lang-en>Battery replacement — hybrid auxiliary</span></span></th><td class="pt__p">¥1,100〜</td><td class="pt__p">¥1,100〜</td><td class="pt__p">¥3,300〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>バッテリー点検・充電</span><span data-lang-en>Battery test &amp; charge</span></span></th><td class="pt__p">¥3,300〜</td><td class="pt__p">¥3,300〜</td><td class="pt__p">¥4,400〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ヘッドライトバルブ交換（ハロゲン・1灯）</span><span data-lang-en>Headlight bulb — halogen (each)</span></span></th><td class="pt__p">¥1,650〜</td><td class="pt__p">¥1,650〜</td><td class="pt__p">¥1,650〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ヘッドライトバルブ交換（HID／LED・1灯）</span><span data-lang-en>Headlight bulb — HID / LED (each)</span></span></th><td class="pt__p">¥1,650〜</td><td class="pt__p">¥1,650〜</td><td class="pt__p">¥1,650〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ウインカーバルブ交換（1灯）</span><span data-lang-en>Indicator bulb (each)</span></span></th><td class="pt__p">¥1,650〜</td><td class="pt__p">¥1,650〜</td><td class="pt__p">¥1,650〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキ／テールランプバルブ交換（1灯）</span><span data-lang-en>Brake / tail light bulb (each)</span></span></th><td class="pt__p">¥1,650〜</td><td class="pt__p">¥1,650〜</td><td class="pt__p">¥1,650〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ナンバー灯・ルームランプ交換</span><span data-lang-en>Licence plate &amp; interior bulb</span></span></th><td class="pt__p">¥1,100〜</td><td class="pt__p">¥1,100〜</td><td class="pt__p">¥1,100〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>故障診断（コンピューター診断）</span><span data-lang-en>Computer fault diagnosis</span></span><span class="pt__note"><span data-lang-ja>エンジン不調・警告灯の原因調査</span><span data-lang-en>Diagnosing rough running or warning lights</span></span></th><td class="pt__p">¥5,500〜</td><td class="pt__p">¥5,500〜</td><td class="pt__p">¥8,800〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ETC取付</span><span data-lang-en>ETC unit — fitting</span></span><span class="pt__note"><span data-lang-ja>別途セットアップ料 3,300円がかかります</span><span data-lang-en>A separate ¥3,300 setup fee applies</span></span></th><td class="pt__p">¥6,600〜</td><td class="pt__p">¥6,600〜</td><td class="pt__p">¥11,000〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ETCセットアップ</span><span data-lang-en>ETC setup (registration)</span></span><span class="pt__note"><span data-lang-ja>他のお車からの載せ替えなど、セットアップのみのご依頼も承ります</span><span data-lang-en>Setup only — for example moving a unit from another car — is also available</span></span></th><td class="pt__p">¥3,300</td><td class="pt__p">¥3,300</td><td class="pt__p">¥3,300</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ドライブレコーダー取付（前方のみ）</span><span data-lang-en>Dashcam fitting — front only</span></span></th><td class="pt__p">¥16,500〜</td><td class="pt__p">¥16,500〜</td><td class="pt__p">¥22,000〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ドライブレコーダー取付（前後2カメラ）</span><span data-lang-en>Dashcam fitting — front &amp; rear</span></span></th><td class="pt__p">¥22,000〜</td><td class="pt__p">¥22,000〜</td><td class="pt__p">¥33,000〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>カーナビ・オーディオ取付</span><span data-lang-en>Navigation / audio fitting</span></span></th><td class="pt__p">¥27,500〜</td><td class="pt__p">¥27,500〜</td><td class="pt__p">¥33,000〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>バックカメラ取付</span><span data-lang-en>Reversing camera fitting</span></span></th><td class="pt__p">¥11,000〜</td><td class="pt__p">¥11,000〜</td><td class="pt__p">¥22,000〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>バッテリー交換（一般車）</span><span data-lang-en>Battery replacement — standard</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥1,100〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥1,100〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥3,300〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>バッテリー交換（アイドリングストップ車）</span><span data-lang-en>Battery replacement — idling-stop</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥1,100〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥1,100〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥3,300〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>バッテリー交換（ハイブリッド補機）</span><span data-lang-en>Battery replacement — hybrid auxiliary</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥1,100〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥1,100〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥3,300〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>バッテリー点検・充電</span><span data-lang-en>Battery test &amp; charge</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥3,300〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥3,300〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥4,400〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ヘッドライトバルブ交換（ハロゲン・1灯）</span><span data-lang-en>Headlight bulb — halogen (each)</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥1,650〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥1,650〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥1,650〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ヘッドライトバルブ交換（HID／LED・1灯）</span><span data-lang-en>Headlight bulb — HID / LED (each)</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥1,650〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥1,650〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥1,650〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ウインカーバルブ交換（1灯）</span><span data-lang-en>Indicator bulb (each)</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥1,650〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥1,650〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥1,650〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ブレーキ／テールランプバルブ交換（1灯）</span><span data-lang-en>Brake / tail light bulb (each)</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥1,650〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥1,650〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥1,650〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ナンバー灯・ルームランプ交換</span><span data-lang-en>Licence plate &amp; interior bulb</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥1,100〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥1,100〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥1,100〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>故障診断（コンピューター診断）</span><span data-lang-en>Computer fault diagnosis</span></span><span class="pt__note"><span data-lang-ja>エンジン不調・警告灯の原因調査</span><span data-lang-en>Diagnosing rough running or warning lights</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥5,500〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥5,500〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥8,800〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ETC取付</span><span data-lang-en>ETC unit — fitting</span></span><span class="pt__note"><span data-lang-ja>別途セットアップ料 3,300円がかかります</span><span data-lang-en>A separate ¥3,300 setup fee applies</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥6,600〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥6,600〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥11,000〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ETCセットアップ</span><span data-lang-en>ETC setup (registration)</span></span><span class="pt__note"><span data-lang-ja>他のお車からの載せ替えなど、セットアップのみのご依頼も承ります</span><span data-lang-en>Setup only — for example moving a unit from another car — is also available</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥3,300</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥3,300</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥3,300</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ドライブレコーダー取付（前方のみ）</span><span data-lang-en>Dashcam fitting — front only</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥16,500〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥16,500〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥22,000〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ドライブレコーダー取付（前後2カメラ）</span><span data-lang-en>Dashcam fitting — front &amp; rear</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥22,000〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥22,000〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥33,000〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>カーナビ・オーディオ取付</span><span data-lang-en>Navigation / audio fitting</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥27,500〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥27,500〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥33,000〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>バックカメラ取付</span><span data-lang-en>Reversing camera fitting</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥11,000〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥11,000〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥22,000〜</td></tr>
             </tbody>
           </table></div>
-        </section>
+        </details>
 
-        <section class="pblk">
-          <h3 class="pblk__h"><span class="pblk__n">4</span>
+        <details class="pblk">
+          <summary class="pblk__h"><span class="pblk__n">4</span>
             <span class="pblk__t"><span data-lang-ja>エンジン系</span><span data-lang-en>Engine</span></span>
-          </h3>
+          </summary>
           <div class="pt__wrap"><table class="pt">
             <thead><tr>
               <th class="pt__hname"><span data-lang-ja>作業内容</span><span data-lang-en>Work</span></th>
@@ -485,18 +536,18 @@
               <th><span data-lang-ja>輸入車</span><span data-lang-en>Import</span></th>
             </tr></thead>
             <tbody>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>スロットルボディ清掃</span><span data-lang-en>Throttle body cleaning</span></span></th><td class="pt__p">¥5,500〜</td><td class="pt__p">¥5,500〜</td><td class="pt__p">¥8,800〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>マフラー交換</span><span data-lang-en>Exhaust replacement</span></span></th><td class="pt__p">¥7,700〜</td><td class="pt__p">¥7,700〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>マフラー溶接修理</span><span data-lang-en>Exhaust weld repair</span></span><span class="pt__note"><span data-lang-ja>2箇所目からは1箇所につき3,300円が加算されます</span><span data-lang-en>¥3,300 for each additional repair point</span></span></th><td class="pt__p">¥5,500〜</td><td class="pt__p">¥5,500〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>エンジン載せ替え</span><span data-lang-en>Engine replacement</span></span></th><td class="pt__p">¥88,000〜</td><td class="pt__p">¥121,000〜</td><td class="pt__p">—</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>スロットルボディ清掃</span><span data-lang-en>Throttle body cleaning</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥5,500〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥5,500〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥8,800〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>マフラー交換</span><span data-lang-en>Exhaust replacement</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥7,700〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥7,700〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>マフラー溶接修理</span><span data-lang-en>Exhaust weld repair</span></span><span class="pt__note"><span data-lang-ja>2箇所目からは1箇所につき3,300円が加算されます</span><span data-lang-en>¥3,300 for each additional repair point</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥5,500〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥5,500〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>エンジン載せ替え</span><span data-lang-en>Engine replacement</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥88,000〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥121,000〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">—</td></tr>
             </tbody>
           </table></div>
-        </section>
+        </details>
 
-        <section class="pblk">
-          <h3 class="pblk__h"><span class="pblk__n">5</span>
+        <details class="pblk">
+          <summary class="pblk__h"><span class="pblk__n">5</span>
             <span class="pblk__t"><span data-lang-ja>足回り・下廻り</span><span data-lang-en>Suspension &amp; underbody</span></span>
-          </h3>
+          </summary>
           <div class="pt__wrap"><table class="pt">
             <thead><tr>
               <th class="pt__hname"><span data-lang-ja>作業内容</span><span data-lang-en>Work</span></th>
@@ -505,15 +556,15 @@
               <th><span data-lang-ja>輸入車</span><span data-lang-en>Import</span></th>
             </tr></thead>
             <tbody>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>下廻り高圧洗浄</span><span data-lang-en>Underbody pressure wash</span></span></th><td class="pt__p">¥5,500〜</td><td class="pt__p">¥5,500〜</td><td class="pt__p">¥8,800〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>下廻り高圧洗浄</span><span data-lang-en>Underbody pressure wash</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥5,500〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥5,500〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥8,800〜</td></tr>
             </tbody>
           </table></div>
-        </section>
+        </details>
 
-        <section class="pblk">
-          <h3 class="pblk__h"><span class="pblk__n">6</span>
+        <details class="pblk">
+          <summary class="pblk__h"><span class="pblk__n">6</span>
             <span class="pblk__t"><span data-lang-ja>タイヤ・ホイール</span><span data-lang-en>Tyres &amp; wheels</span></span>
-          </h3>
+          </summary>
           <div class="pt__wrap"><table class="pt">
             <thead><tr>
               <th class="pt__hname"><span data-lang-ja>作業内容</span><span data-lang-en>Work</span></th>
@@ -522,22 +573,22 @@
               <th><span data-lang-ja>輸入車</span><span data-lang-en>Import</span></th>
             </tr></thead>
             <tbody>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>タイヤ交換（新品・1本／13〜15インチ）</span><span data-lang-en>New tyre fitted — 13–15 inch (each)</span></span><span class="pt__note"><span data-lang-ja>脱着・組替・バランス込</span><span data-lang-en>Includes removal, fitting and balancing</span></span></th><td class="pt__p"><span data-lang-ja>¥4,400〜／本</span><span data-lang-en>¥4,400〜 each</span></td><td class="pt__p"><span data-lang-ja>¥4,400〜／本</span><span data-lang-en>¥4,400〜 each</span></td><td class="pt__p"><span data-lang-ja>¥4,400〜／本</span><span data-lang-en>¥4,400〜 each</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>タイヤ交換（新品・1本／16〜17インチ）</span><span data-lang-en>New tyre fitted — 16–17 inch (each)</span></span><span class="pt__note"><span data-lang-ja>脱着・組替・バランス込</span><span data-lang-en>Includes removal, fitting and balancing</span></span></th><td class="pt__p"><span data-lang-ja>¥5,500〜／本</span><span data-lang-en>¥5,500〜 each</span></td><td class="pt__p"><span data-lang-ja>¥5,500〜／本</span><span data-lang-en>¥5,500〜 each</span></td><td class="pt__p"><span data-lang-ja>¥5,500〜／本</span><span data-lang-en>¥5,500〜 each</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>季節履き替え（ホイール付き・4本）</span><span data-lang-en>Seasonal wheel swap — set of 4</span></span><span class="pt__note"><span data-lang-ja>夏・冬タイヤの入れ替え。お持ち込みのタイヤでも承ります</span><span data-lang-en>Swapping between summer and winter tyres. Tyres you bring in on wheels are welcome</span></span></th><td class="pt__p">¥3,300</td><td class="pt__p">¥4,400</td><td class="pt__p">¥6,600</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>タイヤローテーション（1台）</span><span data-lang-en>Tyre rotation — set of 4</span></span></th><td class="pt__p">¥3,300〜</td><td class="pt__p">¥4,400〜</td><td class="pt__p">¥6,600〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>パンク修理（外面）</span><span data-lang-en>Puncture repair — external</span></span></th><td class="pt__p">¥3,300〜</td><td class="pt__p">¥3,300〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>パンク修理（内面パッチ）</span><span data-lang-en>Puncture repair — internal patch</span></span></th><td class="pt__p">¥4,400〜</td><td class="pt__p">¥4,400〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>空気圧点検・調整</span><span data-lang-en>Tyre pressure check</span></span></th><td class="pt__p pt__p--q"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td><td class="pt__p pt__p--q"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td><td class="pt__p pt__p--q"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ホイールナット交換・締付点検</span><span data-lang-en>Wheel nut check &amp; torque</span></span></th><td class="pt__p pt__p--q"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td><td class="pt__p pt__p--q"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td><td class="pt__p pt__p--q"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>タイヤ交換（新品・1本／13〜15インチ）</span><span data-lang-en>New tyre fitted — 13–15 inch (each)</span></span><span class="pt__note"><span data-lang-ja>脱着・組替・バランス込</span><span data-lang-en>Includes removal, fitting and balancing</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei"><span data-lang-ja>¥4,400〜／本</span><span data-lang-en>¥4,400〜 each</span></td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard"><span data-lang-ja>¥4,400〜／本</span><span data-lang-en>¥4,400〜 each</span></td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>¥4,400〜／本</span><span data-lang-en>¥4,400〜 each</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>タイヤ交換（新品・1本／16〜17インチ）</span><span data-lang-en>New tyre fitted — 16–17 inch (each)</span></span><span class="pt__note"><span data-lang-ja>脱着・組替・バランス込</span><span data-lang-en>Includes removal, fitting and balancing</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei"><span data-lang-ja>¥5,500〜／本</span><span data-lang-en>¥5,500〜 each</span></td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard"><span data-lang-ja>¥5,500〜／本</span><span data-lang-en>¥5,500〜 each</span></td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>¥5,500〜／本</span><span data-lang-en>¥5,500〜 each</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>季節履き替え（ホイール付き・4本）</span><span data-lang-en>Seasonal wheel swap — set of 4</span></span><span class="pt__note"><span data-lang-ja>夏・冬タイヤの入れ替え。お持ち込みのタイヤでも承ります</span><span data-lang-en>Swapping between summer and winter tyres. Tyres you bring in on wheels are welcome</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥3,300</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥4,400</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥6,600</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>タイヤローテーション（1台）</span><span data-lang-en>Tyre rotation — set of 4</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥3,300〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥4,400〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥6,600〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>パンク修理（外面）</span><span data-lang-en>Puncture repair — external</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥3,300〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥3,300〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>パンク修理（内面パッチ）</span><span data-lang-en>Puncture repair — internal patch</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥4,400〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥4,400〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>空気圧点検・調整</span><span data-lang-en>Tyre pressure check</span></span></th><td class="pt__p pt__p--q" data-l-ja="軽" data-l-en="Kei"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td><td class="pt__p pt__p--q" data-l-ja="普通車" data-l-en="Standard"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ホイールナット交換・締付点検</span><span data-lang-en>Wheel nut check &amp; torque</span></span></th><td class="pt__p pt__p--q" data-l-ja="軽" data-l-en="Kei"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td><td class="pt__p pt__p--q" data-l-ja="普通車" data-l-en="Standard"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td></tr>
             </tbody>
           </table></div>
-        </section>
+        </details>
 
-        <section class="pblk">
-          <h3 class="pblk__h"><span class="pblk__n">7</span>
+        <details class="pblk">
+          <summary class="pblk__h"><span class="pblk__n">7</span>
             <span class="pblk__t"><span data-lang-ja>冷却・エアコン</span><span data-lang-en>Cooling &amp; air-con</span></span>
-          </h3>
+          </summary>
           <div class="pt__wrap"><table class="pt">
             <thead><tr>
               <th class="pt__hname"><span data-lang-ja>作業内容</span><span data-lang-en>Work</span></th>
@@ -546,15 +597,15 @@
               <th><span data-lang-ja>輸入車</span><span data-lang-en>Import</span></th>
             </tr></thead>
             <tbody>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>エアコンガス補充</span><span data-lang-en>Air-con gas recharge</span></span><span class="pt__note"><span data-lang-ja>別途ガス代 1本 2,200円がかかります</span><span data-lang-en>Refrigerant charged separately at ¥2,200 per can</span></span></th><td class="pt__p">¥3,300〜</td><td class="pt__p">¥3,300〜</td><td class="pt__p">¥5,500〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>エアコンガス補充</span><span data-lang-en>Air-con gas recharge</span></span><span class="pt__note"><span data-lang-ja>別途ガス代 1本 2,200円がかかります</span><span data-lang-en>Refrigerant charged separately at ¥2,200 per can</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥3,300〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥3,300〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥5,500〜</td></tr>
             </tbody>
           </table></div>
-        </section>
+        </details>
 
-        <section class="pblk">
-          <h3 class="pblk__h"><span class="pblk__n">8</span>
+        <details class="pblk">
+          <summary class="pblk__h"><span class="pblk__n">8</span>
             <span class="pblk__t"><span data-lang-ja>車検・点検関連</span><span data-lang-en>Inspection</span></span>
-          </h3>
+          </summary>
           <div class="pt__wrap"><table class="pt">
             <thead><tr>
               <th class="pt__hname"><span data-lang-ja>作業内容</span><span data-lang-en>Work</span></th>
@@ -563,19 +614,19 @@
               <th><span data-lang-ja>輸入車</span><span data-lang-en>Import</span></th>
             </tr></thead>
             <tbody>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>法定12ヶ月点検（単独・乗用）</span><span data-lang-en>Statutory 12-month inspection — passenger</span></span></th><td class="pt__p">¥11,000〜</td><td class="pt__p">¥16,500〜</td><td class="pt__p">¥19,800〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>法定12ヶ月点検（単独・貨物）</span><span data-lang-en>Statutory 12-month inspection — commercial</span></span></th><td class="pt__p">¥11,000〜</td><td class="pt__p">¥16,500〜</td><td class="pt__p">¥19,800〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>法定24ヶ月点検（車検なし単独）</span><span data-lang-en>Statutory 24-month inspection — without shaken</span></span></th><td class="pt__p">¥11,000〜</td><td class="pt__p">¥16,500〜</td><td class="pt__p">¥19,800〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ワイパーゴム交換（1本）</span><span data-lang-en>Wiper rubber (each)</span></span><span class="pt__note"><span data-lang-ja>純正品をお使いの場合の工賃です。汎用品は別料金となります</span><span data-lang-en>Labour for genuine parts; aftermarket parts are priced separately</span></span></th><td class="pt__p"><span data-lang-ja>¥1,100〜／本</span><span data-lang-en>¥1,100〜 each</span></td><td class="pt__p"><span data-lang-ja>¥1,100〜／本</span><span data-lang-en>¥1,100〜 each</span></td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ワイパーブレード交換（1本）</span><span data-lang-en>Wiper blade (each)</span></span><span class="pt__note"><span data-lang-ja>純正品をお使いの場合の工賃です。汎用品は別料金となります／ブレードは別途部品代</span><span data-lang-en>Labour for genuine parts; aftermarket parts priced separately. Blades are charged as parts</span></span></th><td class="pt__p"><span data-lang-ja>¥1,100〜／本</span><span data-lang-en>¥1,100〜 each</span></td><td class="pt__p"><span data-lang-ja>¥1,100〜／本</span><span data-lang-en>¥1,100〜 each</span></td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>法定12ヶ月点検（単独・乗用）</span><span data-lang-en>Statutory 12-month inspection — passenger</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥11,000〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥16,500〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥19,800〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>法定12ヶ月点検（単独・貨物）</span><span data-lang-en>Statutory 12-month inspection — commercial</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥11,000〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥16,500〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥19,800〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>法定24ヶ月点検（車検なし単独）</span><span data-lang-en>Statutory 24-month inspection — without shaken</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥11,000〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥16,500〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥19,800〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ワイパーゴム交換（1本）</span><span data-lang-en>Wiper rubber (each)</span></span><span class="pt__note"><span data-lang-ja>純正品をお使いの場合の工賃です。汎用品は別料金となります</span><span data-lang-en>Labour for genuine parts; aftermarket parts are priced separately</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei"><span data-lang-ja>¥1,100〜／本</span><span data-lang-en>¥1,100〜 each</span></td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard"><span data-lang-ja>¥1,100〜／本</span><span data-lang-en>¥1,100〜 each</span></td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ワイパーブレード交換（1本）</span><span data-lang-en>Wiper blade (each)</span></span><span class="pt__note"><span data-lang-ja>純正品をお使いの場合の工賃です。汎用品は別料金となります／ブレードは別途部品代</span><span data-lang-en>Labour for genuine parts; aftermarket parts priced separately. Blades are charged as parts</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei"><span data-lang-ja>¥1,100〜／本</span><span data-lang-en>¥1,100〜 each</span></td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard"><span data-lang-ja>¥1,100〜／本</span><span data-lang-en>¥1,100〜 each</span></td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
             </tbody>
           </table></div>
-        </section>
+        </details>
 
-        <section class="pblk">
-          <h3 class="pblk__h"><span class="pblk__n">9</span>
+        <details class="pblk">
+          <summary class="pblk__h"><span class="pblk__n">9</span>
             <span class="pblk__t"><span data-lang-ja>外装・ガラス</span><span data-lang-en>Body &amp; glass</span></span>
-          </h3>
+          </summary>
           <div class="pt__wrap"><table class="pt">
             <thead><tr>
               <th class="pt__hname"><span data-lang-ja>作業内容</span><span data-lang-en>Work</span></th>
@@ -584,16 +635,16 @@
               <th><span data-lang-ja>輸入車</span><span data-lang-en>Import</span></th>
             </tr></thead>
             <tbody>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>フロントガラスリペア（飛び石・1箇所）</span><span data-lang-en>Windscreen chip repair (per chip)</span></span><span class="pt__note"><span data-lang-ja>2箇所目からは1箇所につき5,500円が加算されます</span><span data-lang-en>¥5,500 for each additional chip</span></span></th><td class="pt__p">¥22,000〜</td><td class="pt__p">¥22,000〜</td><td class="pt__p">¥22,000〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ヘッドライト磨き（左右）</span><span data-lang-en>Headlight polishing — pair</span></span></th><td class="pt__p">¥3,300〜</td><td class="pt__p">¥3,300〜</td><td class="pt__p">¥3,300〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>フロントガラスリペア（飛び石・1箇所）</span><span data-lang-en>Windscreen chip repair (per chip)</span></span><span class="pt__note"><span data-lang-ja>2箇所目からは1箇所につき5,500円が加算されます</span><span data-lang-en>¥5,500 for each additional chip</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥22,000〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥22,000〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥22,000〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ヘッドライト磨き（左右）</span><span data-lang-en>Headlight polishing — pair</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥3,300〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥3,300〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥3,300〜</td></tr>
             </tbody>
           </table></div>
-        </section>
+        </details>
 
-        <section class="pblk">
-          <h3 class="pblk__h"><span class="pblk__n">10</span>
+        <details class="pblk">
+          <summary class="pblk__h"><span class="pblk__n">10</span>
             <span class="pblk__t"><span data-lang-ja>サービス・その他</span><span data-lang-en>Services</span></span>
-          </h3>
+          </summary>
           <div class="pt__wrap"><table class="pt">
             <thead><tr>
               <th class="pt__hname"><span data-lang-ja>作業内容</span><span data-lang-en>Work</span></th>
@@ -602,20 +653,20 @@
               <th><span data-lang-ja>輸入車</span><span data-lang-en>Import</span></th>
             </tr></thead>
             <tbody>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>引取・納車（市内・近距離）</span><span data-lang-en>Collection &amp; delivery — local</span></span></th><td class="pt__p">¥3,300〜</td><td class="pt__p">¥3,300〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>代車貸出（1日）</span><span data-lang-en>Courtesy car — per day</span></span><span class="pt__note"><span data-lang-ja>車検・修理でお預かり中の代車。保険代として</span><span data-lang-en>While your car is with us for shaken or repairs. Covers insurance</span></span></th><td class="pt__p">¥1,100</td><td class="pt__p">¥1,100</td><td class="pt__p">¥1,100</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>部品持ち込み取付</span><span data-lang-en>Fitting customer-supplied parts</span></span><span class="pt__note"><span data-lang-ja>お持ち込みの部品を取り付ける場合の割増です。お受けできるのは、ドライブレコーダー・ETC・バッテリー・タイヤの履き替え（ホイール付き）・カーナビの5種類です。</span><span data-lang-en>Surcharge for fitting parts you supply yourself. We can fit five kinds of item: dashcams, ETC units, batteries, tyres already on wheels (seasonal swap) and navigation units.</span></span></th><td class="pt__p pt__p--q"><span data-lang-ja>通常工賃の +20%〜</span><span data-lang-en>+20% on standard labour</span></td><td class="pt__p pt__p--q"><span data-lang-ja>通常工賃の +20%〜</span><span data-lang-en>+20% on standard labour</span></td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>キーレス電池交換</span><span data-lang-en>Key fob battery</span></span></th><td class="pt__p">¥550〜</td><td class="pt__p">¥550〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>スマートキー登録・追加</span><span data-lang-en>Smart key registration</span></span><span class="pt__note"><span data-lang-ja>メーカー・車種により金額が変わります</span><span data-lang-en>Varies by manufacturer and model</span></span></th><td class="pt__p">¥5,500〜</td><td class="pt__p">¥5,500〜</td><td class="pt__p pt__p--q"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>英語での整備説明・英文レポート作成</span><span data-lang-en>Service explanation &amp; report in English</span></span><span class="pt__note"><span data-lang-ja>英語でのご説明を希望されるお客様へ</span><span data-lang-en>For customers who prefer English</span></span></th><td class="pt__p pt__p--q"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td><td class="pt__p pt__p--q"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td><td class="pt__p pt__p--q"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>引取・納車（市内・近距離）</span><span data-lang-en>Collection &amp; delivery — local</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥3,300〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥3,300〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>代車貸出（1日）</span><span data-lang-en>Courtesy car — per day</span></span><span class="pt__note"><span data-lang-ja>車検・修理でお預かり中の代車。保険代として</span><span data-lang-en>While your car is with us for shaken or repairs. Covers insurance</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥1,100</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥1,100</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥1,100</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>部品持ち込み取付</span><span data-lang-en>Fitting customer-supplied parts</span></span><span class="pt__note"><span data-lang-ja>お持ち込みの部品を取り付ける場合の割増です。お受けできるのは、ドライブレコーダー・ETC・バッテリー・タイヤの履き替え（ホイール付き）・カーナビの5種類です。</span><span data-lang-en>Surcharge for fitting parts you supply yourself. We can fit five kinds of item: dashcams, ETC units, batteries, tyres already on wheels (seasonal swap) and navigation units.</span></span></th><td class="pt__p pt__p--q" data-l-ja="軽" data-l-en="Kei"><span data-lang-ja>通常工賃の +20%〜</span><span data-lang-en>+20% on standard labour</span></td><td class="pt__p pt__p--q" data-l-ja="普通車" data-l-en="Standard"><span data-lang-ja>通常工賃の +20%〜</span><span data-lang-en>+20% on standard labour</span></td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>キーレス電池交換</span><span data-lang-en>Key fob battery</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥550〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥550〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>スマートキー登録・追加</span><span data-lang-en>Smart key registration</span></span><span class="pt__note"><span data-lang-ja>メーカー・車種により金額が変わります</span><span data-lang-en>Varies by manufacturer and model</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥5,500〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥5,500〜</td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>お見積り</span><span data-lang-en>Quote</span></td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>英語での整備説明・英文レポート作成</span><span data-lang-en>Service explanation &amp; report in English</span></span><span class="pt__note"><span data-lang-ja>英語でのご説明を希望されるお客様へ</span><span data-lang-en>For customers who prefer English</span></span></th><td class="pt__p pt__p--q" data-l-ja="軽" data-l-en="Kei"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td><td class="pt__p pt__p--q" data-l-ja="普通車" data-l-en="Standard"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td><td class="pt__p pt__p--q" data-l-ja="輸入車" data-l-en="Import"><span data-lang-ja>無料</span><span data-lang-en>Free</span></td></tr>
             </tbody>
           </table></div>
-        </section>
+        </details>
 
-        <section class="pblk">
-          <h3 class="pblk__h"><span class="pblk__n">11</span>
+        <details class="pblk">
+          <summary class="pblk__h"><span class="pblk__n">11</span>
             <span class="pblk__t"><span data-lang-ja>書類・登録手続き</span><span data-lang-en>Documentation &amp; registration</span></span>
-          </h3>
+          </summary>
           <div class="pt__wrap"><table class="pt">
             <thead><tr>
               <th class="pt__hname"><span data-lang-ja>作業内容</span><span data-lang-en>Work</span></th>
@@ -624,12 +675,12 @@
               <th><span data-lang-ja>輸入車</span><span data-lang-en>Import</span></th>
             </tr></thead>
             <tbody>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>名義変更・住所変更</span><span data-lang-en>Change of ownership / address</span></span><span class="pt__note"><span data-lang-ja>別途、印紙代がかかります（軽自動車は不要です）</span><span data-lang-en>Government stamp duty applies separately (not required for kei cars)</span></span></th><td class="pt__p">¥22,000〜</td><td class="pt__p">¥22,000〜</td><td class="pt__p">¥22,000〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>車庫証明の取得</span><span data-lang-en>Parking space certificate</span></span><span class="pt__note"><span data-lang-ja>警察署に納める証紙代を含んだ金額です</span><span data-lang-en>Includes the certificate fee payable to the police</span></span></th><td class="pt__p">¥16,500〜</td><td class="pt__p">¥22,000〜</td><td class="pt__p">¥22,000〜</td></tr>
-            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ナンバー変更</span><span data-lang-en>Change of number plate</span></span><span class="pt__note"><span data-lang-ja>別途、ナンバープレート代と印紙代がかかります</span><span data-lang-en>Number plates and stamp duty are charged separately</span></span></th><td class="pt__p">¥22,000〜</td><td class="pt__p">¥22,000〜</td><td class="pt__p">¥22,000〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>名義変更・住所変更</span><span data-lang-en>Change of ownership / address</span></span><span class="pt__note"><span data-lang-ja>別途、印紙代がかかります（軽自動車は不要です）</span><span data-lang-en>Government stamp duty applies separately (not required for kei cars)</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥22,000〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥22,000〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥22,000〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>車庫証明の取得</span><span data-lang-en>Parking space certificate</span></span><span class="pt__note"><span data-lang-ja>警察署に納める証紙代を含んだ金額です</span><span data-lang-en>Includes the certificate fee payable to the police</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥16,500〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥22,000〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥22,000〜</td></tr>
+            <tr><th class="pt__name"><span class="pt__jp"><span data-lang-ja>ナンバー変更</span><span data-lang-en>Change of number plate</span></span><span class="pt__note"><span data-lang-ja>別途、ナンバープレート代と印紙代がかかります</span><span data-lang-en>Number plates and stamp duty are charged separately</span></span></th><td class="pt__p" data-l-ja="軽" data-l-en="Kei">¥22,000〜</td><td class="pt__p" data-l-ja="普通車" data-l-en="Standard">¥22,000〜</td><td class="pt__p" data-l-ja="輸入車" data-l-en="Import">¥22,000〜</td></tr>
             </tbody>
           </table></div>
-        </section>
+        </details>
       </div>
     </section>
 
@@ -637,12 +688,14 @@
     <section class="psec psec--gray">
       <div class="pwrap">
         <div class="ph2">
-          <h2 data-lang-ja>お見積りの作業</h2>
+          <span id="sec-quoted" class="panchor"></span><h2 data-lang-ja>お見積りの作業</h2>
           <h2 data-lang-en>Quoted individually</h2>
           <span class="ph2__lab">Quote</span>
         </div>
         <p class="pq__intro" data-lang-ja>以下の作業は、お車の車種・状態によって金額が大きく変わるため、その都度お見積りをお出しします。記載のない作業もご相談ください。</p>
         <p class="pq__intro" data-lang-en>The work below varies so much between vehicles that we quote it case by case. If what you need is not listed at all, just ask.</p>
+        <details class="pfold">
+          <summary class="pfold__s"><span data-lang-ja>作業の一覧を開く</span><span data-lang-en>Show the list</span></summary>
         <div class="pbox" style="border-top:1px solid #000;padding-top:6px;">
           <div class="pq__cat">
             <h4 class="pq__h"><span data-lang-ja>油脂・フルード類</span><span data-lang-en>Oils &amp; fluids</span></h4>
@@ -689,6 +742,7 @@
             <p class="pq__note" data-lang-ja><b>他県での登録・その他のお手続き</b><span>県外登録の場合は別途費用がかかります。内容に応じて柔軟に対応いたしますので、まずはご相談ください</span></p><p class="pq__note" data-lang-en><b>Registration outside Kanagawa, and other paperwork</b><span>Registering in another prefecture costs extra. We work around whatever your situation needs, so just ask.</span></p>
           </div>
         </div>
+        </details>
         <p class="pfoot" data-lang-ja>2026年8月25日現在の料金です（v3.0）。予告なく改定する場合があります。</p>
         <p class="pfoot" data-lang-en>Prices current as of 25 August 2026 (v3.0) and subject to change without notice.</p>
       </div>
@@ -783,5 +837,11 @@
   <script src="js/lang-toggle.js"></script>
   <script src="js/main.js"></script>
   <script src="js/site.js"></script>
+<script>
+  // Price blocks: open on wide screens, folded on phones (tap to open)
+  if (window.matchMedia && window.matchMedia('(min-width: 700px)').matches) {
+    document.querySelectorAll('details.pblk, details.pfold').forEach(function (d) { d.open = true; });
+  }
+</script>
 </body>
 </html>

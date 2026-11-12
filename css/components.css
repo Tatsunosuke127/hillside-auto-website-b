@@ -1087,3 +1087,7 @@ body.lang-ja .section--cta h2 {
 
 /* Image placeholder */
 .img-placeholder { background: var(--gray-100); display: flex; align-items: center; justify-content: center; color: var(--gray-300); font-size: 0.875rem; min-height: 200px; }
+
+/* LINE button (was unstyled) */
+.btn--line { background: #06C755; border-color: #06C755; color: #fff; }
+.btn--line:hover { opacity: 0.85; color: #fff; }
