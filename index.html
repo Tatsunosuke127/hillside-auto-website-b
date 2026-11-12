@@ -160,6 +160,38 @@
       border: 1px solid rgba(255,255,255,0.3); padding: 12px 28px;
     }
 
+    /* ===== Header contact (desktop) + compact menu ===== */
+    .nav__contact { display: none; align-items: center; gap: 16px; }
+    .nav__contact a {
+      font-size: 13px; font-weight: 500; letter-spacing: 0.06em; white-space: nowrap;
+      color: var(--white); text-decoration: none; transition: color 0.4s ease, border-color 0.4s ease;
+    }
+    .nav__contact-line { border: 1px solid rgba(255,255,255,0.55); padding: 5px 12px; }
+    .nav--scrolled .nav__contact a { color: var(--black); }
+    .nav--scrolled .nav__contact-line { border-color: var(--black); }
+    @media (min-width: 1024px) {
+      .nav { padding-left: 24px; padding-right: 24px; }
+      .nav__contact { display: flex; }
+      .nav__links { gap: 18px; }
+      .nav__links a, body.lang-ja .nav__links a { letter-spacing: 0.06em; white-space: nowrap; }
+      .nav__logo { font-size: 16px; letter-spacing: 0.14em; white-space: nowrap; }
+    }
+    /* Nine menu items plus contact do not fit below 1280px: keep the menu button there */
+    @media (min-width: 1024px) and (max-width: 1279px) {
+      .nav .nav__links { display: none; }
+      .nav .nav__menu { display: flex; }
+    }
+    @media (min-width: 1440px) {
+      .nav { padding-left: 32px; padding-right: 32px; }
+      .nav__links { gap: 30px; }
+    }
+    /* Mobile menu: every item fits one phone screen, and scrolls from the top when it does not */
+    .nav-overlay { justify-content: flex-start; padding: 84px 0 96px; }
+    .nav-overlay > a { font-size: 24px; line-height: 1.3; padding: 9px 0; }
+    body.lang-ja .nav-overlay > a { font-size: 20px; }
+    .nav-overlay__contact { margin-top: 24px; }
+    body.lang-ja a.expertise__item[data-lang-ja], body.lang-en a.expertise__item[data-lang-en] { display: flex !important; }
+
     /* ===== HERO — full-screen cinematic ===== */
     .hero {
       position: relative; height: 100vh; height: 100svh; overflow: hidden;
@@ -1088,6 +1120,19 @@
       .expertise__name { font-size: 32px; }
       body.lang-ja .expertise__name { font-size: 20px; }
     }
+    /* ===== Phone: tighter vertical rhythm so the page is shorter (content unchanged) ===== */
+    @media (max-width: 767px) {
+      .expertise { padding-top: 56px; padding-bottom: 56px; }
+      .expertise__item { padding-top: 14px; padding-bottom: 14px; }
+      .pricing, .works, .how, .reviews, .faq { padding-top: 56px; padding-bottom: 56px; }
+      .reviews__head { margin-bottom: 32px; }
+      .feature__img, .feature__img img { height: 220px; }
+      .feature__img img { width: 100%; object-fit: cover; }
+      .feature__body { padding-top: 40px; padding-bottom: 40px; }
+      .location__map { height: 240px; }
+      .location__info { padding-top: 40px; padding-bottom: 40px; }
+      .ft { padding-top: 48px; }
+    }
   </style>
   <link rel="stylesheet" href="css/works.css">
 </head>
@@ -1117,6 +1162,9 @@
     <a href="/" class="nav__logo">Hillside Auto</a>
     <div class="nav__links">
       <a href="services.html"><span data-lang-ja>サービス</span><span data-lang-en>Services</span></a>
+      <a href="shaken.html"><span data-lang-ja>車検</span><span data-lang-en>Shaken</span></a>
+      <a href="kaitori.html" data-lang-ja>買取</a>
+      <a href="sell-your-car.html" data-lang-en>Sell your car</a>
       <a href="pricing.html"><span data-lang-ja>料金表</span><span data-lang-en>Pricing</span></a>
       <a href="works.html"><span data-lang-ja>作業実績</span><span data-lang-en>Our Work</span></a>
       <a href="faq.html"><span data-lang-ja>よくある質問</span><span data-lang-en>Q&amp;A</span></a>
@@ -1125,6 +1173,10 @@
       <a href="contact.html"><span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact</span></a>
     </div>
     <div class="nav__right">
+      <div class="nav__contact">
+        <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener" class="nav__contact-line"><span data-lang-ja>LINEで相談</span><span data-lang-en>Chat on LINE</span></a>
+        <a href="tel:045-641-3307" class="nav__contact-tel">045-641-3307</a>
+      </div>
       <div class="nav__lang">
         <button data-lang-btn="ja" class="active">JP</button>
         <button data-lang-btn="en">EN</button>
@@ -1139,6 +1191,9 @@
   <div class="nav-overlay" id="navOverlay">
     <a href="/"><span data-lang-ja>ホーム</span><span data-lang-en>Home</span></a>
     <a href="services.html"><span data-lang-ja>サービス</span><span data-lang-en>Services</span></a>
+    <a href="shaken.html"><span data-lang-ja>車検</span><span data-lang-en>Shaken</span></a>
+    <a href="kaitori.html" data-lang-ja>買取</a>
+    <a href="sell-your-car.html" data-lang-en>Sell your car</a>
     <a href="pricing.html"><span data-lang-ja>料金表</span><span data-lang-en>Pricing</span></a>
     <a href="works.html"><span data-lang-ja>作業実績</span><span data-lang-en>Our Work</span></a>
     <a href="faq.html"><span data-lang-ja>よくある質問</span><span data-lang-en>Q&amp;A</span></a>
@@ -1199,7 +1254,7 @@
         <span class="expertise__name" data-lang-ja>新車・中古車販売</span>
         <span class="expertise__name" data-lang-en>New &amp; Used Car Sales</span>
       </a>
-      <a href="services.html" class="expertise__item">
+      <a href="shaken.html" class="expertise__item">
         <span class="expertise__num">02</span>
         <span class="expertise__name" data-lang-ja>車検</span>
         <span class="expertise__name" data-lang-en>Shaken</span>
@@ -1218,6 +1273,14 @@
         <span class="expertise__num">05</span>
         <span class="expertise__name" data-lang-ja>登録・名義変更</span>
         <span class="expertise__name" data-lang-en>Registration</span>
+      </a>
+      <a href="kaitori.html" class="expertise__item" data-lang-ja>
+        <span class="expertise__num">06</span>
+        <span class="expertise__name">車買取</span>
+      </a>
+      <a href="sell-your-car.html" class="expertise__item" data-lang-en>
+        <span class="expertise__num">06</span>
+        <span class="expertise__name">Sell Your Car</span>
       </a>
       <div class="expertise__cta">
         <a href="services.html">
@@ -1240,21 +1303,12 @@
         <div class="pricing__list">
           <div class="pricing__row">
             <div>
-              <div class="pricing__name" data-lang-ja>車検（軽自動車）</div>
-              <div class="pricing__name" data-lang-en>Shaken (Light Vehicle)</div>
-              <div class="pricing__detail" data-lang-ja>車検基本料〈法定24ヶ月点検〉＋検査場への持ち込み・受検手続き（法定費用・整備費は別）</div>
-              <div class="pricing__detail" data-lang-en>Inspection fee + taking the car in for the test (statutory costs and repairs extra)</div>
+              <div class="pricing__name" data-lang-ja>車検</div>
+              <div class="pricing__name" data-lang-en>Shaken</div>
+              <div class="pricing__detail" data-lang-ja>軽自動車 ¥35,200〜／普通車 ¥41,800〜。車検基本料〈法定24ヶ月点検〉＋検査場への持ち込み・受検手続き（法定費用・整備費は別）</div>
+              <div class="pricing__detail" data-lang-en>Light vehicle from ¥35,200 / standard vehicle from ¥41,800. Inspection fee + taking the car in for the test (statutory costs and repairs extra)</div>
             </div>
             <div class="pricing__price">¥35,200<small> 〜</small></div>
-          </div>
-          <div class="pricing__row">
-            <div>
-              <div class="pricing__name" data-lang-ja>車検（普通車）</div>
-              <div class="pricing__name" data-lang-en>Shaken (Standard Vehicle)</div>
-              <div class="pricing__detail" data-lang-ja>車検基本料〈法定24ヶ月点検〉＋検査場への持ち込み・受検手続き（法定費用・整備費は別）</div>
-              <div class="pricing__detail" data-lang-en>Inspection fee + taking the car in for the test (statutory costs and repairs extra)</div>
-            </div>
-            <div class="pricing__price">¥41,800<small> 〜</small></div>
           </div>
           <div class="pricing__row">
             <div>
@@ -1265,15 +1319,6 @@
             </div>
             <div class="pricing__price">¥1,100<small> 〜</small></div>
           </div>
-          <div class="pricing__row">
-            <div>
-              <div class="pricing__name" data-lang-ja>エンジンオイル交換（輸入車）</div>
-              <div class="pricing__name" data-lang-en>Engine Oil Change (Imported)</div>
-              <div class="pricing__detail" data-lang-ja>技術料のみ（オイル代は別）</div>
-              <div class="pricing__detail" data-lang-en>Labour only (oil charged separately)</div>
-            </div>
-            <div class="pricing__price">¥1,650<small> 〜</small></div>
-          </div>
           <div class="pricing__row pricing__row--clickable" data-modal="tires">
             <div>
               <div class="pricing__name" data-lang-ja>タイヤ交換</div>
@@ -1283,48 +1328,11 @@
             </div>
             <div class="pricing__see-wrap"><span class="pricing__see" data-lang-ja>詳細を見る</span><span class="pricing__see" data-lang-en>View Details</span></div>
           </div>
-          <div class="pricing__row pricing__row--clickable" data-modal="battery">
-            <div>
-              <div class="pricing__name" data-lang-ja>バッテリー交換</div>
-              <div class="pricing__name" data-lang-en>Battery Replacement</div>
-              <div class="pricing__detail" data-lang-ja>車種・型番による</div>
-              <div class="pricing__detail" data-lang-en>Varies by vehicle type and battery model</div>
-            </div>
-            <div class="pricing__see-wrap"><span class="pricing__see" data-lang-ja>詳細を見る</span><span class="pricing__see" data-lang-en>View Details</span></div>
-          </div>
-          <div class="pricing__row">
-            <div>
-              <div class="pricing__name" data-lang-ja>板金・キズ修理</div>
-              <div class="pricing__name" data-lang-en>Body Work & Scratch Repair</div>
-              <div class="pricing__detail" data-lang-ja>現車状態によります（例：フロントバンパーペイント ¥25,000）</div>
-              <div class="pricing__detail" data-lang-en>Depends on vehicle condition (e.g. front bumper paint ¥25,000)</div>
-            </div>
-            <div class="pricing__price" data-lang-ja><small style="font-size:14px;font-family:var(--font-jp);">要見積もり</small></div>
-            <div class="pricing__price" data-lang-en><small style="font-size:14px;font-family:var(--font-en);">Quote</small></div>
-          </div>
         </div>
-
         <a href="pricing.html" class="pricing__full">
           <span data-lang-ja>料金表をすべて見る — 車検・整備・書類手続き 61項目</span>
           <span data-lang-en>See the full price list — 61 items across inspection, servicing and registration</span>
         </a>
-
-        <!-- Inquiry CTA — for unlisted services -->
-        <div class="pricing__inquiry">
-          <p class="pricing__inquiry-text" data-lang-ja><strong>上記にない修理・整備の料金もお気軽にお問い合わせください。</strong><br>お車の状態に合わせて、無料でお見積もりをお出しします。<br><span style="font-size:12px;color:var(--gray-600);">フォーム・LINEは24時間受付。翌営業日にご返信します。</span></p>
-          <p class="pricing__inquiry-text" data-lang-en><strong>Curious about a service not listed here?</strong><br>Get in touch — we provide free, tailored estimates based on your vehicle.<br><span style="font-size:12px;color:var(--gray-600);">Form &amp; LINE available 24/7 — we reply next business day.</span></p>
-          <a href="contact.html" class="pricing__inquiry-btn">
-            <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact Us</span>
-            <span class="pricing__inquiry-btn__line"></span>
-          </a>
-        </div>
-
-        <div class="pricing__statement">
-          <p class="pricing__statement-mark" data-lang-ja>価格はすべて目安です。<br>不透明な費用は、一切ありません。</p>
-          <p class="pricing__statement-mark" data-lang-en>No hidden fees, ever.</p>
-          <p class="pricing__statement-body" data-lang-ja>お車の状態・年式・必要な作業によって料金は変動します。だからこそ、私たちは事前にお見積もりをお出しし、ご納得いただいてから作業を開始します。追加費用が発生する場合は、必ず事前にご説明します。</p>
-          <p class="pricing__statement-body" data-lang-en>Pricing varies based on your vehicle condition, year, and required work. That is exactly why we always provide a detailed estimate first — and begin work only after your approval. If any additional costs come up, we explain them before proceeding.</p>
-        </div>
 
         <div class="pricing__promises">
           <div class="pricing__promise">
@@ -1367,12 +1375,6 @@
           <span data-lang-en>See all our work</span>
         </a>
       </div>
-    </section>
-
-    <!-- VISUAL — two images side by side -->
-    <section class="visual fi">
-      <img class="visual__img" src="images/storefront-hero-1920.webp" alt="1949年創業のヒルサイドオート店舗 — 横浜市中区麦田町・山手公園前交差点" loading="lazy" width="1920" height="1440">
-      <img class="visual__img" src="images/jimny-street.webp" alt="街乗りに最適なコンパクトカー — Hillside Autoでは全メーカーの新車・中古車をお取り扱い" loading="lazy" width="1200" height="678">
     </section>
 
     <!-- FEATURE 1: English Support -->
@@ -1497,8 +1499,8 @@
     <!-- CERTIFIED TRUST BAR — institutional proof -->
     <section class="certified fi">
       <span class="certified__label">Certified</span>
-      <p class="certified__text" data-lang-ja>官公庁担当整備工場・神奈川県認証工場</p>
-      <p class="certified__text" data-lang-en>Government-designated maintenance shop — Kanagawa Prefecture Certified Workshop</p>
+      <p class="certified__text" data-lang-ja>官公庁車両の整備を担当・認証工場</p>
+      <p class="certified__text" data-lang-en>We service government vehicles — Certified workshop</p>
     </section>
 
     <!-- FAQ -->
@@ -1514,7 +1516,7 @@
       <div class="faq__item">
         <button class="faq__q"><span><span data-lang-ja>どんな車でも買取してもらえますか？</span><span data-lang-en>Do you buy any car?</span></span><span class="faq__icon">+</span></button>
         <div class="faq__a"><div class="faq__a-inner">
-          <p data-lang-ja>動くお車であれば、国産車・輸入車を問わず、年式・走行距離に関わらず買取いたします。車検が切れているお車や、古いお車も大歓迎です。車検切れのお車は、場所によっては当社が引き取りに伺えます。あまりに遠い場所には対応できませんので、まずはご相談ください。動かないお車は扱っておりません。査定は無料、その場でお見積もりをお出しします。名義変更や抹消登録などの手続きはすべて当社で代行いたしますので、お客様のお手間はかかりません。書類のご案内も丁寧に行います（英語でのご説明も可能です）。<br><br>まずはお気軽にお問い合わせください。お電話・LINE・お問い合わせフォームのいずれでもお受けしております。</p>
+          <p data-lang-ja>動くお車であれば、国産車・輸入車を問わず、年式・走行距離に関わらず買取いたします。車検が切れているお車や、古いお車も大歓迎です。車検切れのお車は、場所によっては当社が引き取りに伺えます。あまりに遠い場所には対応できませんので、まずはご相談ください。動かないお車は扱っておりません。査定は無料、その場でお見積もりをお出しします。名義変更や抹消登録などの手続きはすべて当社で代行いたしますので、お客様のお手間はかかりません。書類のご案内も丁寧に行います（英語でのご説明も可能です）。<br><br>まずはお気軽にお問い合わせください。お電話・LINE・お問い合わせフォームのいずれでもお受けしております。<br><br><a href="kaitori.html" style="text-decoration:underline;">買取の流れと条件を見る</a></p>
           <p data-lang-en>We buy any car that runs — domestic or imported, regardless of year or mileage. Cars with expired shaken and older cars are welcome. If your shaken has expired, we can collect the car depending on where you are. We cannot come if you are too far away, so please ask us first. We do not buy cars that do not run. Valuation is free and provided on the spot. We handle all paperwork (title transfer, deregistration, etc.) — no hassle on your end. We can guide you through document requirements in English as well.<br><br>Please feel free to reach out by phone, LINE, or our contact form.</p>
         </div></div>
       </div>
@@ -1562,8 +1564,8 @@
         <p class="location__line"><a href="tel:045-641-3307">045-641-3307</a></p>
         <p class="location__line"><a href="mailto:info@hillside-auto.com">info@hillside-auto.com</a></p>
         <p class="location__line">
-          <span data-lang-ja>営業時間: 9:00〜18:00</span>
-          <span data-lang-en>9:00 AM – 6:00 PM</span>
+          <span data-lang-ja>営業時間: 9:00〜18:00（月〜土）／定休日：日曜・祝日</span>
+          <span data-lang-en>9:00 AM – 6:00 PM (Mon – Sat) / Closed on Sundays and public holidays</span>
         </p>
         <p class="location__line">
           <span data-lang-ja>JR石川町駅より徒歩約10分</span>
@@ -1576,29 +1578,6 @@
           </a>
         </p>
       </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta fi">
-      <p class="cta__label">Contact</p>
-      <h2 class="cta__h2" data-lang-ja>お気軽にご相談ください。</h2>
-      <h2 class="cta__h2" data-lang-en>Get in Touch.</h2>
-      <div class="cta__btns">
-        <a href="tel:045-641-3307">
-          <span class="cta__btns__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-          <span>045-641-3307</span>
-        </a>
-        <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener">
-          <span class="cta__btns__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
-          <span>LINE</span>
-        </a>
-        <a href="contact.html" class="filled">
-          <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact</span>
-          <span class="cta__btns__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
-        </a>
-      </div>
-      <p class="cta__note" data-lang-ja>フォーム・LINEは24時間受付。翌営業日にご返信します。</p>
-      <p class="cta__note" data-lang-en>Form &amp; LINE available 24/7 — we reply next business day.</p>
     </section>
 
   </main>
@@ -1621,8 +1600,8 @@
         <p class="ft__info-line">
           <span class="ft__info-label" data-lang-ja>営業時間</span>
           <span class="ft__info-label" data-lang-en>Hours</span>
-          <span class="ft__info-val" data-lang-ja>9:00 – 18:00（月〜土）</span>
-          <span class="ft__info-val" data-lang-en>9:00 – 18:00 (Mon – Sat)</span>
+          <span class="ft__info-val" data-lang-ja>9:00 – 18:00（月〜土）<br>定休日：日曜・祝日</span>
+          <span class="ft__info-val" data-lang-en>9:00 – 18:00 (Mon – Sat)<br>Closed on Sundays and public holidays</span>
         </p>
         <p class="ft__info-line">
           <span class="ft__info-label" data-lang-ja>電話</span>
@@ -1672,7 +1651,7 @@
 
   <!-- Sticky CTA (desktop) -->
   <a href="contact.html" class="stick-cta" id="stickCta">
-    <span class="stick-cta__dot"></span>
+    
     <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact us</span>
   </a>
 

@@ -149,8 +149,14 @@
     var saved = getSavedLang();
     var lang = saved || pageDefaultLang();
 
-    // Apply without saving: only an explicit JP / EN press is remembered.
+    // Apply without saving: an explicit JP / EN press is remembered.
     setLang(lang, false);
+
+    // One exception: a visitor who lands on an English-only page (and whose browser is not set
+    // to Japanese) keeps English on the pages they open next.
+    if (!saved && pageDefaultLang() === 'en' && !browserPrefersJapanese()) {
+      saveLang('en');
+    }
 
     if (!saved && lang === 'ja' && !browserPrefersJapanese() && !hintDismissed()) {
       showHint();

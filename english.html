@@ -201,6 +201,12 @@
     .elink a, .pbox p a { border-bottom: 1px solid currentColor; }
     .etri { grid-template-columns: 1fr; }
     @media (min-width: 900px) { .etri { grid-template-columns: 1fr 1fr 1fr; } }
+    /* ===== ON-THIS-PAGE LINKS ===== */
+    .ejump { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 24px; background: var(--white); border-bottom: 1px solid var(--gray-200, #e5e5e5); }
+    .ejump a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--black, #000);
+      font-size: 14px; letter-spacing: 0.04em; color: var(--black, #000); text-decoration: none; }
+    #shaken, #repairs, #buy, #sell, #getting-here { scroll-margin-top: 96px; }
+    @media (min-width: 768px) { .ejump { padding: 20px 8%; } }
   </style>
 </head>
 <body class="lang-en" data-default-lang="en">
@@ -228,6 +234,9 @@
     <a href="/" class="nav__logo">Hillside Auto</a>
     <div class="nav__links">
       <a href="services.html"><span data-lang-ja>サービス</span><span data-lang-en>Services</span></a>
+      <a href="shaken.html"><span data-lang-ja>車検</span><span data-lang-en>Shaken</span></a>
+      <a href="kaitori.html" data-lang-ja>買取</a>
+      <a href="sell-your-car.html" data-lang-en>Sell your car</a>
       <a href="pricing.html"><span data-lang-ja>料金表</span><span data-lang-en>Pricing</span></a>
       <a href="works.html"><span data-lang-ja>作業実績</span><span data-lang-en>Our Work</span></a>
       <a href="faq.html"><span data-lang-ja>よくある質問</span><span data-lang-en>Q&amp;A</span></a>
@@ -236,6 +245,10 @@
       <a href="contact.html"><span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact</span></a>
     </div>
     <div class="nav__right">
+      <div class="nav__contact">
+        <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener" class="nav__contact-line"><span data-lang-ja>LINEで相談</span><span data-lang-en>Chat on LINE</span></a>
+        <a href="tel:045-641-3307" class="nav__contact-tel">045-641-3307</a>
+      </div>
       <div class="nav__lang">
         <button data-lang-btn="ja" class="active">JP</button>
         <button data-lang-btn="en">EN</button>
@@ -249,6 +262,9 @@
   <div class="nav-overlay" id="navOverlay">
     <a href="/"><span data-lang-ja>ホーム</span><span data-lang-en>Home</span></a>
     <a href="services.html"><span data-lang-ja>サービス</span><span data-lang-en>Services</span></a>
+    <a href="shaken.html"><span data-lang-ja>車検</span><span data-lang-en>Shaken</span></a>
+    <a href="kaitori.html" data-lang-ja>買取</a>
+    <a href="sell-your-car.html" data-lang-en>Sell your car</a>
     <a href="pricing.html"><span data-lang-ja>料金表</span><span data-lang-en>Pricing</span></a>
     <a href="works.html"><span data-lang-ja>作業実績</span><span data-lang-en>Our Work</span></a>
     <a href="faq.html"><span data-lang-ja>よくある質問</span><span data-lang-en>Q&amp;A</span></a>
@@ -271,6 +287,15 @@
         <p class="page-hero__desc">Shaken, repairs, buying and selling — explained in English, with prices you can see before you book.</p>
       </div>
     </section>
+
+    <!-- ON THIS PAGE -->
+    <nav class="ejump" aria-label="On this page">
+      <a href="#shaken">Shaken</a>
+      <a href="#repairs">Repairs</a>
+      <a href="#buy">Buy</a>
+      <a href="#sell">Sell</a>
+      <a href="#getting-here">Getting here</a>
+    </nav>
 
     <!-- DO YOU SPEAK ENGLISH -->
     <section class="psec">
@@ -322,7 +347,7 @@
     <section class="psec">
       <div class="pwrap">
         <div class="ph2">
-          <h2>Shaken, in English</h2>
+          <h2 id="shaken">Shaken, in English</h2>
           <span class="ph2__lab">Vehicle inspection</span>
         </div>
         <div class="phow">
@@ -364,19 +389,19 @@
         </div>
         <div class="ptwo ptwo--top etri">
           <div class="pbox">
-            <h4>Repairs and servicing</h4>
+            <h4 id="repairs">Repairs and servicing</h4>
             <p>Warning light, strange noise, flat tyre, oil change — tell us what is happening on LINE. A photo helps. We quote first and only start once you agree.</p>
             <p>Walk-ins are welcome, but we may not be able to look at your car straight away. For urgent problems such as warning lights, strange noises or a flat tyre, come straight in and we will do our best to help.</p>
             <p class="elink"><a href="pricing.html">Full price list, in English →</a></p>
           </div>
           <div class="pbox">
-            <h4>Buying a car</h4>
+            <h4 id="buy">Buying a car</h4>
             <p>We are an authorised Suzuki sub-dealer for new cars, and we sell used cars too. If what you want is not in stock, we can search nationwide auctions for a model, year and budget that fit.</p>
             <p>The paperwork — registration, the parking space certificate (車庫証明, shako shomeisho) and name transfer — is handled for you.</p>
             <p class="elink"><a href="https://timerex.net/s/hillsideauto3307_acc6/0e78cadc" target="_blank" rel="noopener">Book a buying or selling consultation →</a></p>
           </div>
           <div class="pbox">
-            <h4>Selling your car when you leave Japan</h4>
+            <h4 id="sell">Selling your car when you leave Japan</h4>
             <p>We buy cars of any make or age, as long as they run. Expired shaken is fine. Valuation is free and we quote on the spot.</p>
             <p>We handle the name transfer or de-registration, so you do not have to. Tell us your leaving date when you contact us.</p>
             <p class="elink"><a href="sell-your-car.html">How selling your car works</a></p>
@@ -421,7 +446,7 @@
     <section class="psec psec--gray">
       <div class="pwrap">
         <div class="ph2">
-          <h2>Getting here</h2>
+          <h2 id="getting-here">Getting here</h2>
           <span class="ph2__lab">Naka-ku, Yokohama</span>
         </div>
         <div class="ptwo ptwo--top">
@@ -433,7 +458,7 @@
           </div>
           <div class="pbox">
             <h4>Opening hours</h4>
-            <p>9:00 – 18:00, Monday to Saturday</p>
+            <p>9:00 – 18:00, Monday to Saturday<br>Closed on Sundays and public holidays</p>
             <p>Phone: <a href="tel:045-641-3307">045-641-3307</a><br>LINE: <a href="https://lin.ee/sTd3oIR" target="_blank" rel="noopener">message us</a> (text only)</p>
           </div>
         </div>
@@ -471,8 +496,8 @@
         <p class="ft__info-line">
           <span class="ft__info-label" data-lang-ja>営業時間</span>
           <span class="ft__info-label" data-lang-en>Hours</span>
-          <span class="ft__info-val" data-lang-ja>9:00 – 18:00（月〜土）</span>
-          <span class="ft__info-val" data-lang-en>9:00 – 18:00 (Mon – Sat)</span>
+          <span class="ft__info-val" data-lang-ja>9:00 – 18:00（月〜土）<br>定休日：日曜・祝日</span>
+          <span class="ft__info-val" data-lang-en>9:00 – 18:00 (Mon – Sat)<br>Closed on Sundays and public holidays</span>
         </p>
         <p class="ft__info-line">
           <span class="ft__info-label" data-lang-ja>電話</span>
@@ -521,7 +546,7 @@
   </div>
 
   <a href="contact.html" class="stick-cta" id="stickCta">
-    <span class="stick-cta__dot"></span>
+    
     <span data-lang-ja>お問い合わせ</span><span data-lang-en>Contact us</span>
   </a>
 
