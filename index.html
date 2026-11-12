@@ -253,7 +253,7 @@
     .hero__cta {
       position: relative; overflow: hidden;
       display: flex; align-items: center; justify-content: space-between; gap: 10px;
-      padding: 0 16px; min-height: 48px;
+      padding: 0 16px; min-height: 48px; white-space: nowrap;
       font-size: 14px; font-weight: 500; letter-spacing: 0.08em;
       color: var(--white);
       border: 1px solid rgba(255,255,255,0.4);
@@ -285,7 +285,8 @@
     .hero__cta:hover .hero__cta__arrow { width: 24px; }
     @media (min-width: 768px) {
       .hero__what { font-size: 16px; margin-top: 22px; }
-      .hero__ctas { grid-template-columns: repeat(4, auto); justify-content: start; gap: 12px; margin-top: 30px; }
+      .hero__body { max-width: 1040px; }
+      .hero__ctas { grid-template-columns: repeat(4, max-content); justify-content: start; gap: 12px; margin-top: 30px; }
       .hero__cta { padding: 0 24px; min-height: 52px; gap: 16px; }
     }
     .hero__arrow {
