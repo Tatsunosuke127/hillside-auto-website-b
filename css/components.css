@@ -1091,3 +1091,7 @@ body.lang-ja .section--cta h2 {
 /* LINE button (was unstyled) */
 .btn--line { background: #06C755; border-color: #06C755; color: #fff; }
 .btn--line:hover { opacity: 0.85; color: #fff; }
+
+/* Purpose notice above the contact form button */
+.form-privacy { font-size: 14px; line-height: 1.7; color: var(--gray-600, #666); margin: 0 0 16px; }
+.form-privacy a { text-decoration: underline; }
