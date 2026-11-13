@@ -1,0 +1,11 @@
+# Internal files that stay in the repo but must not be deployed to the public site.
+# Same syntax as .gitignore. Anything not listed here is deployed as before.
+
+# Working instructions, the old build spec and any other Markdown notes
+*.md
+
+# Component samples (contain outdated copy)
+/design-system
+
+# Internal documents (no such folder yet; listed so it stays private if one is added)
+/docs
