@@ -80,6 +80,10 @@
       .then(function (response) {
         if (response.ok) {
           form.style.display = 'none';
+          if (window.HillsideTrack) {
+            var typeField = form.querySelector('[name=inquiry_type]');
+            window.HillsideTrack('contact_form_sent', { inquiry_type: typeField ? typeField.value : '' });
+          }
           if (successMsg) {
             successMsg.classList.add('visible');
             // Bring the confirmation into view (on phones it used to appear off-screen)
