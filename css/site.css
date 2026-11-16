@@ -386,5 +386,5 @@ body.lang-ja .nav-overlay > a { font-size: 20px; }
 }
 
 /* Page hero with a phone-size and a desktop-size photo (set on the element as --hero-sm / --hero-lg) */
-.page-hero__img--rs { background-image: var(--hero-sm); }
+.page-hero__img--rs { background-image: var(--hero-sm); background-position: var(--hero-pos, center); }
 @media (min-width: 768px) { .page-hero__img--rs { background-image: var(--hero-lg); } }
