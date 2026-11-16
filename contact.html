@@ -26,7 +26,8 @@
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://www.hillside-auto.jp/contact.html">
   <!-- LCP: fetch the hero photo early -->
-  <link rel="preload" as="image" href="images/brand-visual-2.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="images/shop-corner-900.webp" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" as="image" href="images/shop-corner-1600.webp" media="(min-width: 768px)" fetchpriority="high">
   <link rel="alternate" hreflang="ja" href="https://www.hillside-auto.jp/contact.html">
   <link rel="alternate" hreflang="en" href="https://www.hillside-auto.jp/contact.html">
   <link rel="alternate" hreflang="x-default" href="https://www.hillside-auto.jp/contact.html">
@@ -119,7 +120,7 @@
     <!-- Page Header -->
     <!-- PAGE HERO -->
     <section class="page-hero">
-      <div class="page-hero__img" style="background-image: url('images/brand-visual-2.webp');"></div>
+      <div class="page-hero__img page-hero__img--rs" style="--hero-sm: url('/images/shop-corner-900.webp'); --hero-lg: url('/images/shop-corner-1600.webp');"></div>
       <div class="page-hero__body">
         <p class="page-hero__sub">Contact</p>
         <h1 data-lang-ja>お問い合わせ</h1>

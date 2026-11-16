@@ -26,7 +26,8 @@
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://www.hillside-auto.jp/services.html">
   <!-- LCP: fetch the hero photo early -->
-  <link rel="preload" as="image" href="images/jimny-street.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="images/workshop-lift-900.webp" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" as="image" href="images/workshop-lift-1600.webp" media="(min-width: 768px)" fetchpriority="high">
   <link rel="alternate" hreflang="ja" href="https://www.hillside-auto.jp/services.html">
   <link rel="alternate" hreflang="en" href="https://www.hillside-auto.jp/services.html">
   <link rel="alternate" hreflang="x-default" href="https://www.hillside-auto.jp/services.html">
@@ -200,7 +201,7 @@
     <!-- Page Header -->
     <!-- PAGE HERO -->
     <section class="page-hero">
-      <div class="page-hero__img" style="background-image: url('images/jimny-street.webp');"></div>
+      <div class="page-hero__img page-hero__img--rs" style="--hero-sm: url('/images/workshop-lift-900.webp'); --hero-lg: url('/images/workshop-lift-1600.webp');"></div>
       <div class="page-hero__body">
         <p class="page-hero__sub">Services</p>
         <h1 data-lang-ja>サービス一覧</h1>

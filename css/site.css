@@ -384,3 +384,7 @@ body.lang-ja .nav-overlay > a { font-size: 20px; }
   .nav__right { gap: 10px; }
   .nav__lang { gap: 0; }
 }
+
+/* Page hero with a phone-size and a desktop-size photo (set on the element as --hero-sm / --hero-lg) */
+.page-hero__img--rs { background-image: var(--hero-sm); }
+@media (min-width: 768px) { .page-hero__img--rs { background-image: var(--hero-lg); } }

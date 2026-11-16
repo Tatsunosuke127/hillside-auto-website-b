@@ -26,7 +26,8 @@
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://www.hillside-auto.jp/sell-your-car.html">
   <!-- LCP: fetch the hero photo early -->
-  <link rel="preload" as="image" href="images/shop-storefront.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="images/garage-front-900.webp" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" as="image" href="images/garage-front-1600.webp" media="(min-width: 768px)" fetchpriority="high">
   <link rel="alternate" hreflang="ja" href="https://www.hillside-auto.jp/kaitori.html">
   <link rel="alternate" hreflang="en" href="https://www.hillside-auto.jp/sell-your-car.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -294,7 +295,7 @@
   <main>
     <!-- PAGE HERO -->
     <section class="page-hero">
-      <div class="page-hero__img" style="background-image: url('images/shop-storefront.webp');"></div>
+      <div class="page-hero__img page-hero__img--rs" style="--hero-sm: url('/images/garage-front-900.webp'); --hero-lg: url('/images/garage-front-1600.webp');"></div>
       <div class="page-hero__body">
         <h1>Sell your car in Yokohama — in English</h1>
         <p class="page-hero__desc">Leaving Japan, or just don't need your car anymore? We buy it, and we handle the paperwork. You don't need to speak Japanese.</p>

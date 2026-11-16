@@ -26,7 +26,8 @@
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://www.hillside-auto.jp/faq.html">
   <!-- LCP: fetch the hero photo early -->
-  <link rel="preload" as="image" href="images/shop-storefront.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="images/waiting-area-900.webp" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" as="image" href="images/waiting-area-1600.webp" media="(min-width: 768px)" fetchpriority="high">
   <link rel="alternate" hreflang="ja" href="https://www.hillside-auto.jp/faq.html">
   <link rel="alternate" hreflang="en" href="https://www.hillside-auto.jp/faq.html">
   <link rel="alternate" hreflang="x-default" href="https://www.hillside-auto.jp/faq.html">
@@ -165,7 +166,7 @@
   <main>
     <!-- PAGE HERO -->
     <section class="page-hero">
-      <div class="page-hero__img" style="background-image: url('images/shop-storefront.webp');"></div>
+      <div class="page-hero__img page-hero__img--rs" style="--hero-sm: url('/images/waiting-area-900.webp'); --hero-lg: url('/images/waiting-area-1600.webp');"></div>
       <div class="page-hero__body">
         <p class="page-hero__sub">Q&amp;A</p>
         <h1 data-lang-ja>よくある質問</h1>
