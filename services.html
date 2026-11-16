@@ -125,6 +125,13 @@
     /* Text link from an accordion to its detail page */
     .accordion__content p.acc-more { margin: 14px 0 22px; color: var(--black, #000); }
     .acc-more a { border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+    /* In the workshop gallery */
+    .wgal__h { font-size: 22px; margin: 0 0 20px; }
+    .wgal__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 12px; }
+    .wgal__i { margin: 0; }
+    .wgal__i img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+    .wgal__i figcaption { font-size: 14px; line-height: 1.6; margin-top: 8px; color: var(--gray-700, #444); }
+    @media (min-width: 768px) { .wgal__grid { grid-template-columns: repeat(3, 1fr); gap: 24px 20px; } .wgal__h { font-size: 28px; } }
   </style>
 </head>
 <body class="lang-ja">
@@ -540,6 +547,40 @@
           </div>
 
 
+        </div>
+      </div>
+    </section>
+
+    <!-- IN THE WORKSHOP — real photos from our workshop -->
+    <section class="section wgal">
+      <div class="container">
+        <h2 class="wgal__h" data-lang-ja>作業の様子</h2>
+        <h2 class="wgal__h" data-lang-en>In the workshop</h2>
+        <div class="wgal__grid">
+          <figure class="wgal__i">
+            <img src="images/work-oil.webp" width="720" height="720" loading="lazy" alt="抜いたオイルと新しいオイル / Drained oil next to new oil">
+            <figcaption><span data-lang-ja>抜いたオイルと新しいオイル</span><span data-lang-en>Drained oil next to new oil</span></figcaption>
+          </figure>
+          <figure class="wgal__i">
+            <img src="images/work-torque.webp" width="720" height="720" loading="lazy" alt="トルクレンチでホイールナットを締める / Tightening wheel nuts with a torque wrench">
+            <figcaption><span data-lang-ja>トルクレンチでホイールナットを締める</span><span data-lang-en>Tightening wheel nuts with a torque wrench</span></figcaption>
+          </figure>
+          <figure class="wgal__i">
+            <img src="images/work-brake.webp" width="720" height="720" loading="lazy" alt="ブレーキの残りの厚さを測る / Measuring how much brake lining is left">
+            <figcaption><span data-lang-ja>ブレーキの残りの厚さを測る</span><span data-lang-en>Measuring how much brake lining is left</span></figcaption>
+          </figure>
+          <figure class="wgal__i">
+            <img src="images/work-under.webp" width="720" height="720" loading="lazy" alt="下回りの作業 / Working under the car">
+            <figcaption><span data-lang-ja>下回りの作業</span><span data-lang-en>Working under the car</span></figcaption>
+          </figure>
+          <figure class="wgal__i">
+            <img src="images/work-tyre-fit.webp" width="720" height="720" loading="lazy" alt="タイヤの組み換え / Fitting a tyre to the wheel">
+            <figcaption><span data-lang-ja>タイヤの組み換え</span><span data-lang-en>Fitting a tyre to the wheel</span></figcaption>
+          </figure>
+          <figure class="wgal__i">
+            <img src="images/work-tyre-changer.webp" width="720" height="720" loading="lazy" alt="タイヤの組み換え機 / Our tyre changer">
+            <figcaption><span data-lang-ja>タイヤの組み換え機</span><span data-lang-en>Our tyre changer</span></figcaption>
+          </figure>
         </div>
       </div>
     </section>
