@@ -234,6 +234,12 @@
       .sfee { display: flex; gap: 32px; max-width: none; border-top: 0; }
       .sfee li { border-bottom: 0; gap: 12px; padding: 0; }
     }
+    /* ===== ON-THIS-PAGE LINKS ===== */
+    .ejump { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 24px; background: var(--white, #fff); border-bottom: 1px solid var(--gray-200, #e5e5e5); }
+    .ejump a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--black, #000);
+      font-size: 14px; letter-spacing: 0.04em; color: var(--black, #000); text-decoration: none; }
+    .panchor { display: block; scroll-margin-top: 96px; }
+    @media (min-width: 768px) { .ejump { padding: 20px 8%; } }
   </style>
 </head>
 <body class="lang-ja">
@@ -324,6 +330,14 @@
       </div>
     </section>
 
+    <!-- ON THIS PAGE -->
+    <nav class="ejump" aria-label="On this page">
+      <a href="#timing"><span data-lang-ja>いつ受けるか</span><span data-lang-en>When to book</span></a>
+      <a href="#price"><span data-lang-ja>料金</span><span data-lang-en>Price</span></a>
+      <a href="#flow"><span data-lang-ja>車検の流れ</span><span data-lang-en>How it works</span></a>
+      <a href="#before"><span data-lang-ja>ご予約の前に</span><span data-lang-en>Good to know</span></a>
+    </nav>
+
     <!-- SHORT ANSWERS -->
     <section class="psec">
       <div class="pwrap">
@@ -377,6 +391,7 @@
     <!-- WHEN -->
     <section class="psec psec--gray">
       <div class="pwrap">
+        <span id="timing" class="panchor"></span>
         <div class="ph2">
           <h2 data-lang-ja>いつ受ければいいですか</h2>
           <h2 data-lang-en>When to book</h2>
@@ -394,6 +409,7 @@
     <!-- PRICE -->
     <section class="psec">
       <div class="pwrap">
+        <span id="price" class="panchor"></span>
         <div class="ph2">
           <h2 data-lang-ja>料金</h2>
           <h2 data-lang-en>Price</h2>
@@ -467,6 +483,7 @@
     <!-- FLOW -->
     <section class="psec psec--gray">
       <div class="pwrap">
+        <span id="flow" class="panchor"></span>
         <div class="ph2">
           <h2 data-lang-ja>車検の流れ</h2>
           <h2 data-lang-en>How it works</h2>
@@ -510,6 +527,7 @@
     <!-- GOOD TO KNOW -->
     <section class="psec">
       <div class="pwrap">
+        <span id="before" class="panchor"></span>
         <div class="ph2">
           <h2 data-lang-ja>ご予約の前に</h2>
           <h2 data-lang-en>Good to know</h2>
